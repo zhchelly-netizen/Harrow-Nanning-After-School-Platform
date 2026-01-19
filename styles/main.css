@@ -1,0 +1,940 @@
+/* ===================================
+   哈罗礼德学校课后平台 - 主样式表
+   Harrow LiDe School Co-Curricular Portal
+   =================================== */
+
+:root {
+    /* 主色系统 - 基于哈罗学校品牌色 */
+    --primary-navy: #152242;        /* 主色：深蓝 */
+    --primary-navy-light: #1e3158;  /* 浅深蓝 */
+    --primary-navy-dark: #0d1629;   /* 深深蓝 */
+    
+    --accent-gold: #A69867;         /* 副色：金色 */
+    --accent-gold-light: #c4b589;   /* 浅金色 */
+    --accent-gold-dark: #8a7d52;    /* 深金色 */
+    
+    /* 辅助色系统 - 莫兰迪色系 */
+    --accent-sage: #7a9b8e;         /* 鼠尾草绿 - 用于成功/自然 */
+    --accent-terracotta: #c17767;   /* 陶土红 - 用于警告/强调 */
+    --accent-slate: #6b7c93;        /* 石板蓝 - 用于信息 */
+    --accent-mauve: #9d8b9e;        /* 淡紫 - 用于特殊标记 */
+    
+    /* 背景色 */
+    --bg-cream: #f8f6f1;            /* 奶油白 */
+    --bg-light: #ffffff;            /* 纯白 */
+    --bg-warm: #faf8f3;             /* 暖白 */
+    --bg-dark: #0d1629;             /* 深色背景 */
+    --bg-overlay: rgba(21, 34, 66, 0.95);
+    
+    /* 文字色 */
+    --text-primary: #2a2a2a;        /* 主文字 */
+    --text-secondary: #5a5a5a;      /* 次要文字 */
+    --text-light: #8a8a8a;          /* 浅色文字 */
+    --text-inverse: #ffffff;        /* 反色文字 */
+    
+    /* 功能色 */
+    --success: #7a9b8e;             /* 成功 - 鼠尾草绿 */
+    --warning: #d4a574;             /* 警告 - 暖金色 */
+    --error: #c17767;               /* 错误 - 陶土红 */
+    --info: #6b7c93;                /* 信息 - 石板蓝 */
+    
+    /* 阴影 */
+    --shadow-sm: 0 2px 8px rgba(21, 34, 66, 0.08);
+    --shadow-md: 0 4px 16px rgba(21, 34, 66, 0.12);
+    --shadow-lg: 0 8px 32px rgba(21, 34, 66, 0.16);
+    --shadow-xl: 0 16px 48px rgba(21, 34, 66, 0.2);
+    
+    /* 字体 */
+    --font-serif: 'Crimson Pro', 'Noto Serif SC', serif;
+    --font-sans: 'SimHei', 'Microsoft YaHei', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-number: Arial, 'Helvetica Neue', sans-serif;
+    
+    /* 间距 */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-2xl: 4rem;
+    
+    /* 圆角 */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    
+    /* 过渡 */
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===================================
+   语言切换器
+   =================================== */
+
+.language-switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 0.5rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+}
+
+.lang-btn {
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 2px solid transparent;
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    font-family: var(--font-sans);
+    color: var(--text-secondary);
+}
+
+.lang-btn:hover {
+    background: var(--bg-cream);
+}
+
+.lang-btn.active {
+    background: var(--primary-navy);
+    color: var(--text-inverse);
+    border-color: var(--primary-navy);
+}
+
+/* ===================================
+   全局重置与基础样式
+   =================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font-sans);
+    color: var(--text-primary);
+    background: var(--bg-cream);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ===================================
+   容器与布局
+   =================================== */
+
+.app-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===================================
+   主页头部
+   =================================== */
+
+.main-header {
+    background: linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-navy-light) 100%);
+    color: var(--text-inverse);
+    padding: var(--spacing-xl) var(--spacing-md);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.main-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(166, 152, 103, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(122, 155, 142, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.header-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo-section {
+    margin-bottom: var(--spacing-md);
+}
+
+.school-name-en {
+    font-family: 'Times New Roman', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    margin-bottom: var(--spacing-xs);
+    animation: fadeInDown 0.6s ease-out;
+}
+
+.school-name-cn {
+    font-family: 'SimHei', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    opacity: 0.95;
+    animation: fadeInDown 0.6s ease-out 0.1s backwards;
+}
+
+.header-subtitle {
+    font-size: 1.125rem;
+    opacity: 0.9;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    animation: fadeInDown 0.6s ease-out 0.2s backwards;
+}
+
+/* ===================================
+   Hero Section
+   =================================== */
+
+.hero-section {
+    background: linear-gradient(to bottom, rgba(166, 152, 103, 0.08) 0%, transparent 100%);
+    padding: var(--spacing-2xl) var(--spacing-md);
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.hero-title {
+    font-family: 'SimHei', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+    font-size: 2.25rem;
+    font-weight: 600;
+    color: var(--primary-navy);
+    margin-bottom: var(--spacing-sm);
+    animation: fadeInUp 0.6s ease-out 0.3s backwards;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-lg);
+    animation: fadeInUp 0.6s ease-out 0.4s backwards;
+    line-height: 1.6;
+}
+
+.motto-bold {
+    font-family: 'Times New Roman', serif;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+
+.motto-italic {
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+    color: #A69867;
+    font-weight: 400;
+}
+
+.hero-values {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+
+.value-badge {
+    background: linear-gradient(135deg, #152242 0%, #1e3158 100%);
+    color: white;
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--radius-lg);
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 3px 12px rgba(21, 34, 66, 0.3);
+    transition: all var(--transition-base);
+    animation: fadeInUp 0.6s ease-out calc(0.5s + var(--delay, 0s)) backwards;
+    position: relative;
+    overflow: hidden;
+}
+
+.value-badge:nth-child(1) { 
+    --delay: 0s;
+    --gradient: linear-gradient(135deg, #7a9b8e 0%, #92b5a8 50%, #aacfc2 100%);
+}
+.value-badge:nth-child(2) { 
+    --delay: 0.1s;
+    --gradient: linear-gradient(135deg, #A69867 0%, #c4b589 50%, #e8d4a8 100%);
+}
+.value-badge:nth-child(3) { 
+    --delay: 0.2s;
+    --gradient: linear-gradient(135deg, #6b7c93 0%, #8a9bb2 50%, #aabbd2 100%);
+}
+.value-badge:nth-child(4) { 
+    --delay: 0.3s;
+    --gradient: linear-gradient(135deg, #c17767 0%, #d89787 50%, #f0b7a7 100%);
+}
+
+.value-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+    z-index: 1;
+}
+
+.value-badge:hover::before {
+    opacity: 1;
+}
+
+.value-badge:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(21, 34, 66, 0.4);
+}
+
+.value-badge span {
+    position: relative;
+    z-index: 2;
+}
+
+/* ===================================
+   主内容区域
+   =================================== */
+
+.main-content {
+    flex: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: var(--spacing-2xl) var(--spacing-md);
+    width: 100%;
+}
+
+/* ===================================
+   导航卡片
+   =================================== */
+
+.nav-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.nav-card {
+    background: var(--bg-light);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-slow);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 0.6s ease-out calc(0.6s + var(--card-delay, 0s)) backwards;
+}
+
+.nav-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--card-color-1), var(--card-color-2), var(--card-color-1));
+    background-size: 200% 100%;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition-slow);
+}
+
+.nav-card:hover::before {
+    transform: scaleX(1);
+    animation: gradientFlow 2s ease infinite;
+}
+
+@keyframes gradientFlow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.cca-card {
+    --card-color-1: var(--accent-sage);
+    --card-color-2: var(--accent-gold);
+    --card-delay: 0s;
+}
+
+.scholarship-card {
+    --card-color-1: var(--accent-terracotta);
+    --card-color-2: var(--accent-gold);
+    --card-delay: 0.1s;
+}
+
+.nav-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+}
+
+.card-icon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: var(--spacing-md);
+    background: linear-gradient(135deg, #152242 0%, #2a4070 50%, #A69867 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0.9;
+    transition: all var(--transition-slow);
+    filter: drop-shadow(0 2px 4px rgba(21, 34, 66, 0.2));
+}
+
+.nav-card:hover .card-icon {
+    transform: scale(1.15) rotate(8deg);
+    opacity: 1;
+    background: linear-gradient(135deg, #A69867 0%, #c4b589 50%, #7a9b8e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 4px 8px rgba(166, 152, 103, 0.4));
+    animation: iconPulse 0.6s ease-out;
+}
+
+@keyframes iconPulse {
+    0%, 100% { transform: scale(1.15) rotate(8deg); }
+    50% { transform: scale(1.25) rotate(8deg); }
+}
+
+.card-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.card-title {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--primary-navy);
+    margin-bottom: var(--spacing-xs);
+}
+
+.card-title-en {
+    font-size: 1rem;
+    color: var(--text-light);
+    font-style: italic;
+    margin-bottom: var(--spacing-md);
+}
+
+.card-description {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.7;
+}
+
+.card-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-lg);
+}
+
+.feature-tag {
+    padding: 0.375rem 0.75rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* CCA 卡片标签 */
+.cca-card .feature-tag:nth-child(1) {
+    /* 精英体育 - 金色 */
+    background: linear-gradient(135deg, #d4a574 0%, #e8c49a 50%, #f5d8b8 100%);
+    color: #152242;
+    box-shadow: 0 2px 8px rgba(212, 165, 116, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.cca-card .feature-tag:nth-child(2) {
+    /* 音乐学院 - 蓝绿色 */
+    background: linear-gradient(135deg, #5a8b8e 0%, #7aabae 50%, #9acbce 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(90, 139, 142, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.cca-card .feature-tag:nth-child(3) {
+    /* 学术竞赛 - 绿色 */
+    background: linear-gradient(135deg, #6a9b7a 0%, #8abb9a 50%, #aadbb8 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(106, 155, 122, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.cca-card .feature-tag:nth-child(4) {
+    /* CCA选课 - 紫色 */
+    background: linear-gradient(135deg, #8a7b9e 0%, #aa9bbe 50%, #cabbd8 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(138, 123, 158, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.cca-card .feature-tag:nth-child(5) {
+    /* 学生乐队 - 深红色 */
+    background: linear-gradient(135deg, #8b2635 0%, #ab3645 50%, #cb4655 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(139, 38, 53, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.cca-card .feature-tag:nth-child(6) {
+    /* 学术支持 - 海蓝色 */
+    background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 50%, #38bdf8 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(2, 132, 199, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* 奖学金卡片标签 */
+.scholarship-card .feature-tag:nth-child(1) {
+    /* 约翰·里昂全奖 - 橙色 */
+    background: linear-gradient(135deg, #d97a3a 0%, #f99a5a 50%, #ffba7a 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(217, 122, 58, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.scholarship-card .feature-tag:nth-child(2) {
+    /* 校长半额奖 - 红色 */
+    background: linear-gradient(135deg, #c17767 0%, #e19787 50%, #ffb7a7 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(193, 119, 103, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.scholarship-card .feature-tag:nth-child(3) {
+    /* 优才奖 - 黄色 */
+    background: linear-gradient(135deg, #d4b557 0%, #f4d577 50%, #fff597 100%);
+    color: #152242;
+    box-shadow: 0 2px 8px rgba(212, 181, 87, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.feature-tag::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.nav-card:hover .feature-tag {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+.nav-card:hover .feature-tag::before {
+    opacity: 1;
+}
+
+.feature-tag span {
+    position: relative;
+    z-index: 1;
+}
+
+.card-button {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: linear-gradient(135deg, #152242 0%, #1e3158 50%, #2a4070 100%);
+    color: var(--text-inverse);
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    font-family: var(--font-sans);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(21, 34, 66, 0.3);
+}
+
+.card-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #A69867 0%, #c4b589 50%, #d4c49a 100%);
+    transition: left var(--transition-slow);
+    z-index: 1;
+}
+
+.card-button:hover::before {
+    left: 0;
+}
+
+.card-button:hover {
+    transform: translateX(4px) translateY(-2px);
+    box-shadow: 0 6px 25px rgba(166, 152, 103, 0.5);
+}
+
+.card-button span {
+    position: relative;
+    z-index: 2;
+}
+
+/* ===================================
+   快速信息卡片
+   =================================== */
+
+.quick-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-xl);
+}
+
+.info-card {
+    background: var(--bg-light);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+    animation: fadeInUp 0.6s ease-out calc(0.8s + var(--info-delay, 0s)) backwards;
+}
+
+.info-card:nth-child(1) { --info-delay: 0s; }
+.info-card:nth-child(2) { --info-delay: 0.1s; }
+.info-card:nth-child(3) { --info-delay: 0.2s; }
+
+.info-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.info-card h4 {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--spacing-xs);
+}
+
+.info-highlight {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #A69867 0%, #c4b589 50%, #d4c49a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--spacing-xs);
+    animation: shimmer 3s ease-in-out infinite;
+    background-size: 200% 200%;
+}
+
+@keyframes shimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.info-detail {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* ===================================
+   页脚
+   =================================== */
+
+.main-footer {
+    background: var(--primary-navy);
+    color: var(--text-inverse);
+    padding: var(--spacing-xl) var(--spacing-md);
+    text-align: center;
+    margin-top: auto;
+}
+
+.main-footer p {
+    margin-bottom: var(--spacing-xs);
+    opacity: 0.8;
+}
+
+.footer-motto {
+    font-family: 'Times New Roman', serif;
+    font-style: normal;
+    font-size: 1.125rem;
+    opacity: 0.9;
+    font-weight: 400;
+    margin-bottom: var(--spacing-sm) !important;
+}
+
+.footer-department {
+    font-family: 'Times New Roman', serif;
+    font-size: 1rem;
+    opacity: 0.85;
+    font-weight: 400;
+    margin-bottom: var(--spacing-sm) !important;
+}
+
+.footer-copyright {
+    font-size: 0.875rem;
+    opacity: 0.7;
+}
+
+/* ===================================
+   子页面头部
+   =================================== */
+
+.sub-header {
+    background: linear-gradient(135deg, var(--primary-navy) 0%, var(--accent-slate) 100%);
+    color: var(--text-inverse);
+    padding: var(--spacing-lg) var(--spacing-md);
+    position: relative;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-inverse);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--radius-md);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    margin-bottom: var(--spacing-md);
+    font-family: var(--font-sans);
+    position: relative;
+    overflow: hidden;
+}
+
+.back-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(166, 152, 103, 0.3) 0%, rgba(122, 155, 142, 0.3) 100%);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+    z-index: 1;
+}
+
+.back-button:hover::before {
+    opacity: 1;
+}
+
+.back-button svg {
+    width: 20px;
+    height: 20px;
+    transition: transform var(--transition-base);
+    position: relative;
+    z-index: 2;
+}
+
+.back-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(-4px);
+    box-shadow: 0 4px 15px rgba(166, 152, 103, 0.3);
+}
+
+.back-button:hover svg {
+    transform: translateX(-4px);
+}
+
+.back-button span {
+    position: relative;
+    z-index: 2;
+}
+
+.page-title {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+}
+
+.page-subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    font-style: italic;
+}
+
+/* ===================================
+   按钮样式
+   =================================== */
+
+.primary-button {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: linear-gradient(135deg, #152242 0%, #1e3158 50%, #2a4070 100%);
+    color: var(--text-inverse);
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    font-family: var(--font-sans);
+    box-shadow: 0 4px 15px rgba(21, 34, 66, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.primary-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #A69867 0%, #c4b589 50%, #e8d4a8 100%);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+    z-index: 1;
+}
+
+.primary-button:hover::before {
+    opacity: 1;
+}
+
+.primary-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(166, 152, 103, 0.6);
+}
+
+.primary-button span {
+    position: relative;
+    z-index: 2;
+}
+
+.secondary-button {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: var(--bg-light);
+    color: var(--primary-navy);
+    border: 2px solid var(--primary-navy);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    font-family: var(--font-sans);
+}
+
+.secondary-button:hover {
+    background: var(--primary-navy);
+    color: var(--text-inverse);
+}
+
+.success-button {
+    background: var(--success);
+}
+
+.success-button:hover {
+    background: var(--accent-sage);
+    color: var(--text-inverse);
+}
+
+/* ===================================
+   动画
+   =================================== */
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ===================================
+   响应式设计
+   =================================== */
+
+@media (max-width: 768px) {
+    .school-name-en {
+        font-size: 1.75rem;
+    }
+    
+    .school-name-cn {
+        font-size: 1.25rem;
+    }
+    
+    .hero-title {
+        font-size: 1.75rem;
+    }
+    
+    .nav-cards-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .quick-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .main-content {
+        padding: var(--spacing-lg) var(--spacing-sm);
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 14px;
+    }
+    
+    .main-header {
+        padding: var(--spacing-lg) var(--spacing-sm);
+    }
+    
+    .hero-section {
+        padding: var(--spacing-lg) var(--spacing-sm);
+    }
+    
+    .value-badge {
+        font-size: 0.8rem;
+        padding: 0.375rem var(--spacing-sm);
+    }
+}
