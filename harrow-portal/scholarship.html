@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>奖学金申请 | 南宁哈罗礼德学校</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/scholarship.css">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="sub-header">
+            <button class="back-button" onclick="window.location.href='index.html'">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                返回主页
+            </button>
+            <h1 class="page-title">AISL哈罗南宁奖学金</h1>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <div class="scholarship-tabs">
+            <button class="tab-button active" data-tab="overview">奖学金概览</button>
+            <button class="tab-button" data-tab="rules">奖学金规则</button>
+            <button class="tab-button" data-tab="application">申请入口</button>
+        </div>
+
+        <!-- Tab Content -->
+        <main class="scholarship-content">
+            <!-- Overview Tab -->
+            <section class="tab-content active" id="overview-tab">
+                <div class="overview-hero">
+                    <h2>识别卓越 · 激励成长</h2>
+                    <p class="hero-description">
+                        奖学金系统是南宁哈罗礼德学校用于识别、激励并规范学生长期卓越发展的核心治理机制
+                    </p>
+                </div>
+
+                <div class="scholarship-types-grid">
+                    <div class="scholarship-type-card john-lyon">
+                        <div class="type-badge">全额奖学金</div>
+                        <h3>约翰·里昂全额奖学金</h3>
+                        <div class="type-amount">100% 学费减免</div>
+                        <div class="type-requirements">
+                            <h4>授予条件</h4>
+                            <ul>
+                                <li>在<strong>三个或以上</strong>评价类别中表现卓越</li>
+                                <li>Year 6 及以上年级学生</li>
+                                <li>持续践行学校核心价值观</li>
+                                <li>代表学校最高荣誉与学术标准</li>
+                            </ul>
+                        </div>
+                        <div class="type-info">
+                            <p><strong>评审周期：</strong>每学年评定一次</p>
+                            <p><strong>持续要求：</strong>需保持各类别卓越表现</p>
+                            <p><strong>荣誉象征：</strong>学校最高级别奖学金</p>
+                        </div>
+                        <div class="type-categories">
+                            <span class="category-tag academic">学术</span>
+                            <span class="category-tag sports">体育</span>
+                            <span class="category-tag arts">艺术</span>
+                            <span class="category-tag leadership">领导力</span>
+                        </div>
+                    </div>
+
+                    <div class="scholarship-type-card heads">
+                        <div class="type-badge">半额奖学金</div>
+                        <h3>校长半额奖学金</h3>
+                        <div class="type-amount">50% 学费减免</div>
+                        <div class="type-requirements">
+                            <h4>授予条件</h4>
+                            <ul>
+                                <li>在<strong>两个</strong>评价类别中表现突出</li>
+                                <li>Year 6 及以上年级学生</li>
+                                <li>展现持续的卓越表现与发展潜力</li>
+                                <li>积极参与学校社区建设</li>
+                            </ul>
+                        </div>
+                        <div class="type-info">
+                            <p><strong>评审周期：</strong>每学年评定一次</p>
+                            <p><strong>发展路径：</strong>可晋升为全额奖学金</p>
+                            <p><strong>认可标准：</strong>双领域卓越表现</p>
+                        </div>
+                        <div class="type-categories">
+                            <span class="category-tag">任选两个类别</span>
+                        </div>
+                    </div>
+
+                    <div class="scholarship-type-card talent">
+                        <div class="type-badge">优才奖学金</div>
+                        <h3>优才奖学金</h3>
+                        <div class="type-amount">专项培养资源</div>
+                        <div class="type-requirements">
+                            <h4>授予条件</h4>
+                            <ul>
+                                <li>在<strong>单一领域</strong>具有突出潜力与成果</li>
+                                <li>所有年级均可申请</li>
+                                <li>获得专项培养资源与导师支持</li>
+                                <li>展现该领域的持续投入与热情</li>
+                            </ul>
+                        </div>
+                        <div class="type-info">
+                            <p><strong>支持内容：</strong>专项训练、导师指导、资源配置</p>
+                            <p><strong>发展目标：</strong>培养单一领域专业人才</p>
+                            <p><strong>适用范围：</strong>学术/体育/艺术/领导力任一领域</p>
+                        </div>
+                        <div class="type-categories">
+                            <span class="category-tag">专项培养</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="evaluation-categories">
+                    <h3>评价类别</h3>
+                    <div class="categories-grid-compact">
+                        <div class="category-card-compact academic-cat">
+                            <div class="category-emoji">📖</div>
+                            <h4>学术</h4>
+                            <p>学术成绩与学术竞赛表现</p>
+                        </div>
+                        <div class="category-card-compact sports-cat">
+                            <div class="category-emoji">⚽</div>
+                            <h4>竞技体育</h4>
+                            <p>校队表现与竞赛成绩</p>
+                        </div>
+                        <div class="category-card-compact arts-cat">
+                            <div class="category-emoji">🎨</div>
+                            <h4>艺术</h4>
+                            <p>视觉艺术、音乐、表演艺术</p>
+                        </div>
+                        <div class="category-card-compact leadership-cat">
+                            <div class="category-emoji">👥</div>
+                            <h4>领导力与服务</h4>
+                            <p>学生领导力与社区服务</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rules Tab -->
+            <section class="tab-content" id="rules-tab">
+                <div class="rules-container">
+                    <h2>奖学金规则详解</h2>
+                    
+                    <div class="rules-section">
+                        <h3>📋 基本申请前提</h3>
+                        <ul class="rules-list">
+                            <li>在册身份与年级要求符合当年度规定</li>
+                            <li>出勤与迟到记录符合标准</li>
+                            <li>学术表现达到 HEP 进阶体系"光荣晋级"或以上</li>
+                            <li>不存在其他冲突性学费减免或同类奖学金</li>
+                        </ul>
+                    </div>
+
+                    <div class="rules-section">
+                        <h3>📊 数据与申请机制</h3>
+                        <div class="mechanism-cards">
+                            <div class="mechanism-card">
+                                <h4>数据统计 Data Collection</h4>
+                                <p><strong>全年开放</strong>的半主动机制</p>
+                                <ul>
+                                    <li>由学校与家庭共同完成</li>
+                                    <li>覆盖从上一学年 Speech Day 周起至本学年评审前一周</li>
+                                    <li>持续记录学生在各评价类别中的表现</li>
+                                </ul>
+                            </div>
+                            <div class="mechanism-card">
+                                <h4>申请确认 Application</h4>
+                                <p><strong>指定窗口期</strong>内开放</p>
+                                <ul>
+                                    <li>家长主动完成的独立流程</li>
+                                    <li>仅在指定时间窗口内接受申请</li>
+                                    <li>未完成申请确认的学生不自动进入评审</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rules-section warning-section">
+                        <h3>⚠️ 行为与表现约束</h3>
+                        <p class="warning-intro">奖学金每年评定一次，学校保留最终解释权。以下情况将导致奖学金<strong>直接撤销且不设缓冲期</strong>：</p>
+                        <div class="warning-grid">
+                            <div class="warning-card">
+                                <div class="warning-icon">🚫</div>
+                                <h4>纪律问题</h4>
+                                <p>Level 2 及以上纪律问题</p>
+                            </div>
+                            <div class="warning-card">
+                                <div class="warning-icon">📉</div>
+                                <h4>成绩下降</h4>
+                                <p>学术成绩同比下降超过 20%</p>
+                            </div>
+                            <div class="warning-card">
+                                <div class="warning-icon">⚖️</div>
+                                <h4>诚信问题</h4>
+                                <p>学术诚信问题或违反法律法规</p>
+                            </div>
+                            <div class="warning-card">
+                                <div class="warning-icon">👤</div>
+                                <h4>形象代表</h4>
+                                <p>未能持续正向代表学校形象</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rules-section">
+                        <h3>📚 评分模型文档</h3>
+                        <p>点击查看各类别详细评分标准：</p>
+                        <div class="documents-grid">
+                            <a href="https://harrownanning-est.feishu.cn/wiki/LAAAwIUkKit4JQkz3rTc0kFqn0f" target="_blank" class="document-card academic-doc">
+                                <div class="doc-icon">📖</div>
+                                <h4>学术奖学金计分模型</h4>
+                                <div class="doc-arrow">→</div>
+                            </a>
+                            <a href="https://harrownanning-est.feishu.cn/wiki/SbvWwJqJfiOUTFkLlhZcoTPln6g" target="_blank" class="document-card sports-doc">
+                                <div class="doc-icon">⚽</div>
+                                <h4>竞技体育奖学金计分模型</h4>
+                                <div class="doc-arrow">→</div>
+                            </a>
+                            <a href="https://harrownanning-est.feishu.cn/wiki/RdKmwGO2JiVLz0kCETzc9FbSnGd" target="_blank" class="document-card arts-doc">
+                                <div class="doc-icon">🎨</div>
+                                <h4>艺术奖学金计分模型</h4>
+                                <div class="doc-arrow">→</div>
+                            </a>
+                            <a href="https://harrownanning-est.feishu.cn/wiki/AFcpwk5CXidPTQkSwVWcuYJxnmg" target="_blank" class="document-card leadership-doc">
+                                <div class="doc-icon">👥</div>
+                                <h4>领导力奖学金计分模型</h4>
+                                <div class="doc-arrow">→</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Application Tab -->
+            <section class="tab-content" id="application-tab">
+                <div class="application-container">
+                    <h2>奖学金申请</h2>
+                    
+                    <!-- 申请注意事项 -->
+                    <div class="application-notice">
+                        <div class="notice-header">
+                            <div class="notice-icon">⚠️</div>
+                            <h3>申请注意事项</h3>
+                        </div>
+                        <div class="notice-content">
+                            <div class="notice-item">
+                                <div class="notice-number">1</div>
+                                <div class="notice-text">
+                                    <h4>申请资格确认</h4>
+                                    <p>请确保您的孩子符合基本申请前提：在册学生、年级要求、出勤记录、学术表现达标，且不存在其他冲突性学费减免。</p>
+                                </div>
+                            </div>
+                            <div class="notice-item">
+                                <div class="notice-number">2</div>
+                                <div class="notice-text">
+                                    <h4>申请窗口期</h4>
+                                    <p>奖学金申请仅在<strong>指定窗口期</strong>内开放，请关注学校通知。未在窗口期内完成申请确认的学生将不会进入评审流程。</p>
+                                </div>
+                            </div>
+                            <div class="notice-item">
+                                <div class="notice-number">3</div>
+                                <div class="notice-text">
+                                    <h4>材料准备</h4>
+                                    <p>申请前请仔细阅读对应类别的计分模型文档，准备好相关成就证明材料（获奖证书、竞赛成绩、作品集等）。</p>
+                                </div>
+                            </div>
+                            <div class="notice-item">
+                                <div class="notice-number">4</div>
+                                <div class="notice-text">
+                                    <h4>类别选择</h4>
+                                    <p>根据申请的奖学金类型选择相应数量的评价类别：<br>
+                                    • 约翰·里昂全额奖学金：需选择 <strong>3个或以上</strong>类别<br>
+                                    • 校长半额奖学金：需选择 <strong>2个</strong>类别<br>
+                                    • 优才奖学金：需选择 <strong>1个</strong>类别</p>
+                                </div>
+                            </div>
+                            <div class="notice-item">
+                                <div class="notice-number">5</div>
+                                <div class="notice-text">
+                                    <h4>动态评估机制</h4>
+                                    <p>奖学金每年评定一次，获得者需持续保持卓越表现。如出现纪律问题、成绩大幅下降、诚信问题等情况，奖学金将被<strong>直接撤销且不设缓冲期</strong>。</p>
+                                </div>
+                            </div>
+                            <div class="notice-item">
+                                <div class="notice-number">6</div>
+                                <div class="notice-text">
+                                    <h4>评审时间</h4>
+                                    <p>申请提交后，学校将在评审窗口期内完成评定，并通过邮件和企业微信通知结果。评审过程中可能需要补充材料或面试。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 申请流程 -->
+                    <div class="application-process">
+                        <h3>申请流程</h3>
+                        <div class="process-steps">
+                            <div class="process-step">
+                                <div class="step-circle">1</div>
+                                <div class="step-content">
+                                    <h4>阅读规则与计分模型</h4>
+                                    <p>仔细阅读奖学金规则和对应类别的计分模型文档，了解评分标准和要求。</p>
+                                </div>
+                            </div>
+                            <div class="process-arrow">↓</div>
+                            <div class="process-step">
+                                <div class="step-circle">2</div>
+                                <div class="step-content">
+                                    <h4>准备申请材料</h4>
+                                    <p>收集整理相关成就证明材料，包括获奖证书、竞赛成绩单、作品集、推荐信等。</p>
+                                </div>
+                            </div>
+                            <div class="process-arrow">↓</div>
+                            <div class="process-step">
+                                <div class="step-circle">3</div>
+                                <div class="step-content">
+                                    <h4>在线提交申请</h4>
+                                    <p>在申请窗口期内，通过申请系统填写完整信息并上传所有必要材料。</p>
+                                </div>
+                            </div>
+                            <div class="process-arrow">↓</div>
+                            <div class="process-step">
+                                <div class="step-circle">4</div>
+                                <div class="step-content">
+                                    <h4>等待评审结果</h4>
+                                    <p>学校评审委员会将根据计分模型进行评定，必要时会联系您补充材料或安排面试。</p>
+                                </div>
+                            </div>
+                            <div class="process-arrow">↓</div>
+                            <div class="process-step">
+                                <div class="step-circle">5</div>
+                                <div class="step-content">
+                                    <h4>接收评审通知</h4>
+                                    <p>评审结果将通过邮件和企业微信通知，获得奖学金的学生将收到正式授予文件。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 申请按钮 -->
+                    <div class="application-action">
+                        <div class="action-info">
+                            <div class="info-icon">📝</div>
+                            <div class="info-text">
+                                <h4>准备好申请了吗？</h4>
+                                <p>点击下方按钮进入奖学金申请系统，填写申请表并上传相关材料。</p>
+                            </div>
+                        </div>
+                        <button class="application-button" onclick="window.open('PLACEHOLDER_URL', '_blank')">
+                            <span>进入申请系统</span>
+                            <span class="button-arrow">→</span>
+                        </button>
+                        <p class="action-note">申请系统将在窗口期内开放，请关注学校通知</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/scholarship.js"></script>
+</body>
+</html>
