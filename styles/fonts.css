@@ -1,0 +1,69 @@
+/* 思源宋体 - Source Han Serif SC */
+@font-face {
+    font-family: 'Source Han Serif SC';
+    src: url('../思源宋体/SourceHanSerifSC-Regular.otf') format('opentype');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Source Han Serif SC';
+    src: url('../思源宋体/SourceHanSerifSC-SemiBold.otf') format('opentype');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'Source Han Serif SC';
+    src: url('../思源宋体/SourceHanSerifSC-Bold.otf') format('opentype');
+    font-weight: 700;
+}
+
+/* 思源黑体 - Source Han Sans SC */
+@font-face {
+    font-family: 'Source Han Sans SC';
+    src: url('../思源黑体/SourceHanSansSC-Regular.otf') format('opentype');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Source Han Sans SC';
+    src: url('../思源黑体/SourceHanSansSC-Medium.otf') format('opentype');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Source Han Sans SC';
+    src: url('../思源黑体/SourceHanSansSC-Bold.otf') format('opentype');
+    font-weight: 700;
+}
+
+/* Bembo */
+@font-face {
+    font-family: 'Bembo';
+    src: url('../Bembo/Bembo标准(BemboStd)_爱给网_aigei_com.otf') format('opentype');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Bembo';
+    src: url('../Bembo/Bembo粗体(Bembo-Bold)_爱给网_aigei_com.otf') format('opentype');
+    font-weight: 700;
+}
+
+/* Gotham */
+@font-face {
+    font-family: 'Gotham';
+    src: url('../Gotham-Font/Gotham-Font/GothamBook.ttf') format('truetype');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('../Gotham-Font/Gotham-Font/GothamMedium_1.ttf') format('truetype');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('../Gotham-Font/Gotham-Font/GothamBold.ttf') format('truetype');
+    font-weight: 700;
+}
