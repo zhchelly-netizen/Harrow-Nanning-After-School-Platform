@@ -275,6 +275,11 @@ function updateStepDisplay() {
             section.classList.remove('active');
         }
     });
+    
+    // 同步浮动规划窗口的步骤进度
+    if (typeof floatingPlanner !== 'undefined' && floatingPlanner) {
+        floatingPlanner.updateProgress(currentStep);
+    }
 }
 
 // 验证步骤
@@ -318,7 +323,6 @@ function saveStepData(step) {
             selectedElitePrograms.push({
                 category: 'sports',
                 value: input.value,
-                label: input.value, // 保存 value 而不是 textContent
                 schedule: input.dataset.schedule
             });
         });
@@ -327,7 +331,6 @@ function saveStepData(step) {
             selectedElitePrograms.push({
                 category: 'music',
                 value: input.value,
-                label: input.value, // 保存 value 而不是 textContent
                 schedule: input.dataset.schedule
             });
         });
@@ -336,7 +339,6 @@ function saveStepData(step) {
             selectedElitePrograms.push({
                 category: 'academic',
                 value: input.value,
-                label: input.value, // 保存 value 而不是 textContent
                 schedule: input.dataset.schedule
             });
         });
@@ -345,7 +347,6 @@ function saveStepData(step) {
             selectedElitePrograms.push({
                 category: 'hub',
                 value: input.value,
-                label: input.value, // 保存 value 而不是 textContent
                 schedule: input.dataset.schedule
             });
         });
@@ -354,7 +355,6 @@ function saveStepData(step) {
             selectedElitePrograms.push({
                 category: 'math',
                 value: input.value,
-                label: input.value, // 保存 value 而不是 textContent
                 schedule: input.dataset.schedule
             });
         });
@@ -1650,6 +1650,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 初始化精英项目语言
     updateEliteProgramsLanguage();
+    
+    // 同步浮动规划窗口的步骤进度
+    if (typeof floatingPlanner !== 'undefined' && floatingPlanner) {
+        floatingPlanner.updateProgress(currentStep);
+    }
     
     // 监听年级选择变化
     const gradeSelect = document.getElementById('student-grade');

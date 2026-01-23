@@ -1,69 +1,63 @@
-/* 思源宋体 - Source Han Serif SC */
-@font-face {
-    font-family: 'Source Han Serif SC';
-    src: url('../fonts/SourceHanSerifSC-Regular.otf') format('opentype');
-    font-weight: 400;
-}
+/* ===================================
+   字体定义文件
+   Font Definitions
+   =================================== */
 
-@font-face {
-    font-family: 'Source Han Serif SC';
-    src: url('../fonts/SourceHanSerifSC-SemiBold.otf') format('opentype');
-    font-weight: 600;
-}
+/* 中文字体 - 使用 Google Fonts CDN */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap');
 
-@font-face {
-    font-family: 'Source Han Serif SC';
-    src: url('../fonts/SourceHanSerifSC-Bold.otf') format('opentype');
-    font-weight: 700;
-}
-
-/* 思源黑体 - Source Han Sans SC */
-@font-face {
-    font-family: 'Source Han Sans SC';
-    src: url('../fonts/SourceHanSansSC-Regular.otf') format('opentype');
-    font-weight: 400;
-}
-
-@font-face {
-    font-family: 'Source Han Sans SC';
-    src: url('../fonts/SourceHanSansSC-Normal.otf') format('opentype');
-    font-weight: 500;
-}
-
-@font-face {
-    font-family: 'Source Han Sans SC';
-    src: url('../fonts/SourceHanSansSC-Bold.otf') format('opentype');
-    font-weight: 700;
-}
-
-/* Bembo */
+/* Bembo - 英文衬线字体 */
 @font-face {
     font-family: 'Bembo';
     src: url('../fonts/Bembo标准(BemboStd)_爱给网_aigei_com.otf') format('opentype');
     font-weight: 400;
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Bembo';
     src: url('../fonts/Bembo粗体(Bembo-Bold)_爱给网_aigei_com.otf') format('opentype');
     font-weight: 700;
+    font-display: swap;
 }
 
-/* Gotham */
+/* Gotham - 英文无衬线字体 */
 @font-face {
     font-family: 'Gotham';
     src: url('../fonts/Gotham-Light-ca7739fa9c72.otf') format('opentype');
     font-weight: 400;
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Gotham';
     src: url('../fonts/Gotham-BookItalic-3f3388c6c0dc.otf') format('opentype');
     font-weight: 500;
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Gotham';
     src: url('../fonts/Gotham-Bold-2d9c4008ed97.otf') format('opentype');
     font-weight: 700;
+    font-display: swap;
+}
+
+/* ===================================
+   字体变量定义
+   =================================== */
+:root {
+    /* 中文字体 */
+    --font-serif-cn: 'Noto Serif SC', serif;
+    --font-sans-cn: 'Noto Sans SC', sans-serif;
+    
+    /* 英文字体 */
+    --font-serif-en: 'Bembo', 'Times New Roman', serif;
+    --font-sans-en: 'Gotham', 'Helvetica Neue', Arial, sans-serif;
+    
+    /* 组合字体 */
+    --font-serif: 'Noto Serif SC', serif;
+    --font-sans: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-banner: 'Bembo', 'Noto Serif SC', serif;
+    --font-body: 'Gotham', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
 }

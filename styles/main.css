@@ -3,71 +3,42 @@
    Harrow LiDe School Co-Curricular Portal
    =================================== */
 
-/* 字体导入 */
-@font-face {
-    font-family: 'Source Han Serif SC';
-    src: url('../fonts/SourceHanSerifSC-Regular.otf') format('opentype');
-    font-weight: 400;
-}
-
-@font-face {
-    font-family: 'Source Han Serif SC';
-    src: url('../fonts/SourceHanSerifSC-SemiBold.otf') format('opentype');
-    font-weight: 600;
-}
-
-@font-face {
-    font-family: 'Source Han Serif SC';
-    src: url('../fonts/SourceHanSerifSC-Bold.otf') format('opentype');
-    font-weight: 700;
-}
-
-@font-face {
-    font-family: 'Source Han Sans SC';
-    src: url('../fonts/SourceHanSansSC-Regular.otf') format('opentype');
-    font-weight: 400;
-}
-
-@font-face {
-    font-family: 'Source Han Sans SC';
-    src: url('../fonts/SourceHanSansSC-Normal.otf') format('opentype');
-    font-weight: 500;
-}
-
-@font-face {
-    font-family: 'Source Han Sans SC';
-    src: url('../fonts/SourceHanSansSC-Bold.otf') format('opentype');
-    font-weight: 700;
-}
+/* 字体导入 - 使用Google Fonts替代本地字体 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap');
 
 @font-face {
     font-family: 'Bembo';
     src: url('../fonts/Bembo标准(BemboStd)_爱给网_aigei_com.otf') format('opentype');
     font-weight: 400;
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Bembo';
     src: url('../fonts/Bembo粗体(Bembo-Bold)_爱给网_aigei_com.otf') format('opentype');
     font-weight: 700;
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Gotham';
     src: url('../fonts/Gotham-Light-ca7739fa9c72.otf') format('opentype');
     font-weight: 400;
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Gotham';
     src: url('../fonts/Gotham-BookItalic-3f3388c6c0dc.otf') format('opentype');
     font-weight: 500;
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Gotham';
     src: url('../fonts/Gotham-Bold-2d9c4008ed97.otf') format('opentype');
     font-weight: 700;
+    font-display: swap;
 }
 
 :root {
@@ -112,15 +83,15 @@
     --shadow-xl: 0 16px 48px rgba(21, 34, 66, 0.2);
     
     /* 字体 */
-    --font-serif: 'Source Han Serif SC', 'Noto Serif SC', serif;
-    --font-sans: 'Source Han Sans SC', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-serif: 'Noto Serif SC', serif;
+    --font-sans: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-en-serif: 'Bembo', 'Times New Roman', serif;
     --font-en-sans: 'Gotham', 'Helvetica Neue', Arial, sans-serif;
     
-    /* 组合字体：Banner标题用（中文思源宋体 + 西文Bembo，加粗） */
-    --font-banner: 'Bembo', 'Source Han Serif SC', 'Noto Serif SC', serif;
-    /* 组合字体：所有其他文字用（中文思源黑体 + 西文Gotham） */
-    --font-body: 'Gotham', 'Source Han Sans SC', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+    /* 组合字体：Banner标题用（中文Noto宋体 + 西文Bembo，加粗） */
+    --font-banner: 'Bembo', 'Noto Serif SC', serif;
+    /* 组合字体：所有其他文字用（中文Noto黑体 + 西文Gotham） */
+    --font-body: 'Gotham', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
     
     /* 间距 */
     --spacing-xs: 0.5rem;
@@ -329,9 +300,9 @@ body {
     animation: fadeInDown 0.6s ease-out 0.1s backwards;
 }
 
-/* 中文模式下使用思源宋体 */
+/* 中文模式下使用Noto宋体 */
 html[lang="zh-CN"] .school-name-cn {
-    font-family: 'Source Han Serif SC', 'Noto Serif SC', serif;
+    font-family: 'Noto Serif SC', serif;
     font-size: 2.5rem;
     font-weight: 700;
     opacity: 0.95;
@@ -361,7 +332,7 @@ html[lang="zh-CN"] .school-name-cn {
 }
 
 .hero-title {
-    font-family: 'Source Han Serif SC', 'Noto Serif SC', serif;
+    font-family: 'Noto Serif SC', serif;
     font-size: 2.25rem;
     font-weight: 600;
     color: var(--primary-navy);

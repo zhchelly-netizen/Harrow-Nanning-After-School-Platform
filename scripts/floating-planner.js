@@ -247,7 +247,7 @@ class FloatingPlanner {
             <div class="info-value">${grade}</div>
         `;
         
-        this.updateProgress(1);
+        // 不自动更新进度，由页面的 currentStep 控制
     }
     
     updateElitePrograms(programs) {
@@ -260,7 +260,7 @@ class FloatingPlanner {
         }
         
         if (programs.length === 0) {
-            this.updateProgress(2);
+            // 不自动更新进度，由页面的 currentStep 控制
             // 即使没有精英项目，也要更新周计划
             this.updateWeekSchedule();
             this.updateMiniSummary();
@@ -283,10 +283,15 @@ class FloatingPlanner {
             const icon = this.getIconForCategory(program.category);
             const scheduleText = this.getScheduleText(program.schedule);
             
+            // 根据当前语言获取精英项目名称
+            const programName = typeof ELITE_PROGRAM_TRANSLATIONS !== 'undefined' && ELITE_PROGRAM_TRANSLATIONS[i18n.currentLang] && ELITE_PROGRAM_TRANSLATIONS[i18n.currentLang][program.value]
+                ? ELITE_PROGRAM_TRANSLATIONS[i18n.currentLang][program.value]
+                : program.value;
+            
             item.innerHTML = `
                 <div class="planner-elite-icon">${icon}</div>
                 <div class="planner-elite-details">
-                    <div class="planner-elite-name">${program.label}</div>
+                    <div class="planner-elite-name">${programName}</div>
                     <div class="planner-elite-schedule">${scheduleText}</div>
                 </div>
             `;
@@ -302,7 +307,7 @@ class FloatingPlanner {
             content.insertBefore(eliteList, content.firstChild.nextSibling);
         }
         
-        this.updateProgress(2);
+        // 不自动更新进度，由页面的 currentStep 控制
         this.updateWeekSchedule();
     }
     
@@ -577,37 +582,31 @@ class FloatingPlanner {
     
     getScheduleText(schedule) {
         if (!schedule || schedule === 'custom') {
-            return i18n.t('general.customTime');
+            return i18n.t('customTime');
         }
         if (schedule === 'none') {
-            return i18n.t('general.noBlockCCA');
+            return i18n.t('noBlockCCA');
         }
         
         const dayMap = {
-            'mon': i18n.t('days.mondayShort'),
-            'tue': i18n.t('days.tuesdayShort'),
-            'wed': i18n.t('days.wednesdayShort'),
-            'thu': i18n.t('days.thursdayShort'),
-            'fri': i18n.t('days.fridayShort'),
-            'sat': i18n.t('days.saturdayShort'),
-            'sun': i18n.t('days.sundayShort')
+            'mon': i18n.t('mondayShort'),
+            'tue': i18n.t('tuesdayShort'),
+            'wed': i18n.t('wednesdayShort'),
+            'thu': i18n.t('thursdayShort'),
+            'fri': i18n.t('fridayShort'),
+            'sat': i18n.t('saturdayShort'),
+            'sun': i18n.t('sundayShort')
         };
         
         // 分割并去除空格
         const days = schedule.split(',').map(d => d.trim()).map(d => dayMap[d] || d);
-        return days.join(i18n.t('general.comma'));
+        return days.join(i18n.t('comma'));
     }
     
     updateCCASelection(day, course) {
         this.updateWeekSchedule();
         
-        // 检查是否所有工作日都已选择
-        const requiredDays = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
-        const selectedDays = typeof selectedCCAs !== 'undefined' ? Object.keys(selectedCCAs).filter(d => requiredDays.includes(d)) : [];
-        
-        if (selectedDays.length === requiredDays.length) {
-            this.updateProgress(3);
-        }
+        // 不自动更新进度，由页面的 currentStep 控制
     }
     
     show() {
