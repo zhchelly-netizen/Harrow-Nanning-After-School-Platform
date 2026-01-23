@@ -1,170 +1,1039 @@
 // ===================================
-// 多语言配置文件
+// 多语言国际化配置
+// Internationalization Configuration
 // ===================================
 
 const translations = {
-    zh: {
-        // 通用
-        'common.back': '返回主页',
-        'common.next': '下一步',
-        'common.prev': '上一步',
-        'common.submit': '确认提交',
-        'common.generate': '生成课程表图片',
-        
-        // 主页
-        'home.title': '南宁哈罗礼德学校',
-        'home.subtitle': '课后发展平台',
-        'home.hero_title': '塑造卓越 · 成就未来',
-        'home.cca_title': '课后课程规划',
-        'home.cca_desc': '规划您的课后时间，选择精英项目或联课活动',
-        'home.scholarship_title': '奖学金申请',
-        'home.scholarship_desc': '了解奖学金体系，提交您的申请',
-        
-        // 步骤
-        'steps.select_type': '选择类型',
-        'steps.elite_programs': '精英项目',
-        'steps.cca_selection': 'CCA选课',
-        'steps.confirm': '确认提交',
-        
-        // CCA页面
-        'cca.page_title': '课后课程规划',
-        'cca.select_grade': '选择年级',
-        'cca.grade': '年级',
-        'cca.select_grade_placeholder': '请选择年级',
-        'cca.elite_selection': '精英项目选择',
-        'cca.elite_desc': '选择您希望加入的精英培养项目（可多选）',
-        'cca.cca_selection': 'CCA 课程选择',
-        'cca.cca_desc': '选择周一至周五 16:00-17:00 的课后联课活动',
-        'cca.selection_notice': '请为每一天选择一门课程，或选择"不参加"',
-        'cca.conflict_warning': '系统将自动检测与精英项目的时间冲突，仅显示可选时段',
-        'cca.loading': '加载课程中...',
-        'cca.blocked': '该时段已被精英项目占用',
-        'cca.no_courses': '该年级暂无可选课程',
-        'cca.opt_out': '不参加',
-        'cca.confirm_title': '确认提交',
-        'cca.confirm_desc': '请确认您的课程选择',
-        'cca.student_info': '学生信息',
-        'cca.schedule': '课后时间安排',
-        'cca.weekly_schedule': '您的一周课后安排',
-        
-        // 天
-        'days.monday': '周一 Monday',
-        'days.tuesday': '周二 Tuesday',
-        'days.wednesday': '周三 Wednesday',
-        'days.thursday': '周四 Thursday',
-        'days.friday': '周五 Friday',
-        
-        // 错误提示
-        'error.select_grade': '请选择年级',
-        'error.select_all_days': '请为所有工作日选择课程或"不参加"',
-        'error.invite_only': '此课程为邀请制，请联系老师',
-        
-        // 成功提示
-        'success.image_generated': '课程表图片已生成并下载！',
-        'success.submitted': '课程选择已成功提交！'
+    "zh": {
+        "pageTitle": "南宁哈罗礼德学校 - CCA课程规划",
+        "schoolName": "南宁哈罗礼德学校",
+        "schoolNameCn": "南宁哈罗礼德学校",
+        "schoolNameEn": "HARROW LIDE SCHOOL NANNING",
+        "switchLanguage": "English",
+        "platformSubtitle": "课后发展平台",
+        "heroTitle": "育以至善 · 卓以领航",
+        "valueCourage": "勇气",
+        "valueHonour": "荣誉",
+        "valueHumility": "谦和",
+        "valueFellowship": "互助",
+        "ccaPlanningTitle": "课后课程规划",
+        "ccaPlanningDesc": "规划您的课后时间，选择精英项目或CCA联课活动",
+        "scholarshipTitle": "AISL 哈罗南宁奖学金",
+        "scholarshipDesc": "了解奖学金体系，提交您的申请",
+        "featureEliteSports": "精英体育",
+        "featureMusicAcademy": "音乐学院",
+        "featureAcademicComp": "学术竞赛",
+        "featureCCA": "CCA选课",
+        "featureBand": "学生乐队",
+        "featureSupport": "学术支持",
+        "scholarshipJohnLyon": "约翰·里昂全奖",
+        "scholarshipPrincipal": "校长半额奖",
+        "scholarshipMerit": "优才奖",
+        "startPlanning": "开始规划 →",
+        "learnMore": "了解详情 →",
+        "infoTimeTitle": "课后时间",
+        "infoTimeDetail": "周一至周五黄金时段",
+        "infoStudentsTitle": "学生规模",
+        "infoStudentsDetail": "全年级覆盖",
+        "infoCurriculumTitle": "课程体系",
+        "infoCurriculumHighlight": "多元发展",
+        "infoCurriculumDetail": "国际认证课程",
+        "footerDepartment": "拓展部",
+        "step1": "学生信息",
+        "step2": "精英项目",
+        "step3": "CCA课程",
+        "step4": "确认规划",
+        "step5": "报名指引",
+        "step1Title": "学生信息",
+        "step2Title": "精英项目选择",
+        "step3Title": "CCA课程选择",
+        "step4Title": "确认规划",
+        "step5Title": "报名指引",
+        "step1Subtitle": "请填写学生基本信息",
+        "step2Subtitle": "选择您想参加的精英项目（可多选）",
+        "step3Subtitle": "为每个工作日选择一门CCA课程",
+        "step4Subtitle": "请确认您的课程选择",
+        "step5Subtitle": "按照以下步骤完成报名",
+        "nextStep": "下一步",
+        "prevStep": "上一步",
+        "confirm": "确认并生成课程表",
+        "submit": "提交",
+        "download": "下载课程表",
+        "cancel": "取消",
+        "close": "关闭",
+        "studentInfo": "学生信息",
+        "grade": "年级",
+        "selectGrade": "请选择年级",
+        "pleaseSelect": "请选择",
+        "elitePrograms": "精英项目",
+        "ccaCourses": "CCA课程",
+        "afterSchoolSchedule": "课后时间安排",
+        "mySchedule": "我的规划",
+        "optOut": "不参加",
+        "optOutDesc": "该时段不参加课后活动",
+        "inviteOnly": "邀请制/单招",
+        "free": "免费",
+        "customPackage": "定制课包",
+        "teacher": "教师",
+        "fee": "费用",
+        "time": "时间",
+        "rest": "休息",
+        "noArrangement": "暂无安排",
+        "items": "个",
+        "courses": "门",
+        "scheduledDays": "已安排天数",
+        "days": "天",
+        "weeklySchedule": "本周安排",
+        "customTime": "定制时间",
+        "noBlockCCA": "不占用CCA时段",
+        "comma": "、",
+        "notSelected": "未选择",
+        "selected": "已选择",
+        "elite": "精英",
+        "currentGrade": "当前年级",
+        "monday": "周一",
+        "tuesday": "周二",
+        "wednesday": "周三",
+        "thursday": "周四",
+        "friday": "周五",
+        "saturday": "周六",
+        "sunday": "周日",
+        "mondayShort": "MON",
+        "tuesdayShort": "TUE",
+        "wednesdayShort": "WED",
+        "thursdayShort": "THU",
+        "fridayShort": "FRI",
+        "saturdayShort": "SAT",
+        "sundayShort": "SUN",
+        "eliteSports": "Elite Sports Teams",
+        "wednesdayShort": "WED",
+        "thursdayShort": "THU",
+        "fridayShort": "FRI",
+        "saturdayShort": "SAT",
+        "sundayShort": "SUN",
+        "eliteSports": "精英体育校队",
+        "musicAcademy": "哈罗音乐学院",
+        "academicCompetition": "学术竞赛队伍",
+        "hubCentre": "宏博中心",
+        "mathSupport": "中文数学支持",
+        "eliteSportsDesc": "代表学校参加各类体育赛事",
+        "musicAcademyDesc": "专业音乐训练和演出机会",
+        "academicCompetitionDesc": "参加国内外学术竞赛",
+        "hubCentreDesc": "英语强化和雅思备考",
+        "mathSupportDesc": "中文数学课程辅导",
+        "conflictWarning": "时间冲突提醒",
+        "conflictDetected": "检测到时间冲突",
+        "selectAllDays": "请为所有工作日选择课程或\"不参加\"",
+        "pleaseSelectGrade": "请选择年级",
+        "blockedByElite": "该时段已被精英项目占用",
+        "noCoursesAvailable": "该年级暂无可选课程",
+        "inviteOnlyTitle": "邀请制项目",
+        "inviteOnlyDesc1": "此课程为邀请制/单招项目，需要联系负责老师。",
+        "inviteOnlyDesc2": "如果您收到了邀请函，可以点击下方按钮添加到您的课程规划中。",
+        "iHaveInvitation": "我收到老师的邀请",
+        "timeConflictWarning": "时间冲突提醒",
+        "conflictMessage": "您选择的课程与已有安排冲突：",
+        "conflictTip": "提示：如果您确认该安排已获得活动负责老师的允许，可以选择\"强制添加\"。",
+        "conflictReasonLabel": "如果强制添加，请说明原因：",
+        "conflictReasonPlaceholder": "例如：已与体育部张老师确认，篮球训练可以提前离开参加CCA课程",
+        "conflictImportant": "重要提醒：请务必与活动负责老师确认该安排被允许，您的说明将显示在最终的报名指引中。",
+        "forceAdd": "无视冲突强制添加",
+        "forceAddShort": "强制添加",
+        "confirmTitle": "确认规划",
+        "selectionSummary": "选择摘要",
+        "priceSummary": "费用摘要",
+        "schedulePreview": "课程表预览",
+        "ccaSubtotal": "CCA课程小计",
+        "ccaOriginalPrice": "CCA课程原价",
+        "ccaFinalPrice": "CCA课程实付",
+        "priceCapped": "已封顶优惠",
+        "priceCapNote": "已应用封顶优惠：CCA课程费用超过¥3,000，按¥3,000封顶收取",
+        "priceUnderCapNote": "CCA课程费用未满¥3,000，据实结算；超过¥3,000将封顶收取",
+        "customPackageNote": "精英项目为定制课包，具体费用请咨询相关负责老师",
+        "conflictMarker": "冲突",
+        "forceAddedMarker": "已强制添加",
+        "registrationGuide": "报名指引",
+        "nextSteps": "下一步待办",
+        "registrationSteps": "报名步骤",
+        "contactInfo": "联系方式",
+        "regEliteSports": "精英体育校队报名",
+        "regMusicAcademy": "哈罗音乐学院报名",
+        "regDebate": "\"以言论道\"思辨社报名",
+        "regAcademicComp": "学术竞赛队伍报名",
+        "regHub": "宏博中心课程报名",
+        "regMathSupport": "中文数学支持课程报名",
+        "regCCA": "CCA 课程报名",
+        "regEliteSportsDesc": "填写精英体育报名表，等待体育部负责老师联系确认选拔时间",
+        "regMusicAcademyDesc": "填写音乐学院报名表，选择合适的上课时间",
+        "regDebateDesc": "在企业微信上联系辩论队教练组：欧老师 Kasey Ou（中文教育组组长）、谭老师 Lily Tan（高年级）、梁老师 Nicky Liang（小学部）",
+        "regAcademicCompDesc": "联系拓展部负责老师：唐齐昌 Ryan Tang 或 陈老师 Yackey Chen",
+        "regHubDesc": "在企业微信上联系 龚安琪 Angel Gong 老师",
+        "regMathSupportDesc": "在企业微信上联系 唐齐昌 Ryan Tang 老师",
+        "regCCADesc": "登录 SchoolsBuddy 系统完成报名",
+        "fillEliteSportsForm": "填写精英体育报名表 →",
+        "fillMusicForm": "填写音乐学院报名表 →",
+        "rememberContact": "记住联系方式",
+        "viewContact": "查看联系方式（见页面底部）",
+        "loginSchoolsBuddy": "登录 SchoolsBuddy →",
+        "loginGuideTitle": "登录提示",
+        "loginStep1": "进入 SchoolsBuddy 登录页面后",
+        "loginStep1Desc": "在页面最下方找到并点击：",
+        "loginStep2": "选择登录类型",
+        "loginStep2Desc": "点击 ISAMS (Parents) 按钮进入家长登录页面",
+        "loginStep3": "输入您的登录信息",
+        "loginStep3Username": "用户名：您用来注册的邮箱（例如：1234567890@qq.com）",
+        "loginStep3Password": "密码：您注册设置的密码",
+        "loginTip": "如忘记密码请联系学校IT部门企业微信帐号：ITHelpDesk 重置",
+        "success": "成功",
+        "error": "错误",
+        "addedToPlan": "已添加到课程规划",
+        "removedFromPlan": "已取消选择",
+        "scheduleGenerated": "课程表图片已生成并下载！",
+        "submissionSuccess": "课程选择已成功提交！",
+        "pleaseConfirmWithTeacher": "已添加课程，请确保与负责老师确认该安排",
+        "floatingPlannerTitle": "我的规划",
+        "floatingPlannerSubtitle": "您的一周课后安排",
+        "noActivities": "暂无安排",
+        "conflictDetectedShort": "冲突",
+        "footerSlogan": "Leadership for a Better World",
+        "generatedTime": "生成时间",
+        "loading": "加载中...",
+        "saving": "保存中...",
+        "processing": "处理中...",
+        "pleaseWait": "请稍候...",
+        "yes": "是",
+        "no": "否",
+        "ok": "确定",
+        "back": "返回",
+        "selectionCancelled": "已取消选择",
+        "courseAddedConfirm": "已添加课程，请确保与负责老师确认该安排",
+        "pleaseProvideReason": "请说明强制添加的原因，以便在报名指引中显示。",
+        "imageGenerationFailed": "图片生成失败，请重试",
+        "harrowSchedule": "哈罗课程表",
+        "swimmingTeamExclusive": "已自动取消另一游泳队的选择，因为游泳一队和预备队不能同时选择",
+        "debateContact": "请在企业微信上联系辩论队教练组：\n\n【中文教育组组长】\n欧老师 Kasey Ou\n\n【高年级教练】\n谭老师 Lily Tan\n\n【小学部教练】\n梁老师 Nicky Liang\n\n请根据您的年级联系对应的教练老师",
+        "hubContact": "请在企业微信上联系：\n\n龚安琪 Angel Gong 老师\n\n说明您需要的课程（英语基础/雅思进阶）",
+        "mathContact": "请在企业微信上联系：\n\n唐齐昌 Ryan Tang 老师\n\n说明您需要中文数学支持课程",
+        "checkContactInfo": "请查看页面底部的拓展部联系方式",
+        "haveInvitation": "我收到老师的邀请",
+        "conflictWarningEn": "Time Conflict Warning",
+        "conflictDesc": "您选择的课程与已有安排冲突：",
+        "tip": "提示",
+        "importantReminder": "重要提醒",
+        "conflictReminder": "请务必与活动负责老师确认该安排被允许，您的说明将显示在最终的报名指引中。",
+        "conflict": "冲突",
+        "forceAdded": "已强制添加",
+        "elitePrograms": "精英项目",
+        "capApplied": "已应用封顶优惠：CCA课程费用超过¥3,000，按¥3,000封顶收取",
+        "capNotice": "CCA课程费用未满¥3,000，据实结算；超过¥3,000将封顶收取",
+        "eliteProgramme": "精英项目",
+        "and": "与",
+        "timeConflict": "时间冲突",
+        "selectGradeTitle": "选择年级",
+        "gradeG1": "一年级",
+        "gradeG2": "二年级",
+        "gradeG3": "三年级",
+        "gradeG4": "四年级",
+        "gradeG5": "五年级",
+        "gradeG6": "六年级",
+        "gradeG7": "七年级",
+        "gradeG8": "八年级",
+        "gradeG9": "九年级",
+        "gradeG10": "十年级",
+        "gradeG11": "十一年级",
+        "gradeG12": "十二年级",
+        "eliteProgramsSelection": "精英项目选择",
+        "eliteProgramsSelectionDesc": "选择您希望加入的精英培养项目（可多选）",
+        "ccaCoursesSelection": "CCA 课程选择",
+        "ccaCoursesSelectionDesc": "选择周一至周四 16:00-17:00 的课后联课活动",
+        "autoDetectConflict": "系统将自动检测与精英项目的时间冲突，仅显示可选时段",
+        "selectForEachDay": "请为每一天选择一门课程，或选择不参加",
+        "confirmPlan": "确认规划",
+        "confirmPlanDesc": "请确认您的课程选择",
+        "yourWeeklySchedule": "您的一周课后安排",
+        "feeDetails": "费用明细",
+        "registrationGuideTitle": "报名指引",
+        "registrationGuideDesc": "根据您的选择，以下是您需要完成的报名步骤",
+        "downloadScheduleAndTodo": "下载课程表与待办 📸",
+        "nextStepGuide": "下一步：生成报名指引 →",
+        "loadingCourses": "加载课程中...",
+        "band": "无主乐队",
+        "mathSupportTitle": "英文数学",
+        "scholarshipPageTitle": "AISL哈罗南宁奖学金",
+        "tabOverview": "奖学金概览",
+        "tabRules": "奖学金规则",
+        "tabApplication": "申请入口",
+        "overviewHeroTitle": "识别卓越 · 激励成长",
+        "overviewHeroDesc": "奖学金系统是南宁哈罗礼德学校用于识别、激励并规范学生长期卓越发展的核心治理机制",
+        "fullScholarship": "全额奖学金",
+        "halfScholarship": "半额奖学金",
+        "talentScholarship": "优才奖学金",
+        "johnLyonScholarship": "约翰·里昂全额奖学金",
+        "headsScholarship": "校长半额奖学金",
+        "talentScholarshipTitle": "优才奖学金",
+        "tuitionWaiver100": "100% 学费减免",
+        "tuitionWaiver50": "50% 学费减免",
+        "specialResources": "专项培养资源",
+        "awardCriteria": "授予条件",
+        "evaluationCycle": "评审周期",
+        "continuousRequirement": "持续要求",
+        "honorSymbol": "荣誉象征",
+        "developmentPath": "发展路径",
+        "recognitionStandard": "认可标准",
+        "supportContent": "支持内容",
+        "developmentGoal": "发展目标",
+        "applicableScope": "适用范围",
+        "evaluationCategories": "评价类别",
+        "academic": "学术",
+        "sports": "体育",
+        "arts": "艺术",
+        "leadership": "领导力",
+        "rulesDetailTitle": "奖学金规则详解",
+        "basicRequirements": "基本申请前提",
+        "dataAndMechanism": "数据与申请机制",
+        "behaviorConstraints": "行为与表现约束",
+        "scoringModels": "评分模型文档",
+        "applicationNotice": "申请注意事项",
+        "applicationProcess": "申请流程",
+        "readyToApply": "准备好申请了吗？",
+        "enterApplicationSystem": "进入申请系统",
+        "applicationWindowNote": "申请系统将在窗口期内开放，请关注学校通知",
+        "scholarshipCriteria1": "在<strong>三个或以上</strong>评价类别中表现卓越",
+        "scholarshipCriteria2": "六年级及以上年级学生",
+        "scholarshipCriteria3": "持续践行学校核心价值观",
+        "scholarshipCriteria4": "代表学校最高荣誉与学术标准",
+        "scholarshipCriteria5": "在<strong>两个</strong>评价类别中表现突出",
+        "scholarshipCriteria6": "展现持续的卓越表现与发展潜力",
+        "scholarshipCriteria7": "积极参与学校社区建设",
+        "scholarshipCriteria8": "在<strong>单一领域</strong>具有突出潜力与成果",
+        "scholarshipCriteria9": "所有年级均可申请",
+        "scholarshipCriteria10": "获得专项培养资源与导师支持",
+        "scholarshipCriteria11": "展现该领域的持续投入与热情",
+        "evaluatedAnnually": "每学年评定一次",
+        "maintainExcellence": "需保持各类别卓越表现",
+        "highestHonor": "学校最高级别奖学金",
+        "canUpgrade": "可晋升为全额奖学金",
+        "dualExcellence": "双领域卓越表现",
+        "specialTraining": "专项训练、导师指导、资源配置",
+        "cultivateTalent": "培养单一领域专业人才",
+        "anyCategory": "学术/体育/艺术/领导力任一领域",
+        "selectTwoCategories": "任选两个类别",
+        "specializedDevelopment": "专项培养",
+        "basicPrerequisites": "基本申请前提",
+        "prerequisite1": "在册身份与年级要求符合当年度规定",
+        "prerequisite2": "出勤与迟到记录符合标准",
+        "prerequisite3": "学术表现达到 HEP 进阶体系‘光荣晋级’或以上",
+        "prerequisite4": "不存在其他冲突性学费减免或同类奖学金",
+        "dataCollection": "数据统计 Data Collection",
+        "yearRoundOpen": "<strong>全年开放</strong>的半主动机制",
+        "dataCollectionDesc1": "由学校与家庭共同完成",
+        "dataCollectionDesc2": "覆盖从上一学年 Speech Day 周起至本学年评审前一周",
+        "dataCollectionDesc3": "持续记录学生在各评价类别中的表现",
+        "applicationConfirmation": "申请确认 Application",
+        "windowPeriodOnly": "<strong>指定窗口期</strong>内开放",
+        "applicationDesc1": "家长主动完成的独立流程",
+        "applicationDesc2": "仅在指定时间窗口内接受申请",
+        "applicationDesc3": "未完成申请确认的学生不自动进入评审",
+        "behaviorWarningIntro": "奖学金每年评定一次，学校保留最终解释权。以下情况将导致奖学金<strong>直接撤销且不设缓冲期</strong>：",
+        "disciplineIssues": "纪律问题",
+        "disciplineDesc": "Level 2 及以上纪律问题",
+        "gradeDecline": "成绩下降",
+        "gradeDeclineDesc": "学术成绩同比下降超过 20%",
+        "integrityIssues": "诚信问题",
+        "integrityDesc": "学术诚信问题或违反法律法规",
+        "schoolRepresentation": "形象代表",
+        "representationDesc": "未能持续正向代表学校形象",
+        "viewScoringModels": "点击查看各类别详细评分标准：",
+        "academicScoringModel": "学术奖学金计分模型",
+        "sportsScoringModel": "竞技体育奖学金计分模型",
+        "artsScoringModel": "艺术奖学金计分模型",
+        "leadershipScoringModel": "领导力奖学金计分模型",
+        "applicationNoticeTitle": "申请注意事项",
+        "noticeItem1Title": "申请资格确认",
+        "noticeItem1Desc": "请确保您的孩子符合基本申请前提：在册学生、年级要求、出勤记录、学术表现达标，且不存在其他冲突性学费减免。",
+        "noticeItem2Title": "申请窗口期",
+        "noticeItem2Desc": "奖学金申请仅在<strong>指定窗口期</strong>内开放，请关注学校通知。未在窗口期内完成申请确认的学生将不会进入评审流程。",
+        "noticeItem3Title": "材料准备",
+        "noticeItem3Desc": "申请前请仔细阅读对应类别的计分模型文档，准备好相关成就证明材料（获奖证书、竞赛成绩、作品集等）。",
+        "noticeItem4Title": "类别选择",
+        "noticeItem4Desc": "根据申请的奖学金类型选择相应数量的评价类别：<br>• 约翰·里昂全额奖学金：需选择 <strong>3个或以上</strong>类别<br>• 校长半额奖学金：需选择 <strong>2个</strong>类别<br>• 优才奖学金：需选择 <strong>1个</strong>类别",
+        "noticeItem5Title": "动态评估机制",
+        "noticeItem5Desc": "奖学金每年评定一次，获得者需持续保持卓越表现。如出现纪律问题、成绩大幅下降、诚信问题等情况，奖学金将被<strong>直接撤销且不设缓冲期</strong>。",
+        "noticeItem6Title": "评审时间",
+        "noticeItem6Desc": "申请提交后，学校将在评审窗口期内完成评定，并通过邮件和企业微信通知结果。评审过程中可能需要补充材料或面试。",
+        "processStep1Title": "阅读规则与计分模型",
+        "processStep1Desc": "仔细阅读奖学金规则和对应类别的计分模型文档，了解评分标准和要求。",
+        "processStep2Title": "准备申请材料",
+        "processStep2Desc": "收集整理相关成就证明材料，包括获奖证书、竞赛成绩单、作品集、推荐信等。",
+        "processStep3Title": "在线提交申请",
+        "processStep3Desc": "在申请窗口期内，通过申请系统填写完整信息并上传所有必要材料。",
+        "processStep4Title": "等待评审结果",
+        "processStep4Desc": "学校评审委员会将根据计分模型进行评定，必要时会联系您补充材料或安排面试。",
+        "processStep5Title": "接收评审通知",
+        "processStep5Desc": "评审结果将通过邮件和企业微信通知，获得奖学金的学生将收到正式授予文件。",
+        "readyToApplyDesc": "点击下方按钮进入奖学金申请系统，填写申请表并上传相关材料。",
+        "regStepEliteSports": "精英体育校队报名",
+        "regStepMusicAcademy": "哈罗音乐学院报名",
+        "regStepDebate": "\"以言论道\"思辨社报名",
+        "regStepAcademicComp": "学术竞赛队伍报名",
+        "regStepHub": "宏博中心课程报名",
+        "regStepMathSupport": "中文数学支持课程报名",
+        "regStepCCA": "CCA 课程报名",
+        "conflictWarningTitle": "时间冲突特别提醒",
+        "conflictWarningDesc": "您有以下课程存在时间冲突，请务必与负责老师确认",
+        "conflictNumber": "冲突",
+        "ccaCourse": "CCA课程",
+        "eliteProgramTime": "精英项目",
+        "yourExplanation": "您的说明",
+        "importantNote": "重要",
+        "conflictNoteText": "请与活动负责老师确认该安排被允许。报名时请在备注中说明此冲突情况。",
+        "loginGuideKey": "登录提示",
+        "loginStep1Title": "进入 SchoolsBuddy 登录页面后",
+        "loginStep1Text": "在页面<strong>最下方</strong>找到并点击：",
+        "iSAMSLogin": "iSAMS 登录",
+        "loginStep2Title": "选择登录类型",
+        "loginStep2Text": "点击 <strong>ISAMS (Parents)</strong> 按钮进入家长登录页面",
+        "loginStep3Title": "输入您的登录信息",
+        "username": "用户名",
+        "password": "密码",
+        "usernameExample": "您用来注册的邮箱（例如：1234567890@qq.com）",
+        "passwordText": "您注册设置的密码",
+        "forgotPasswordTip": "如忘记密码请联系学校IT部门企业微信帐号：<strong>ITHelpDesk</strong> 重置",
+        "loginToSchoolsBuddy": "登录 SchoolsBuddy",
+        "noExtraRegistration": "您没有需要额外报名的项目",
+        "time": "时间",
+        "headsScholarship": "校长半额奖学金",
+        "loginSchoolsBuddyDesc": "登录 SchoolsBuddy 系统完成报名",
+        "fillSportsForm": "填写精英体育报名表 →",
+        "fillMusicForm": "填写音乐学院报名表 →",
+        "rememberContact": "记住联系方式",
+        "viewContactInfo": "查看联系方式（见页面底部）",
+        "floatingPlannerTitle": "我的规划",
+        "floatingPlannerEmpty": "开始选择您的课程<br>规划将实时显示在这里",
+        "floatingPlannerProgress": "进度：{current}/{total} 步骤",
+        "registrationGuide": "报名指引",
+        "planCompleted": "课程规划已完成！",
+        "planCompletedDesc": "您的课程表已成功生成并下载，请按照以下步骤完成报名",
+        "yourSelectionSummary": "📋 您的选择摘要",
+        "importantNotes": "⚠️ 重要提示",
+        "note1": "请在规定时间内完成报名，逾期可能影响课程安排",
+        "note2": "精英项目需要通过选拔或获得邀请才能参加",
+        "note3": "音乐学院课程需要提前预约时间",
+        "note4": "如有任何疑问，请联系相关负责老师",
+        "contactTitle": "📞 拓展部联系方式",
+        "contactIntro": "如需咨询学术竞赛、学术支持等项目，请联系拓展部老师：",
+        "backToModify": "← 返回修改",
+        "complete": "完成 ✓"
     },
-    
-    en: {
-        // Common
-        'common.back': 'Back to Home',
-        'common.next': 'Next',
-        'common.prev': 'Previous',
-        'common.submit': 'Submit',
-        'common.generate': 'Generate Schedule Image',
-        
-        // Home
-        'home.title': 'Harrow LiDe School Nanning',
-        'home.subtitle': 'Co-Curricular Portal',
-        'home.hero_title': 'Excellence Through Opportunity',
-        'home.cca_title': 'CCA Planning',
-        'home.cca_desc': 'Plan your after-school time and select elite programs or CCA activities',
-        'home.scholarship_title': 'Scholarship Application',
-        'home.scholarship_desc': 'Learn about our scholarship system and submit your application',
-        
-        // Steps
-        'steps.select_type': 'Select Type',
-        'steps.elite_programs': 'Elite Programs',
-        'steps.cca_selection': 'CCA Selection',
-        'steps.confirm': 'Confirm',
-        
-        // CCA Page
-        'cca.page_title': 'Co-Curricular Activities Planning',
-        'cca.select_grade': 'Select Grade',
-        'cca.grade': 'Grade',
-        'cca.select_grade_placeholder': 'Please select grade',
-        'cca.elite_selection': 'Elite Programs Selection',
-        'cca.elite_desc': 'Select elite programs you wish to join (multiple selections allowed)',
-        'cca.cca_selection': 'CCA Course Selection',
-        'cca.cca_desc': 'Select after-school activities for Monday to Friday 16:00-17:00',
-        'cca.selection_notice': 'Please select a course for each day, or choose "Opt-out"',
-        'cca.conflict_warning': 'System will automatically detect time conflicts with elite programs',
-        'cca.loading': 'Loading courses...',
-        'cca.blocked': 'This time slot is occupied by elite programs',
-        'cca.no_courses': 'No courses available for this grade',
-        'cca.opt_out': 'Opt-out',
-        'cca.confirm_title': 'Confirm Submission',
-        'cca.confirm_desc': 'Please confirm your course selection',
-        'cca.student_info': 'Student Information',
-        'cca.schedule': 'After-School Schedule',
-        'cca.weekly_schedule': 'Your Weekly Schedule',
-        
-        // Days
-        'days.monday': 'Monday',
-        'days.tuesday': 'Tuesday',
-        'days.wednesday': 'Wednesday',
-        'days.thursday': 'Thursday',
-        'days.friday': 'Friday',
-        
-        // Errors
-        'error.select_grade': 'Please select a grade',
-        'error.select_all_days': 'Please select a course or "Opt-out" for all weekdays',
-        'error.invite_only': 'This course is by invitation only. Please contact the teacher.',
-        
-        // Success
-        'success.image_generated': 'Schedule image generated and downloaded!',
-        'success.submitted': 'Course selection submitted successfully!'
+    elitePrograms: {
+        "sportsDesc": "填写精英体育报名表，等待体育部负责老师联系确认选拔时间",
+        "musicDesc": "填写音乐学院报名表，选择合适的上课时间",
+        "debateContact": "在企业微信上联系辩论队教练组：欧老师 Kasey Ou（中文教育组组长）、谭老师 Lily Tan（高年级）、梁老师 Nicky Liang（小学部）",
+        "academicContact": "联系拓展部负责老师：唐齐昌 Ryan Tang 或 陈老师 Yackey Chen",
+        "hubContact": "在企业微信上联系 龚安琪 Angel Gong 老师",
+        "mathContact": "在企业微信上联系 唐齐昌 Ryan Tang 老师"
+    },
+    "en": {
+        "pageTitle": "Harrow LiDe School Nanning - CCA Planning",
+        "schoolName": "Harrow LiDe School Nanning",
+        "schoolNameCn": "Harrow LiDe School Nanning",
+        "schoolNameEn": "HARROW LIDE SCHOOL NANNING",
+        "switchLanguage": "中文",
+        "platformSubtitle": "After-School Development Platform",
+        "heroTitle": "Educational Excellence for Life & Leadership",
+        "valueCourage": "Courage",
+        "valueHonour": "Honour",
+        "valueHumility": "Humility",
+        "valueFellowship": "Fellowship",
+        "ccaPlanningTitle": "After-School Planning",
+        "ccaPlanningDesc": "Plan your after-school time, choose elite programmes or CCA activities",
+        "scholarshipTitle": "AISL Harrow Nanning Scholarships",
+        "scholarshipDesc": "Learn about our scholarship system and submit your application",
+        "featureEliteSports": "Elite Sports",
+        "featureMusicAcademy": "Music Academy",
+        "featureAcademicComp": "Academic Competitions",
+        "featureCCA": "CCA Selection",
+        "featureBand": "Student Band",
+        "featureSupport": "Academic Support",
+        "scholarshipJohnLyon": "John Lyon Full Scholarship",
+        "scholarshipPrincipal": "Head's Half Scholarship",
+        "scholarshipMerit": "Merit Award",
+        "startPlanning": "Start Planning →",
+        "learnMore": "Learn More →",
+        "infoTimeTitle": "After-School Time",
+        "infoTimeDetail": "Monday to Friday Prime Time",
+        "infoStudentsTitle": "Student Scale",
+        "infoStudentsDetail": "All Grades Covered",
+        "infoCurriculumTitle": "Curriculum",
+        "infoCurriculumHighlight": "Diverse Development",
+        "infoCurriculumDetail": "Internationally Accredited",
+        "footerDepartment": "Enrichment Department",
+        "step1": "Student Info",
+        "step2": "Elite Programmes",
+        "step3": "CCA Courses",
+        "step4": "Confirmation",
+        "step5": "Registration",
+        "step1Title": "Student Information",
+        "step2Title": "Elite Programmes Selection",
+        "step3Title": "CCA Courses Selection",
+        "step4Title": "Confirm Your Plan",
+        "step5Title": "Registration Guide",
+        "step1Subtitle": "Please fill in student information",
+        "step2Subtitle": "Select elite programmes you wish to join (multiple selections allowed)",
+        "step3Subtitle": "Select one CCA course for each weekday",
+        "step4Subtitle": "Please confirm your course selections",
+        "step5Subtitle": "Follow these steps to complete registration",
+        "nextStep": "Next",
+        "prevStep": "Previous",
+        "confirm": "Confirm & Generate Schedule",
+        "submit": "Submit",
+        "download": "Download Schedule",
+        "cancel": "Cancel",
+        "close": "Close",
+        "studentInfo": "Student Information",
+        "grade": "Grade",
+        "selectGrade": "Please select a grade",
+        "selectGradeTitle": "Select Grade",
+        "gradeG1": "Grade 1",
+        "gradeG2": "Grade 2",
+        "gradeG3": "Grade 3",
+        "gradeG4": "Grade 4",
+        "gradeG5": "Grade 5",
+        "gradeG6": "Grade 6",
+        "gradeG7": "Grade 7",
+        "gradeG8": "Grade 8",
+        "gradeG9": "Grade 9",
+        "gradeG10": "Grade 10",
+        "gradeG11": "Grade 11",
+        "gradeG12": "Grade 12",
+        "pleaseSelect": "Please select",
+        "elitePrograms": "Elite Programmes",
+        "ccaCourses": "CCA",
+        "afterSchoolSchedule": "After-School Schedule",
+        "mySchedule": "My Schedule",
+        "optOut": "Opt-out",
+        "optOutDesc": "No after-school activities during this time",
+        "inviteOnly": "Invitation Only",
+        "free": "Free",
+        "customPackage": "Custom Package",
+        "teacher": "Teacher",
+        "fee": "Fee",
+        "time": "Time",
+        "rest": "Rest",
+        "noArrangement": "No arrangement",
+        "items": "",
+        "courses": "",
+        "scheduledDays": "Scheduled Days",
+        "days": "days",
+        "weeklySchedule": "Weekly Schedule",
+        "customTime": "Custom Time",
+        "noBlockCCA": "Does not block CCA time",
+        "comma": ", ",
+        "notSelected": "Not Selected",
+        "selected": "Selected",
+        "elite": "Elite",
+        "currentGrade": "Current Grade",
+        "monday": "Monday",
+        "tuesday": "Tuesday",
+        "wednesday": "Wednesday",
+        "thursday": "Thursday",
+        "friday": "Friday",
+        "saturday": "Saturday",
+        "sunday": "Sunday",
+        "mondayShort": "MON",
+        "tuesdayShort": "TUE",
+        "wednesdayShort": "WED",
+        "thursdayShort": "THU",
+        "fridayShort": "FRI",
+        "eliteSports": "Elite Sports Teams",
+        "musicAcademy": "Harrow Music Academy",
+        "academicCompetition": "Academic Competition Teams",
+        "hubCentre": "Hub English Centre",
+        "mathSupport": "Chinese Maths Support",
+        "eliteSportsDesc": "Represent the school in various sports competitions",
+        "musicAcademyDesc": "Professional music training and performance opportunities",
+        "academicCompetitionDesc": "Participate in domestic and international academic competitions",
+        "hubCentreDesc": "English enhancement and IELTS preparation",
+        "mathSupportDesc": "Chinese mathematics curriculum support",
+        "conflictWarning": "Time Conflict Warning",
+        "conflictDetected": "Time conflict detected",
+        "selectAllDays": "Please select a course or \"Opt-out\" for all weekdays",
+        "pleaseSelectGrade": "Please select a grade",
+        "blockedByElite": "This time slot is occupied by an elite programme",
+        "noCoursesAvailable": "No courses available for this grade",
+        "inviteOnlyTitle": "Invitation-Only Programme",
+        "inviteOnlyDesc1": "This is an invitation-only programme. Please contact the teacher in charge.",
+        "inviteOnlyDesc2": "If you have received an invitation, you can add it to your plan.",
+        "iHaveInvitation": "I Have an Invitation",
+        "timeConflictWarning": "Time Conflict Warning",
+        "conflictMessage": "Your selected course conflicts with existing arrangements:",
+        "conflictTip": "Tip: If you have confirmed this arrangement with the activity teacher, you may choose \"Force Add\".",
+        "conflictReasonLabel": "If forcing to add, please provide a reason:",
+        "conflictReasonPlaceholder": "E.g.: Confirmed with Coach Zhang from Sports Department that I can leave basketball training early for CCA",
+        "conflictImportant": "Important: Please ensure this arrangement is approved by the lead teacher. Your explanation will be shown in the final registration guide.",
+        "forceAdd": "Force Add Despite Conflict",
+        "forceAddShort": "Force Add",
+        "confirmTitle": "Confirm Your Plan",
+        "selectionSummary": "Selection Summary",
+        "priceSummary": "Fee Summary",
+        "schedulePreview": "Schedule Preview",
+        "ccaSubtotal": "CCA Subtotal",
+        "ccaOriginalPrice": "CCA Original Price",
+        "ccaFinalPrice": "CCA Final Price",
+        "priceCapped": "Capped",
+        "priceCapNote": "Price cap applied: CCA fees exceeding ¥3,000 are capped at ¥3,000",
+        "priceUnderCapNote": "CCA fees under ¥3,000 charged as actual; fees over ¥3,000 will be capped",
+        "customPackageNote": "Elite programmes are custom packages. Please consult the teacher in charge for specific fees",
+        "conflictMarker": "Conflict",
+        "forceAddedMarker": "Force Added",
+        "registrationGuide": "Registration Guide",
+        "nextSteps": "Next Steps",
+        "registrationSteps": "Registration Steps",
+        "contactInfo": "Contact Information",
+        "regEliteSports": "Elite Sports Team Registration",
+        "regMusicAcademy": "Harrow Music Academy Registration",
+        "regDebate": "Debate Society Registration",
+        "regAcademicComp": "Academic Competition Team Registration",
+        "regHub": "Hub Centre Course Registration",
+        "regMathSupport": "Chinese Maths Support Registration",
+        "regCCA": "CCA Course Registration",
+        "regEliteSportsDesc": "Fill in the Elite Sports registration form and wait for the Sports Department to contact you",
+        "regMusicAcademyDesc": "Fill in the Music Academy registration form and select suitable class times",
+        "regDebateDesc": "Contact the debate coaches on WeWork: Kasey Ou (Head of Chinese), Lily Tan (Senior School), Nicky Liang (Primary)",
+        "regAcademicCompDesc": "Contact Extension Department: Ryan Tang or Yackey Chen",
+        "regHubDesc": "Contact Angel Gong on WeWork",
+        "regMathSupportDesc": "Contact Ryan Tang on WeWork",
+        "regCCADesc": "Log in to SchoolsBuddy to complete registration",
+        "fillEliteSportsForm": "Fill Elite Sports Form →",
+        "fillMusicForm": "Fill Music Academy Form →",
+        "rememberContact": "Remember Contact",
+        "viewContact": "View Contact (see page bottom)",
+        "loginSchoolsBuddy": "Login to SchoolsBuddy →",
+        "loginGuideTitle": "Login Guide",
+        "loginStep1": "After entering SchoolsBuddy login page",
+        "loginStep1Desc": "Find and click at the bottom of the page:",
+        "loginStep2": "Select login type",
+        "loginStep2Desc": "Click ISAMS (Parents) button to enter parent login page",
+        "loginStep3": "Enter your login credentials",
+        "loginStep3Username": "Username: Your registered email (e.g., 1234567890@qq.com)",
+        "loginStep3Password": "Password: Your registered password",
+        "loginTip": "If you forgot your password, contact IT Department on WeWork: ITHelpDesk",
+        "success": "Success",
+        "error": "Error",
+        "addedToPlan": "Added to your plan",
+        "removedFromPlan": "Removed from selection",
+        "scheduleGenerated": "Schedule image generated and downloaded!",
+        "submissionSuccess": "Course selection submitted successfully!",
+        "pleaseConfirmWithTeacher": "Course added. Please confirm this arrangement with the teacher",
+        "floatingPlannerTitle": "My Schedule",
+        "floatingPlannerSubtitle": "Your Weekly After-School Plan",
+        "noActivities": "No activities",
+        "conflictDetectedShort": "Conflict",
+        "footerSlogan": "Leadership for a Better World",
+        "generatedTime": "Generated",
+        "loading": "Loading...",
+        "saving": "Saving...",
+        "processing": "Processing...",
+        "pleaseWait": "Please wait...",
+        "yes": "Yes",
+        "no": "No",
+        "ok": "OK",
+        "back": "Back",
+        "selectionCancelled": "Selection cancelled",
+        "courseAddedConfirm": "Course added. Please confirm this arrangement with the teacher",
+        "pleaseProvideReason": "Please provide a reason for forcing to add, which will be shown in the registration guide.",
+        "imageGenerationFailed": "Image generation failed, please try again",
+        "harrowSchedule": "Harrow Schedule",
+        "swimmingTeamExclusive": "Automatically deselected the other swimming team as both teams cannot be selected simultaneously",
+        "debateContact": "Please contact the debate coaches on WeWork:\n\n【Head of Chinese】\nKasey Ou\n\n【Senior School】\nLily Tan\n\n【Primary】\nNicky Liang\n\nPlease contact the appropriate coach based on your grade",
+        "hubContact": "Please contact on WeWork:\n\nAngel Gong\n\nSpecify the course you need (English Foundation/IELTS Advanced)",
+        "mathContact": "Please contact on WeWork:\n\nRyan Tang\n\nSpecify that you need Chinese Maths Support",
+        "checkContactInfo": "Please check the Extension Department contact information at the bottom of the page",
+        "haveInvitation": "I Have an Invitation",
+        "conflictWarningEn": "Time Conflict Warning",
+        "conflictDesc": "Your selected course conflicts with existing arrangements:",
+        "tip": "Tip",
+        "importantReminder": "Important Reminder",
+        "conflictReminder": "Please ensure this arrangement is approved by the lead teacher. Your explanation will be shown in the final registration guide.",
+        "conflict": "Conflict",
+        "forceAdded": "Force Added",
+        "elitePrograms": "Elite Programmes",
+        "capApplied": "Price cap applied: CCA fees exceeding ¥3,000 are capped at ¥3,000",
+        "capNotice": "CCA fees under ¥3,000 charged as actual; fees over ¥3,000 will be capped",
+        "eliteProgramme": "Elite Programme",
+        "and": "and",
+        "timeConflict": "time conflict",
+        "selectGradeTitle": "Select Grade",
+        "eliteProgramsSelection": "Elite Programmes Selection",
+        "eliteProgramsSelectionDesc": "Select the elite programmes you wish to join (multiple selections allowed)",
+        "ccaCoursesSelection": "CCA Courses Selection",
+        "ccaCoursesSelectionDesc": "Select after-school co-curricular activities for Monday to Thursday 16:00-17:00",
+        "autoDetectConflict": "The system will automatically detect time conflicts with elite programmes and only show available time slots",
+        "selectForEachDay": "Please select a course for each day, or choose opt-out",
+        "confirmPlan": "Confirm Plan",
+        "confirmPlanDesc": "Please confirm your course selections",
+        "yourWeeklySchedule": "Your Weekly After-School Schedule",
+        "feeDetails": "Fee Details",
+        "registrationGuideTitle": "Registration Guide",
+        "registrationGuideDesc": "Based on your selections, here are the registration steps you need to complete",
+        "downloadScheduleAndTodo": "Download Schedule & To-Do 📸",
+        "nextStepGuide": "Next: Generate Registration Guide →",
+        "loadingCourses": "Loading courses...",
+        "band": "Harrow Band",
+        "mathSupportTitle": "English Maths",
+        "eliteProgramsSelectionDesc": "Select elite programmes you wish to join (multiple selections allowed)",
+        "ccaCoursesSelection": "CCA Courses Selection",
+        "ccaCoursesSelectionDesc": "Select after-school activities for Monday to Thursday 16:00-17:00",
+        "autoDetectConflict": "The system will automatically detect time conflicts with elite programmes and only show available slots",
+        "selectForEachDay": "Please select one course for each day, or choose \"Opt-out\"",
+        "confirmPlan": "Confirm Plan",
+        "confirmPlanDesc": "Please confirm your course selections",
+        "yourWeeklySchedule": "Your Weekly After-School Schedule",
+        "feeDetails": "Fee Details",
+        "registrationGuideTitle": "Registration Guide",
+        "registrationGuideDesc": "Based on your selections, here are the registration steps you need to complete",
+        "downloadScheduleAndTodo": "Download Schedule & To-Do 📸",
+        "nextStepGuide": "Next: Generate Registration Guide →",
+        "loadingCourses": "Loading courses...",
+        "band": "Anarchist Band",
+        "mathSupportTitle": "English Mathematics",
+        "scholarshipPageTitle": "AISL Harrow Nanning Scholarships",
+        "tabOverview": "Overview",
+        "tabRules": "Rules",
+        "tabApplication": "Application",
+        "overviewHeroTitle": "Recognizing Excellence · Inspiring Growth",
+        "overviewHeroDesc": "The scholarship system is the core governance mechanism of Harrow LiDe School Nanning for identifying, motivating and regulating students' long-term excellent development",
+        "fullScholarship": "Full Scholarship",
+        "halfScholarship": "Half Scholarship",
+        "talentScholarship": "Talent Scholarship",
+        "johnLyonScholarship": "John Lyon Full Scholarship",
+        "headsScholarship": "Head's Half Scholarship",
+        "talentScholarshipTitle": "Talent Scholarship",
+        "tuitionWaiver100": "100% Tuition Waiver",
+        "tuitionWaiver50": "50% Tuition Waiver",
+        "specialResources": "Special Development Resources",
+        "awardCriteria": "Award Criteria",
+        "evaluationCycle": "Evaluation Cycle",
+        "continuousRequirement": "Continuous Requirement",
+        "honorSymbol": "Honor Symbol",
+        "developmentPath": "Development Path",
+        "recognitionStandard": "Recognition Standard",
+        "supportContent": "Support Content",
+        "developmentGoal": "Development Goal",
+        "applicableScope": "Applicable Scope",
+        "evaluationCategories": "Evaluation Categories",
+        "academic": "Academic",
+        "sports": "Sports",
+        "arts": "Arts",
+        "leadership": "Leadership",
+        "rulesDetailTitle": "Scholarship Rules Details",
+        "basicRequirements": "Basic Application Prerequisites",
+        "dataAndMechanism": "Data & Application Mechanism",
+        "behaviorConstraints": "Behavior & Performance Constraints",
+        "scoringModels": "Scoring Model Documents",
+        "applicationNotice": "Application Notice",
+        "applicationProcess": "Application Process",
+        "readyToApply": "Ready to Apply?",
+        "enterApplicationSystem": "Enter Application System",
+        "applicationWindowNote": "The application system will be open during the window period. Please follow school notifications",
+        "scholarshipCriteria1": "Demonstrate excellence in <strong>three or more</strong> evaluation categories",
+        "scholarshipCriteria2": "Grade 6 and above students",
+        "scholarshipCriteria3": "Continuously uphold school core values",
+        "scholarshipCriteria4": "Represent the highest honor and academic standards of the school",
+        "scholarshipCriteria5": "Demonstrate outstanding performance in <strong>two</strong> evaluation categories",
+        "scholarshipCriteria6": "Show continuous excellent performance and development potential",
+        "scholarshipCriteria7": "Actively participate in school community building",
+        "scholarshipCriteria8": "Demonstrate outstanding potential and achievements in <strong>a single field</strong>",
+        "scholarshipCriteria9": "All grades are eligible to apply",
+        "scholarshipCriteria10": "Receive specialized development resources and mentor support",
+        "scholarshipCriteria11": "Demonstrate continuous commitment and passion in the field",
+        "evaluatedAnnually": "Evaluated once per academic year",
+        "maintainExcellence": "Must maintain excellence in all categories",
+        "highestHonor": "School's highest level scholarship",
+        "canUpgrade": "Can be upgraded to full scholarship",
+        "dualExcellence": "Excellence in two fields",
+        "specialTraining": "Specialized training, mentor guidance, resource allocation",
+        "cultivateTalent": "Cultivate professional talent in a single field",
+        "anyCategory": "Any field: Academic/Sports/Arts/Leadership",
+        "selectTwoCategories": "Select any two categories",
+        "specializedDevelopment": "Specialized Development",
+        "basicPrerequisites": "Basic Application Prerequisites",
+        "prerequisite1": "Enrolled student status and grade requirements meet current year regulations",
+        "prerequisite2": "Attendance and punctuality records meet standards",
+        "prerequisite3": "Academic performance reaches HEP progression system 'Honorable Promotion' or above",
+        "prerequisite4": "No other conflicting tuition waivers or similar scholarships",
+        "dataCollection": "Data Collection",
+        "yearRoundOpen": "<strong>Year-round open</strong> semi-active mechanism",
+        "dataCollectionDesc1": "Completed jointly by school and family",
+        "dataCollectionDesc2": "Covers from last academic year's Speech Day week to one week before this year's review",
+        "dataCollectionDesc3": "Continuously records student performance in each evaluation category",
+        "applicationConfirmation": "Application Confirmation",
+        "windowPeriodOnly": "Open during <strong>designated window period</strong> only",
+        "applicationDesc1": "Independent process actively completed by parents",
+        "applicationDesc2": "Applications accepted only during designated time window",
+        "applicationDesc3": "Students who do not complete application confirmation will not automatically enter review",
+        "behaviorWarningIntro": "Scholarships are evaluated annually, and the school reserves final interpretation rights. The following situations will result in <strong>immediate scholarship revocation without buffer period</strong>:",
+        "disciplineIssues": "Discipline Issues",
+        "disciplineDesc": "Level 2 or above discipline issues",
+        "gradeDecline": "Grade Decline",
+        "gradeDeclineDesc": "Academic performance decline exceeding 20% year-over-year",
+        "integrityIssues": "Integrity Issues",
+        "integrityDesc": "Academic integrity issues or violation of laws and regulations",
+        "schoolRepresentation": "School Representation",
+        "representationDesc": "Failure to continuously represent the school image positively",
+        "viewScoringModels": "Click to view detailed scoring criteria for each category:",
+        "academicScoringModel": "Academic Scholarship Scoring Model",
+        "sportsScoringModel": "Sports Scholarship Scoring Model",
+        "artsScoringModel": "Arts Scholarship Scoring Model",
+        "leadershipScoringModel": "Leadership Scholarship Scoring Model",
+        "applicationNoticeTitle": "Application Notice",
+        "noticeItem1Title": "Eligibility Confirmation",
+        "noticeItem1Desc": "Please ensure your child meets the basic application prerequisites: enrolled student, grade requirements, attendance records, academic performance standards, and no other conflicting tuition waivers.",
+        "noticeItem2Title": "Application Window Period",
+        "noticeItem2Desc": "Scholarship applications are only open during <strong>designated window periods</strong>. Please follow school notifications. Students who do not complete application confirmation during the window period will not enter the review process.",
+        "noticeItem3Title": "Material Preparation",
+        "noticeItem3Desc": "Before applying, please carefully read the scoring model documents for the corresponding categories and prepare relevant achievement proof materials (award certificates, competition results, portfolios, etc.).",
+        "noticeItem4Title": "Category Selection",
+        "noticeItem4Desc": "Select the appropriate number of evaluation categories based on the scholarship type:<br>• John Lyon Full Scholarship: Select <strong>3 or more</strong> categories<br>• Head's Half Scholarship: Select <strong>2</strong> categories<br>• Talent Scholarship: Select <strong>1</strong> category",
+        "noticeItem5Title": "Dynamic Evaluation Mechanism",
+        "noticeItem5Desc": "Scholarships are evaluated annually, and recipients must continuously maintain excellent performance. In cases of discipline issues, significant grade decline, integrity issues, etc., scholarships will be <strong>immediately revoked without buffer period</strong>.",
+        "noticeItem6Title": "Review Timeline",
+        "noticeItem6Desc": "After application submission, the school will complete the evaluation during the review window period and notify results via email and WeWork. Supplementary materials or interviews may be required during the review process.",
+        "processStep1Title": "Read Rules and Scoring Models",
+        "processStep1Desc": "Carefully read the scholarship rules and scoring model documents for the corresponding categories to understand the scoring criteria and requirements.",
+        "processStep2Title": "Prepare Application Materials",
+        "processStep2Desc": "Collect and organize relevant achievement proof materials, including award certificates, competition transcripts, portfolios, recommendation letters, etc.",
+        "processStep3Title": "Submit Application Online",
+        "processStep3Desc": "During the application window period, fill in complete information through the application system and upload all necessary materials.",
+        "processStep4Title": "Await Review Results",
+        "processStep4Desc": "The school review committee will evaluate based on the scoring model. You may be contacted to supplement materials or arrange interviews if necessary.",
+        "processStep5Title": "Receive Review Notification",
+        "processStep5Desc": "Review results will be notified via email and WeCom. Students who receive scholarships will receive official award documents.",
+        "readyToApplyDesc": "Click the button below to enter the scholarship application system, fill out the application form and upload relevant materials.",
+        "regStepEliteSports": "Elite Sports Team Registration",
+        "regStepMusicAcademy": "Harrow Music Academy Registration",
+        "regStepDebate": "Debate Society Registration",
+        "regStepAcademicComp": "Academic Competition Team Registration",
+        "regStepHub": "Hub Centre Course Registration",
+        "regStepMathSupport": "Chinese Maths Support Registration",
+        "regStepCCA": "CCA Course Registration",
+        "conflictWarningTitle": "Time Conflict Special Reminder",
+        "conflictWarningDesc": "The following courses have time conflicts. Please confirm with the teachers in charge",
+        "conflictNumber": "Conflict",
+        "ccaCourse": "CCA Course",
+        "eliteProgramTime": "Elite Programme",
+        "yourExplanation": "Your Explanation",
+        "importantNote": "Important",
+        "conflictNoteText": "Please confirm this arrangement with the activity teacher. Please note this conflict in the remarks when registering.",
+        "loginGuideKey": "Login Guide",
+        "loginStep1Title": "After entering SchoolsBuddy login page",
+        "loginStep1Text": "Find and click at the <strong>bottom</strong> of the page:",
+        "iSAMSLogin": "iSAMS Login",
+        "loginStep2Title": "Select login type",
+        "loginStep2Text": "Click <strong>ISAMS (Parents)</strong> button to enter parent login page",
+        "loginStep3Title": "Enter your login credentials",
+        "username": "Username",
+        "password": "Password",
+        "usernameExample": "Your registered email (e.g., 1234567890@qq.com)",
+        "passwordText": "Your registered password",
+        "forgotPasswordTip": "If you forgot your password, contact IT Department on WeCom: <strong>ITHelpDesk</strong>",
+        "loginToSchoolsBuddy": "Login to SchoolsBuddy",
+        "noExtraRegistration": "You have no additional registration items",
+        "time": "Time",
+        "headsScholarship": "Head's Half Scholarship",
+        "loginSchoolsBuddyDesc": "Login to SchoolsBuddy system to complete registration",
+        "fillSportsForm": "Fill Elite Sports Form →",
+        "fillMusicForm": "Fill Music Academy Form →",
+        "rememberContact": "Remember Contact Info",
+        "viewContactInfo": "View Contact Info (see bottom of page)",
+        "floatingPlannerTitle": "My Plan",
+        "floatingPlannerEmpty": "Start selecting your courses<br>Your plan will be displayed here",
+        "floatingPlannerProgress": "Progress: {current}/{total} Steps",
+        "registrationGuide": "Registration Guide",
+        "planCompleted": "Plan Completed!",
+        "planCompletedDesc": "Your schedule has been successfully generated and downloaded. Please follow these steps to complete registration",
+        "yourSelectionSummary": "📋 Your Selection Summary",
+        "importantNotes": "⚠️ Important Notes",
+        "note1": "Please complete registration within the specified time, delays may affect course arrangements",
+        "note2": "Elite programmes require selection or invitation to participate",
+        "note3": "Music Academy courses require advance appointment",
+        "note4": "If you have any questions, please contact the relevant teacher",
+        "contactTitle": "📞 Extension Department Contact",
+        "contactIntro": "For inquiries about academic competitions, academic support and other programmes, please contact Extension Department teachers:",
+        "backToModify": "← Back to Modify",
+        "complete": "Complete ✓"
+    },
+    elitePrograms: {
+        "sportsDesc": "Fill out the elite sports registration form and wait for the PE department teacher to contact you to confirm the selection time",
+        "musicDesc": "Fill out the music academy registration form and choose a suitable class time",
+        "debateContact": "Contact debate team coaches on WeCom: Ms. Kasey Ou (Head of Chinese Education), Ms. Lily Tan (Senior School), Ms. Nicky Liang (Primary)",
+        "academicContact": "Contact Extension Department teachers: Ryan Tang or Ms. Yackey Chen",
+        "hubContact": "Contact Ms. Angel Gong on WeCom",
+        "mathContact": "Contact Mr. Ryan Tang on WeCom"
     }
 };
 
-// 当前语言
-let currentLanguage = 'zh';
-
-// 切换语言
-function switchLanguage(lang) {
-    currentLanguage = lang;
-    localStorage.setItem('preferredLanguage', lang);
+// ===================================
+// 语言管理器类
+// Language Manager Class
+// ===================================
+class LanguageManager {
+    constructor() {
+        // 从 localStorage 读取用户偏好，默认中文
+        this.currentLang = localStorage.getItem('preferredLanguage') || 'zh';
+        this.translations = translations;
+    }
     
-    // 更新按钮状态
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        if (btn.dataset.lang === lang) {
-            btn.classList.add('active');
+    /**
+     * 获取翻译文本
+     * @param {string} key - 翻译键（支持点号分隔的命名空间，如 'messages.selectGrade'）
+     * @param {object} params - 可选参数对象，用于替换占位符（如 {current}, {total}）
+     * @returns {string} 翻译后的文本
+     */
+    t(key, params = {}) {
+        let text = '';
+        
+        // 支持命名空间：如果 key 包含点号，先尝试完整匹配，再尝试去掉命名空间
+        if (key.includes('.')) {
+            // 先尝试完整的 key
+            if (this.translations[this.currentLang][key]) {
+                text = this.translations[this.currentLang][key];
+            } else {
+                // 如果没找到，尝试去掉命名空间（取最后一部分）
+                const parts = key.split('.');
+                const simpleKey = parts[parts.length - 1];
+                if (this.translations[this.currentLang][simpleKey]) {
+                    text = this.translations[this.currentLang][simpleKey];
+                } else {
+                    text = key;
+                }
+            }
         } else {
-            btn.classList.remove('active');
+            // 直接查找
+            text = this.translations[this.currentLang][key] || key;
         }
-    });
+        
+        // 替换参数占位符
+        if (params && typeof params === 'object') {
+            Object.keys(params).forEach(paramKey => {
+                const placeholder = `{${paramKey}}`;
+                text = text.replace(new RegExp(placeholder, 'g'), params[paramKey]);
+            });
+        }
+        
+        return text;
+    }
     
-    // 更新页面文本
-    updatePageLanguage();
-}
-
-// 更新页面语言
-function updatePageLanguage() {
-    document.querySelectorAll('[data-i18n]').forEach(element => {
-        const key = element.getAttribute('data-i18n');
-        const translation = translations[currentLanguage][key];
-        if (translation) {
-            element.textContent = translation;
+    /**
+     * 切换语言
+     */
+    switchLanguage() {
+        this.currentLang = this.currentLang === 'zh' ? 'en' : 'zh';
+        localStorage.setItem('preferredLanguage', this.currentLang);
+        this.updatePageLanguage();
+    }
+    
+    /**
+     * 更新页面所有文本
+     */
+    updatePageLanguage() {
+        // 更新所有带 data-i18n 属性的元素
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            const translation = this.t(key);
+            
+            // 如果元素是按钮或输入框，更新 value
+            if (element.tagName === 'INPUT' && element.type === 'button') {
+                element.value = translation;
+            } else if (element.tagName === 'INPUT' && element.type === 'submit') {
+                element.value = translation;
+            } else {
+                // 使用 innerHTML 以支持 HTML 标签（如 <strong>）
+                element.innerHTML = translation;
+            }
+        });
+        
+        // 更新所有带 data-i18n-placeholder 属性的元素
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+            const key = element.getAttribute('data-i18n-placeholder');
+            element.placeholder = this.t(key);
+        });
+        
+        // 更新所有带 data-i18n-title 属性的元素
+        document.querySelectorAll('[data-i18n-title]').forEach(element => {
+            const key = element.getAttribute('data-i18n-title');
+            element.title = this.t(key);
+        });
+        
+        // 更新页面标题
+        document.title = this.t('pageTitle');
+        
+        // 更新语言切换按钮文本
+        const langBtn = document.getElementById('language-toggle');
+        if (langBtn) {
+            langBtn.textContent = this.t('switchLanguage');
         }
+        
+        // 触发自定义事件，让其他组件知道语言已切换
+        window.dispatchEvent(new CustomEvent('languageChanged', { 
+            detail: { lang: this.currentLang } 
+        }));
+    }
+    
+    /**
+     * 获取当前语言
+     * @returns {string} 当前语言代码 ('zh' 或 'en')
+     */
+    getCurrentLanguage() {
+        return this.currentLang;
+    }
+    
+    /**
+     * 设置语言（不触发更新）
+     * @param {string} lang - 语言代码
+     */
+    setLanguage(lang) {
+        if (lang === 'zh' || lang === 'en') {
+            this.currentLang = lang;
+            localStorage.setItem('preferredLanguage', lang);
+        }
+    }
+    
+    /**
+     * 获取星期的翻译（带缩写支持）
+     * @param {string} day - 星期的英文小写 (monday, tuesday, etc.)
+     * @param {boolean} short - 是否使用缩写
+     * @returns {string} 翻译后的星期
+     */
+    getDay(day, short = false) {
+        const key = short ? `${day}Short` : day;
+        return this.t(key);
+    }
+}
+
+// 创建全局实例
+const i18n = new LanguageManager();
+
+// 页面加载时初始化语言
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        i18n.updatePageLanguage();
+        bindLanguageToggle();
     });
+} else {
+    i18n.updatePageLanguage();
+    bindLanguageToggle();
 }
 
-// 获取翻译
-function t(key) {
-    return translations[currentLanguage][key] || key;
+// 绑定语言切换按钮
+function bindLanguageToggle() {
+    const langBtn = document.getElementById('language-toggle');
+    if (langBtn) {
+        // 移除旧的事件监听器（如果有）
+        langBtn.onclick = null;
+        // 添加新的事件监听器
+        langBtn.addEventListener('click', function() {
+            i18n.switchLanguage();
+        });
+    }
 }
-
-// 页面加载时恢复语言设置
-document.addEventListener('DOMContentLoaded', function() {
-    const savedLang = localStorage.getItem('preferredLanguage') || 'zh';
-    switchLanguage(savedLang);
-});

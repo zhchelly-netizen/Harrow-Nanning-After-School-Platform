@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCA 数据测试</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            padding: 2rem;
+            background: #f8fafc;
+        }
+        .test-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .success {
+            color: #10b981;
+            font-weight: bold;
+        }
+        .error {
+            color: #ef4444;
+            font-weight: bold;
+        }
+        .course-item {
+            padding: 0.75rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+        .course-name-cn {
+            font-weight: 600;
+            color: #1e293b;
+        }
+        .course-name-en {
+            color: #6366f1;
+            font-style: italic;
+        }
+        button {
+            padding: 0.75rem 1.5rem;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-right: 1rem;
+        }
+        button:hover {
+            background: #2563eb;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 CCA 数据加载测试</h1>
+    
+    <div class="test-section">
+        <h2>1. 检查 CCA_COURSES 是否加载</h2>
+        <div id="load-test"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>2. 检查各天课程数量</h2>
+        <div id="count-test"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>3. 检查英文翻译 (nameEn)</h2>
+        <div id="translation-test"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>4. 模拟语言切换</h2>
+        <button onclick="testLanguageSwitch('zh')">切换到中文</button>
+        <button onclick="testLanguageSwitch('en')">切换到英文</button>
+        <div id="language-test" style="margin-top: 1rem;"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>5. 查看周一前5门课程</h2>
+        <div id="sample-courses"></div>
+    </div>
+
+    <script src="scripts/cca-data.js"></script>
+    <script>
+        // 测试1: 检查加载
+        const loadTest = document.getElementById('load-test');
+        if (typeof CCA_COURSES !== 'undefined') {
+            loadTest.innerHTML = '<p class="success">✅ CCA_COURSES 已成功加载！</p>';
+        } else {
+            loadTest.innerHTML = '<p class="error">❌ CCA_COURSES 未加载！</p>';
+        }
+        
+        // 测试2: 检查课程数量
+        const countTest = document.getElementById('count-test');
+        if (typeof CCA_COURSES !== 'undefined') {
+            let html = '<ul>';
+            Object.keys(CCA_COURSES).forEach(day => {
+                const count = CCA_COURSES[day].length;
+                html += `<li><strong>${day}</strong>: ${count} 门课程</li>`;
+            });
+            html += '</ul>';
+            
+            const total = Object.values(CCA_COURSES).reduce((sum, courses) => sum + courses.length, 0);
+            html += `<p class="success">总计: ${total} 门课程</p>`;
+            countTest.innerHTML = html;
+        }
+        
+        // 测试3: 检查翻译
+        const translationTest = document.getElementById('translation-test');
+        if (typeof CCA_COURSES !== 'undefined') {
+            let withTranslation = 0;
+            let withoutTranslation = 0;
+            let missingList = [];
+            
+            Object.keys(CCA_COURSES).forEach(day => {
+                CCA_COURSES[day].forEach(course => {
+                    if (course.nameEn && course.nameEn.trim() !== '') {
+                        withTranslation++;
+                    } else {
+                        withoutTranslation++;
+                        missingList.push(`${day}: ${course.name} (${course.id})`);
+                    }
+                });
+            });
+            
+            let html = `
+                <p class="success">✅ 已翻译: ${withTranslation} 门</p>
+                <p class="${withoutTranslation > 0 ? 'error' : 'success'}">
+                    ${withoutTranslation > 0 ? '⚠️' : '✅'} 未翻译: ${withoutTranslation} 门
+                </p>
+            `;
+            
+            if (missingList.length > 0) {
+                html += '<details><summary>查看未翻译列表</summary><ul>';
+                missingList.forEach(item => {
+                    html += `<li>${item}</li>`;
+                });
+                html += '</ul></details>';
+            }
+            
+            translationTest.innerHTML = html;
+        }
+        
+        // 测试4: 语言切换
+        let currentLang = 'zh';
+        function testLanguageSwitch(lang) {
+            currentLang = lang;
+            const languageTest = document.getElementById('language-test');
+            
+            if (typeof CCA_COURSES !== 'undefined') {
+                const sampleCourse = CCA_COURSES.monday[0];
+                const displayName = lang === 'en' && sampleCourse.nameEn 
+                    ? sampleCourse.nameEn 
+                    : sampleCourse.name;
+                
+                languageTest.innerHTML = `
+                    <div class="course-item">
+                        <p><strong>当前语言:</strong> ${lang === 'zh' ? '中文' : 'English'}</p>
+                        <p><strong>显示名称:</strong> ${displayName}</p>
+                        <p style="font-size: 0.875rem; color: #6b7280;">
+                            原始数据: name="${sampleCourse.name}", nameEn="${sampleCourse.nameEn || '(空)'}"
+                        </p>
+                    </div>
+                `;
+            }
+        }
+        
+        // 测试5: 显示示例课程
+        const sampleCourses = document.getElementById('sample-courses');
+        if (typeof CCA_COURSES !== 'undefined') {
+            let html = '';
+            CCA_COURSES.monday.slice(0, 5).forEach(course => {
+                html += `
+                    <div class="course-item">
+                        <div class="course-name-cn">🇨🇳 ${course.name}</div>
+                        <div class="course-name-en">🇬🇧 ${course.nameEn || '(未翻译)'}</div>
+                        <div style="font-size: 0.875rem; color: #6b7280; margin-top: 0.5rem;">
+                            ID: ${course.id} | 教师: ${course.teacher} | 费用: ${course.fee}
+                        </div>
+                    </div>
+                `;
+            });
+            sampleCourses.innerHTML = html;
+        }
+        
+        // 初始化语言测试
+        testLanguageSwitch('zh');
+    </script>
+</body>
+</html>

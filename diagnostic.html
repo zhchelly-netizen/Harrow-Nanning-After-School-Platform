@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>系统诊断 - 哈罗南宁门户</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            padding: 2rem;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: #152242;
+            margin-bottom: 2rem;
+        }
+        
+        .test-section {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .test-section h2 {
+            color: #152242;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .status.success {
+            background: #10b981;
+            color: white;
+        }
+        
+        .status.error {
+            background: #dc2626;
+            color: white;
+        }
+        
+        .status.warning {
+            background: #f59e0b;
+            color: white;
+        }
+        
+        .test-result {
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        
+        .test-result.pass {
+            background: #d1fae5;
+            border-left: 4px solid #10b981;
+        }
+        
+        .test-result.fail {
+            background: #fee2e2;
+            border-left: 4px solid #dc2626;
+        }
+        
+        button {
+            padding: 0.75rem 1.5rem;
+            background: #152242;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+        }
+        
+        button:hover {
+            background: #1e3158;
+        }
+        
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        
+        .fix-button {
+            background: #10b981;
+        }
+        
+        .fix-button:hover {
+            background: #059669;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 系统诊断工具</h1>
+        
+        <!-- 测试 1: i18n 系统 -->
+        <div class="test-section">
+            <h2>1️⃣ i18n 国际化系统</h2>
+            <div id="i18n-status" class="status warning">检查中...</div>
+            <div id="i18n-results"></div>
+            <button onclick="testI18n()">重新测试</button>
+            <button onclick="testLanguageSwitch()" class="fix-button">测试语言切换</button>
+        </div>
+        
+        <!-- 测试 2: CCA 数据 -->
+        <div class="test-section">
+            <h2>2️⃣ CCA 课程数据</h2>
+            <div id="cca-status" class="status warning">检查中...</div>
+            <div id="cca-results"></div>
+            <button onclick="testCCAData()">重新测试</button>
+        </div>
+        
+        <!-- 测试 3: 事件系统 -->
+        <div class="test-section">
+            <h2>3️⃣ 语言切换事件系统</h2>
+            <div id="event-status" class="status warning">检查中...</div>
+            <div id="event-results"></div>
+            <button onclick="testEventSystem()">重新测试</button>
+        </div>
+        
+        <!-- 测试 4: 管理后台 -->
+        <div class="test-section">
+            <h2>4️⃣ 管理后台翻译访问</h2>
+            <div id="admin-status" class="status warning">检查中...</div>
+            <div id="admin-results"></div>
+            <button onclick="testAdminAccess()">重新测试</button>
+            <button onclick="window.open('admin.html', '_blank')">打开管理后台</button>
+        </div>
+        
+        <!-- 测试 5: 控制台错误 -->
+        <div class="test-section">
+            <h2>5️⃣ 浏览器控制台错误</h2>
+            <div id="console-status" class="status warning">检查中...</div>
+            <div id="console-results"></div>
+            <button onclick="checkConsoleErrors()">检查控制台</button>
+        </div>
+        
+        <!-- 快速修复 -->
+        <div class="test-section">
+            <h2>🔧 快速修复</h2>
+            <button onclick="clearCache()" class="fix-button">清除浏览器缓存</button>
+            <button onclick="reloadAll()" class="fix-button">强制刷新所有资源</button>
+            <button onclick="window.open('cca-planning.html', '_blank')">打开 CCA 页面测试</button>
+        </div>
+    </div>
+
+    <script src="scripts/i18n.js"></script>
+    <script src="scripts/cca-data.js"></script>
+    
+    <script>
+        let testResults = {
+            i18n: false,
+            cca: false,
+            events: false,
+            admin: false
+        };
+        
+        // 捕获控制台错误
+        let consoleErrors = [];
+        const originalError = console.error;
+        console.error = function(...args) {
+            consoleErrors.push(args.join(' '));
+            originalError.apply(console, args);
+        };
+        
+        // 测试 1: i18n 系统
+        function testI18n() {
+            const results = [];
+            let allPass = true;
+            
+            // 检查 i18n 对象是否存在
+            if (typeof i18n !== 'undefined') {
+                results.push({ pass: true, msg: '✅ i18n 对象已加载' });
+            } else {
+                results.push({ pass: false, msg: '❌ i18n 对象未加载' });
+                allPass = false;
+            }
+            
+            // 检查 translations 对象
+            if (typeof i18n !== 'undefined' && i18n.translations) {
+                results.push({ pass: true, msg: `✅ translations 对象存在` });
+                
+                const zhKeys = Object.keys(i18n.translations.zh || {});
+                const enKeys = Object.keys(i18n.translations.en || {});
+                results.push({ pass: true, msg: `✅ 中文翻译: ${zhKeys.length} 个键` });
+                results.push({ pass: true, msg: `✅ 英文翻译: ${enKeys.length} 个键` });
+            } else {
+                results.push({ pass: false, msg: '❌ translations 对象不存在' });
+                allPass = false;
+            }
+            
+            // 检查 t() 方法
+            if (typeof i18n !== 'undefined' && typeof i18n.t === 'function') {
+                const testKey = i18n.t('heroTitle');
+                if (testKey && testKey !== 'heroTitle') {
+                    results.push({ pass: true, msg: `✅ t() 方法工作正常: "${testKey}"` });
+                } else {
+                    results.push({ pass: false, msg: '❌ t() 方法返回异常' });
+                    allPass = false;
+                }
+            } else {
+                results.push({ pass: false, msg: '❌ t() 方法不存在' });
+                allPass = false;
+            }
+            
+            // 检查当前语言
+            if (typeof i18n !== 'undefined' && typeof i18n.getCurrentLanguage === 'function') {
+                const lang = i18n.getCurrentLanguage();
+                results.push({ pass: true, msg: `✅ 当前语言: ${lang}` });
+            }
+            
+            displayResults('i18n', results, allPass);
+            testResults.i18n = allPass;
+        }
+        
+        // 测试 2: CCA 数据
+        function testCCAData() {
+            const results = [];
+            let allPass = true;
+            
+            if (typeof CCA_COURSES !== 'undefined') {
+                results.push({ pass: true, msg: '✅ CCA_COURSES 对象已加载' });
+                
+                const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
+                days.forEach(day => {
+                    if (CCA_COURSES[day]) {
+                        results.push({ pass: true, msg: `✅ ${day}: ${CCA_COURSES[day].length} 门课程` });
+                    } else {
+                        results.push({ pass: false, msg: `❌ ${day}: 无数据` });
+                        allPass = false;
+                    }
+                });
+            } else {
+                results.push({ pass: false, msg: '❌ CCA_COURSES 对象未加载' });
+                allPass = false;
+            }
+            
+            if (typeof ELITE_SCHEDULES !== 'undefined') {
+                const count = Object.keys(ELITE_SCHEDULES).length;
+                results.push({ pass: true, msg: `✅ ELITE_SCHEDULES: ${count} 个项目` });
+            } else {
+                results.push({ pass: false, msg: '❌ ELITE_SCHEDULES 未加载' });
+                allPass = false;
+            }
+            
+            displayResults('cca', results, allPass);
+            testResults.cca = allPass;
+        }
+        
+        // 测试 3: 事件系统
+        function testEventSystem() {
+            const results = [];
+            let allPass = true;
+            
+            // 测试事件监听
+            let eventFired = false;
+            const testListener = (e) => {
+                eventFired = true;
+                results.push({ pass: true, msg: `✅ 事件触发成功，detail.lang = ${e.detail.lang}` });
+            };
+            
+            document.addEventListener('languageChanged', testListener);
+            
+            // 触发测试事件
+            window.dispatchEvent(new CustomEvent('languageChanged', { 
+                detail: { lang: 'test' } 
+            }));
+            
+            setTimeout(() => {
+                if (eventFired) {
+                    results.push({ pass: true, msg: '✅ 事件系统工作正常' });
+                } else {
+                    results.push({ pass: false, msg: '❌ 事件未触发' });
+                    allPass = false;
+                }
+                
+                document.removeEventListener('languageChanged', testListener);
+                displayResults('event', results, allPass);
+                testResults.events = allPass;
+            }, 100);
+        }
+        
+        // 测试 4: 管理后台访问
+        function testAdminAccess() {
+            const results = [];
+            let allPass = true;
+            
+            if (typeof i18n !== 'undefined' && i18n.translations) {
+                results.push({ pass: true, msg: '✅ 可以通过 i18n.translations 访问翻译数据' });
+                
+                // 模拟管理后台的访问方式
+                try {
+                    const testData = JSON.parse(JSON.stringify(i18n.translations));
+                    results.push({ pass: true, msg: '✅ 可以克隆翻译数据（管理后台需要）' });
+                } catch (e) {
+                    results.push({ pass: false, msg: `❌ 克隆数据失败: ${e.message}` });
+                    allPass = false;
+                }
+            } else {
+                results.push({ pass: false, msg: '❌ 无法访问 i18n.translations' });
+                allPass = false;
+            }
+            
+            displayResults('admin', results, allPass);
+            testResults.admin = allPass;
+        }
+        
+        // 检查控制台错误
+        function checkConsoleErrors() {
+            const results = [];
+            
+            if (consoleErrors.length === 0) {
+                results.push({ pass: true, msg: '✅ 没有控制台错误' });
+            } else {
+                results.push({ pass: false, msg: `❌ 发现 ${consoleErrors.length} 个错误:` });
+                consoleErrors.forEach((err, i) => {
+                    results.push({ pass: false, msg: `  ${i + 1}. ${err}` });
+                });
+            }
+            
+            displayResults('console', results, consoleErrors.length === 0);
+        }
+        
+        // 测试语言切换
+        function testLanguageSwitch() {
+            if (typeof i18n !== 'undefined' && typeof i18n.switchLanguage === 'function') {
+                const before = i18n.getCurrentLanguage();
+                i18n.switchLanguage();
+                const after = i18n.getCurrentLanguage();
+                
+                alert(`语言切换测试:\n切换前: ${before}\n切换后: ${after}\n\n${before !== after ? '✅ 切换成功' : '❌ 切换失败'}`);
+                
+                // 切换回去
+                setTimeout(() => {
+                    i18n.switchLanguage();
+                }, 1000);
+            } else {
+                alert('❌ i18n.switchLanguage() 方法不存在');
+            }
+        }
+        
+        // 显示结果
+        function displayResults(testName, results, allPass) {
+            const statusEl = document.getElementById(`${testName}-status`);
+            const resultsEl = document.getElementById(`${testName}-results`);
+            
+            statusEl.className = `status ${allPass ? 'success' : 'error'}`;
+            statusEl.textContent = allPass ? '✅ 通过' : '❌ 失败';
+            
+            resultsEl.innerHTML = results.map(r => 
+                `<div class="test-result ${r.pass ? 'pass' : 'fail'}">${r.msg}</div>`
+            ).join('');
+        }
+        
+        // 清除缓存
+        function clearCache() {
+            if (confirm('确定要清除浏览器缓存吗？这将刷新页面。')) {
+                localStorage.clear();
+                sessionStorage.clear();
+                location.reload(true);
+            }
+        }
+        
+        // 强制刷新
+        function reloadAll() {
+            location.reload(true);
+        }
+        
+        // 页面加载时运行所有测试
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                testI18n();
+                testCCAData();
+                testEventSystem();
+                testAdminAccess();
+                checkConsoleErrors();
+            }, 500);
+        });
+    </script>
+</body>
+</html>

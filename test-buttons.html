@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>按钮样式测试</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/cca.css">
+    <link rel="stylesheet" href="styles/scholarship.css">
+    <link rel="stylesheet" href="styles/admin.css">
+    <style>
+        body {
+            padding: 2rem;
+            background: var(--bg-cream);
+        }
+        .test-section {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+        }
+        .test-section h2 {
+            color: var(--primary-navy);
+            margin-bottom: 1rem;
+        }
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .status {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .status.success {
+            background: #10b981;
+            color: white;
+        }
+        .status.error {
+            background: #dc2626;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-section">
+        <h2>🔘 按钮圆角测试</h2>
+        <p>所有按钮应该呈现完全圆角的"药丸"形状（border-radius: 50px）</p>
+        
+        <h3 style="margin-top: 2rem;">主页按钮</h3>
+        <div class="button-grid">
+            <button class="primary-button"><span>主要按钮</span></button>
+            <button class="secondary-button">次要按钮</button>
+            <button class="card-button"><span>卡片按钮 →</span></button>
+            <button class="back-button"><span>← 返回按钮</span></button>
+        </div>
+
+        <h3 style="margin-top: 2rem;">管理后台按钮</h3>
+        <div class="button-grid">
+            <button class="header-button"><span>📥 导出</span></button>
+            <button class="header-button primary"><span>💾 保存更改</span></button>
+            <button class="header-button logout"><span>🚪 退出</span></button>
+            <button class="action-button"><span>➕ 添加翻译</span></button>
+        </div>
+
+        <h3 style="margin-top: 2rem;">CCA页面按钮</h3>
+        <div class="button-grid">
+            <button class="step-button"><span>下一步</span></button>
+            <button class="step-button secondary"><span>上一步</span></button>
+            <button class="confirm-button"><span>确认并生成课程表</span></button>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>🌐 语言切换测试</h2>
+        <div id="language-status" class="status success">✅ 语言系统已加载</div>
+        <p>当前语言: <strong id="current-lang">加载中...</strong></p>
+        <p>点击右上角的语言切换按钮测试切换功能</p>
+        
+        <div style="margin-top: 1rem;">
+            <h3>测试文本：</h3>
+            <p data-i18n="heroTitle" style="font-size: 1.5rem; color: var(--primary-navy);"></p>
+            <p data-i18n="platformSubtitle" style="color: var(--text-secondary);"></p>
+        </div>
+
+        <div style="margin-top: 1rem;">
+            <button class="primary-button" onclick="testLanguageSwitch()">
+                <span>手动触发语言切换</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>🔧 管理后台测试</h2>
+        <div id="admin-status" class="status success">检查中...</div>
+        <p>翻译数据加载状态: <strong id="translations-status">检查中...</strong></p>
+        <p>翻译键总数: <strong id="keys-count">0</strong></p>
+        <p>中文翻译数: <strong id="zh-count">0</strong></p>
+        <p>英文翻译数: <strong id="en-count">0</strong></p>
+        
+        <div style="margin-top: 1rem;">
+            <a href="admin.html" class="primary-button" style="display: inline-block; text-decoration: none;">
+                <span>打开管理后台</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>📋 测试结果总结</h2>
+        <div id="test-results">
+            <p>正在运行测试...</p>
+        </div>
+    </div>
+
+    <!-- 语言切换按钮 -->
+    <button class="language-toggle" id="language-toggle" onclick="i18n.switchLanguage()">
+        中文/English
+    </button>
+
+    <script src="scripts/i18n.js"></script>
+    <script>
+        // 测试语言切换
+        function testLanguageSwitch() {
+            console.log('手动触发语言切换');
+            i18n.switchLanguage();
+        }
+
+        // 监听语言切换事件
+        document.addEventListener('languageChanged', function(e) {
+            console.log('语言切换事件触发:', e.detail);
+            updateLanguageStatus();
+        });
+
+        // 更新语言状态
+        function updateLanguageStatus() {
+            const currentLang = i18n.getCurrentLanguage();
+            document.getElementById('current-lang').textContent = currentLang === 'zh' ? '中文' : 'English';
+        }
+
+        // 检查翻译数据
+        function checkTranslations() {
+            if (typeof i18n !== 'undefined' && i18n.translations) {
+                const zhKeys = Object.keys(i18n.translations.zh || {});
+                const enKeys = Object.keys(i18n.translations.en || {});
+                
+                document.getElementById('translations-status').textContent = '✅ 已加载';
+                document.getElementById('keys-count').textContent = zhKeys.length;
+                document.getElementById('zh-count').textContent = zhKeys.length;
+                document.getElementById('en-count').textContent = enKeys.length;
+                
+                document.getElementById('admin-status').className = 'status success';
+                document.getElementById('admin-status').textContent = '✅ 翻译系统正常';
+                
+                return true;
+            } else {
+                document.getElementById('translations-status').textContent = '❌ 未加载';
+                document.getElementById('admin-status').className = 'status error';
+                document.getElementById('admin-status').textContent = '❌ 翻译系统异常';
+                return false;
+            }
+        }
+
+        // 运行所有测试
+        function runTests() {
+            const results = [];
+            
+            // 测试1: 检查按钮圆角
+            const buttons = document.querySelectorAll('button');
+            let allButtonsRounded = true;
+            buttons.forEach(btn => {
+                const style = window.getComputedStyle(btn);
+                const borderRadius = style.borderRadius;
+                if (!borderRadius.includes('50px')) {
+                    allButtonsRounded = false;
+                }
+            });
+            results.push({
+                name: '按钮圆角',
+                passed: allButtonsRounded,
+                message: allButtonsRounded ? '所有按钮都是圆角' : '部分按钮不是圆角'
+            });
+
+            // 测试2: 检查语言系统
+            const i18nLoaded = typeof i18n !== 'undefined';
+            results.push({
+                name: '语言系统加载',
+                passed: i18nLoaded,
+                message: i18nLoaded ? 'i18n 系统已加载' : 'i18n 系统未加载'
+            });
+
+            // 测试3: 检查翻译数据
+            const translationsLoaded = checkTranslations();
+            results.push({
+                name: '翻译数据',
+                passed: translationsLoaded,
+                message: translationsLoaded ? '翻译数据已加载' : '翻译数据未加载'
+            });
+
+            // 测试4: 检查语言切换按钮
+            const langBtn = document.getElementById('language-toggle');
+            const langBtnExists = langBtn !== null;
+            results.push({
+                name: '语言切换按钮',
+                passed: langBtnExists,
+                message: langBtnExists ? '语言切换按钮存在' : '语言切换按钮不存在'
+            });
+
+            // 显示结果
+            const resultsDiv = document.getElementById('test-results');
+            let html = '<h3>测试结果：</h3><ul style="list-style: none; padding: 0;">';
+            
+            results.forEach(result => {
+                const icon = result.passed ? '✅' : '❌';
+                const color = result.passed ? '#10b981' : '#dc2626';
+                html += `<li style="padding: 0.5rem; margin: 0.5rem 0; background: ${result.passed ? '#f0fdf4' : '#fef2f2'}; border-left: 4px solid ${color}; border-radius: 8px;">
+                    ${icon} <strong>${result.name}:</strong> ${result.message}
+                </li>`;
+            });
+            
+            html += '</ul>';
+            
+            const passedCount = results.filter(r => r.passed).length;
+            const totalCount = results.length;
+            const allPassed = passedCount === totalCount;
+            
+            html += `<div class="status ${allPassed ? 'success' : 'error'}" style="margin-top: 1rem;">
+                ${allPassed ? '✅' : '⚠️'} 通过 ${passedCount}/${totalCount} 项测试
+            </div>`;
+            
+            resultsDiv.innerHTML = html;
+        }
+
+        // 页面加载完成后运行测试
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                updateLanguageStatus();
+                runTests();
+            }, 500);
+        });
+    </script>
+</body>
+</html>

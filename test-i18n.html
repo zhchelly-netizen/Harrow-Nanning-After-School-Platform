@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>紧急测试 - i18n 加载</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 2rem;
+            background: #1e293b;
+            color: #e2e8f0;
+        }
+        .test {
+            background: #334155;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            border-left: 4px solid #3b82f6;
+        }
+        .success {
+            border-left-color: #10b981;
+        }
+        .error {
+            border-left-color: #dc2626;
+        }
+        h1 {
+            color: #60a5fa;
+        }
+        button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 0.5rem;
+        }
+        button:hover {
+            background: #2563eb;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 i18n 加载测试</h1>
+    
+    <div id="results"></div>
+    
+    <button onclick="runTests()">重新测试</button>
+    <button onclick="location.reload(true)">硬刷新</button>
+    <button onclick="window.open('cca-planning.html')">打开 CCA 页面</button>
+    
+    <script>
+        function runTests() {
+            const results = document.getElementById('results');
+            results.innerHTML = '';
+            
+            // 测试 1: 检查 i18n 对象
+            addResult('测试 1: 检查 i18n 对象', typeof i18n !== 'undefined', 
+                typeof i18n !== 'undefined' ? 'i18n 对象已加载' : 'i18n 对象未加载 - 这是问题所在！');
+            
+            // 测试 2: 检查 translations
+            if (typeof i18n !== 'undefined') {
+                addResult('测试 2: 检查 translations', typeof i18n.translations !== 'undefined',
+                    typeof i18n.translations !== 'undefined' ? 'translations 对象存在' : 'translations 对象不存在');
+                
+                // 测试 3: 检查翻译键
+                if (i18n.translations) {
+                    const zhKeys = Object.keys(i18n.translations.zh || {}).length;
+                    const enKeys = Object.keys(i18n.translations.en || {}).length;
+                    addResult('测试 3: 翻译键数量', zhKeys > 0 && enKeys > 0,
+                        `中文: ${zhKeys} 个键, 英文: ${enKeys} 个键`);
+                }
+                
+                // 测试 4: 测试 t() 方法
+                if (typeof i18n.t === 'function') {
+                    const testText = i18n.t('heroTitle');
+                    addResult('测试 4: t() 方法', testText && testText !== 'heroTitle',
+                        `t('heroTitle') = "${testText}"`);
+                }
+                
+                // 测试 5: 测试当前语言
+                if (typeof i18n.getCurrentLanguage === 'function') {
+                    const lang = i18n.getCurrentLanguage();
+                    addResult('测试 5: 当前语言', true, `当前语言: ${lang}`);
+                }
+            }
+            
+            // 测试 6: 检查 CCA 数据
+            addResult('测试 6: CCA_COURSES', typeof CCA_COURSES !== 'undefined',
+                typeof CCA_COURSES !== 'undefined' ? 'CCA_COURSES 已加载' : 'CCA_COURSES 未加载');
+            
+            if (typeof CCA_COURSES !== 'undefined') {
+                const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
+                let totalCourses = 0;
+                days.forEach(day => {
+                    if (CCA_COURSES[day]) {
+                        totalCourses += CCA_COURSES[day].length;
+                    }
+                });
+                addResult('测试 7: CCA 课程数量', totalCourses > 0, `总共 ${totalCourses} 门课程`);
+            }
+            
+            // 测试 8: 检查脚本加载
+            const scripts = Array.from(document.scripts).map(s => s.src);
+            addResult('测试 8: 脚本标签', scripts.length > 0, 
+                `找到 ${scripts.length} 个脚本标签`);
+            
+            scripts.forEach((src, i) => {
+                if (src) {
+                    const filename = src.split('/').pop();
+                    addResult(`  脚本 ${i + 1}`, true, filename);
+                }
+            });
+        }
+        
+        function addResult(title, success, message) {
+            const div = document.createElement('div');
+            div.className = `test ${success ? 'success' : 'error'}`;
+            div.innerHTML = `
+                <strong>${success ? '✅' : '❌'} ${title}</strong><br>
+                ${message}
+            `;
+            document.getElementById('results').appendChild(div);
+        }
+        
+        // 页面加载后自动运行测试
+        window.addEventListener('load', () => {
+            setTimeout(runTests, 500);
+        });
+    </script>
+    
+    <!-- 加载 i18n.js -->
+    <script src="scripts/i18n.js?v=20260122"></script>
+    <script src="scripts/cca-data.js?v=20260122"></script>
+</body>
+</html>

@@ -1,0 +1,609 @@
+/* ===================================
+   浮动规划框样式
+   Floating Planner Widget
+   =================================== */
+
+.floating-planner {
+    position: fixed;
+    right: 20px;
+    top: 120px;
+    width: 320px;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(21, 34, 66, 0.15);
+    border: 2px solid #e2e8f0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    max-height: calc(100vh - 140px);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 桌面端：失焦状态（半透明） */
+.floating-planner.unfocused {
+    opacity: 0.6;
+    box-shadow: 0 4px 16px rgba(21, 34, 66, 0.1);
+    z-index: 999;
+}
+
+/* 桌面端：聚焦状态（前置显示） */
+.floating-planner.focused {
+    opacity: 1;
+    box-shadow: 0 12px 48px rgba(21, 34, 66, 0.25);
+    z-index: 1001;
+    transform: scale(1.02);
+}
+
+/* 桌面端：悬停时提示可点击 */
+.floating-planner.unfocused:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.floating-planner.minimized {
+    width: 320px;
+    height: auto;
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+.floating-planner.minimized .planner-content {
+    display: none;
+}
+
+.floating-planner.minimized .planner-header {
+    padding: 0.75rem 1rem;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+    border-radius: 16px;
+}
+
+.floating-planner.minimized .planner-title {
+    display: flex;
+    font-size: 0.875rem;
+}
+
+.floating-planner.minimized .minimize-btn {
+    transform: rotate(180deg);
+}
+
+.floating-planner.minimized .planner-mini-summary {
+    display: block;
+}
+
+/* 最小化状态的缩略信息 */
+.planner-mini-summary {
+    display: none;
+    padding: 0.75rem 1rem;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-top: 1px solid #e2e8f0;
+}
+
+.planner-mini-reminder {
+    font-size: 0.75rem;
+    color: #64748b;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.planner-mini-reminder svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
+.planner-mini-days {
+    display: flex;
+    gap: 0.25rem;
+    justify-content: space-between;
+}
+
+.planner-mini-day {
+    flex: 1;
+    height: 32px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+    min-width: 36px;
+}
+
+.planner-mini-day-name {
+    font-size: 0.65rem;
+    opacity: 0.8;
+}
+
+.planner-mini-day-icon {
+    font-size: 0.875rem;
+    line-height: 1;
+}
+
+.planner-mini-day.empty {
+    background: #f1f5f9;
+    color: #94a3b8;
+    border-color: #e2e8f0;
+}
+
+.planner-mini-day.selected {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    color: #065f46;
+    border-color: #10b981;
+}
+
+.planner-mini-day.conflict {
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+    color: #991b1b;
+    border-color: #ef4444;
+}
+
+.planner-mini-day:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 拖拽手柄 */
+.planner-header {
+    background: linear-gradient(135deg, #152242 0%, #1e3158 100%);
+    color: white;
+    padding: 1rem;
+    border-radius: 14px 14px 0 0;
+    cursor: move;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+}
+
+.planner-title {
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.planner-title .icon {
+    font-size: 1.25rem;
+}
+
+.minimize-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.minimize-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.minimize-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* 内容区域 */
+.planner-content {
+    padding: 1rem;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.planner-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.planner-content::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 3px;
+}
+
+.planner-content::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+}
+
+.planner-content::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* 进度指示器 */
+.planner-progress {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.progress-bar {
+    height: 8px;
+    background: #e2e8f0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+    transition: width 0.3s ease;
+    border-radius: 4px;
+}
+
+.progress-text {
+    font-size: 0.75rem;
+    color: #64748b;
+    text-align: center;
+}
+
+/* 学生信息 */
+.planner-student-info {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    padding: 0.75rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border: 1px solid #fbbf24;
+}
+
+.planner-student-info .info-label {
+    font-size: 0.75rem;
+    color: #92400e;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.planner-student-info .info-value {
+    font-size: 0.875rem;
+    color: #78350f;
+    font-weight: 700;
+}
+
+/* 周计划表 */
+.planner-week-schedule {
+    margin-bottom: 1rem;
+}
+
+.planner-section-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.planner-day-item {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.planner-day-item:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.planner-day-item.has-selection {
+    border-color: #10b981;
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+}
+
+.planner-day-item.has-conflict {
+    border-color: #ef4444;
+    background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+}
+
+.planner-day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.planner-day-name {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #334155;
+}
+
+.planner-day-status {
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+.planner-day-status.empty {
+    background: #f1f5f9;
+    color: #64748b;
+}
+
+.planner-day-status.selected {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.planner-day-status.conflict {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.planner-day-activities {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.planner-activity {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+}
+
+.planner-activity-icon {
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.planner-activity-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.planner-activity-name {
+    font-weight: 600;
+    color: #1e293b;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.planner-activity-time {
+    color: #64748b;
+    font-size: 0.7rem;
+}
+
+.planner-activity-type {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+.planner-activity-type.elite {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.planner-activity-type.cca {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.planner-activity-type.optout {
+    background: #f1f5f9;
+    color: #64748b;
+}
+
+/* 精英项目列表 */
+.planner-elite-list {
+    margin-bottom: 1rem;
+}
+
+.planner-elite-item {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border: 1px solid #fbbf24;
+    border-radius: 8px;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.planner-elite-icon {
+    font-size: 1.5rem;
+}
+
+.planner-elite-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.planner-elite-name {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #92400e;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.planner-elite-schedule {
+    font-size: 0.7rem;
+    color: #78350f;
+    margin-top: 2px;
+}
+
+/* 统计信息 */
+.planner-stats {
+    background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+    border: 1px solid #0284c7;
+    border-radius: 8px;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.planner-stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.planner-stat-row:last-child {
+    margin-bottom: 0;
+}
+
+.planner-stat-label {
+    font-size: 0.75rem;
+    color: #075985;
+}
+
+.planner-stat-value {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #0c4a6e;
+}
+
+/* 空状态 */
+.planner-empty-state {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: #94a3b8;
+}
+
+.planner-empty-state .icon {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.5;
+}
+
+.planner-empty-state p {
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .floating-planner {
+        position: fixed;
+        right: 0;
+        left: 0;
+        top: auto;
+        bottom: 0;
+        width: 100%;
+        max-width: 100%;
+        border-radius: 16px 16px 0 0;
+        max-height: 70vh;
+        z-index: 999;
+        transition: all 0.3s ease;
+    }
+    
+    /* 展开状态 - 占据更多空间 */
+    .floating-planner:not(.minimized) {
+        max-height: 70vh;
+    }
+    
+    .floating-planner.minimized {
+        width: 100%;
+        height: auto;
+        border-radius: 16px 16px 0 0;
+        margin-bottom: 0;
+    }
+    
+    .floating-planner.minimized .planner-header {
+        height: auto;
+        border-radius: 16px 16px 0 0;
+        padding: 0.75rem 1rem;
+    }
+    
+    .floating-planner.minimized .planner-title {
+        display: flex;
+        font-size: 0.875rem;
+    }
+    
+    .planner-mini-summary {
+        padding: 0.75rem 1rem 1rem;
+    }
+    
+    .planner-mini-reminder {
+        font-size: 0.7rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .planner-mini-days {
+        gap: 0.25rem;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .planner-mini-day {
+        height: 36px;
+        min-width: 40px;
+        flex-shrink: 0;
+    }
+    
+    .planner-mini-day-name {
+        font-size: 0.7rem;
+    }
+    
+    .planner-mini-day-icon {
+        font-size: 1rem;
+    }
+    
+    /* 移动端：当浮窗展开时，页面内容向上推 */
+    body:has(.floating-planner:not(.minimized)) .cca-content {
+        padding-bottom: calc(70vh + 2rem);
+        transition: padding-bottom 0.3s ease;
+    }
+    
+    /* 移动端：最小化时恢复正常 */
+    body:has(.floating-planner.minimized) .cca-content {
+        padding-bottom: 160px;
+        transition: padding-bottom 0.3s ease;
+    }
+    
+    /* 确保按钮区域可见 */
+    .button-group {
+        margin-bottom: 0;
+        position: relative;
+        z-index: 1;
+    }
+}
+
+/* 动画效果 */
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.floating-planner {
+    animation: slideIn 0.3s ease-out;
+}
+
+/* 拖拽时的样式 */
+.floating-planner.dragging {
+    cursor: move;
+    box-shadow: 0 12px 48px rgba(21, 34, 66, 0.25);
+}

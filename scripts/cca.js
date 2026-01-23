@@ -7,6 +7,199 @@ let studentData = {};
 let selectedElitePrograms = [];
 let selectedCCAs = {};
 
+// 精英项目时间表配置
+const ELITE_SCHEDULES = {
+    // 精英体育
+    'football-primary': { days: ['tue', 'thu'], time: '16:00-17:00', blocksWeekdays: true },
+    'football-secondary': { days: ['mon', 'tue', 'thu'], time: '16:00-18:00', blocksWeekdays: true },
+    'basketball-primary': { days: ['wed', 'fri'], time: '16:00-17:30', blocksWeekdays: true },
+    'basketball-secondary': { days: ['tue', 'thu'], time: '16:00-17:30', blocksWeekdays: true },
+    'swimming-team': { days: ['mon', 'wed', 'thu', 'sat', 'sun'], time: '16:00-18:00', blocksWeekdays: true },
+    'swimming-reserve': { days: ['mon', 'wed', 'sat', 'sun'], time: '16:00-17:30', blocksWeekdays: true },
+    'badminton': { days: ['tue', 'fri', 'sun'], time: '16:00-17:30', blocksWeekdays: true },
+    'golf': { days: [], time: '定制时间', blocksWeekdays: false },
+    'equestrian': { days: [], time: '定制时间', blocksWeekdays: false },
+    'tennis': { days: [], time: '定制时间', blocksWeekdays: false },
+    'skating': { days: [], time: '定制时间', blocksWeekdays: false },
+    
+    // 音乐学院
+    'piano': { days: [], time: '定制时间', blocksWeekdays: false },
+    'violin': { days: [], time: '定制时间', blocksWeekdays: false },
+    'guitar': { days: [], time: '定制时间', blocksWeekdays: false },
+    'drums': { days: [], time: '定制时间', blocksWeekdays: false },
+    'vocal': { days: [], time: '定制时间', blocksWeekdays: false },
+    'other-instrument': { days: [], time: '定制时间', blocksWeekdays: false },
+    'band': { days: ['mon'], time: '16:00-17:00', blocksWeekdays: true },
+    
+    // 学术竞赛
+    'debate': { days: ['wed'], time: '16:00-17:00', blocksWeekdays: true },
+    
+    // 宏博中心
+    'english-foundation': { days: [], time: '定制时间', blocksWeekdays: false },
+    'ielts-advanced': { days: ['tue', 'thu'], time: '定制时间', blocksWeekdays: false },
+    
+    // 数学支持
+    'math-support': { days: ['thu'], time: '16:00-17:00', blocksWeekdays: true }
+};
+
+// 监听语言切换事件
+document.addEventListener('languageChanged', function(e) {
+    console.log('Language changed to:', e.detail.lang);
+    
+    // 更新精英项目文本
+    updateEliteProgramsLanguage();
+    
+    // 重新渲染当前步骤的内容
+    if (currentStep === 3) {
+        // 重新加载CCA课程列表
+        loadCCACourses();
+    } else if (currentStep === 4) {
+        // 重新生成摘要
+        generateSummary();
+        generateSchedulePreview();
+    } else if (currentStep === 5) {
+        // 重新生成报名指引
+        generateRegistrationGuidePreview();
+    }
+    
+    // 更新冲突警告
+    if (document.querySelector('.conflict-warning')) {
+        updateConflictWarnings();
+    }
+});
+
+// 精英项目翻译映射
+const ELITE_PROGRAM_TRANSLATIONS = {
+    'zh': {
+        'football-primary': '⚽ 足球（小学）',
+        'football-secondary': '⚽ 足球（中学）',
+        'basketball-primary': '🏀 篮球（小学）',
+        'basketball-secondary': '🏀 篮球（中学）',
+        'swimming-team': '🏊 游泳一队',
+        'swimming-reserve': '🏊 游泳预备队',
+        'badminton': '🏸 羽毛球队',
+        'golf': '⛳ 高尔夫',
+        'equestrian': '🐴 马术',
+        'tennis': '🎾 网球',
+        'skating': '⛸️ 花样滑冰',
+        'piano': '🎹 钢琴',
+        'violin': '🎻 小提琴',
+        'guitar': '🎸 吉他',
+        'drums': '🥁 架子鼓',
+        'vocal': '🎤 声乐',
+        'other-instrument': '🎼 其他乐器',
+        'band': '🎸 无主乐队',
+        'debate': '🗣️ "以言论道"思辨社',
+        'english-foundation': '📖 英语基础',
+        'ielts-advanced': '📝 雅思进阶',
+        'math-support': '🔢 中文数学支持'
+    },
+    'en': {
+        'football-primary': '⚽ Football (Primary)',
+        'football-secondary': '⚽ Football (Secondary)',
+        'basketball-primary': '🏀 Basketball (Primary)',
+        'basketball-secondary': '🏀 Basketball (Secondary)',
+        'swimming-team': '🏊 Swimming Team 1',
+        'swimming-reserve': '🏊 Swimming Reserve Team',
+        'badminton': '🏸 Badminton Team',
+        'golf': '⛳ Golf',
+        'equestrian': '🐴 Equestrian',
+        'tennis': '🎾 Tennis',
+        'skating': '⛸️ Figure Skating',
+        'piano': '🎹 Piano',
+        'violin': '🎻 Violin',
+        'guitar': '🎸 Guitar',
+        'drums': '🥁 Drums',
+        'vocal': '🎤 Vocal',
+        'other-instrument': '🎼 Other Instruments',
+        'band': '🎸 Anarchist Band',
+        'debate': '🗣️ Debate Society',
+        'english-foundation': '📖 English Foundation',
+        'ielts-advanced': '📝 IELTS Advanced',
+        'math-support': '🔢 Chinese Maths Support'
+    }
+};
+
+// 更新精英项目语言
+function updateEliteProgramsLanguage() {
+    const lang = i18n.currentLang;
+    
+    // 日期和备注翻译映射
+    const translations = {
+        'zh': {
+            '周一': '周一',
+            '周二': '周二',
+            '周三': '周三',
+            '周四': '周四',
+            '周五': '周五',
+            '周六': '周六',
+            '周日': '周日',
+            '定制时间': '定制时间',
+            '全年级': '全年级',
+            '一对一专业培训': '一对一专业培训',
+            '需选拔/试课': '需选拔/试课',
+            '需选拔': '需选拔',
+            '预约制': '预约制',
+            '请在备注中说明': '请在备注中说明'
+        },
+        'en': {
+            '周一': 'Mon',
+            '周二': 'Tue',
+            '周三': 'Wed',
+            '周四': 'Thu',
+            '周五': 'Fri',
+            '周六': 'Sat',
+            '周日': 'Sun',
+            '定制时间': 'Custom Time',
+            '全年级': 'All Grades',
+            '一对一专业培训': 'One-on-one Training',
+            '需选拔/试课': 'Audition Required',
+            '需选拔': 'Audition Required',
+            '预约制': 'By Appointment',
+            '请在备注中说明': 'Please specify in remarks'
+        }
+    };
+    
+    // 更新所有精英项目的 checkbox 标签
+    document.querySelectorAll('input[name="elite-sports"], input[name="music"], input[name="academic"], input[name="hub"], input[name="math"]').forEach(checkbox => {
+        const value = checkbox.value;
+        const label = checkbox.closest('.checkbox-card');
+        if (label) {
+            const strong = label.querySelector('strong');
+            const small = label.querySelector('small');
+            
+            // 更新项目名称
+            if (strong && ELITE_PROGRAM_TRANSLATIONS[lang][value]) {
+                strong.textContent = ELITE_PROGRAM_TRANSLATIONS[lang][value];
+            }
+            
+            // 更新日期和年级描述
+            if (small) {
+                const originalText = small.textContent;
+                let translatedText = originalText;
+                
+                // 翻译所有中文日期和关键词
+                Object.keys(translations['zh']).forEach(zhWord => {
+                    const enWord = translations['en'][zhWord];
+                    if (lang === 'en') {
+                        translatedText = translatedText.replace(new RegExp(zhWord, 'g'), enWord);
+                    } else {
+                        translatedText = translatedText.replace(new RegExp(enWord, 'g'), zhWord);
+                    }
+                });
+                
+                // 特殊处理：替换年级范围
+                if (lang === 'en') {
+                    translatedText = translatedText.replace(/G(\d+)\+/g, 'G$1+');
+                    translatedText = translatedText.replace(/G(\d+)-G(\d+)/g, 'G$1-G$2');
+                }
+                
+                small.textContent = translatedText;
+            }
+        }
+    });
+}
+
 // 步骤导航
 function nextStep(step) {
     // 验证当前步骤
@@ -43,6 +236,19 @@ function nextStep(step) {
 function prevStep(step) {
     currentStep = step;
     updateStepDisplay();
+    
+    // 如果返回到步骤3（CCA选择），重新加载课程以重新计算冲突
+    if (step === 3) {
+        // 保存步骤2的数据以确保精英项目是最新的
+        saveStepData(2);
+        // 重新加载CCA课程（会重新计算被占用的日期）
+        loadCCACourses();
+        // 更新浮动规划框
+        if (typeof floatingPlanner !== 'undefined' && floatingPlanner) {
+            floatingPlanner.updateElitePrograms(selectedElitePrograms);
+        }
+    }
+    
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -77,7 +283,7 @@ function validateStep(step) {
         const grade = document.getElementById('student-grade').value;
         
         if (!grade) {
-            showErrorMessage('请选择年级 Please select a grade');
+            showErrorMessage(i18n.t('messages.selectGrade'));
             return false;
         }
     }
@@ -88,7 +294,7 @@ function validateStep(step) {
         const unselectedDays = requiredDays.filter(day => !selectedCCAs[day]);
         
         if (unselectedDays.length > 0) {
-            showErrorMessage('请为所有工作日选择课程或"不参加" Please select a course or "Opt-out" for all weekdays');
+            showErrorMessage(i18n.t('messages.selectAllDays'));
             return false;
         }
     }
@@ -112,7 +318,7 @@ function saveStepData(step) {
             selectedElitePrograms.push({
                 category: 'sports',
                 value: input.value,
-                label: input.parentElement.querySelector('strong').textContent,
+                label: input.value, // 保存 value 而不是 textContent
                 schedule: input.dataset.schedule
             });
         });
@@ -121,7 +327,7 @@ function saveStepData(step) {
             selectedElitePrograms.push({
                 category: 'music',
                 value: input.value,
-                label: input.parentElement.querySelector('strong').textContent,
+                label: input.value, // 保存 value 而不是 textContent
                 schedule: input.dataset.schedule
             });
         });
@@ -130,7 +336,7 @@ function saveStepData(step) {
             selectedElitePrograms.push({
                 category: 'academic',
                 value: input.value,
-                label: input.parentElement.querySelector('strong').textContent,
+                label: input.value, // 保存 value 而不是 textContent
                 schedule: input.dataset.schedule
             });
         });
@@ -139,7 +345,7 @@ function saveStepData(step) {
             selectedElitePrograms.push({
                 category: 'hub',
                 value: input.value,
-                label: input.parentElement.querySelector('strong').textContent,
+                label: input.value, // 保存 value 而不是 textContent
                 schedule: input.dataset.schedule
             });
         });
@@ -148,7 +354,7 @@ function saveStepData(step) {
             selectedElitePrograms.push({
                 category: 'math',
                 value: input.value,
-                label: input.parentElement.querySelector('strong').textContent,
+                label: input.value, // 保存 value 而不是 textContent
                 schedule: input.dataset.schedule
             });
         });
@@ -157,16 +363,38 @@ function saveStepData(step) {
 
 // 加载CCA课程（从飞书多维表格获取，这里使用配置文件数据）
 function loadCCACourses() {
+    // 检查 CCA_COURSES 是否已加载
+    if (typeof CCA_COURSES === 'undefined') {
+        console.error('CCA_COURSES is not defined! Please check if cca-data.js is loaded correctly.');
+        // 显示错误信息
+        ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'].forEach(day => {
+            const container = document.getElementById(`${day}-slots`);
+            if (container) {
+                container.innerHTML = `
+                    <div style="padding: 1rem; background: #fef2f2; border-radius: 8px; text-align: center; color: #dc2626;">
+                        <p style="margin: 0; font-weight: 600;">⚠️ 数据加载失败</p>
+                        <p style="margin: 0.5rem 0 0 0; font-size: 0.875rem;">请刷新页面重试</p>
+                    </div>
+                `;
+            }
+        });
+        return;
+    }
+    
+    console.log('CCA_COURSES loaded:', Object.keys(CCA_COURSES));
+    
     // 使用配置文件中的数据
-    const mockCourses = typeof CCA_COURSES !== 'undefined' ? CCA_COURSES : {
-        monday: [],
-        tuesday: [],
-        wednesday: [],
-        thursday: [],
-        friday: []
-    };
+    const mockCourses = CCA_COURSES;
     
     const studentGrade = studentData.grade;
+    
+    if (!studentGrade) {
+        console.error('Student grade is not set!');
+        return;
+    }
+    
+    console.log('Loading courses for grade:', studentGrade);
+    
     const blockedDays = getBlockedDays();
     
     // 渲染课程
@@ -182,11 +410,11 @@ function loadCCACourses() {
         if (isDayBlocked) {
             container.innerHTML = `
                 <div class="blocked-notice" style="padding: 1rem; background: #fef2f2; border-radius: 8px; text-align: center; color: #dc2626;">
-                    <p style="margin: 0; font-weight: 600;">⚠️ 该时段已被精英项目占用</p>
+                    <p style="margin: 0; font-weight: 600;">⚠️ ${i18n.t('messages.blockedByElite')}</p>
                 </div>
             `;
             // 自动标记为已选择（被精英项目占用）
-            selectedCCAs[day] = { id: 'blocked', name: 'Elite Programme', blocked: true };
+            selectedCCAs[day] = { id: 'blocked', name: i18n.t('general.eliteProgramme'), blocked: true };
             return;
         }
         
@@ -202,11 +430,11 @@ function loadCCACourses() {
         }
         
         optOutSlot.innerHTML = `
-            <div class="slot-name">🚫 不参加</div>
-            <div class="slot-teacher" style="font-size: 0.875rem; opacity: 0.7;">该时段不参加课后活动</div>
+            <div class="slot-name">🚫 ${i18n.t('courses.optOut')}</div>
+            <div class="slot-teacher" style="font-size: 0.875rem; opacity: 0.7;">${i18n.t('courses.optOutDesc')}</div>
         `;
         optOutSlot.addEventListener('click', function() {
-            selectCCA(day, { id: 'opt-out', name: '不参加', isOptOut: true, fee: '¥0' });
+            selectCCA(day, { id: 'opt-out', name: i18n.t('courses.optOut'), isOptOut: true, fee: '¥0' });
         });
         container.appendChild(optOutSlot);
         
@@ -218,7 +446,7 @@ function loadCCACourses() {
             const noCoursesDiv = document.createElement('div');
             noCoursesDiv.className = 'no-courses';
             noCoursesDiv.style.cssText = 'padding: 1rem; text-align: center; color: #9ca3af; margin-top: 0.5rem;';
-            noCoursesDiv.innerHTML = `<p style="margin: 0;">该年级暂无可选课程</p>`;
+            noCoursesDiv.innerHTML = `<p style="margin: 0;">${i18n.t('messages.noCoursesAvailable')}</p>`;
             container.appendChild(noCoursesDiv);
             return;
         }
@@ -234,11 +462,18 @@ function loadCCACourses() {
                 slot.classList.add('selected');
             }
             
-            const inviteBadge = course.inviteOnly ? '<span style="background: #fbbf24; color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; margin-left: 0.5rem;">邀请制/单招</span>' : '';
-            const feeBadge = course.fee !== '¥0' ? `<span style="color: #059669; font-size: 0.875rem; font-weight: 600;">${course.fee}</span>` : '<span style="color: #10b981; font-size: 0.875rem; font-weight: 600;">免费</span>';
+            // 根据当前语言选择课程名称
+            const courseName = i18n.currentLang === 'en' && course.nameEn ? course.nameEn : course.name;
+            
+            const inviteBadge = course.inviteOnly ? `<span style="background: #fbbf24; color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; margin-left: 0.5rem;">${i18n.t('courses.inviteOnly')}</span>` : '';
+            const feeBadge = course.fee !== '¥0' ? `<span style="color: #059669; font-size: 0.875rem; font-weight: 600;">${course.fee}</span>` : `<span style="color: #10b981; font-size: 0.875rem; font-weight: 600;">${i18n.t('courses.free')}</span>`;
+            
+            // 添加知识板块图标
+            const categoryIcon = getKnowledgeIcon(course.category);
+            const categoryBadge = `<span style="display: inline-flex; align-items: center; gap: 0.25rem; background: rgba(166, 152, 103, 0.1); padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; color: #8a7d52; margin-left: 0.5rem;"><span style="font-size: 0.875rem;">${categoryIcon}</span></span>`;
             
             slot.innerHTML = `
-                <div class="slot-name">${course.name}${inviteBadge}</div>
+                <div class="slot-name">${courseName}${categoryBadge}${inviteBadge}</div>
                 <div class="slot-teacher" style="display: flex; justify-content: space-between; align-items: center;">
                     <span>${course.teacher}</span>
                     ${feeBadge}
@@ -264,18 +499,16 @@ function showInviteOnlyDialog(day, course) {
     dialog.className = 'invite-dialog-overlay';
     dialog.innerHTML = `
         <div class="invite-dialog">
-            <h3>邀请制项目 Invitation-Only Programme</h3>
+            <h3>${i18n.t('messages.inviteOnlyTitle')}</h3>
             <p style="margin: 1rem 0; line-height: 1.6;">
-                此课程为邀请制/单招项目，需要联系负责老师。<br>
-                This is an invitation-only programme. Please contact the teacher in charge.
+                ${i18n.t('messages.inviteOnlyDesc1')}
             </p>
             <p style="margin: 1rem 0; line-height: 1.6;">
-                如果您收到了邀请函，可以点击下方按钮添加到您的课程规划中。<br>
-                If you have received an invitation, you can add it to your plan.
+                ${i18n.t('messages.inviteOnlyDesc2')}
             </p>
             <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
-                <button class="secondary-button" onclick="closeInviteDialog()">取消 Cancel</button>
-                <button class="primary-button" onclick="acceptInvitation('${day}', '${course.id}')">我收到老师的邀请 I Have an Invitation</button>
+                <button class="secondary-button" onclick="closeInviteDialog()">${i18n.t('buttons.cancel')}</button>
+                <button class="primary-button" onclick="acceptInvitation('${day}', '${course.id}')">${i18n.t('buttons.haveInvitation')}</button>
             </div>
         </div>
     `;
@@ -298,7 +531,7 @@ function acceptInvitation(day, courseId) {
     const { course } = window.tempInviteCourse;
     selectCCA(day, course);
     closeInviteDialog();
-    showSuccessMessage('已添加到课程规划 Added to your plan');
+    showSuccessMessage(i18n.t('messages.addedToPlan'));
 }
 
 // 获取被精英项目占用的日期
@@ -306,10 +539,10 @@ function getBlockedDays() {
     const blocked = [];
     
     selectedElitePrograms.forEach(program => {
-        // 跳过不占用CCA时段的项目（如辩论队）
-        if (program.schedule && program.schedule !== 'custom' && program.schedule !== 'none') {
-            const days = program.schedule.split(',');
-            days.forEach(day => {
+        // 检查该项目是否占用CCA时段
+        const scheduleInfo = ELITE_SCHEDULES[program.value];
+        if (scheduleInfo && scheduleInfo.blocksWeekdays && scheduleInfo.days.length > 0) {
+            scheduleInfo.days.forEach(dayShort => {
                 // 转换为完整的日期名称
                 const dayMapping = {
                     'mon': 'monday',
@@ -318,7 +551,7 @@ function getBlockedDays() {
                     'thu': 'thursday',
                     'fri': 'friday'
                 };
-                const fullDay = dayMapping[day];
+                const fullDay = dayMapping[dayShort];
                 if (fullDay && !blocked.includes(fullDay)) {
                     blocked.push(fullDay);
                 }
@@ -331,6 +564,46 @@ function getBlockedDays() {
 
 // 选择CCA课程
 function selectCCA(day, course) {
+    // 检查是否点击了已选中的课程（切换取消选择）
+    if (selectedCCAs[day] && selectedCCAs[day].id === course.id) {
+        // 取消选择
+        unselectCCA(day);
+        return;
+    }
+    
+    // 检查是否有时间冲突
+    const conflict = checkCCAConflict(day, course);
+    
+    if (conflict) {
+        // 显示冲突对话框
+        showConflictDialog(day, course, conflict);
+        return;
+    }
+    
+    // 没有冲突，直接选择
+    confirmSelectCCA(day, course);
+}
+
+// 取消选择CCA课程
+function unselectCCA(day) {
+    // 移除该天的选择
+    document.querySelectorAll(`[data-day="${day}"]`).forEach(slot => {
+        slot.classList.remove('selected');
+    });
+    
+    // 从数据中删除
+    delete selectedCCAs[day];
+    
+    // 更新浮动规划框
+    if (typeof floatingPlanner !== 'undefined' && floatingPlanner) {
+        floatingPlanner.updateCCASelection(day, null);
+    }
+    
+    showSuccessMessage(i18n.t('messages.selectionCancelled'));
+}
+
+// 确认选择CCA课程（内部函数）
+function confirmSelectCCA(day, course, conflictOverride = null) {
     // 取消该天的其他选择
     document.querySelectorAll(`[data-day="${day}"]`).forEach(slot => {
         slot.classList.remove('selected');
@@ -342,8 +615,171 @@ function selectCCA(day, course) {
         slot.classList.add('selected');
     }
     
-    // 保存选择
-    selectedCCAs[day] = course;
+    // 保存选择（包含冲突覆盖信息）
+    selectedCCAs[day] = {
+        ...course,
+        conflictOverride: conflictOverride
+    };
+    
+    // 更新浮动规划框
+    if (typeof floatingPlanner !== 'undefined' && floatingPlanner) {
+        floatingPlanner.updateCCASelection(day, course);
+    }
+}
+
+// 检查CCA课程时间冲突
+function checkCCAConflict(day, course) {
+    // 如果是"不参加"，不检查冲突
+    if (course.isOptOut) return null;
+    
+    // 转换日期格式
+    const dayShortMap = {
+        'monday': 'mon',
+        'tuesday': 'tue',
+        'wednesday': 'wed',
+        'thursday': 'thu',
+        'friday': 'fri'
+    };
+    const dayShort = dayShortMap[day];
+    
+    // 检查是否与精英项目冲突
+    for (const program of selectedElitePrograms) {
+        const scheduleInfo = ELITE_SCHEDULES[program.value];
+        if (scheduleInfo && scheduleInfo.blocksWeekdays && scheduleInfo.days.includes(dayShort)) {
+            return {
+                type: 'elite',
+                program: program.label,
+                time: scheduleInfo.time
+            };
+        }
+    }
+    
+    return null;
+}
+
+// 显示冲突对话框
+function showConflictDialog(day, course, conflict) {
+    const dayNames = {
+        'monday': i18n.t('days.monday'),
+        'tuesday': i18n.t('days.tuesday'),
+        'wednesday': i18n.t('days.wednesday'),
+        'thursday': i18n.t('days.thursday'),
+        'friday': i18n.t('days.friday')
+    };
+    
+    const dialog = document.createElement('div');
+    dialog.className = 'conflict-dialog-overlay';
+    dialog.innerHTML = `
+        <div class="conflict-dialog">
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <div style="font-size: 3rem; margin-bottom: 0.5rem;">⚠️</div>
+                <h3 style="color: #dc2626; margin: 0 0 0.5rem 0; font-size: 1.5rem;">${i18n.t('messages.conflictWarning')}</h3>
+                <p style="color: #6b7280; margin: 0; font-size: 0.875rem;">${i18n.t('messages.conflictWarningEn')}</p>
+            </div>
+            
+            <div style="background: #fef2f2; border-left: 4px solid #dc2626; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                <p style="color: #991b1b; margin: 0 0 0.75rem 0; font-weight: 600; font-size: 1rem;">
+                    ${i18n.t('messages.conflictDesc')}
+                </p>
+                <div style="background: white; padding: 0.75rem; border-radius: 6px; margin-bottom: 0.5rem;">
+                    <p style="margin: 0; color: #374151; font-size: 0.875rem;">
+                        <strong>${dayNames[day]}</strong> 16:00-17:00<br>
+                        <span style="color: #dc2626;">📚 ${course.name}</span>
+                    </p>
+                </div>
+                <div style="background: white; padding: 0.75rem; border-radius: 6px;">
+                    <p style="margin: 0; color: #374151; font-size: 0.875rem;">
+                        <strong>${dayNames[day]}</strong> ${conflict.time}<br>
+                        <span style="color: #8b2635;">🏆 ${conflict.program}</span>
+                    </p>
+                </div>
+            </div>
+            
+            <div style="background: #fffbeb; border-left: 4px solid #f59e0b; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                <p style="color: #92400e; margin: 0; font-size: 0.875rem; line-height: 1.6;">
+                    <strong>💡 ${i18n.t('messages.tip')}：</strong>${i18n.t('messages.conflictTip')}
+                </p>
+            </div>
+            
+            <div style="margin-bottom: 1.5rem;">
+                <label style="display: block; color: #374151; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.875rem;">
+                    ${i18n.t('messages.conflictReasonLabel')}
+                </label>
+                <textarea id="conflict-reason" 
+                          placeholder="${i18n.t('messages.conflictReasonPlaceholder')}"
+                          style="width: 100%; min-height: 80px; padding: 0.75rem; border: 2px solid #d1d5db; border-radius: 8px; font-size: 0.875rem; font-family: inherit; resize: vertical;"
+                          maxlength="200"></textarea>
+                <div style="text-align: right; margin-top: 0.25rem;">
+                    <span id="char-count" style="font-size: 0.75rem; color: #9ca3af;">0/200</span>
+                </div>
+            </div>
+            
+            <div style="background: #e0f2fe; border-left: 4px solid #0284c7; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                <p style="color: #075985; margin: 0; font-size: 0.875rem; line-height: 1.6;">
+                    <strong>📋 ${i18n.t('messages.importantReminder')}：</strong>${i18n.t('messages.conflictReminder')}
+                </p>
+            </div>
+            
+            <div style="display: flex; gap: 1rem;">
+                <button class="secondary-button" onclick="closeConflictDialog()" style="flex: 1; padding: 0.875rem;">
+                    <span>${i18n.t('buttons.cancel')}</span>
+                </button>
+                <button class="primary-button" onclick="forceAddCCA()" style="flex: 1; padding: 0.875rem; background: #dc2626;">
+                    <span>${i18n.t('buttons.forceAdd')}</span>
+                </button>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(dialog);
+    
+    // 保存临时数据
+    window.tempConflictData = { day, course, conflict };
+    
+    // 绑定字符计数
+    const textarea = dialog.querySelector('#conflict-reason');
+    const charCount = dialog.querySelector('#char-count');
+    textarea.addEventListener('input', function() {
+        charCount.textContent = `${this.value.length}/200`;
+    });
+}
+
+// 关闭冲突对话框
+function closeConflictDialog() {
+    const dialog = document.querySelector('.conflict-dialog-overlay');
+    if (dialog) {
+        dialog.remove();
+    }
+    window.tempConflictData = null;
+}
+
+// 强制添加CCA课程
+function forceAddCCA() {
+    const reason = document.getElementById('conflict-reason').value.trim();
+    
+    if (!reason) {
+        alert(i18n.t('messages.pleaseProvideReason'));
+        return;
+    }
+    
+    const { day, course, conflict } = window.tempConflictData;
+    
+    // 添加冲突覆盖信息
+    const conflictOverride = {
+        conflictWith: conflict.program,
+        conflictTime: conflict.time,
+        reason: reason,
+        timestamp: new Date().toISOString()
+    };
+    
+    // 确认选择
+    confirmSelectCCA(day, course, conflictOverride);
+    
+    // 关闭对话框
+    closeConflictDialog();
+    
+    // 显示成功消息
+    showSuccessMessage(i18n.t('messages.courseAddedConfirm'));
 }
 
 // 生成摘要
@@ -351,13 +787,13 @@ function generateSummary() {
     const summaryContainer = document.getElementById('selection-summary');
     
     let summaryHTML = `
-        <h3>学生信息 Student Info</h3>
+        <h3>${i18n.t('general.studentInfo')}</h3>
         <div style="margin-bottom: 2rem;">
-            <p><strong>年级 Grade：</strong>${studentData.grade}</p>
+            <p><strong>${i18n.t('general.grade')}：</strong>${studentData.grade}</p>
         </div>
     `;
     
-    // 统计课后安排
+    // 统计课后安排 - 改为数组以支持同一天多个活动
     const weekSchedule = {};
     const dayKeys = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
     const dayShortMap = {
@@ -368,65 +804,92 @@ function generateSummary() {
         'friday': 'fri'
     };
     
-    // 先收集精英项目（优先级高）
+    // 初始化每天为空数组
+    dayKeys.forEach(day => {
+        weekSchedule[day] = [];
+    });
+    
+    // 收集精英项目
     selectedElitePrograms.forEach(program => {
         if (program.schedule && program.schedule !== 'custom' && program.schedule !== 'none') {
-            const days = program.schedule.split(',');
+            const days = program.schedule.split(',').map(d => d.trim());
             days.forEach(dayShort => {
                 const fullDay = Object.keys(dayShortMap).find(key => dayShortMap[key] === dayShort);
                 if (fullDay) {
-                    weekSchedule[fullDay] = {
+                    // 根据当前语言获取精英项目名称
+                    const programName = ELITE_PROGRAM_TRANSLATIONS[i18n.currentLang][program.value] || program.label;
+                    weekSchedule[fullDay].push({
                         type: 'elite',
-                        name: program.label,
-                        fee: '定制课包'
-                    };
+                        name: programName,
+                        fee: i18n.t('general.customPackage')
+                    });
                 }
             });
         }
     });
     
-    // 再收集CCA（不覆盖精英项目）
+    // 收集CCA课程
     dayKeys.forEach(day => {
-        if (!weekSchedule[day] && selectedCCAs[day]) {
+        if (selectedCCAs[day]) {
             if (selectedCCAs[day].isOptOut) {
-                weekSchedule[day] = {
+                weekSchedule[day].push({
                     type: 'optout',
-                    name: '不参加 Opt-out',
+                    name: i18n.t('courses.optOut'),
                     fee: '¥0'
-                };
+                });
             } else if (!selectedCCAs[day].blocked) {
-                weekSchedule[day] = {
+                // 根据当前语言获取CCA课程名称
+                const courseName = i18n.currentLang === 'en' && selectedCCAs[day].nameEn 
+                    ? selectedCCAs[day].nameEn 
+                    : selectedCCAs[day].name;
+                weekSchedule[day].push({
                     type: 'cca',
-                    name: selectedCCAs[day].name,
-                    fee: selectedCCAs[day].fee || '¥0'
-                };
+                    name: courseName,
+                    fee: selectedCCAs[day].fee || '¥0',
+                    hasConflictOverride: !!selectedCCAs[day].conflictOverride
+                });
             }
         }
     });
     
     // 显示课后时间安排
-    if (Object.keys(weekSchedule).length > 0 || selectedElitePrograms.length > 0) {
+    const hasAnyActivities = dayKeys.some(day => weekSchedule[day].length > 0);
+    
+    if (hasAnyActivities || selectedElitePrograms.length > 0) {
         summaryHTML += `
-            <h3>课后时间安排 After-School Schedule</h3>
+            <h3>${i18n.t('general.afterSchoolSchedule')}</h3>
             <div>
                 <ul style="list-style: none; padding: 0;">
         `;
         
         const dayNames = {
-            monday: '周一 MON',
-            tuesday: '周二 TUE',
-            wednesday: '周三 WED',
-            thursday: '周四 THU',
-            friday: '周五 FRI'
+            monday: i18n.t('days.monday'),
+            tuesday: i18n.t('days.tuesday'),
+            wednesday: i18n.t('days.wednesday'),
+            thursday: i18n.t('days.thursday'),
+            friday: i18n.t('days.friday')
         };
         
         dayKeys.forEach(day => {
-            if (weekSchedule[day]) {
-                let icon = '📚';
-                if (weekSchedule[day].type === 'elite') icon = '🏆';
-                if (weekSchedule[day].type === 'optout') icon = '🚫';
+            if (weekSchedule[day].length > 0) {
+                const hasConflict = weekSchedule[day].filter(a => a.type === 'elite' || a.type === 'cca').length > 1;
+                const conflictBadge = hasConflict ? `<span style="background: #dc2626; color: white; padding: 0.25rem 0.5rem; border-radius: 6px; font-size: 0.75rem; margin-left: 0.5rem;">⚠️ ${i18n.t('general.conflict')}</span>` : '';
                 
-                summaryHTML += `<li style="padding: 0.5rem 0;"><strong>${dayNames[day]}：</strong>${icon} ${weekSchedule[day].name}</li>`;
+                summaryHTML += `<li style="padding: 0.75rem 0; border-bottom: 1px solid #f0f0f0;">
+                    <strong>${dayNames[day]}${conflictBadge}</strong>
+                    <ul style="list-style: none; padding-left: 1.5rem; margin-top: 0.5rem;">`;
+                
+                weekSchedule[day].forEach(activity => {
+                    let icon = '📚';
+                    if (activity.type === 'elite') icon = '🏆';
+                    if (activity.type === 'optout') icon = '🚫';
+                    
+                    const conflictMark = activity.hasConflictOverride ? `<span style="color: #dc2626; font-size: 0.75rem; margin-left: 0.5rem;">(${i18n.t('general.forceAdded')})</span>` : '';
+                    
+                    summaryHTML += `<li style="padding: 0.25rem 0;">${icon} ${activity.name}${conflictMark}</li>`;
+                });
+                
+                summaryHTML += `</ul></li>`;
             }
         });
         
@@ -461,15 +924,17 @@ function generatePriceSummary(weekSchedule) {
     if (elitePrograms.length > 0) {
         priceHTML += `
             <div class="price-section">
-                <h4>精英项目</h4>
+                <h4>${i18n.t('general.elitePrograms')}</h4>
                 <ul class="price-list">
         `;
         
         elitePrograms.forEach(program => {
+            // 根据当前语言获取精英项目名称
+            const programName = ELITE_PROGRAM_TRANSLATIONS[i18n.currentLang][program.value] || program.label;
             priceHTML += `
                 <li>
-                    <span>${program.label}</span>
-                    <span class="price-tag custom">定制课包</span>
+                    <span>${programName}</span>
+                    <span class="price-tag custom">${i18n.t('general.customPackage')}</span>
                 </li>
             `;
             hasCustomPackage = true;
@@ -481,12 +946,22 @@ function generatePriceSummary(weekSchedule) {
         `;
     }
     
-    // 计算CCA费用
-    const ccaCourses = Object.values(weekSchedule).filter(item => item.type === 'cca');
+    // 计算CCA费用 - 从 weekSchedule 数组中提取
+    const ccaCourses = [];
+    Object.values(weekSchedule).forEach(dayActivities => {
+        if (Array.isArray(dayActivities)) {
+            dayActivities.forEach(activity => {
+                if (activity.type === 'cca') {
+                    ccaCourses.push(activity);
+                }
+            });
+        }
+    });
+    
     if (ccaCourses.length > 0) {
         priceHTML += `
             <div class="price-section">
-                <h4>CCA 课程</h4>
+                <h4>${i18n.t('general.ccaCourses')}</h4>
                 <ul class="price-list">
         `;
         
@@ -496,9 +971,11 @@ function generatePriceSummary(weekSchedule) {
                 totalPrice += price;
             }
             
+            const conflictMark = course.hasConflictOverride ? `<span style="color: #dc2626; font-size: 0.75rem; margin-left: 0.5rem;">(${i18n.t('general.conflict')})</span>` : '';
+            
             priceHTML += `
                 <li>
-                    <span>${course.name}</span>
+                    <span>${course.name}${conflictMark}</span>
                     <span class="price-tag ${price === 0 ? 'free' : ''}">${course.fee}</span>
                 </li>
             `;
@@ -520,12 +997,12 @@ function generatePriceSummary(weekSchedule) {
         <div class="price-total">
             ${hasCap ? `
                 <div class="total-row" style="text-decoration: line-through; opacity: 0.6; font-size: 0.9rem;">
-                    <span>CCA 课程原价：</span>
+                    <span>${i18n.t('general.ccaOriginalPrice')}：</span>
                     <span>¥${originalTotal.toLocaleString('zh-CN')}</span>
                 </div>
             ` : ''}
             <div class="total-row">
-                <span>CCA 课程${hasCap ? '实付' : '小计'}：</span>
+                <span>${i18n.t(hasCap ? 'general.ccaFinalPrice' : 'general.ccaSubtotal')}：</span>
                 <span class="total-amount">¥${finalTotal.toLocaleString('zh-CN')}</span>
             </div>
             ${hasCap ? `
@@ -533,7 +1010,7 @@ function generatePriceSummary(weekSchedule) {
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px; color: #059669;">
                         <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
-                    <span style="color: #065f46;">已应用封顶优惠：CCA课程费用超过¥3,000，按¥3,000封顶收取</span>
+                    <span style="color: #065f46;">${i18n.t('messages.capApplied')}</span>
                 </div>
             ` : totalPrice > 0 ? `
                 <div class="custom-note" style="background: #e0f2fe; border-left: 4px solid #0284c7;">
@@ -541,7 +1018,7 @@ function generatePriceSummary(weekSchedule) {
                         <circle cx="12" cy="12" r="10"/>
                         <path d="M12 16v-4M12 8h.01"/>
                     </svg>
-                    <span style="color: #075985;">CCA课程费用未满¥3,000，据实结算；超过¥3,000将封顶收取</span>
+                    <span style="color: #075985;">${i18n.t('messages.capNotice')}</span>
                 </div>
             ` : ''}
             ${hasCustomPackage ? `
@@ -550,7 +1027,7 @@ function generatePriceSummary(weekSchedule) {
                         <circle cx="12" cy="12" r="10"/>
                         <path d="M12 16v-4M12 8h.01"/>
                     </svg>
-                    <span>精英项目为定制课包，具体费用请咨询相关负责老师</span>
+                    <span>${i18n.t('messages.customPackageNote')}</span>
                 </div>
             ` : ''}
         </div>
@@ -561,7 +1038,7 @@ function generatePriceSummary(weekSchedule) {
 
 // 解析费用
 function parseFee(feeString) {
-    if (!feeString || feeString === '¥0' || feeString === '定制课包') {
+    if (!feeString || feeString === '¥0' || feeString === i18n.t('general.customPackage')) {
         return 0;
     }
     
@@ -675,12 +1152,14 @@ function generateScheduleImage() {
         // 收集精英项目
         selectedElitePrograms.forEach(program => {
             if (program.schedule && program.schedule !== 'custom' && program.schedule !== 'none') {
-                const days = program.schedule.split(',');
+                const days = program.schedule.split(',').map(d => d.trim());
                 if (days.includes(dayKey)) {
                     const scheduleInfo = ELITE_SCHEDULES[program.value];
+                    // 根据当前语言获取精英项目名称
+                    const programName = ELITE_PROGRAM_TRANSLATIONS[i18n.currentLang][program.value] || program.label;
                     dayData.activities.push({
                         type: 'elite',
-                        name: program.label,
+                        name: programName,
                         time: scheduleInfo ? scheduleInfo.time : '16:00-17:00',
                         fee: '定制课包'
                     });
@@ -693,11 +1172,16 @@ function generateScheduleImage() {
         if (fullDay && selectedCCAs[fullDay]) {
             const cca = selectedCCAs[fullDay];
             if (!cca.blocked) {
+                // 根据当前语言获取CCA课程名称
+                const courseName = i18n.currentLang === 'en' && cca.nameEn 
+                    ? cca.nameEn 
+                    : cca.name;
                 dayData.activities.push({
                     type: cca.isOptOut ? 'optout' : 'cca',
-                    name: cca.name,
+                    name: courseName,
                     time: '16:00-17:00',
-                    fee: cca.fee || '¥0'
+                    fee: cca.fee || '¥0',
+                    hasConflictOverride: !!cca.conflictOverride
                 });
             }
         }
@@ -716,13 +1200,23 @@ function generateScheduleImage() {
         const x = startX + (index % 5) * (cardWidth + cardGap);
         const y = startY;
         
+        // 检查是否有冲突
+        const hasConflict = day.activities.filter(a => a.type === 'elite' || a.type === 'cca').length > 1;
+        
         // 卡片背景
         if (day.activities.length > 0) {
-            // 有课程 - 彩色卡片
-            const cardGradient = ctx.createLinearGradient(x, y, x, y + cardHeight);
-            cardGradient.addColorStop(0, '#ffffff');
-            cardGradient.addColorStop(1, '#f8fafc');
-            ctx.fillStyle = cardGradient;
+            // 有课程 - 彩色卡片，如果有冲突使用红色渐变
+            if (hasConflict) {
+                const cardGradient = ctx.createLinearGradient(x, y, x, y + cardHeight);
+                cardGradient.addColorStop(0, '#fef2f2');
+                cardGradient.addColorStop(1, '#fee2e2');
+                ctx.fillStyle = cardGradient;
+            } else {
+                const cardGradient = ctx.createLinearGradient(x, y, x, y + cardHeight);
+                cardGradient.addColorStop(0, '#ffffff');
+                cardGradient.addColorStop(1, '#f8fafc');
+                ctx.fillStyle = cardGradient;
+            }
         } else {
             // 休息 - 灰色卡片
             ctx.fillStyle = '#f1f5f9';
@@ -732,12 +1226,24 @@ function generateScheduleImage() {
         ctx.fill();
         
         // 卡片边框
-        ctx.strokeStyle = day.activities.length > 0 ? '#8b2635' : '#cbd5e0';
-        ctx.lineWidth = 3;
+        ctx.strokeStyle = hasConflict ? '#dc2626' : (day.activities.length > 0 ? '#8b2635' : '#cbd5e0');
+        ctx.lineWidth = hasConflict ? 4 : 3;
         ctx.stroke();
         
+        // 如果有冲突，添加冲突标记
+        if (hasConflict) {
+            ctx.fillStyle = '#dc2626';
+            ctx.roundRect(x + cardWidth - 80, y + 10, 70, 30, 8);
+            ctx.fill();
+            
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 16px SimHei, Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('⚠️ 冲突', x + cardWidth - 45, y + 30);
+        }
+        
         // 日期标题背景
-        ctx.fillStyle = day.activities.length > 0 ? '#8b2635' : '#94a3b8';
+        ctx.fillStyle = hasConflict ? '#dc2626' : (day.activities.length > 0 ? '#8b2635' : '#94a3b8');
         ctx.roundRect(x, y, cardWidth, 50, [12, 12, 0, 0]);
         ctx.fill();
         
@@ -751,17 +1257,27 @@ function generateScheduleImage() {
         if (day.activities.length > 0) {
             let contentY = y + 80;
             
-            day.activities.forEach(activity => {
+            day.activities.forEach((activity, actIndex) => {
+                // 如果有多个活动，添加分隔线
+                if (actIndex > 0) {
+                    ctx.strokeStyle = '#e5e7eb';
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    ctx.moveTo(x + 20, contentY - 10);
+                    ctx.lineTo(x + cardWidth - 20, contentY - 10);
+                    ctx.stroke();
+                }
+                
                 // 图标
                 const icon = activity.type === 'elite' ? '🏆' : activity.type === 'optout' ? '🚫' : '📚';
-                ctx.font = '40px Arial';
+                ctx.font = '32px Arial';
                 ctx.textAlign = 'center';
                 ctx.fillText(icon, x + cardWidth / 2, contentY);
-                contentY += 50;
+                contentY += 40;
                 
                 // 课程名称
                 ctx.fillStyle = '#1a2332';
-                ctx.font = 'bold 20px SimHei, Arial';
+                ctx.font = 'bold 18px SimHei, Arial';
                 ctx.textAlign = 'center';
                 
                 // 处理长文本换行
@@ -784,22 +1300,33 @@ function generateScheduleImage() {
                 
                 // 最多显示2行
                 lines.slice(0, 2).forEach((textLine, idx) => {
-                    ctx.fillText(textLine, x + cardWidth / 2, contentY + idx * 25);
+                    ctx.fillText(textLine, x + cardWidth / 2, contentY + idx * 22);
                 });
-                contentY += lines.length * 25 + 15;
+                contentY += lines.length * 22 + 10;
                 
                 // 时间
                 ctx.fillStyle = '#6b7280';
-                ctx.font = '18px Arial';
+                ctx.font = '16px Arial';
                 ctx.fillText(activity.time, x + cardWidth / 2, contentY);
-                contentY += 30;
+                contentY += 25;
                 
                 // 费用
                 if (activity.fee && activity.fee !== '¥0') {
                     ctx.fillStyle = activity.fee === '定制课包' ? '#f59e0b' : '#059669';
-                    ctx.font = 'bold 20px SimHei, Arial';
+                    ctx.font = 'bold 18px SimHei, Arial';
                     ctx.fillText(activity.fee, x + cardWidth / 2, contentY);
+                    contentY += 25;
                 }
+                
+                // 如果有冲突覆盖标记
+                if (activity.hasConflictOverride) {
+                    ctx.fillStyle = '#dc2626';
+                    ctx.font = 'bold 14px SimHei, Arial';
+                    ctx.fillText('(已强制添加)', x + cardWidth / 2, contentY);
+                    contentY += 20;
+                }
+                
+                contentY += 10; // 活动之间的间距
             });
         } else {
             // 休息日
@@ -918,14 +1445,14 @@ function generateScheduleImage() {
     // 下载图片
     canvas.toBlob(function(blob) {
         if (!blob) {
-            showErrorMessage('图片生成失败，请重试');
+            showErrorMessage(i18n.t('messages.imageGenerationFailed'));
             return;
         }
         
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
         const timestamp = new Date().getTime();
-        link.download = `哈罗课程表_${studentData.grade}_${timestamp}.png`;
+        link.download = `${i18n.t('general.harrowSchedule')}_${studentData.grade}_${timestamp}.png`;
         link.href = url;
         document.body.appendChild(link);
         link.click();
@@ -936,7 +1463,7 @@ function generateScheduleImage() {
             URL.revokeObjectURL(url);
         }, 100);
         
-        showSuccessMessage('课程表图片已生成并下载！📸');
+        showSuccessMessage(i18n.t('messages.scheduleGenerated'));
         
         // 跳转到引导页面
         setTimeout(() => {
@@ -965,11 +1492,11 @@ function generateSchedulePreview() {
     const previewGrid = document.querySelector('.preview-grid');
     
     const dayNames = {
-        monday: '周一 MON',
-        tuesday: '周二 TUE',
-        wednesday: '周三 WED',
-        thursday: '周四 THU',
-        friday: '周五 FRI'
+        monday: i18n.t('days.monday'),
+        tuesday: i18n.t('days.tuesday'),
+        wednesday: i18n.t('days.wednesday'),
+        thursday: i18n.t('days.thursday'),
+        friday: i18n.t('days.friday')
     };
     
     const dayKeys = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
@@ -979,52 +1506,90 @@ function generateSchedulePreview() {
     dayKeys.forEach(day => {
         const dayShort = day.substring(0, 3);
         
-        // 检查该天是否有精英项目
-        let eliteActivity = null;
+        // 收集该天的所有活动
+        const activities = [];
+        let hasConflict = false;
+        
+        // 收集精英项目
         selectedElitePrograms.forEach(program => {
             if (program.schedule && program.schedule !== 'custom' && program.schedule !== 'none') {
-                const days = program.schedule.split(',');
+                const days = program.schedule.split(',').map(d => d.trim());
                 if (days.includes(dayShort)) {
                     const scheduleInfo = ELITE_SCHEDULES[program.value];
-                    eliteActivity = {
-                        name: program.label,
+                    // 根据当前语言获取精英项目名称
+                    const programName = ELITE_PROGRAM_TRANSLATIONS[i18n.currentLang][program.value] || program.label;
+                    activities.push({
+                        name: programName,
                         time: scheduleInfo ? scheduleInfo.time : '16:00-17:00',
                         type: 'elite'
-                    };
+                    });
                 }
             }
         });
         
-        // 如果有精英项目，显示精英项目；否则显示CCA
-        let activity = eliteActivity;
-        if (!activity && selectedCCAs[day]) {
+        // 收集CCA课程
+        if (selectedCCAs[day]) {
             if (selectedCCAs[day].isOptOut) {
-                activity = {
-                    name: '不参加 Opt-out',
+                activities.push({
+                    name: i18n.t('courses.optOut'),
                     time: '16:00-17:00',
                     type: 'optout'
-                };
+                });
             } else if (!selectedCCAs[day].blocked) {
-                activity = {
-                    name: selectedCCAs[day].name,
+                // 根据当前语言获取CCA课程名称
+                const courseName = i18n.currentLang === 'en' && selectedCCAs[day].nameEn 
+                    ? selectedCCAs[day].nameEn 
+                    : selectedCCAs[day].name;
+                activities.push({
+                    name: courseName,
                     time: '16:00-17:00',
-                    type: 'cca'
-                };
+                    type: 'cca',
+                    hasConflictOverride: !!selectedCCAs[day].conflictOverride
+                });
+                
+                // 检查是否有冲突覆盖
+                if (selectedCCAs[day].conflictOverride) {
+                    hasConflict = true;
+                }
             }
         }
         
+        // 如果同一天有多个活动（精英项目 + CCA），标记为冲突
+        if (activities.filter(a => a.type === 'elite' || a.type === 'cca').length > 1) {
+            hasConflict = true;
+        }
+        
+        // 生成卡片
+        const cardStyle = hasConflict 
+            ? 'background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%); border: 3px solid #dc2626;' 
+            : 'background: white;';
+        
         previewHTML += `
-            <div style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+            <div style="${cardStyle} padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); position: relative;">
+                ${hasConflict ? `
+                    <div style="position: absolute; top: 0.5rem; right: 0.5rem; background: #dc2626; color: white; padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.75rem; font-weight: 600; display: flex; align-items: center; gap: 0.25rem;">
+                        <span>⚠️</span>
+                        <span>${i18n.t('general.conflict')}</span>
+                    </div>
+                ` : ''}
                 <h4 style="color: #1a2332; margin-bottom: 1rem; font-size: 1.125rem; font-weight: 600;">${dayNames[day]}</h4>
-                <div style="color: #4a5568;">
-                    ${activity ? `
-                        <div style="margin-bottom: 0.5rem;">
-                            <strong style="color: ${activity.type === 'optout' ? '#d97706' : '#8b2635'};">${activity.time}</strong><br>
-                            <span style="font-size: 1rem;">${activity.type === 'elite' ? '🏆' : activity.type === 'optout' ? '🚫' : '📚'} ${activity.name}</span>
+                <div style="color: #4a5568; display: flex; flex-direction: column; gap: 0.75rem;">
+                    ${activities.length > 0 ? activities.map(activity => `
+                        <div style="background: ${activity.type === 'elite' ? 'rgba(166, 152, 103, 0.1)' : activity.type === 'optout' ? 'rgba(217, 119, 6, 0.1)' : 'rgba(139, 38, 53, 0.1)'}; padding: 0.75rem; border-radius: 8px; border-left: 4px solid ${activity.type === 'elite' ? '#A69867' : activity.type === 'optout' ? '#d97706' : '#8b2635'};">
+                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+                                <span style="font-size: 1.25rem;">${activity.type === 'elite' ? '🏆' : activity.type === 'optout' ? '🚫' : '📚'}</span>
+                                <strong style="color: ${activity.type === 'optout' ? '#d97706' : '#1a2332'}; font-size: 0.875rem;">${activity.time}</strong>
+                            </div>
+                            <div style="font-size: 0.95rem; color: #374151; font-weight: 500;">${activity.name}</div>
+                            ${activity.hasConflictOverride ? `
+                                <div style="margin-top: 0.5rem; padding: 0.5rem; background: rgba(220, 38, 38, 0.1); border-radius: 6px; font-size: 0.8rem; color: #991b1b;">
+                                    <strong>⚠️ ${i18n.t('general.forceAdded')}</strong>
+                                </div>
+                            ` : ''}
                         </div>
-                    ` : `
+                    `).join('') : `
                         <div style="color: #cbd5e0; text-align: center; padding: 1rem 0;">
-                            休息 Rest
+                            ${i18n.t('general.rest')}
                         </div>
                     `}
                 </div>
@@ -1048,7 +1613,7 @@ function submitSelection() {
     console.log('提交数据：', submissionData);
     
     // 模拟提交
-    showSuccessMessage('课程选择已成功提交！');
+    showSuccessMessage(i18n.t('messages.submissionSuccess'));
     
     // 3秒后返回主页
     setTimeout(() => {
@@ -1056,22 +1621,70 @@ function submitSelection() {
     }, 3000);
 }
 
+// 知识板块图标映射
+const KNOWLEDGE_ICONS = {
+    'skill': '🎯',           // 技能类
+    'competition': '🏆',     // 竞赛类
+    'support': '📚',         // 学术支持
+    'club': '👥',            // 俱乐部
+    'scouting': '🔍',        // 体验类
+    'sports': '⚽',          // 体育类
+    'arts': '🎨',            // 艺术类
+    'music': '🎵',           // 音乐类
+    'stem': '🔬',            // STEM类
+    'language': '🗣️'        // 语言类
+};
+
+// 获取知识板块图标
+function getKnowledgeIcon(category) {
+    return KNOWLEDGE_ICONS[category] || '📖';
+}
+
 // 页面加载完成后初始化
 document.addEventListener('DOMContentLoaded', function() {
     updateStepDisplay();
+    
+    // 初始化精英项目语言
+    updateEliteProgramsLanguage();
     
     // 监听年级选择变化
     const gradeSelect = document.getElementById('student-grade');
     if (gradeSelect) {
         gradeSelect.addEventListener('change', function() {
-            filterEliteProgramsByGrade(this.value);
+            const grade = this.value;
+            if (grade) {
+                filterEliteProgramsByGrade(grade);
+                // 更新浮动规划框
+                if (typeof floatingPlanner !== 'undefined' && floatingPlanner) {
+                    floatingPlanner.updateStudentInfo(grade);
+                }
+            }
         });
     }
     
     // 监听精英项目选择变化
     document.querySelectorAll('input[name="elite-sports"], input[name="music"], input[name="academic"], input[name="hub"], input[name="math"]').forEach(checkbox => {
         checkbox.addEventListener('change', function() {
+            // 处理游泳队互斥逻辑
+            if (this.checked && (this.value === 'swimming-team' || this.value === 'swimming-reserve')) {
+                const otherSwimmingValue = this.value === 'swimming-team' ? 'swimming-reserve' : 'swimming-team';
+                const otherSwimmingCheckbox = document.querySelector(`input[value="${otherSwimmingValue}"]`);
+                
+                if (otherSwimmingCheckbox && otherSwimmingCheckbox.checked) {
+                    // 取消另一个游泳队的选择
+                    otherSwimmingCheckbox.checked = false;
+                    
+                    // 显示提示信息
+                    showSuccessMessage(i18n.t('messages.swimmingTeamExclusive'));
+                }
+            }
+            
             updateConflictWarnings();
+            // 更新浮动规划框
+            if (typeof floatingPlanner !== 'undefined' && floatingPlanner) {
+                saveStepData(2);
+                floatingPlanner.updateElitePrograms(selectedElitePrograms);
+            }
         });
     });
 });
@@ -1080,19 +1693,39 @@ document.addEventListener('DOMContentLoaded', function() {
 function filterEliteProgramsByGrade(grade) {
     if (!grade) return;
     
-    document.querySelectorAll('input[name="elite-sports"], input[name="music"], input[name="academic"], input[name="hub"], input[name="math"]').forEach(checkbox => {
-        const allowedGrades = checkbox.dataset.grades ? checkbox.dataset.grades.split(',') : [];
-        const card = checkbox.closest('.checkbox-card');
+    // 遍历所有精英项目卡片
+    document.querySelectorAll('.elite-card').forEach(card => {
+        const checkboxes = card.querySelectorAll('input[type="checkbox"]');
+        let hasVisibleOptions = false;
         
-        if (allowedGrades.length === 0 || allowedGrades.includes(grade)) {
-            card.style.display = 'flex';
-            checkbox.disabled = false;
-        } else {
+        checkboxes.forEach(checkbox => {
+            const allowedGrades = checkbox.dataset.grades ? checkbox.dataset.grades.split(',') : [];
+            const checkboxCard = checkbox.closest('.checkbox-card');
+            
+            if (allowedGrades.length === 0 || allowedGrades.includes(grade)) {
+                checkboxCard.style.display = 'flex';
+                checkbox.disabled = false;
+                hasVisibleOptions = true;
+            } else {
+                checkboxCard.style.display = 'none';
+                checkbox.disabled = true;
+                checkbox.checked = false;
+            }
+        });
+        
+        // 如果该类别没有任何可选项目，隐藏整个卡片
+        if (!hasVisibleOptions) {
             card.style.display = 'none';
-            checkbox.disabled = true;
-            checkbox.checked = false;
+        } else {
+            card.style.display = 'block';
         }
     });
+    
+    // 更新浮动规划框
+    if (typeof floatingPlanner !== 'undefined' && floatingPlanner) {
+        saveStepData(2);
+        floatingPlanner.updateElitePrograms(selectedElitePrograms);
+    }
 }
 
 // 更新时间冲突警告
@@ -1107,7 +1740,7 @@ function updateConflictWarnings() {
         warningDiv.className = 'conflict-warning';
         warningDiv.style.cssText = 'background: #fef2f2; border: 2px solid #dc2626; padding: 1rem; border-radius: 8px; margin: 1rem 0;';
         warningDiv.innerHTML = `
-            <h4 style="color: #dc2626; margin-bottom: 0.5rem;">⚠️ 时间冲突提醒</h4>
+            <h4 style="color: #dc2626; margin-bottom: 0.5rem;">⚠️ ${i18n.t('messages.conflictWarning')}</h4>
             <ul style="margin: 0; padding-left: 1.5rem; color: #4a5568;">
                 ${conflicts.map(c => `<li>${c}</li>`).join('')}
             </ul>
@@ -1149,13 +1782,13 @@ function detectScheduleConflicts() {
     Object.keys(scheduleMap).forEach(day => {
         if (scheduleMap[day].length > 1) {
             const dayNames = {
-                mon: '周一',
-                tue: '周二',
-                wed: '周三',
-                thu: '周四',
-                fri: '周五'
+                mon: i18n.t('days.monday'),
+                tue: i18n.t('days.tuesday'),
+                wed: i18n.t('days.wednesday'),
+                thu: i18n.t('days.thursday'),
+                fri: i18n.t('days.friday')
             };
-            conflicts.push(`${dayNames[day]}：${scheduleMap[day].join(' 与 ')} 时间冲突`);
+            conflicts.push(`${dayNames[day]}：${scheduleMap[day].join(` ${i18n.t('general.and')} `)} ${i18n.t('messages.timeConflict')}`);
         }
     });
     
@@ -1169,14 +1802,51 @@ function generateRegistrationGuidePreview() {
     
     const steps = [];
     
+    // 检查是否有冲突覆盖的课程
+    const conflictOverrides = [];
+    Object.keys(selectedCCAs).forEach(day => {
+        const cca = selectedCCAs[day];
+        if (cca && cca.conflictOverride) {
+            const dayNames = {
+                'monday': i18n.t('days.monday'),
+                'tuesday': i18n.t('days.tuesday'),
+                'wednesday': i18n.t('days.wednesday'),
+                'thursday': i18n.t('days.thursday'),
+                'friday': i18n.t('days.friday')
+            };
+            // 根据当前语言获取CCA课程名称
+            const ccaName = i18n.currentLang === 'en' && cca.nameEn 
+                ? cca.nameEn 
+                : cca.name;
+            conflictOverrides.push({
+                day: dayNames[day],
+                ccaName: ccaName,
+                conflictWith: cca.conflictOverride.conflictWith,
+                conflictTime: cca.conflictOverride.conflictTime,
+                reason: cca.conflictOverride.reason
+            });
+        }
+    });
+    
+    // 如果有冲突覆盖，首先显示特别提醒
+    if (conflictOverrides.length > 0) {
+        steps.push({
+            icon: '⚠️',
+            title: i18n.t('messages.conflictWarningTitle'),
+            description: i18n.t('messages.conflictWarningDesc'),
+            isConflictWarning: true,
+            conflicts: conflictOverrides
+        });
+    }
+    
     // 检查是否有精英体育项目
     const hasSports = selectedElitePrograms.some(p => p.category === 'sports');
     if (hasSports) {
         steps.push({
             icon: '⚽',
-            title: '精英体育校队报名',
-            description: '填写精英体育报名表，等待体育部负责老师联系确认选拔时间',
-            buttonText: '填写精英体育报名表 →',
+            title: i18n.t('messages.regStepEliteSports'),
+            description: i18n.t('messages.regEliteSportsDesc'),
+            buttonText: i18n.t('buttons.fillSportsForm'),
             buttonUrl: 'https://harrownanning-est.feishu.cn/share/base/form/shrcnCAHxjkVeIqUdu9b2NLGzBe'
         });
     }
@@ -1186,9 +1856,9 @@ function generateRegistrationGuidePreview() {
     if (hasMusic) {
         steps.push({
             icon: '🎵',
-            title: '哈罗音乐学院报名',
-            description: '填写音乐学院报名表，选择合适的上课时间',
-            buttonText: '填写音乐学院报名表 →',
+            title: i18n.t('messages.regStepMusicAcademy'),
+            description: i18n.t('messages.regMusicAcademyDesc'),
+            buttonText: i18n.t('buttons.fillMusicForm'),
             buttonUrl: 'https://harronnanning-est.feishu.cn/share/base/form/shrcn7k4bm3JYJZM5AzcQWSvcOq'
         });
     }
@@ -1198,9 +1868,9 @@ function generateRegistrationGuidePreview() {
     if (hasDebate) {
         steps.push({
             icon: '🗣️',
-            title: '"以言论道"思辨社报名',
-            description: '在企业微信上联系辩论队教练组：欧老师 Kasey Ou（中文教育组组长）、谭老师 Lily Tan（高年级）、梁老师 Nicky Liang（小学部）',
-            buttonText: '记住联系方式',
+            title: i18n.t('messages.regStepDebate'),
+            description: i18n.t('messages.regDebateDesc'),
+            buttonText: i18n.t('buttons.rememberContact'),
             buttonAction: 'showDebateContact'
         });
     }
@@ -1210,9 +1880,9 @@ function generateRegistrationGuidePreview() {
     if (hasOtherAcademic) {
         steps.push({
             icon: '🏆',
-            title: '学术竞赛队伍报名',
-            description: '联系拓展部负责老师：唐齐昌 Ryan Tang 或 陈老师 Yackey Chen',
-            buttonText: '查看联系方式（见页面底部）',
+            title: i18n.t('messages.regStepAcademicComp'),
+            description: i18n.t('messages.regAcademicCompDesc'),
+            buttonText: i18n.t('buttons.viewContactInfo'),
             buttonAction: 'scrollToContact'
         });
     }
@@ -1223,9 +1893,9 @@ function generateRegistrationGuidePreview() {
     if (hasEnglishFoundation || hasIELTS) {
         steps.push({
             icon: '📖',
-            title: '宏博中心课程报名',
-            description: '在企业微信上联系 龚安琪 Angel Gong 老师',
-            buttonText: '记住联系方式',
+            title: i18n.t('messages.regStepHub'),
+            description: i18n.t('messages.regHubDesc'),
+            buttonText: i18n.t('buttons.rememberContact'),
             buttonAction: 'showHubContact'
         });
     }
@@ -1235,9 +1905,9 @@ function generateRegistrationGuidePreview() {
     if (hasMathSupport) {
         steps.push({
             icon: '🔢',
-            title: '中文数学支持课程报名',
-            description: '在企业微信上联系 唐齐昌 Ryan Tang 老师',
-            buttonText: '记住联系方式',
+            title: i18n.t('messages.regStepMathSupport'),
+            description: i18n.t('messages.regMathSupportDesc'),
+            buttonText: i18n.t('buttons.rememberContact'),
             buttonAction: 'showMathContact'
         });
     }
@@ -1249,9 +1919,9 @@ function generateRegistrationGuidePreview() {
     if (hasCCA) {
         steps.push({
             icon: '📚',
-            title: 'CCA 课程报名',
-            description: '登录 SchoolsBuddy 系统完成报名',
-            buttonText: '登录 SchoolsBuddy →',
+            title: i18n.t('messages.regStepCCA'),
+            description: i18n.t('messages.loginSchoolsBuddyDesc'),
+            buttonText: i18n.t('buttons.loginSchoolsBuddy'),
             buttonUrl: 'https://accounts.schoolsbuddy.cn/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fresponse_type%3Dcode%26client_id%3Dspa%26state%3Dcn4tTFhlR2dUeERCa0UuOEVGZjdONEtLaG8tazd0X2dXMW9pUkFOcTRGaUE1%26redirect_uri%3Dhttps%253A%252F%252Fharronnanning.schoolsbuddy.cn%26scope%3Dopenid%2520profile%2520coreAPI%2520offline_access%2520email%26code_challenge%3DEaCh8G7NXRXF8kroWfkmuGBpxx26-56x9dxuOTemyy0%26code_challenge_method%3DS256%26nonce%3Dcn4tTFhlR2dUeERCa0UuOEVGZjdONEtLaG8tazd0X2dXMW9pUkFOcTRGaUE1',
             loginGuide: true
         });
@@ -1260,8 +1930,63 @@ function generateRegistrationGuidePreview() {
     // 渲染步骤
     let html = '<div style="display: grid; gap: 1.5rem;">';
     steps.forEach((step, index) => {
+        // 如果是冲突警告，使用特殊布局
+        if (step.isConflictWarning) {
+            html += `
+                <div style="background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%); padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(220, 38, 38, 0.15); border: 3px solid #dc2626;">
+                    <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem;">
+                        <div style="font-size: 2.5rem; flex-shrink: 0;">${step.icon}</div>
+                        <div style="flex: 1;">
+                            <h4 style="color: #991b1b; margin: 0 0 0.5rem 0; font-size: 1.25rem; font-weight: 700;">${step.title}</h4>
+                            <p style="color: #7f1d1d; margin: 0; line-height: 1.6; font-weight: 500;">${step.description}</p>
+                        </div>
+                    </div>
+                    
+                    <div style="display: grid; gap: 1rem;">
+                        ${step.conflicts.map((conflict, idx) => `
+                            <div style="background: white; padding: 1.25rem; border-radius: 10px; border-left: 4px solid #dc2626;">
+                                <div style="margin-bottom: 1rem;">
+                                    <h5 style="color: #991b1b; margin: 0 0 0.75rem 0; font-size: 1rem; font-weight: 600;">
+                                        ${i18n.t('messages.conflictNumber')} ${idx + 1}：${conflict.day}
+                                    </h5>
+                                    <div style="display: grid; gap: 0.5rem; margin-bottom: 1rem;">
+                                        <div style="background: #fef3c7; padding: 0.75rem; border-radius: 6px;">
+                                            <p style="margin: 0; color: #78350f; font-size: 0.875rem;">
+                                                <strong>📚 ${i18n.t('messages.ccaCourse')}：</strong>${conflict.ccaName}<br>
+                                                <span style="color: #92400e;">${i18n.t('messages.time')}：16:00-17:00</span>
+                                            </p>
+                                        </div>
+                                        <div style="background: #fee2e2; padding: 0.75rem; border-radius: 6px;">
+                                            <p style="margin: 0; color: #7f1d1d; font-size: 0.875rem;">
+                                                <strong>🏆 ${i18n.t('messages.eliteProgramTime')}：</strong>${conflict.conflictWith}<br>
+                                                <span style="color: #991b1b;">${i18n.t('messages.time')}：${conflict.conflictTime}</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div style="background: #e0f2fe; padding: 1rem; border-radius: 8px; border-left: 4px solid #0284c7;">
+                                    <p style="color: #075985; margin: 0 0 0.5rem 0; font-size: 0.875rem; font-weight: 600;">
+                                        📝 ${i18n.t('messages.yourExplanation')}：
+                                    </p>
+                                    <p style="color: #0c4a6e; margin: 0; font-size: 0.875rem; line-height: 1.6; font-style: italic;">
+                                        "${conflict.reason}"
+                                    </p>
+                                </div>
+                                
+                                <div style="background: #fffbeb; padding: 0.875rem; border-radius: 8px; margin-top: 1rem; border-left: 4px solid #f59e0b;">
+                                    <p style="color: #92400e; margin: 0; font-size: 0.875rem; line-height: 1.6;">
+                                        <strong>⚠️ ${i18n.t('messages.importantNote')}：</strong>${i18n.t('messages.conflictNoteText')}
+                                    </p>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
         // 如果是CCA报名，使用特殊的整合布局
-        if (step.loginGuide) {
+        else if (step.loginGuide) {
             html += `
                 <div style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(21, 34, 66, 0.08); border-left: 4px solid #A69867;">
                     <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem;">
@@ -1279,24 +2004,24 @@ function generateRegistrationGuidePreview() {
                             <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
                                 <div style="font-size: 1.5rem; flex-shrink: 0;">🔑</div>
                                 <div style="flex: 1;">
-                                    <h5 style="color: #92400e; margin: 0 0 0.75rem 0; font-size: 1rem; font-weight: 600;">登录提示</h5>
+                                    <h5 style="color: #92400e; margin: 0 0 0.75rem 0; font-size: 1rem; font-weight: 600;">${i18n.t('messages.loginGuideKey')}</h5>
                                     
                                     <!-- 步骤1：进入登录页面 -->
                                     <div style="margin-bottom: 1rem;">
                                         <p style="color: #78350f; margin: 0 0 0.5rem 0; font-size: 0.875rem; font-weight: 600;">
                                             <span style="display: inline-block; background: #92400e; color: white; width: 20px; height: 20px; border-radius: 50%; text-align: center; line-height: 20px; font-size: 0.75rem; margin-right: 0.5rem;">1</span>
-                                            进入 SchoolsBuddy 登录页面后
+                                            ${i18n.t('messages.loginStep1Title')}
                                         </p>
                                         <div style="background: rgba(255,255,255,0.6); padding: 0.75rem; border-radius: 6px; margin-left: 1.75rem;">
                                             <p style="color: #78350f; margin: 0 0 0.5rem 0; font-size: 0.875rem;">
-                                                在页面<strong>最下方</strong>找到并点击：
+                                                ${i18n.t('messages.loginStep1Text')}
                                             </p>
                                             <div style="display: flex; align-items: center; gap: 0.5rem; background: #7b3f8f; padding: 0.5rem 0.75rem; border-radius: 6px; width: fit-content;">
                                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
                                                     <rect x="4" y="4" width="16" height="16" rx="2"/>
                                                     <text x="12" y="16" text-anchor="middle" fill="#7b3f8f" font-size="10" font-weight="bold">iS</text>
                                                 </svg>
-                                                <span style="color: white; font-weight: 600; font-size: 0.875rem;">iSAMS 登录</span>
+                                                <span style="color: white; font-weight: 600; font-size: 0.875rem;">${i18n.t('messages.iSAMSLogin')}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1305,11 +2030,11 @@ function generateRegistrationGuidePreview() {
                                     <div style="margin-bottom: 1rem;">
                                         <p style="color: #78350f; margin: 0 0 0.5rem 0; font-size: 0.875rem; font-weight: 600;">
                                             <span style="display: inline-block; background: #92400e; color: white; width: 20px; height: 20px; border-radius: 50%; text-align: center; line-height: 20px; font-size: 0.75rem; margin-right: 0.5rem;">2</span>
-                                            选择登录类型
+                                            ${i18n.t('messages.loginStep2Title')}
                                         </p>
                                         <div style="background: rgba(255,255,255,0.6); padding: 0.75rem; border-radius: 6px; margin-left: 1.75rem;">
                                             <p style="color: #78350f; margin: 0 0 0.5rem 0; font-size: 0.875rem;">
-                                                点击 <strong style="color: #92400e;">ISAMS (Parents)</strong> 按钮进入家长登录页面
+                                                ${i18n.t('messages.loginStep2Text')}
                                             </p>
                                         </div>
                                     </div>
@@ -1318,17 +2043,17 @@ function generateRegistrationGuidePreview() {
                                     <div style="margin-bottom: 0.75rem;">
                                         <p style="color: #78350f; margin: 0 0 0.5rem 0; font-size: 0.875rem; font-weight: 600;">
                                             <span style="display: inline-block; background: #92400e; color: white; width: 20px; height: 20px; border-radius: 50%; text-align: center; line-height: 20px; font-size: 0.75rem; margin-right: 0.5rem;">3</span>
-                                            输入您的登录信息
+                                            ${i18n.t('messages.loginStep3Title')}
                                         </p>
                                         <ul style="color: #78350f; margin: 0; padding-left: 3rem; font-size: 0.875rem; line-height: 1.6;">
-                                            <li><strong>用户名：</strong>您用来注册的邮箱（例如：1234567890@qq.com）</li>
-                                            <li><strong>密码：</strong>您注册设置的密码</li>
+                                            <li><strong>${i18n.t('messages.username')}：</strong>${i18n.t('messages.usernameExample')}</li>
+                                            <li><strong>${i18n.t('messages.password')}：</strong>${i18n.t('messages.passwordText')}</li>
                                         </ul>
                                     </div>
                                     
                                     <p style="color: #92400e; margin: 0; font-size: 0.875rem; display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem; background: rgba(255,255,255,0.6); border-radius: 6px;">
                                         <span>💡</span>
-                                        <span>如忘记密码请联系学校IT部门企业微信帐号：<strong>ITHelpDesk</strong> 重置</span>
+                                        <span>${i18n.t('messages.forgotPasswordTip')}</span>
                                     </p>
                                 </div>
                             </div>
@@ -1338,7 +2063,7 @@ function generateRegistrationGuidePreview() {
                         <div style="padding: 1rem;">
                             <button onclick="window.open('${step.buttonUrl}', '_blank')" 
                                     style="width: 100%; padding: 1rem 1.5rem; background: linear-gradient(135deg, #152242 0%, #1e3158 100%); color: white; border: none; border-radius: 8px; font-size: 1.125rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(21, 34, 66, 0.3); display: flex; align-items: center; justify-content: center; gap: 0.5rem; position: relative;">
-                                <span style="position: relative; z-index: 2;">登录 SchoolsBuddy</span>
+                                <span style="position: relative; z-index: 2;">${i18n.t('messages.loginToSchoolsBuddy')}</span>
                                 <span style="font-size: 1.25rem; position: relative; z-index: 2;">→</span>
                             </button>
                         </div>
@@ -1368,7 +2093,7 @@ function generateRegistrationGuidePreview() {
     html += '</div>';
     
     if (steps.length === 0) {
-        html = '<div style="text-align: center; padding: 2rem; color: #9ca3af;">您没有需要额外报名的项目</div>';
+        html = `<div style="text-align: center; padding: 2rem; color: #9ca3af;">${i18n.t('messages.noExtraRegistration')}</div>`;
     }
     
     container.innerHTML = html;
@@ -1376,17 +2101,17 @@ function generateRegistrationGuidePreview() {
 
 // 辅助函数
 function showDebateContact() {
-    alert('请在企业微信上联系辩论队教练组：\n\n【中文教育组组长】\n欧老师 Kasey Ou\n\n【高年级教练】\n谭老师 Lily Tan\n\n【小学部教练】\n梁老师 Nicky Liang\n\n请根据您的年级联系对应的教练老师');
+    alert(i18n.t('messages.debateContact'));
 }
 
 function showHubContact() {
-    alert('请在企业微信上联系：\n\n龚安琪 Angel Gong 老师\n\n说明您需要的课程（英语基础/雅思进阶）');
+    alert(i18n.t('messages.hubContact'));
 }
 
 function showMathContact() {
-    alert('请在企业微信上联系：\n\n唐齐昌 Ryan Tang 老师\n\n说明您需要中文数学支持课程');
+    alert(i18n.t('messages.mathContact'));
 }
 
 function scrollToContact() {
-    alert('请查看页面底部的拓展部联系方式');
+    alert(i18n.t('messages.checkContactInfo'));
 }

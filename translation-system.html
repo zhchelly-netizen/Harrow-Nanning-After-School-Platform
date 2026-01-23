@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>翻译管理系统 | Translation Management System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        /* 侧边栏 */
+        .sidebar {
+            width: 280px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .sidebar-header {
+            padding: 2rem;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+        }
+        
+        .sidebar-header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .sidebar-header p {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+        
+        .sidebar-nav {
+            flex: 1;
+            padding: 1.5rem 0;
+        }
+        
+        .nav-item {
+            padding: 1rem 2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-left: 4px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: #475569;
+            font-weight: 500;
+        }
+        
+        .nav-item:hover {
+            background: #f1f5f9;
+            border-left-color: #3b82f6;
+        }
+        
+        .nav-item.active {
+            background: #eff6ff;
+            border-left-color: #3b82f6;
+            color: #1e40af;
+        }
+        
+        .nav-icon {
+            font-size: 1.5rem;
+        }
+        
+        .sidebar-footer {
+            padding: 1.5rem 2rem;
+            border-top: 1px solid #e2e8f0;
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+        
+        /* 主内容区 */
+        .main-content {
+            flex: 1;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        
+        .content-page {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .content-page.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* 页面容器 */
+        .page-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        .page-header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .page-header h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .page-header p {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+        
+        /* 统计卡片 */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            padding: 2rem;
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #3b82f6;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #10b981, #059669);
+            transition: width 0.3s;
+        }
+        
+        /* 控制栏 */
+        .controls {
+            padding: 1.5rem 2rem;
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .search-box {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.5rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+        }
+        
+        .filter-group {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: 2px solid #e2e8f0;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.875rem;
+        }
+        
+        .filter-btn:hover {
+            border-color: #3b82f6;
+            background: #eff6ff;
+        }
+        
+        .filter-btn.active {
+            background: #3b82f6;
+            color: white;
+            border-color: #3b82f6;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: #10b981;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+        
+        .btn-secondary {
+            background: #6366f1;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #4f46e5;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+        
+        /* 表格 */
+        .table-container {
+            padding: 2rem;
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        thead {
+            background: #f8fafc;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: #1e293b;
+            border-bottom: 2px solid #e2e8f0;
+            white-space: nowrap;
+            font-size: 0.95rem;
+        }
+        
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 0.95rem;
+        }
+        
+        tr:hover {
+            background: #f8fafc;
+        }
+        
+        .course-name {
+            font-weight: 600;
+            color: #1e293b;
+            font-size: 1rem;
+        }
+        
+        .course-id {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            font-family: monospace;
+        }
+        
+        .day-badge {
+            display: inline-block;
+            padding: 0.35rem 0.85rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .day-monday { background: #fef3c7; color: #92400e; }
+        .day-tuesday { background: #dbeafe; color: #1e40af; }
+        .day-wednesday { background: #dcfce7; color: #166534; }
+        .day-thursday { background: #fce7f3; color: #9f1239; }
+        .day-sports { background: #fef3c7; color: #92400e; }
+        .day-music { background: #e0e7ff; color: #3730a3; }
+        .day-academic { background: #dcfce7; color: #166534; }
+        .day-hub { background: #dbeafe; color: #1e40af; }
+        .day-math { background: #fce7f3; color: #9f1239; }
+        
+        .translation-input {
+            width: 100%;
+            padding: 0.65rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            color: #1e293b;
+            transition: all 0.3s;
+        }
+        
+        .translation-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .translation-input.filled {
+            border-color: #10b981;
+            background: #f0fdf4;
+        }
+        
+        .translation-input.empty {
+            border-color: #fbbf24;
+            background: #fffbeb;
+        }
+        
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .status-completed {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        
+        .status-pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transform: translateY(200%);
+            transition: transform 0.3s;
+            z-index: 1000;
+        }
+        
+        .toast.show {
+            transform: translateY(0);
+        }
+        
+        .toast.success {
+            border-left: 4px solid #10b981;
+        }
+        
+        .toast.error {
+            border-left: 4px solid #ef4444;
+        }
+        
+        /* 响应式 */
+        @media (max-width: 1024px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+            }
+            
+            .sidebar-nav {
+                display: flex;
+                overflow-x: auto;
+                padding: 0;
+            }
+            
+            .nav-item {
+                flex-shrink: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h1>🌐 翻译管理系统</h1>
+                <p>Translation Management System</p>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-item active" data-page="cca-courses">
+                    <span class="nav-icon">📚</span>
+                    <span>CCA 课程翻译</span>
+                </div>
+                <div class="nav-item" data-page="elite-programs">
+                    <span class="nav-icon">🏆</span>
+                    <span>精英项目翻译</span>
+                </div>
+                <div class="nav-item" data-page="ui-text">
+                    <span class="nav-icon">🔧</span>
+                    <span>管理后台</span>
+                </div>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <p>© 2026 Harrow LiDe School Nanning</p>
+                <p>Enrichment Department</p>
+            </div>
+        </div>
+        
+        <!-- 主内容区 -->
+        <div class="main-content">
+            <!-- CCA 课程翻译页面 -->
+            <div class="content-page active" id="cca-courses-page">
+                <div class="page-container">
+                    <div class="page-header">
+                        <h2>📚 CCA 课程翻译管理</h2>
+                        <p>CCA Courses Translation Management</p>
+                    </div>
+                    
+                    <!-- 使用说明横幅 -->
+                    <div style="
+                        background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+                        color: white;
+                        padding: 1.5rem 2rem;
+                        margin: 0;
+                        border-bottom: 1px solid rgba(255,255,255,0.1);
+                    ">
+                        <div style="display: flex; align-items: start; gap: 1rem;">
+                            <div style="font-size: 2rem; flex-shrink: 0;">💡</div>
+                            <div style="flex: 1;">
+                                <h3 style="margin: 0 0 0.75rem 0; font-size: 1.1rem; font-weight: 600;">使用说明</h3>
+                                <ol style="margin: 0; padding-left: 1.25rem; line-height: 1.8; font-size: 0.95rem;">
+                                    <li>编辑翻译或点击"🤖 自动翻译全部"按钮</li>
+                                    <li>点击"💾 保存更新"下载 <code style="background: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 4px; font-family: monospace;">cca-data.js</code></li>
+                                    <li>将下载的文件<strong>替换</strong>到项目：<code style="background: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 4px; font-family: monospace;">harrow-portal/scripts/cca-data.js</code></li>
+                                    <li>刷新 CCA 规划页面（Ctrl+Shift+R），切换英文查看效果 ✨</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="stats">
+                        <div class="stat-card">
+                            <div class="stat-value" id="total-courses">0</div>
+                            <div class="stat-label">总课程数</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="translated-courses">0</div>
+                            <div class="stat-label">已翻译</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="pending-courses">0</div>
+                            <div class="stat-label">待翻译</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="completion-rate">0%</div>
+                            <div class="stat-label">完成率</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="controls">
+                        <div class="search-box">
+                            <span class="search-icon">🔍</span>
+                            <input type="text" id="search-input" placeholder="搜索课程名称、教师或ID...">
+                        </div>
+                        
+                        <div class="filter-group">
+                            <button class="filter-btn active" data-filter="all">全部</button>
+                            <button class="filter-btn" data-filter="cca">CCA课程</button>
+                            <button class="filter-btn" data-filter="elite">精英项目</button>
+                            <button class="filter-btn" data-filter="monday">周一</button>
+                            <button class="filter-btn" data-filter="tuesday">周二</button>
+                            <button class="filter-btn" data-filter="wednesday">周三</button>
+                            <button class="filter-btn" data-filter="thursday">周四</button>
+                            <button class="filter-btn" data-filter="translated">已翻译</button>
+                            <button class="filter-btn" data-filter="pending">待翻译</button>
+                        </div>
+                        
+                        <div class="action-buttons">
+                            <button class="btn btn-secondary" onclick="autoTranslateAll()">🤖 自动翻译全部</button>
+                            <button class="btn btn-secondary" onclick="exportData()">📥 导出JSON</button>
+                            <button class="btn btn-primary" onclick="saveTranslations()">💾 保存更新</button>
+                        </div>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table id="courses-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 100px;">状态</th>
+                                    <th style="width: 120px;">类型</th>
+                                    <th style="width: 120px;">ID</th>
+                                    <th style="width: 250px;">中文名称</th>
+                                    <th style="width: 350px;">英文名称 (nameEn)</th>
+                                    <th style="width: 180px;">时间/教师</th>
+                                    <th style="width: 120px;">年级</th>
+                                </tr>
+                            </thead>
+                            <tbody id="courses-tbody">
+                                <!-- 动态生成 -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 精英项目翻译页面 -->
+            <div class="content-page" id="elite-programs-page">
+                <div class="page-container">
+                    <div class="page-header">
+                        <h2>🏆 精英项目翻译管理</h2>
+                        <p>Elite Programmes Translation Management</p>
+                    </div>
+                    <div style="padding: 3rem; text-align: center; color: #64748b;">
+                        <div style="font-size: 4rem; margin-bottom: 1rem;">🚧</div>
+                        <h3 style="margin-bottom: 0.5rem;">功能开发中</h3>
+                        <p>Under Development</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 界面文本翻译页面 / 管理后台 -->
+            <div class="content-page" id="ui-text-page">
+                <div class="page-container">
+                    <div class="page-header">
+                        <h2>🔧 管理后台</h2>
+                        <p>Administration Dashboard</p>
+                    </div>
+                    
+                    <div style="padding: 3rem;">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                            <!-- 翻译管理系统卡片 -->
+                            <div style="
+                                background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+                                color: white;
+                                padding: 2rem;
+                                border-radius: 16px;
+                                box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+                                cursor: pointer;
+                                transition: all 0.3s;
+                            " onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(16, 185, 129, 0.4)'" onmouseout="this.style.transform=''; this.style.boxShadow='0 10px 30px rgba(16, 185, 129, 0.3)'" onclick="document.querySelector('[data-page=cca-courses]').click()">
+                                <div style="font-size: 3rem; margin-bottom: 1rem;">🌐</div>
+                                <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem;">翻译管理系统</h3>
+                                <p style="opacity: 0.9; margin-bottom: 1rem; line-height: 1.6;">
+                                    管理所有 CCA 课程和精英项目的英文翻译，支持自动翻译和手动编辑
+                                </p>
+                                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
+                                    <span style="background: rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.875rem;">📚 CCA 课程</span>
+                                    <span style="background: rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.875rem;">🏆 精英项目</span>
+                                    <span style="background: rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.875rem;">🤖 自动翻译</span>
+                                    <span style="background: rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.875rem;">✏️ 可编辑</span>
+                                </div>
+                                <div style="
+                                    background: rgba(255,255,255,0.2);
+                                    padding: 0.75rem 1.5rem;
+                                    border-radius: 8px;
+                                    text-align: center;
+                                    font-weight: 600;
+                                ">
+                                    进入翻译系统 →
+                                </div>
+                            </div>
+                            
+                            <!-- 数据管理卡片 -->
+                            <div style="
+                                background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+                                color: white;
+                                padding: 2rem;
+                                border-radius: 16px;
+                                box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
+                                opacity: 0.6;
+                                cursor: not-allowed;
+                            ">
+                                <div style="font-size: 3rem; margin-bottom: 1rem;">📊</div>
+                                <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem;">数据管理</h3>
+                                <p style="opacity: 0.9; margin-bottom: 1rem; line-height: 1.6;">
+                                    管理课程数据、学生信息、报名记录等核心数据
+                                </p>
+                                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
+                                    <span style="background: rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.875rem;">📝 课程数据</span>
+                                    <span style="background: rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.875rem;">👥 学生信息</span>
+                                    <span style="background: rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.875rem;">📋 报名记录</span>
+                                </div>
+                                <div style="
+                                    background: rgba(255,255,255,0.2);
+                                    padding: 0.75rem 1.5rem;
+                                    border-radius: 8px;
+                                    text-align: center;
+                                    font-weight: 600;
+                                ">
+                                    开发中...
+                                </div>
+                            </div>
+                            
+                            <!-- 数据分析卡片 -->
+                            <div style="
+                                background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+                                color: white;
+                                padding: 2rem;
+                                border-radius: 16px;
+                                box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+                                opacity: 0.6;
+                                cursor: not-allowed;
+                            ">
+                                <div style="font-size: 3rem; margin-bottom: 1rem;">📈</div>
+                                <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem;">数据分析</h3>
+                                <p style="opacity: 0.9; margin-bottom: 1rem; line-height: 1.6;">
+                                    查看课程报名统计、学生参与度分析、热门课程排行等
+                                </p>
+                                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
+                                    <span style="background: rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.875rem;">📊 统计报表</span>
+                                    <span style="background: rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.875rem;">📉 趋势分析</span>
+                                    <span style="background: rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.875rem;">🏅 排行榜</span>
+                                </div>
+                                <div style="
+                                    background: rgba(255,255,255,0.2);
+                                    padding: 0.75rem 1.5rem;
+                                    border-radius: 8px;
+                                    text-align: center;
+                                    font-weight: 600;
+                                ">
+                                    开发中...
+                                </div>
+                            </div>
+                            
+                            <!-- 返回首页卡片 -->
+                            <div style="
+                                background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+                                color: white;
+                                padding: 2rem;
+                                border-radius: 16px;
+                                box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+                                cursor: pointer;
+                                transition: all 0.3s;
+                            " onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(99, 102, 241, 0.4)'" onmouseout="this.style.transform=''; this.style.boxShadow='0 10px 30px rgba(99, 102, 241, 0.3)'" onclick="window.location.href='index.html'">
+                                <div style="font-size: 3rem; margin-bottom: 1rem;">🏠</div>
+                                <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem;">返回首页</h3>
+                                <p style="opacity: 0.9; margin-bottom: 1rem; line-height: 1.6;">
+                                    返回南宁哈罗礼德学校课后发展平台首页
+                                </p>
+                                <div style="
+                                    background: rgba(255,255,255,0.2);
+                                    padding: 0.75rem 1.5rem;
+                                    border-radius: 8px;
+                                    text-align: center;
+                                    font-weight: 600;
+                                    margin-top: 2.5rem;
+                                ">
+                                    返回首页 →
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="toast" id="toast">
+        <span id="toast-icon">✅</span>
+        <span id="toast-message">操作成功</span>
+    </div>
+    
+    <script src="scripts/cca-data.js"></script>
+    <script>
+        let coursesData = [];
+        let currentFilter = 'all';
+        let searchQuery = '';
+        
+        // 精英项目数据
+        const ELITE_PROGRAMS = [
+            // 精英体育
+            { id: 'elite-football-primary', name: '⚽ 足球（小学）', nameEn: '', category: 'sports', type: 'elite', schedule: '周二、周四 16:00-17:00', grades: 'G1-G5' },
+            { id: 'elite-football-secondary', name: '⚽ 足球（中学）', nameEn: '', category: 'sports', type: 'elite', schedule: '周一、周二、周四 16:00-18:00', grades: 'G6+' },
+            { id: 'elite-basketball-primary', name: '🏀 篮球（小学）', nameEn: '', category: 'sports', type: 'elite', schedule: '周三、周五 16:00-17:30', grades: 'G1-G5' },
+            { id: 'elite-basketball-secondary', name: '🏀 篮球（中学）', nameEn: '', category: 'sports', type: 'elite', schedule: '周二、周四 16:00-17:30', grades: 'G6+' },
+            { id: 'elite-swimming-team', name: '🏊 游泳一队', nameEn: '', category: 'sports', type: 'elite', schedule: '周一、周三、周四、周六、周日 16:00-18:00', grades: '全年级' },
+            { id: 'elite-swimming-reserve', name: '🏊 游泳预备队', nameEn: '', category: 'sports', type: 'elite', schedule: '周一、周三、周六、周日 16:00-17:30', grades: '全年级' },
+            { id: 'elite-badminton', name: '🏸 羽毛球队', nameEn: '', category: 'sports', type: 'elite', schedule: '周二、周五、周日 16:00-17:30', grades: '全年级' },
+            { id: 'elite-golf', name: '⛳ 高尔夫', nameEn: '', category: 'sports', type: 'elite', schedule: '定制时间', grades: '全年级' },
+            { id: 'elite-equestrian', name: '🐴 马术', nameEn: '', category: 'sports', type: 'elite', schedule: '定制时间', grades: '全年级' },
+            { id: 'elite-tennis', name: '🎾 网球', nameEn: '', category: 'sports', type: 'elite', schedule: '定制时间', grades: '全年级' },
+            { id: 'elite-skating', name: '⛸️ 花样滑冰', nameEn: '', category: 'sports', type: 'elite', schedule: '定制时间', grades: '全年级' },
+            
+            // 音乐学院
+            { id: 'elite-piano', name: '🎹 钢琴', nameEn: '', category: 'music', type: 'elite', schedule: '定制时间', grades: '全年级' },
+            { id: 'elite-violin', name: '🎻 小提琴', nameEn: '', category: 'music', type: 'elite', schedule: '定制时间', grades: '全年级' },
+            { id: 'elite-guitar', name: '🎸 吉他', nameEn: '', category: 'music', type: 'elite', schedule: '定制时间', grades: '全年级' },
+            { id: 'elite-drums', name: '🥁 架子鼓', nameEn: '', category: 'music', type: 'elite', schedule: '定制时间', grades: '全年级' },
+            { id: 'elite-vocal', name: '🎤 声乐', nameEn: '', category: 'music', type: 'elite', schedule: '定制时间', grades: '全年级' },
+            { id: 'elite-other-instrument', name: '🎼 其他乐器', nameEn: '', category: 'music', type: 'elite', schedule: '定制时间', grades: '全年级' },
+            { id: 'elite-band', name: '🎸 无主乐队', nameEn: '', category: 'music', type: 'elite', schedule: '周一 16:00-17:00', grades: 'G6+' },
+            
+            // 学术竞赛
+            { id: 'elite-debate', name: '🗣️ "以言论道"思辨社', nameEn: '', category: 'academic', type: 'elite', schedule: '周三 16:00-17:00', grades: 'G4+' },
+            
+            // 宏博中心
+            { id: 'elite-english-foundation', name: '📖 英语基础', nameEn: '', category: 'hub', type: 'elite', schedule: '定制时间', grades: 'G4+' },
+            { id: 'elite-ielts-advanced', name: '📝 雅思进阶', nameEn: '', category: 'hub', type: 'elite', schedule: '周二、周四', grades: 'G4+' },
+            
+            // 数学支持
+            { id: 'elite-math-support', name: '🔢 中文数学支持', nameEn: '', category: 'math', type: 'elite', schedule: '周四 16:00-17:00', grades: 'G9' }
+        ];
+        
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCoursesData();
+            renderTable();
+            updateStats();
+            bindEvents();
+            bindNavigation();
+            
+            // 检查 URL hash，如果是 #admin 则切换到管理后台页面
+            if (window.location.hash === '#admin') {
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                document.querySelector('[data-page="ui-text"]').classList.add('active');
+                document.querySelectorAll('.content-page').forEach(p => p.classList.remove('active'));
+                document.getElementById('ui-text-page').classList.add('active');
+            }
+        });
+        
+        // 导航切换
+        function bindNavigation() {
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const page = this.dataset.page;
+                    
+                    // 更新导航状态
+                    document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // 切换页面
+                    document.querySelectorAll('.content-page').forEach(p => p.classList.remove('active'));
+                    document.getElementById(page + '-page').classList.add('active');
+                });
+            });
+        }
+        
+        function loadCoursesData() {
+            coursesData = [];
+            
+            // 加载 CCA 课程
+            Object.keys(CCA_COURSES).forEach(day => {
+                CCA_COURSES[day].forEach(course => {
+                    coursesData.push({
+                        ...course,
+                        day: day,
+                        type: 'cca',
+                        // 保留现有的 nameEn，不自动覆盖
+                        nameEn: course.nameEn || ''
+                    });
+                });
+            });
+            
+            // 加载精英项目
+            ELITE_PROGRAMS.forEach(program => {
+                coursesData.push({
+                    ...program,
+                    day: 'elite', // 标记为精英项目
+                    teacher: program.schedule,
+                    grades: [program.grades],
+                    // 保留现有的 nameEn，不自动覆盖
+                    nameEn: program.nameEn || ''
+                });
+            });
+            
+            console.log('Loaded courses:', coursesData.length);
+        }
+        
+        // 自动翻译函数
+        function autoTranslate(chineseName) {
+            // 移除 emoji 和特殊符号
+            let cleanName = chineseName.replace(/[⚽🏀🏊🏸⛳🐴🎾⛸️🎹🎻🎸🥁🎤🎼🗣️📖📝🔢]/g, '').trim();
+            
+            // 翻译映射表
+            const translations = {
+                // 体育类
+                '滑板': 'Skateboarding',
+                '足球': 'Football',
+                '篮球': 'Basketball',
+                '游泳一队': 'Swimming Team 1',
+                '游泳预备队': 'Swimming Reserve Team',
+                '羽毛球队': 'Badminton Team',
+                '高尔夫': 'Golf',
+                '马术': 'Equestrian',
+                '网球': 'Tennis',
+                '花样滑冰': 'Figure Skating',
+                
+                // 音乐类
+                '钢琴': 'Piano',
+                '小提琴': 'Violin',
+                '吉他': 'Guitar',
+                '架子鼓': 'Drums',
+                '声乐': 'Vocal',
+                '其他乐器': 'Other Instruments',
+                '无主乐队': 'Anarchist Band',
+                
+                // 学术类
+                '"以言论道"思辨社': 'Debate Society',
+                '英语基础': 'English Foundation',
+                '雅思进阶': 'IELTS Advanced',
+                '中文数学支持': 'Chinese Maths Support',
+                
+                // 通用词汇
+                '小学部': 'Primary',
+                '中学部': 'Secondary',
+                '小学': 'Primary',
+                '中学': 'Secondary',
+                '编程': 'Programming',
+                '多元艺术': 'Multi-Arts',
+                '国际象棋': 'Chess',
+                '围棋': 'Go',
+                '匹克球': 'Pickleball',
+                '机器魁地奇': 'Drone Quidditch',
+                '无人机足球': 'Drone Football',
+                '社交舞蹈游戏': 'Social Dance Games',
+                '袋鼠数学': 'Math Kangaroo',
+                '科学知识挑战训练营': 'Science Challenge Camp',
+                '英语畅读': 'English Reading',
+                '物理支持': 'Physics Support',
+                '剑桥英语考级': 'Cambridge English Exam',
+                '3D建模与设计': '3D Modeling & Design',
+                '中国毛笔书法': 'Chinese Calligraphy',
+                '企业家俱乐部': 'Entrepreneurship Club',
+                '古诗词鉴赏': 'Classical Poetry Appreciation',
+                '趣味乐高积木': 'Fun LEGO',
+                '三维立体人物绘画': '3D Character Drawing',
+                '流行乐队': 'Pop Band',
+                '折纸艺术': 'Origami Art',
+                '美国英语大联盟': 'American English League',
+                '信息学竞赛': 'Informatics Competition',
+                '高中部': 'Senior School',
+                '中学初级': 'Junior Secondary'
+            };
+            
+            // 尝试完全匹配
+            if (translations[cleanName]) {
+                return translations[cleanName];
+            }
+            
+            // 尝试部分匹配
+            for (let key in translations) {
+                if (cleanName.includes(key)) {
+                    let result = translations[key];
+                    
+                    // 处理年级标注
+                    if (cleanName.includes('小学部') || cleanName.includes('小学')) {
+                        result += ' (Primary)';
+                    } else if (cleanName.includes('中学部') || cleanName.includes('中学')) {
+                        result += ' (Secondary)';
+                    } else if (cleanName.includes('高中部')) {
+                        result += ' (Senior)';
+                    }
+                    
+                    // 处理年级范围
+                    const gradeMatch = cleanName.match(/\(G(\d+)-(\d+)\)/);
+                    if (gradeMatch) {
+                        result += ` (G${gradeMatch[1]}-${gradeMatch[2]})`;
+                    }
+                    
+                    return result;
+                }
+            }
+            
+            // 如果没有匹配，返回空字符串（等待手动填写）
+            return '';
+        }
+        
+        // 自动翻译全部未翻译的项目
+        function autoTranslateAll() {
+            let count = 0;
+            coursesData.forEach(course => {
+                if (!course.nameEn || course.nameEn === '') {
+                    const translated = autoTranslate(course.name);
+                    if (translated) {
+                        course.nameEn = translated;
+                        count++;
+                    }
+                }
+            });
+            
+            renderTable();
+            updateStats();
+            showToast(`🤖 已自动翻译 ${count} 个项目，请检查并修改`, 'success');
+        }
+        
+        function renderTable() {
+            const tbody = document.getElementById('courses-tbody');
+            tbody.innerHTML = '';
+            
+            const filteredCourses = coursesData.filter(course => {
+                // 过滤器
+                if (currentFilter !== 'all') {
+                    if (currentFilter === 'cca' && course.type !== 'cca') return false;
+                    if (currentFilter === 'elite' && course.type !== 'elite') return false;
+                    if (currentFilter === 'translated' && !course.nameEn) return false;
+                    if (currentFilter === 'pending' && course.nameEn) return false;
+                    if (['monday', 'tuesday', 'wednesday', 'thursday'].includes(currentFilter) && course.day !== currentFilter) return false;
+                }
+                
+                // 搜索
+                if (searchQuery) {
+                    const query = searchQuery.toLowerCase();
+                    return course.name.toLowerCase().includes(query) ||
+                           course.id.toLowerCase().includes(query) ||
+                           (course.teacher && course.teacher.toLowerCase().includes(query)) ||
+                           (course.nameEn && course.nameEn.toLowerCase().includes(query));
+                }
+                
+                return true;
+            });
+            
+            filteredCourses.forEach(course => {
+                const row = document.createElement('tr');
+                
+                const dayNames = {
+                    monday: '周一',
+                    tuesday: '周二',
+                    wednesday: '周三',
+                    thursday: '周四',
+                    elite: '精英项目'
+                };
+                
+                const typeLabels = {
+                    sports: '🏆 精英体育',
+                    music: '🎵 音乐学院',
+                    academic: '🎓 学术竞赛',
+                    hub: '📖 宏博中心',
+                    math: '🔢 数学支持'
+                };
+                
+                let typeDisplay = '';
+                let typeClass = '';
+                
+                if (course.type === 'elite') {
+                    typeDisplay = typeLabels[course.category] || '精英项目';
+                    typeClass = `day-${course.category}`;
+                } else {
+                    typeDisplay = dayNames[course.day] || course.day;
+                    typeClass = `day-${course.day}`;
+                }
+                
+                const statusClass = course.nameEn ? 'status-completed' : 'status-pending';
+                const statusText = course.nameEn ? '✓ 已翻译' : '⏳ 待翻译';
+                const inputClass = course.nameEn ? 'filled' : 'empty';
+                
+                const teacherOrSchedule = course.type === 'elite' ? course.teacher : course.teacher;
+                const gradesDisplay = Array.isArray(course.grades) ? course.grades.join(', ') : course.grades;
+                
+                row.innerHTML = `
+                    <td>
+                        <span class="status-badge ${statusClass}">${statusText}</span>
+                    </td>
+                    <td>
+                        <span class="day-badge ${typeClass}">${typeDisplay}</span>
+                    </td>
+                    <td>
+                        <div class="course-id">${course.id}</div>
+                    </td>
+                    <td>
+                        <div class="course-name">${course.name}</div>
+                    </td>
+                    <td>
+                        <input 
+                            type="text" 
+                            class="translation-input ${inputClass}" 
+                            value="${course.nameEn}" 
+                            data-course-id="${course.id}"
+                            placeholder="输入英文名称..."
+                            oninput="handleInputChange(this)"
+                        >
+                    </td>
+                    <td style="font-size: 0.85rem;">${teacherOrSchedule}</td>
+                    <td style="font-size: 0.8rem; color: #64748b;">${gradesDisplay}</td>
+                `;
+                
+                tbody.appendChild(row);
+            });
+        }
+        
+        function handleInputChange(input) {
+            const courseId = input.dataset.courseId;
+            const value = input.value.trim();
+            
+            // 更新数据
+            const course = coursesData.find(c => c.id === courseId);
+            if (course) {
+                course.nameEn = value;
+            }
+            
+            // 更新样式
+            if (value) {
+                input.classList.remove('empty');
+                input.classList.add('filled');
+            } else {
+                input.classList.remove('filled');
+                input.classList.add('empty');
+            }
+            
+            // 更新统计
+            updateStats();
+        }
+        
+        function updateStats() {
+            const total = coursesData.length;
+            const translated = coursesData.filter(c => c.nameEn).length;
+            const pending = total - translated;
+            const rate = Math.round((translated / total) * 100);
+            
+            document.getElementById('total-courses').textContent = total;
+            document.getElementById('translated-courses').textContent = translated;
+            document.getElementById('pending-courses').textContent = pending;
+            document.getElementById('completion-rate').textContent = rate + '%';
+            document.getElementById('progress-fill').style.width = rate + '%';
+        }
+        
+        function bindEvents() {
+            // 搜索
+            document.getElementById('search-input').addEventListener('input', function(e) {
+                searchQuery = e.target.value;
+                renderTable();
+            });
+            
+            // 过滤器
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    currentFilter = this.dataset.filter;
+                    renderTable();
+                });
+            });
+        }
+        
+        function saveTranslations() {
+            // 生成更新后的 CCA 数据
+            const updatedCCAData = {};
+            
+            Object.keys(CCA_COURSES).forEach(day => {
+                updatedCCAData[day] = CCA_COURSES[day].map(course => {
+                    const updated = coursesData.find(c => c.id === course.id && c.type === 'cca');
+                    return {
+                        ...course,
+                        nameEn: updated ? updated.nameEn : ''
+                    };
+                });
+            });
+            
+            // 生成 CCA JavaScript 代码
+            let ccaCode = `// ===================================\n`;
+            ccaCode += `// CCA 课程数据配置文件\n`;
+            ccaCode += `// 南宁哈罗礼德学校 25-26 S2 课程列表\n`;
+            ccaCode += `// ===================================\n\n`;
+            ccaCode += `const CCA_COURSES = {\n`;
+            
+            Object.keys(updatedCCAData).forEach((day, dayIndex) => {
+                const dayNames = {
+                    monday: '周一',
+                    tuesday: '周二',
+                    wednesday: '周三',
+                    thursday: '周四'
+                };
+                
+                ccaCode += `    // ${dayNames[day]}课程\n`;
+                ccaCode += `    ${day}: [\n`;
+                
+                updatedCCAData[day].forEach((course, index) => {
+                    ccaCode += `        { `;
+                    ccaCode += `id: '${course.id}', `;
+                    ccaCode += `name: '${course.name}', `;
+                    if (course.nameEn) {
+                        ccaCode += `nameEn: '${course.nameEn}', `;
+                    }
+                    ccaCode += `teacher: '${course.teacher}', `;
+                    ccaCode += `grades: [${course.grades.map(g => `'${g}'`).join(',')}], `;
+                    ccaCode += `fee: '${course.fee}', `;
+                    ccaCode += `category: '${course.category}'`;
+                    if (course.inviteOnly) {
+                        ccaCode += `, inviteOnly: true`;
+                    }
+                    ccaCode += ` }`;
+                    
+                    if (index < updatedCCAData[day].length - 1) {
+                        ccaCode += `,\n`;
+                    } else {
+                        ccaCode += `\n`;
+                    }
+                });
+                
+                ccaCode += `    ]`;
+                
+                if (dayIndex < Object.keys(updatedCCAData).length - 1) {
+                    ccaCode += `,\n\n`;
+                } else {
+                    ccaCode += `\n`;
+                }
+            });
+            
+            ccaCode += `};\n`;
+            
+            // 下载 CCA 文件
+            const ccaBlob = new Blob([ccaCode], { type: 'text/javascript' });
+            const ccaUrl = URL.createObjectURL(ccaBlob);
+            const ccaLink = document.createElement('a');
+            ccaLink.href = ccaUrl;
+            ccaLink.download = 'cca-data.js';
+            ccaLink.click();
+            URL.revokeObjectURL(ccaUrl);
+            
+            // 生成精英项目 JSON 数据
+            const eliteData = coursesData.filter(c => c.type === 'elite').map(program => ({
+                id: program.id,
+                name: program.name,
+                nameEn: program.nameEn,
+                category: program.category,
+                schedule: program.teacher,
+                grades: program.grades
+            }));
+            
+            const eliteJson = JSON.stringify(eliteData, null, 2);
+            const eliteBlob = new Blob([eliteJson], { type: 'application/json' });
+            const eliteUrl = URL.createObjectURL(eliteBlob);
+            const eliteLink = document.createElement('a');
+            eliteLink.href = eliteUrl;
+            eliteLink.download = 'elite-programs-translations.json';
+            eliteLink.click();
+            URL.revokeObjectURL(eliteUrl);
+            
+            showToast('✅ 文件已生成并下载！CCA数据: cca-data.js，精英项目: elite-programs-translations.json', 'success');
+            
+            // 显示替换说明
+            setTimeout(() => {
+                showReplaceInstructions();
+            }, 2000);
+        }
+        
+        function exportData() {
+            const jsonData = JSON.stringify(coursesData, null, 2);
+            const blob = new Blob([jsonData], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'cca-translations.json';
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            showToast('📥 JSON数据已导出', 'success');
+        }
+        
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const icon = document.getElementById('toast-icon');
+            const msg = document.getElementById('toast-message');
+            
+            icon.textContent = type === 'success' ? '✅' : '❌';
+            msg.textContent = message;
+            toast.className = `toast ${type} show`;
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+        
+        function showReplaceInstructions() {
+            const dialog = document.createElement('div');
+            dialog.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.7);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10000;
+                animation: fadeIn 0.3s;
+            `;
+            
+            dialog.innerHTML = `
+                <div style="
+                    background: white;
+                    border-radius: 16px;
+                    padding: 2.5rem;
+                    max-width: 600px;
+                    width: 90%;
+                    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+                    animation: slideUp 0.3s;
+                ">
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">📝</div>
+                        <h2 style="color: #1e293b; margin: 0 0 0.5rem 0;">重要提示：替换文件</h2>
+                        <p style="color: #64748b; margin: 0;">请按照以下步骤完成翻译更新</p>
+                    </div>
+                    
+                    <div style="background: #f8fafc; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                        <div style="display: flex; align-items: start; gap: 1rem; margin-bottom: 1rem;">
+                            <div style="
+                                background: #3b82f6;
+                                color: white;
+                                width: 32px;
+                                height: 32px;
+                                border-radius: 50%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-weight: bold;
+                                flex-shrink: 0;
+                            ">1</div>
+                            <div>
+                                <strong style="color: #1e293b; display: block; margin-bottom: 0.25rem;">找到下载的文件</strong>
+                                <p style="color: #64748b; margin: 0; font-size: 0.9rem;">
+                                    在浏览器下载文件夹中找到 <code style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px; color: #0f172a;">cca-data.js</code>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: start; gap: 1rem; margin-bottom: 1rem;">
+                            <div style="
+                                background: #3b82f6;
+                                color: white;
+                                width: 32px;
+                                height: 32px;
+                                border-radius: 50%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-weight: bold;
+                                flex-shrink: 0;
+                            ">2</div>
+                            <div>
+                                <strong style="color: #1e293b; display: block; margin-bottom: 0.25rem;">替换原文件</strong>
+                                <p style="color: #64748b; margin: 0; font-size: 0.9rem;">
+                                    将下载的文件复制到项目目录：<br>
+                                    <code style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px; color: #0f172a;">harrow-portal/scripts/cca-data.js</code>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: start; gap: 1rem;">
+                            <div style="
+                                background: #3b82f6;
+                                color: white;
+                                width: 32px;
+                                height: 32px;
+                                border-radius: 50%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-weight: bold;
+                                flex-shrink: 0;
+                            ">3</div>
+                            <div>
+                                <strong style="color: #1e293b; display: block; margin-bottom: 0.25rem;">刷新页面查看效果</strong>
+                                <p style="color: #64748b; margin: 0; font-size: 0.9rem;">
+                                    打开 CCA 规划页面，切换到英文，查看翻译是否生效
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                        <div style="display: flex; align-items: start; gap: 0.75rem;">
+                            <span style="font-size: 1.25rem;">⚠️</span>
+                            <div>
+                                <strong style="color: #92400e; display: block; margin-bottom: 0.25rem;">注意事项</strong>
+                                <p style="color: #78350f; margin: 0; font-size: 0.875rem; line-height: 1.5;">
+                                    替换文件后，建议清除浏览器缓存或使用 Ctrl+Shift+R (Windows) / Cmd+Shift+R (Mac) 强制刷新页面
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button onclick="this.closest('div[style*=fixed]').remove()" style="
+                        width: 100%;
+                        padding: 1rem;
+                        background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+                        color: white;
+                        border: none;
+                        border-radius: 12px;
+                        font-size: 1rem;
+                        font-weight: 600;
+                        cursor: pointer;
+                        transition: all 0.3s;
+                    " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(59, 130, 246, 0.4)'" onmouseout="this.style.transform=''; this.style.boxShadow=''">
+                        我知道了
+                    </button>
+                </div>
+            `;
+            
+            document.body.appendChild(dialog);
+        }
+    </script>
+</body>
+</html>
