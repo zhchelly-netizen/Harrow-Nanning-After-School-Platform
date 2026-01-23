@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Selection | 语言选择</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #152242 0%, #1e3158 50%, #2a4070 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(166, 152, 103, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(122, 155, 142, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            width: 100%;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #152242 0%, #1e3158 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .school-name {
+            font-size: 1.75rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .school-name-cn {
+            font-size: 1.5rem;
+            font-weight: 600;
+            opacity: 0.95;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            opacity: 0.85;
+            letter-spacing: 0.05em;
+        }
+
+        .content {
+            padding: 3rem 2rem;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #152242;
+            margin-bottom: 1rem;
+        }
+
+        .description {
+            text-align: center;
+            font-size: 1.125rem;
+            color: #5a5a5a;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        .language-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .language-card {
+            background: #f8f6f1;
+            border: 3px solid transparent;
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .language-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--card-color-1), var(--card-color-2));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .language-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .language-card:hover {
+            border-color: var(--card-color-1);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .language-card.chinese {
+            --card-color-1: #A69867;
+            --card-color-2: #c4b589;
+        }
+
+        .language-card.english {
+            --card-color-1: #7a9b8e;
+            --card-color-2: #92b5a8;
+        }
+
+        .language-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .language-name {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #152242;
+            margin-bottom: 0.5rem;
+        }
+
+        .language-name-native {
+            font-size: 1.25rem;
+            color: #5a5a5a;
+            margin-bottom: 1rem;
+        }
+
+        .language-desc {
+            font-size: 0.95rem;
+            color: #8a8a8a;
+            line-height: 1.5;
+        }
+
+        .note {
+            text-align: center;
+            font-size: 0.875rem;
+            color: #8a8a8a;
+            padding: 1.5rem;
+            background: #fef3c7;
+            border-radius: 16px;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .note strong {
+            color: #92400e;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 2rem 1.5rem;
+            }
+
+            .school-name {
+                font-size: 1.5rem;
+            }
+
+            .school-name-cn {
+                font-size: 1.25rem;
+            }
+
+            .content {
+                padding: 2rem 1.5rem;
+            }
+
+            .title {
+                font-size: 1.5rem;
+            }
+
+            .description {
+                font-size: 1rem;
+            }
+
+            .language-options {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .language-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .language-icon {
+                font-size: 3rem;
+            }
+
+            .language-name {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="school-name">HARROW LIDE SCHOOL NANNING</div>
+            <div class="school-name-cn">南宁哈罗礼德学校</div>
+            <div class="subtitle">Co-Curricular Portal | 课后发展平台</div>
+        </div>
+
+        <div class="content">
+            <h1 class="title">Please Select Your Language<br>请选择您的语言</h1>
+            <p class="description">
+                Choose your preferred language for the platform<br>
+                选择您在平台中使用的语言
+            </p>
+
+            <div class="language-options">
+                <div class="language-card chinese" onclick="selectLanguage('zh')">
+                    <span class="language-icon">🇨🇳</span>
+                    <div class="language-name">Chinese</div>
+                    <div class="language-name-native">简体中文</div>
+                    <div class="language-desc">使用中文浏览平台内容</div>
+                </div>
+
+                <div class="language-card english" onclick="selectLanguage('en')">
+                    <span class="language-icon">🇬🇧</span>
+                    <div class="language-name">English</div>
+                    <div class="language-name-native">English</div>
+                    <div class="language-desc">Browse the platform in English</div>
+                </div>
+            </div>
+
+            <div class="note">
+                <strong>📌 Note | 注意：</strong> Once selected, the language cannot be changed until you return to the homepage. | 语言一旦选定，在返回首页前将无法更改。
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function selectLanguage(lang) {
+            // 保存语言选择到 sessionStorage
+            sessionStorage.setItem('selectedLanguage', lang);
+            
+            // 跳转到首页
+            window.location.href = 'index.html';
+        }
+
+        // 不自动跳转，允许用户重新选择语言
+        // 如果用户是从其他页面点击语言切换按钮来的，应该允许重新选择
+    </script>
+</body>
+</html>

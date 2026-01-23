@@ -436,7 +436,7 @@ const translations = {
     "en": {
         "pageTitle": "Harrow LiDe School Nanning - CCA Planning",
         "schoolName": "Harrow LiDe School Nanning",
-        "schoolNameCn": "Harrow LiDe School Nanning",
+        "schoolNameCn": "Proud to provide the only British education in Nanning.",
         "schoolNameEn": "HARROW LIDE SCHOOL NANNING",
         "switchLanguage": "中文",
         "platformSubtitle": "After-School Development Platform",
@@ -457,7 +457,7 @@ const translations = {
         "featureSupport": "Academic Support",
         "scholarshipJohnLyon": "John Lyon Full Scholarship",
         "scholarshipPrincipal": "Head's Half Scholarship",
-        "scholarshipMerit": "Merit Award",
+        "scholarshipMerit": "Talent Scholarship",
         "startPlanning": "Start Planning →",
         "learnMore": "Learn More →",
         "infoTimeTitle": "After-School Time",
@@ -592,7 +592,7 @@ const translations = {
         "contactInfo": "Contact Information",
         "regEliteSports": "Elite Sports Team Registration",
         "regMusicAcademy": "Harrow Music Academy Registration",
-        "regDebate": "Debate Society Registration",
+        "regDebate": "Chinese Debate Team Registration",
         "regAcademicComp": "Academic Competition Team Registration",
         "regHub": "Hub Centre Course Registration",
         "regMathSupport": "Chinese Maths Support Registration",
@@ -812,7 +812,7 @@ const translations = {
         "readyToApplyDesc": "Click the button below to enter the scholarship application system, fill out the application form and upload relevant materials.",
         "regStepEliteSports": "Elite Sports Team Registration",
         "regStepMusicAcademy": "Harrow Music Academy Registration",
-        "regStepDebate": "Debate Society Registration",
+        "regStepDebate": "Chinese Debate Team Registration",
         "regStepAcademicComp": "Academic Competition Team Registration",
         "regStepHub": "Hub Centre Course Registration",
         "regStepMathSupport": "Chinese Maths Support Registration",
@@ -925,12 +925,11 @@ class LanguageManager {
     }
     
     /**
-     * 切换语言
+     * 切换语言 - 已禁用，跳转到语言选择页面
      */
     switchLanguage() {
-        this.currentLang = this.currentLang === 'zh' ? 'en' : 'zh';
-        localStorage.setItem('preferredLanguage', this.currentLang);
-        this.updatePageLanguage();
+        // 不再支持热切换，跳转到语言选择页面
+        window.location.href = 'language-selection.html';
     }
     
     /**
@@ -968,10 +967,10 @@ class LanguageManager {
         // 更新页面标题
         document.title = this.t('pageTitle');
         
-        // 更新语言切换按钮文本
+        // 更新语言切换按钮文本 - 始终显示emoji和金色斜杠
         const langBtn = document.getElementById('language-toggle');
         if (langBtn) {
-            langBtn.textContent = this.t('switchLanguage');
+            langBtn.innerHTML = '<span class="flag-emoji">🇨🇳</span><span class="flag-separator">/</span><span class="flag-emoji">🇬🇧</span>';
         }
         
         // 触发自定义事件，让其他组件知道语言已切换
@@ -1018,22 +1017,7 @@ const i18n = new LanguageManager();
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
         i18n.updatePageLanguage();
-        bindLanguageToggle();
     });
 } else {
     i18n.updatePageLanguage();
-    bindLanguageToggle();
-}
-
-// 绑定语言切换按钮
-function bindLanguageToggle() {
-    const langBtn = document.getElementById('language-toggle');
-    if (langBtn) {
-        // 移除旧的事件监听器（如果有）
-        langBtn.onclick = null;
-        // 添加新的事件监听器
-        langBtn.addEventListener('click', function() {
-            i18n.switchLanguage();
-        });
-    }
 }

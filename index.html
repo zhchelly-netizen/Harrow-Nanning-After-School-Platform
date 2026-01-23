@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>南宁哈罗礼德学校 | 课后平台</title>
-    <link rel="stylesheet" href="styles/main.css?v=20260126">
+    <link rel="stylesheet" href="styles/main.css?v=20260127">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
 <body>
     <!-- Language Toggle Button -->
     <button id="language-toggle" class="language-toggle">
-        English
+        <span class="flag-emoji">🇨🇳</span><span class="flag-separator">/</span><span class="flag-emoji">🇬🇧</span>
     </button>
 
     <div class="app-container">
@@ -20,6 +20,7 @@
         <header class="main-header">
             <div class="header-content">
                 <div class="logo-section">
+                    <img src="images/harrow-logo.png" alt="Harrow School Logo" class="harrow-logo">
                     <h1 class="school-name-en">HARROW LIDE SCHOOL NANNING</h1>
                     <h2 class="school-name-cn" data-i18n="schoolNameCn">南宁哈罗礼德学校</h2>
                 </div>
@@ -31,6 +32,7 @@
         <section class="hero-section">
             <div class="hero-content">
                 <h3 class="hero-title" data-i18n="heroTitle">育以至善 · 卓以领航</h3>
+                <img src="images/harrow-hat.png" alt="Harrow Straw Hat" class="harrow-hat">
                 <p class="hero-subtitle">
                     <span class="motto-bold">Educational Excellence</span>
                     <span class="motto-italic"> for </span>
@@ -157,7 +159,42 @@
         </footer>
     </div>
 
-    <script src="scripts/i18n.js?v=20260126"></script>
-    <script src="scripts/main.js?v=20260126"></script>
+    <script src="scripts/i18n.js?v=20260127"></script>
+    <script src="scripts/main.js?v=20260127"></script>
+    <script>
+        // 语言选择检查
+        (function() {
+            const selectedLang = sessionStorage.getItem('selectedLanguage');
+            
+            // 如果没有选择语言，跳转到语言选择页面
+            if (!selectedLang) {
+                window.location.href = 'language-selection.html';
+                return;
+            }
+            
+            // 设置html的lang属性
+            document.documentElement.lang = selectedLang === 'zh' ? 'zh-CN' : 'en';
+            
+            // 设置语言
+            if (typeof i18n !== 'undefined') {
+                i18n.setLanguage(selectedLang);
+                // 立即更新页面语言
+                i18n.updatePageLanguage();
+            }
+            
+            // 语言切换按钮：跳转到语言选择页面（不清除当前语言）
+            const langToggle = document.getElementById('language-toggle');
+            if (langToggle) {
+                // 确保按钮显示正确的emoji和金色斜杠
+                langToggle.innerHTML = '<span class="flag-emoji">🇨🇳</span><span class="flag-separator">/</span><span class="flag-emoji">🇬🇧</span>';
+                
+                // 点击跳转到语言选择页面
+                langToggle.onclick = function(e) {
+                    e.preventDefault();
+                    window.location.href = 'language-selection.html';
+                };
+            }
+        })();
+    </script>
 </body>
 </html>

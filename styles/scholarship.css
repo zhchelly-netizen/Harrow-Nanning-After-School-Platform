@@ -4,11 +4,11 @@
 
 /* 全局字体设置 */
 body {
-    font-family: 'Noto Sans SC', sans-serif;
+    font-family: 'Gotham', 'Source Han Sans SC', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
+    font-family: 'Gotham', 'Source Han Sans SC', sans-serif;
 }
 
 /* 标签导航 */
@@ -34,7 +34,7 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--text-secondary);
     cursor: pointer;
     transition: all var(--transition-base);
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
+    font-family: 'Gotham', 'Source Han Sans SC', sans-serif;
 }
 
 .tab-button:hover {
@@ -69,7 +69,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .overview-hero h2 {
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
+    font-family: 'Gotham', 'Source Han Sans SC', sans-serif;
     font-size: 2.5rem;
     color: var(--primary-navy);
     margin-bottom: var(--spacing-md);
@@ -82,7 +82,7 @@ h1, h2, h3, h4, h5, h6 {
     max-width: 800px;
     margin: 0 auto;
     line-height: 1.8;
-    font-family: 'Noto Sans SC', sans-serif;
+    font-family: 'Source Han Sans SC', sans-serif;
 }
 
 /* 奖学金类型卡片 */
@@ -91,6 +91,40 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: var(--spacing-xl);
     margin-bottom: var(--spacing-2xl);
+}
+
+/* 宽屏模式下的横向布局 */
+@media (min-width: 1024px) {
+    .scholarship-types-grid {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+    }
+    
+    .scholarship-type-card {
+        display: grid;
+        grid-template-columns: 300px 1fr auto;
+        gap: var(--spacing-xl);
+        align-items: start;
+        padding: var(--spacing-xl) var(--spacing-2xl);
+    }
+    
+    .type-header {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .type-main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    
+    .type-categories {
+        align-self: center;
+        margin-top: 0;
+    }
 }
 
 .scholarship-type-card {
@@ -109,8 +143,9 @@ h1, h2, h3, h4, h5, h6 {
     top: 0;
     left: 0;
     right: 0;
-    height: 8px;
+    height: 4px;
     background: var(--card-gradient);
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
 }
 
 .john-lyon {
@@ -139,11 +174,11 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.875rem;
     font-weight: 600;
     margin-bottom: var(--spacing-md);
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
+    font-family: 'Gotham', 'Source Han Sans SC', sans-serif;
 }
 
 .scholarship-type-card h3 {
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
+    font-family: 'Gotham', 'Source Han Sans SC', sans-serif;
     font-size: 1.75rem;
     color: var(--primary-navy);
     margin-bottom: var(--spacing-md);
@@ -155,14 +190,14 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
     color: var(--primary-burgundy);
     margin-bottom: var(--spacing-lg);
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
+    font-family: 'Gotham', 'Source Han Sans SC', sans-serif;
 }
 
 .type-requirements h4 {
     font-size: 1rem;
     color: var(--text-secondary);
     margin-bottom: var(--spacing-sm);
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
+    font-family: 'Gotham', 'Source Han Sans SC', sans-serif;
     font-weight: 600;
 }
 
@@ -176,7 +211,7 @@ h1, h2, h3, h4, h5, h6 {
     padding-left: var(--spacing-md);
     position: relative;
     color: var(--text-primary);
-    font-family: 'Noto Sans SC', sans-serif;
+    font-family: 'Source Han Sans SC', sans-serif;
 }
 
 .type-requirements li::before {
@@ -201,7 +236,7 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 50px;
     font-size: 0.875rem;
     font-weight: 500;
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
+    font-family: 'Gotham', 'Source Han Sans SC', sans-serif;
 }
 
 /* 评价类别 - 紧凑方形卡片 */
@@ -210,7 +245,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .evaluation-categories h3 {
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
+    font-family: 'Gotham', 'Source Han Sans SC', sans-serif;
     font-size: 2rem;
     color: var(--primary-navy);
     text-align: center;
@@ -245,7 +280,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .category-card-compact h4 {
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
+    font-family: 'Gotham', 'Source Han Sans SC', sans-serif;
     font-size: 1.125rem;
     font-weight: 700;
     margin: 0;
@@ -275,7 +310,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .rules-container h2 {
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
+    font-family: 'Gotham', 'Source Han Sans SC', sans-serif;
     font-size: 2.5rem;
     color: var(--primary-navy);
     text-align: center;
@@ -292,7 +327,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .rules-section h3 {
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
+    font-family: 'Gotham', 'Source Han Sans SC', sans-serif;
     font-size: 1.5rem;
     color: var(--primary-navy);
     margin-bottom: var(--spacing-md);
@@ -310,7 +345,7 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
     color: var(--text-primary);
     line-height: 1.7;
-    font-family: 'Noto Sans SC', sans-serif;
+    font-family: 'Source Han Sans SC', sans-serif;
 }
 
 .rules-list li::before {
@@ -340,14 +375,14 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.125rem;
     color: var(--primary-navy);
     margin-bottom: var(--spacing-xs);
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
+    font-family: 'Gotham', 'Source Han Sans SC', sans-serif;
     font-weight: 700;
 }
 
 .mechanism-card p {
     color: var(--text-secondary);
     margin-bottom: var(--spacing-sm);
-    font-family: 'Noto Sans SC', sans-serif;
+    font-family: 'Source Han Sans SC', sans-serif;
 }
 
 .mechanism-card ul {
@@ -360,7 +395,7 @@ h1, h2, h3, h4, h5, h6 {
     padding-left: var(--spacing-md);
     position: relative;
     font-size: 0.9rem;
-    font-family: 'Noto Sans SC', sans-serif;
+    font-family: 'Source Han Sans SC', sans-serif;
 }
 
 .mechanism-card li::before {
@@ -380,7 +415,7 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--text-primary);
     margin-bottom: var(--spacing-lg);
     line-height: 1.7;
-    font-family: 'Noto Sans SC', sans-serif;
+    font-family: 'Source Han Sans SC', sans-serif;
 }
 
 .warning-grid {
@@ -405,14 +440,14 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1rem;
     color: var(--error);
     margin-bottom: var(--spacing-xs);
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
+    font-family: 'Gotham', 'Source Han Sans SC', sans-serif;
     font-weight: 700;
 }
 
 .warning-card p {
     font-size: 0.875rem;
     color: var(--text-secondary);
-    font-family: 'Noto Sans SC', sans-serif;
+    font-family: 'Source Han Sans SC', sans-serif;
 }
 
 /* 文档网格 */
@@ -443,6 +478,7 @@ h1, h2, h3, h4, h5, h6 {
     right: 0;
     height: 4px;
     background: var(--doc-color);
+    border-radius: 50px 50px 0 0;
     transition: height var(--transition-base);
 }
 
@@ -483,7 +519,7 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--primary-navy);
     margin-bottom: var(--spacing-xs);
     font-weight: 600;
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
+    font-family: 'Gotham', 'Source Han Sans SC', sans-serif;
 }
 
 .doc-arrow {
@@ -504,7 +540,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .application-container h2 {
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
+    font-family: 'Gotham', 'Source Han Sans SC', sans-serif;
     font-size: 2.5rem;
     color: var(--primary-navy);
     text-align: center;
@@ -535,7 +571,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .notice-header h3 {
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
+    font-family: 'Gotham', 'Source Han Sans SC', sans-serif;
     font-size: 1.75rem;
     color: #92400e;
     margin: 0;
@@ -580,14 +616,14 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--primary-navy);
     margin-bottom: var(--spacing-xs);
     font-weight: 600;
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
+    font-family: 'Gotham', 'Source Han Sans SC', sans-serif;
 }
 
 .notice-text p {
     color: var(--text-secondary);
     line-height: 1.7;
     margin: 0;
-    font-family: 'Noto Sans SC', sans-serif;
+    font-family: 'Source Han Sans SC', sans-serif;
 }
 
 /* 申请流程 */
@@ -600,7 +636,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .application-process h3 {
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
+    font-family: 'Gotham', 'Source Han Sans SC', sans-serif;
     font-size: 2rem;
     color: var(--primary-navy);
     text-align: center;
@@ -644,14 +680,14 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--primary-navy);
     margin-bottom: var(--spacing-xs);
     font-weight: 600;
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
+    font-family: 'Gotham', 'Source Han Sans SC', sans-serif;
 }
 
 .step-content p {
     color: var(--text-secondary);
     line-height: 1.7;
     margin: 0;
-    font-family: 'Noto Sans SC', sans-serif;
+    font-family: 'Source Han Sans SC', sans-serif;
 }
 
 .process-arrow {
@@ -692,7 +728,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.5rem;
     margin-bottom: var(--spacing-xs);
     color: white;
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
+    font-family: 'Gotham', 'Source Han Sans SC', sans-serif;
     font-weight: 700;
 }
 
@@ -700,7 +736,7 @@ h1, h2, h3, h4, h5, h6 {
     color: rgba(255, 255, 255, 0.9);
     line-height: 1.6;
     margin: 0;
-    font-family: 'Noto Sans SC', sans-serif;
+    font-family: 'Source Han Sans SC', sans-serif;
 }
 
 .application-button {
@@ -719,7 +755,7 @@ h1, h2, h3, h4, h5, h6 {
     gap: var(--spacing-md);
     position: relative;
     overflow: hidden;
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
+    font-family: 'Gotham', 'Source Han Sans SC', sans-serif;
 }
 
 .application-button::before {
@@ -762,7 +798,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.875rem;
     margin-top: var(--spacing-md);
     font-style: italic;
-    font-family: 'Noto Sans SC', sans-serif;
+    font-family: 'Source Han Sans SC', sans-serif;
 }
 
 /* 奖学金类型卡片信息区域 */
@@ -778,12 +814,12 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.9rem;
     color: var(--text-secondary);
     line-height: 1.6;
-    font-family: 'Noto Sans SC', sans-serif;
+    font-family: 'Source Han Sans SC', sans-serif;
 }
 
 .type-info strong {
     color: var(--primary-navy);
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
+    font-family: 'Gotham', 'Source Han Sans SC', sans-serif;
 }
 
 /* 类别标签颜色 */
@@ -825,7 +861,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .form-section h3 {
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
+    font-family: 'Gotham', 'Source Han Sans SC', sans-serif;
     font-size: 1.5rem;
     color: var(--primary-navy);
     margin-bottom: var(--spacing-md);
@@ -863,7 +899,7 @@ h1, h2, h3, h4, h5, h6 {
     border: 2px solid #e2e8f0;
     border-radius: 50px;
     font-size: 1rem;
-    font-family: 'Noto Sans SC', sans-serif;
+    font-family: 'Source Han Sans SC', sans-serif;
     transition: all var(--transition-base);
 }
 

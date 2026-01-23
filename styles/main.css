@@ -143,42 +143,91 @@
 }
 
 /* ===================================
-   语言切换按钮
-   Language Toggle Button
+   语言切换按钮 - 液态玻璃效果
+   Language Toggle Button - Glassmorphism
    =================================== */
 .language-toggle {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 30px;
+    right: 30px;
     z-index: 10000;
     padding: 0.75rem 1.5rem;
-    background: linear-gradient(135deg, #152242 0%, #1e3158 100%);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     color: white;
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 50px;
-    font-size: 0.95rem;
+    font-size: 1.2rem;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(21, 34, 66, 0.3);
+    box-shadow: 0 8px 32px rgba(21, 34, 66, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0;
+    overflow: hidden;
+}
+
+.language-toggle .flag-emoji {
+    display: inline-block;
+}
+
+.language-toggle .flag-separator {
+    color: #A69867;
+    font-weight: 700;
+    margin: 0 0.25rem;
+    text-shadow: 0 0 8px rgba(166, 152, 103, 0.6);
+}
+
+.language-toggle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.3), 
+        transparent);
+    transition: left 0.6s ease;
+}
+
+.language-toggle:hover::before {
+    left: 100%;
 }
 
 .language-toggle:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(21, 34, 66, 0.4);
-    background: linear-gradient(135deg, #1e3158 0%, #152242 100%);
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 12px 40px rgba(21, 34, 66, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
-.language-toggle::before {
-    content: '🌐';
-    font-size: 1.2rem;
+.language-toggle:hover .flag-separator {
+    color: #c4b589;
+    text-shadow: 0 0 12px rgba(196, 181, 137, 0.8);
 }
 
 .language-toggle:active {
-    transform: translateY(0);
+    transform: translateY(0) scale(0.98);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .language-toggle {
+        top: 15px;
+        right: 15px;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+    }
+    
+    .language-toggle .flag-separator {
+        margin: 0 0.15rem;
+    }
 }
 
 /* ===================================
@@ -222,7 +271,7 @@ body {
 .main-header {
     background: linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-navy-light) 100%);
     color: var(--text-inverse);
-    padding: var(--spacing-xl) var(--spacing-md);
+    padding: var(--spacing-xl) var(--spacing-md) var(--spacing-lg);
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -252,6 +301,16 @@ body {
     margin-bottom: var(--spacing-md);
 }
 
+/* 哈罗Logo */
+.harrow-logo {
+    width: 80px;
+    height: auto;
+    margin: 0 auto var(--spacing-md);
+    display: block;
+    animation: fadeInDown 0.6s ease-out;
+    filter: drop-shadow(0 2px 8px rgba(166, 152, 103, 0.3));
+}
+
 .school-name-en {
     font-family: 'Bembo', serif;
     font-size: 2.5rem;
@@ -262,11 +321,20 @@ body {
 }
 
 .school-name-cn {
-    font-family: var(--font-banner);
+    font-family: 'Bembo', serif;
+    font-size: 1.125rem;
+    font-weight: 400;
+    opacity: 0.9;
+    letter-spacing: 0.01em;
+    animation: fadeInDown 0.6s ease-out 0.1s backwards;
+}
+
+/* 中文模式下使用思源宋体 */
+html[lang="zh-CN"] .school-name-cn {
+    font-family: 'Source Han Serif SC', 'Noto Serif SC', serif;
     font-size: 2.5rem;
     font-weight: 700;
     opacity: 0.95;
-    animation: fadeInDown 0.6s ease-out 0.1s backwards;
 }
 
 .header-subtitle {
@@ -293,12 +361,17 @@ body {
 }
 
 .hero-title {
-    font-family: var(--font-body);
+    font-family: 'Source Han Serif SC', 'Noto Serif SC', serif;
     font-size: 2.25rem;
     font-weight: 600;
     color: var(--primary-navy);
     margin-bottom: var(--spacing-sm);
     animation: fadeInUp 0.6s ease-out 0.3s backwards;
+}
+
+/* 英文模式下隐藏中文标题 */
+html[lang="en"] .hero-title {
+    display: none;
 }
 
 .hero-subtitle {
@@ -307,6 +380,24 @@ body {
     margin-bottom: var(--spacing-lg);
     animation: fadeInUp 0.6s ease-out 0.4s backwards;
     line-height: 1.6;
+}
+
+/* 英文模式下隐藏英文副标题文字 */
+html[lang="en"] .hero-subtitle {
+    display: none;
+}
+
+.harrow-hat {
+    display: none;
+    max-width: 200px;
+    height: auto;
+    margin: 0 auto var(--spacing-lg);
+    animation: fadeInUp 0.6s ease-out 0.4s backwards;
+    filter: drop-shadow(0 4px 12px rgba(21, 34, 66, 0.2));
+}
+
+html[lang="en"] .harrow-hat {
+    display: block;
 }
 
 .motto-bold {
@@ -429,9 +520,10 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    height: 6px;
+    height: 4px;
     background: linear-gradient(90deg, var(--card-color-1), var(--card-color-2), var(--card-color-1));
     background-size: 200% 100%;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
     transform: scaleX(0);
     transform-origin: left;
     transition: transform var(--transition-slow);
@@ -646,6 +738,7 @@ body {
     box-shadow: 0 4px 15px rgba(21, 34, 66, 0.3);
 }
 
+/* 金色流光动效 - 从左向右 */
 .card-button::before {
     content: '';
     position: absolute;
@@ -658,8 +751,41 @@ body {
     z-index: 1;
 }
 
+/* 流光动画 - 持续从左向右移动 */
+.card-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(212, 196, 154, 0.4) 30%,
+        rgba(255, 243, 205, 0.8) 50%,
+        rgba(212, 196, 154, 0.4) 70%,
+        transparent 100%);
+    animation: shimmer 3s ease-in-out infinite;
+    z-index: 2;
+    transform: skewX(-20deg);
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+    50%, 100% {
+        left: 150%;
+    }
+}
+
 .card-button:hover::before {
     left: 0;
+}
+
+/* hover时暂停流光动画 */
+.card-button:hover::after {
+    animation-play-state: paused;
 }
 
 .card-button:hover {
@@ -669,7 +795,7 @@ body {
 
 .card-button span {
     position: relative;
-    z-index: 2;
+    z-index: 3;
 }
 
 /* ===================================
@@ -815,6 +941,26 @@ body {
     position: relative;
 }
 
+.sub-header-top {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.sub-header-logo {
+    height: 40px;
+    width: auto;
+    opacity: 0.9;
+    transition: all var(--transition-base);
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.2));
+}
+
+.sub-header-logo:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
 .back-button {
     display: inline-flex;
     align-items: center;
@@ -828,7 +974,6 @@ body {
     font-family: var(--font-body);
     cursor: pointer;
     transition: all var(--transition-base);
-    margin-bottom: var(--spacing-md);
     position: relative;
     overflow: hidden;
 }
@@ -1015,7 +1160,7 @@ body {
         top: 10px;
         right: 10px;
         padding: 0.6rem 1.2rem;
-        font-size: 0.85rem;
+        font-size: 1rem;
     }
     
     .main-header {
@@ -1027,6 +1172,10 @@ body {
     }
     
     .school-name-cn {
+        font-size: 1rem;
+    }
+    
+    html[lang="zh-CN"] .school-name-cn {
         font-size: 1.75rem;
     }
     
@@ -1044,6 +1193,10 @@ body {
     
     .hero-subtitle {
         font-size: 1.125rem;
+    }
+    
+    .harrow-hat {
+        max-width: 150px;
     }
     
     .hero-values {
@@ -1103,6 +1256,10 @@ body {
         padding: var(--spacing-lg) var(--spacing-md);
     }
     
+    .sub-header-logo {
+        height: 32px;
+    }
+    
     .page-title {
         font-size: 1.75rem;
     }
@@ -1117,7 +1274,7 @@ body {
         top: 8px;
         right: 8px;
         padding: 0.5rem 1rem;
-        font-size: 0.8rem;
+        font-size: 0.9rem;
     }
     
     .main-header {
@@ -1129,6 +1286,10 @@ body {
     }
     
     .school-name-cn {
+        font-size: 0.9rem;
+    }
+    
+    html[lang="zh-CN"] .school-name-cn {
         font-size: 1.5rem;
     }
     
@@ -1146,6 +1307,10 @@ body {
     
     .hero-subtitle {
         font-size: 1rem;
+    }
+    
+    .harrow-hat {
+        max-width: 120px;
     }
     
     .value-badge {
@@ -1218,6 +1383,10 @@ body {
     
     .footer-copyright {
         font-size: 0.8rem;
+    }
+    
+    .sub-header-logo {
+        height: 28px;
     }
     
     .page-title {

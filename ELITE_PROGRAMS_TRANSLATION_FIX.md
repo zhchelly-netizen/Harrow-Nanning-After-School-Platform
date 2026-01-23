@@ -83,7 +83,7 @@ const ELITE_PROGRAM_TRANSLATIONS = {
         'vocal': '🎤 Vocal',
         'other-instrument': '🎼 Other Instruments',
         'band': '🎸 Anarchist Band',
-        'debate': '🗣️ Debate Society',
+        'debate': '🗣️ Chinese Debate Team',
         'english-foundation': '📖 English Foundation',
         'ielts-advanced': '📝 IELTS Advanced',
         'math-support': '🔢 Chinese Maths Support'

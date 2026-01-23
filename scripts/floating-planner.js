@@ -672,4 +672,11 @@ document.addEventListener('DOMContentLoaded', function() {
             floatingPlanner.updatePageLanguage();
         }
     });
+    
+    // 页面加载时立即根据当前语言更新
+    if (floatingPlanner && typeof i18n !== 'undefined') {
+        setTimeout(() => {
+            floatingPlanner.updatePageLanguage();
+        }, 100);
+    }
 });

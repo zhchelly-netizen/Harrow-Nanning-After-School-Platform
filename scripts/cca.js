@@ -92,15 +92,15 @@ const ELITE_PROGRAM_TRANSLATIONS = {
         'debate': '🗣️ "以言论道"思辨社',
         'english-foundation': '📖 英语基础',
         'ielts-advanced': '📝 雅思进阶',
-        'math-support': '🔢 中文数学支持'
+        'math-support': '🔢 英文数学支持'
     },
     'en': {
         'football-primary': '⚽ Football (Primary)',
         'football-secondary': '⚽ Football (Secondary)',
         'basketball-primary': '🏀 Basketball (Primary)',
         'basketball-secondary': '🏀 Basketball (Secondary)',
-        'swimming-team': '🏊 Swimming Team 1',
-        'swimming-reserve': '🏊 Swimming Reserve Team',
+        'swimming-team': '🏊 Swimming Senior',
+        'swimming-reserve': '🏊 Swimming Reserve',
         'badminton': '🏸 Badminton Team',
         'golf': '⛳ Golf',
         'equestrian': '🐴 Equestrian',
@@ -112,11 +112,11 @@ const ELITE_PROGRAM_TRANSLATIONS = {
         'drums': '🥁 Drums',
         'vocal': '🎤 Vocal',
         'other-instrument': '🎼 Other Instruments',
-        'band': '🎸 Anarchist Band',
-        'debate': '🗣️ Debate Society',
+        'band': '🎸 Soul Free Band',
+        'debate': '🗣️ Chinese Debate Team',
         'english-foundation': '📖 English Foundation',
         'ielts-advanced': '📝 IELTS Advanced',
-        'math-support': '🔢 Chinese Maths Support'
+        'math-support': '🔢 English Maths Support'
     }
 };
 
@@ -152,7 +152,7 @@ function updateEliteProgramsLanguage() {
             '周日': 'Sun',
             '定制时间': 'Custom Time',
             '全年级': 'All Grades',
-            '一对一专业培训': 'One-on-one Training',
+            '一对一专业培训': '1v1 Training',
             '需选拔/试课': 'Audition Required',
             '需选拔': 'Audition Required',
             '预约制': 'By Appointment',
@@ -465,6 +465,10 @@ function loadCCACourses() {
             // 根据当前语言选择课程名称
             const courseName = i18n.currentLang === 'en' && course.nameEn ? course.nameEn : course.name;
             
+            // 添加emoji（如果有）
+            const emoji = course.emoji || '';
+            const displayName = emoji ? `${emoji} ${courseName}` : courseName;
+            
             const inviteBadge = course.inviteOnly ? `<span style="background: #fbbf24; color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; margin-left: 0.5rem;">${i18n.t('courses.inviteOnly')}</span>` : '';
             const feeBadge = course.fee !== '¥0' ? `<span style="color: #059669; font-size: 0.875rem; font-weight: 600;">${course.fee}</span>` : `<span style="color: #10b981; font-size: 0.875rem; font-weight: 600;">${i18n.t('courses.free')}</span>`;
             
@@ -473,10 +477,10 @@ function loadCCACourses() {
             const categoryBadge = `<span style="display: inline-flex; align-items: center; gap: 0.25rem; background: rgba(166, 152, 103, 0.1); padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; color: #8a7d52; margin-left: 0.5rem;"><span style="font-size: 0.875rem;">${categoryIcon}</span></span>`;
             
             slot.innerHTML = `
-                <div class="slot-name">${courseName}${categoryBadge}${inviteBadge}</div>
+                <div class="slot-name">${displayName}${categoryBadge}${inviteBadge}</div>
                 <div class="slot-teacher" style="display: flex; justify-content: space-between; align-items: center;">
-                    <span>${course.teacher}</span>
-                    ${feeBadge}
+                    <span style="flex: 1;">${course.teacher}</span>
+                    <span style="margin-left: 1rem;">${feeBadge}</span>
                 </div>
             `;
             
