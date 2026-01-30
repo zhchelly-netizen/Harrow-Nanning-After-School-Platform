@@ -16,15 +16,13 @@ const CCA_COURSES = {
         { id: 'mon-8', name: '中学部多元艺术', nameEn: 'Multi-craft Arts (Upper)', teacher: '品象', grades: ['G6','G7','G8','G9','G10','G11','G12'], fee: '¥1,000', category: 'skill', emoji: '🎨' },
         { id: 'mon-9', name: '小学部高尔夫', nameEn: 'Golf (Primary)', teacher: '吉尔', grades: ['G1','G2','G3','G4','G5'], fee: '¥1,000', category: 'scouting', emoji: '⛳' },
         { id: 'mon-10', name: '中学部高尔夫', nameEn: 'Golf (Upper)', teacher: '吉尔', grades: ['G6','G7','G8','G9','G10','G11','G12'], fee: '¥1,000', category: 'scouting', emoji: '⛳' },
-        { id: 'mon-11', name: '小学部国际象棋', nameEn: 'Chess (Primary)', teacher: '科世', grades: ['G1','G2','G3','G4','G5'], fee: '¥1,000', category: 'skill', emoji: '♟️' },
-        { id: 'mon-12', name: '中学部国际象棋', nameEn: 'Chess (Upper)', teacher: '科世', grades: ['G6','G7','G8','G9','G10','G11','G12'], fee: '¥1,000', category: 'skill', emoji: '♟️' },
-        { id: 'mon-13', name: '小学部篮球 (体验)', nameEn: 'Basketball (Primary)', teacher: '吉克', grades: ['G1','G2','G3','G4','G5'], fee: '¥1,000', category: 'scouting', emoji: '🏀' },
-        { id: 'mon-14', name: '小学部匹克球', nameEn: 'Pickle Ball (Primary)', teacher: '青奥', grades: ['G1','G2','G3','G4','G5'], fee: '¥1,000', category: 'skill', emoji: '🏓' },
-        { id: 'mon-15', name: '中学部匹克球', nameEn: 'Pickle Ball (Upper)', teacher: '青奥', grades: ['G6','G7','G8','G9','G10','G11','G12'], fee: '¥1,000', category: 'skill', emoji: '🏓' },
-        { id: 'mon-16', name: '小学部网球 (体验)', nameEn: 'Tennis (Primary)', teacher: '青奥', grades: ['G1','G2','G3','G4','G5'], fee: '¥1,000', category: 'scouting', emoji: '🎾' },
-        { id: 'mon-17', name: '中学部网球 (体验)', nameEn: 'Tennis (Upper)', teacher: '青奥', grades: ['G6','G7','G8','G9','G10','G11','G12'], fee: '¥1,000', category: 'scouting', emoji: '🎾' },
-        { id: 'mon-18', name: '小学部围棋', nameEn: 'GO (Primary)', teacher: '科世', grades: ['G1','G2','G3','G4','G5'], fee: '¥1,000', category: 'skill', emoji: '⚫' },
-        { id: 'mon-19', name: '中学部围棋', nameEn: 'GO (Upper)', teacher: '科世', grades: ['G6','G7','G8','G9','G10','G11','G12'], fee: '¥1,000', category: 'skill', emoji: '⚫' }
+        { id: 'mon-11', name: '小学部篮球 (体验)', nameEn: 'Basketball (Primary)', teacher: '吉克', grades: ['G1','G2','G3','G4','G5'], fee: '¥1,000', category: 'scouting', emoji: '🏀' },
+        { id: 'mon-12', name: '小学部匹克球', nameEn: 'Pickle Ball (Primary)', teacher: '青奥', grades: ['G1','G2','G3','G4','G5'], fee: '¥1,000', category: 'skill', emoji: '🏓' },
+        { id: 'mon-13', name: '中学部匹克球', nameEn: 'Pickle Ball (Upper)', teacher: '青奥', grades: ['G6','G7','G8','G9','G10','G11','G12'], fee: '¥1,000', category: 'skill', emoji: '🏓' },
+        { id: 'mon-14', name: '小学部网球 (体验)', nameEn: 'Tennis (Primary)', teacher: '青奥', grades: ['G1','G2','G3','G4','G5'], fee: '¥1,000', category: 'scouting', emoji: '🎾' },
+        { id: 'mon-15', name: '中学部网球 (体验)', nameEn: 'Tennis (Upper)', teacher: '青奥', grades: ['G6','G7','G8','G9','G10','G11','G12'], fee: '¥1,000', category: 'scouting', emoji: '🎾' },
+        { id: 'mon-16', name: '小学部围棋', nameEn: 'GO (Primary)', teacher: '科世', grades: ['G1','G2','G3','G4','G5'], fee: '¥1,000', category: 'skill', emoji: '⚫' },
+        { id: 'mon-17', name: '中学部围棋', nameEn: 'GO (Upper)', teacher: '科世', grades: ['G6','G7','G8','G9','G10','G11','G12'], fee: '¥1,000', category: 'skill', emoji: '⚫' }
     ],
 
     // 周二课程
@@ -95,13 +93,16 @@ const CCA_COURSES = {
         { id: 'thu-13', name: '硬笔书法 (G3-5)', nameEn: 'Handwriting Camp', teacher: 'Goh S.M.', grades: ['G3','G4','G5'], fee: '¥0', category: 'skill', emoji: '✍️' },
         { id: 'thu-14', name: '中文数学支持 (G9)', nameEn: 'Chinese Maths Support', teacher: 'Neil Fan', grades: ['G9'], fee: '¥0', category: 'support', emoji: '🔢' },
         { id: 'thu-15', name: '中学部常春藤杯', nameEn: 'Ivy Cup (Upper)', teacher: 'Miranda, Sarah', grades: ['G6','G7','G8','G9','G10','G11','G12'], fee: '¥0', category: 'competition', emoji: '🏆' },
-        { id: 'thu-16', name: '学生会 (中学)', nameEn: 'Student Council (Secondary)', teacher: 'Brandon Cook', grades: ['G6','G7','G8','G9','G10','G11','G12'], fee: '¥0', category: 'club', emoji: '🎓', inviteOnly: true },
-        { id: 'thu-17', name: '爱丁堡公爵奖', nameEn: 'DoFE', teacher: 'S. Brad, Zanmarie Snyman', grades: ['G9','G10','G11','G12'], fee: '¥0', category: 'competition', emoji: '🎖️', inviteOnly: true }
+        { id: 'thu-16', name: '戏剧社', nameEn: 'Drama Club', teacher: 'Le Roux Germano', grades: ['G1','G2','G3','G4','G5','G6','G7','G8','G9','G10','G11','G12'], fee: '¥0', category: 'skill', emoji: '🎭' },
+        { id: 'thu-17', name: '学生会 (中学)', nameEn: 'Student Council (Secondary)', teacher: 'Brandon Cook', grades: ['G6','G7','G8','G9','G10','G11','G12'], fee: '¥0', category: 'club', emoji: '🎓', inviteOnly: true },
+        { id: 'thu-18', name: '爱丁堡公爵奖', nameEn: 'DoFE', teacher: 'S. Brad, Zanmarie Snyman', grades: ['G9','G10','G11','G12'], fee: '¥0', category: 'competition', emoji: '🎖️', inviteOnly: true }
     ],
 
-    // undefined课程
+    // 周五课程
     friday: [
         { id: 'fri-1', name: 'LAMDA公共演讲 (小学)', nameEn: 'LAMDA Public Speaking (Primary)', teacher: '纬世', grades: ['G1','G2','G3','G4','G5'], fee: '¥1,000', category: 'competition', emoji: '🎙️' },
-        { id: 'fri-2', name: '艺术体操', nameEn: 'Art Gymnastics', teacher: '可莱尔', grades: ['G1','G2','G3','G4'], fee: '¥1,000', category: 'skill', emoji: '🤸' }
+        { id: 'fri-2', name: '艺术体操', nameEn: 'Art Gymnastics', teacher: '可莱尔', grades: ['G1','G2','G3','G4'], fee: '¥1,000', category: 'skill', emoji: '🤸' },
+        { id: 'fri-3', name: '小学部国际象棋', nameEn: 'Chess (Primary)', teacher: '科世', grades: ['G1','G2','G3','G4','G5'], fee: '¥1,000', category: 'skill', emoji: '♟️' },
+        { id: 'fri-4', name: '中学部国际象棋', nameEn: 'Chess (Upper)', teacher: '科世', grades: ['G6','G7','G8','G9','G10','G11','G12'], fee: '¥1,000', category: 'skill', emoji: '♟️' }
     ]
 };

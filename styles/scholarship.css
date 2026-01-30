@@ -779,9 +779,11 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 10px 30px rgba(166, 152, 103, 0.6);
 }
 
-.application-button span {
+.application-button span,
+.application-button svg,
+.button-arrow {
     position: relative;
-    z-index: 2;
+    z-index: 3;
 }
 
 .button-arrow {

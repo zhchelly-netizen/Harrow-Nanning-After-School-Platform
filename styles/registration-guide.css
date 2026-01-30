@@ -247,7 +247,7 @@
 .step-button span,
 .step-button svg {
     position: relative;
-    z-index: 2;
+    z-index: 3;
 }
 
 .step-button.secondary {

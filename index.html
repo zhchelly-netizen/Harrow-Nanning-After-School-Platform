@@ -15,6 +15,9 @@
         <span class="flag-emoji">🇨🇳</span><span class="flag-separator">/</span><span class="flag-emoji">🇬🇧</span>
     </button>
 
+    <!-- 中国新年飘落的中国结特效 -->
+    <div class="chinese-knots-container" id="chineseKnots"></div>
+
     <div class="app-container">
         <!-- Header -->
         <header class="main-header">
@@ -135,13 +138,75 @@
                 </div>
                 <div class="info-card">
                     <h4 data-i18n="infoStudentsTitle">学生规模</h4>
-                    <p class="info-highlight">260+</p>
+                    <p class="info-highlight">300+</p>
                     <p class="info-detail" data-i18n="infoStudentsDetail">全年级覆盖</p>
                 </div>
                 <div class="info-card">
                     <h4 data-i18n="infoCurriculumTitle">课程体系</h4>
                     <p class="info-highlight" data-i18n="infoCurriculumHighlight">多元发展</p>
                     <p class="info-detail" data-i18n="infoCurriculumDetail">国际认证课程</p>
+                </div>
+                <div class="info-card platform-card">
+                    <h4 data-i18n="infoPlatformTitle">平台入口</h4>
+                    <div class="platform-links">
+                        <a href="https://harrowschoolsnanning.schoolsbuddy.net/login" target="_blank" class="platform-link schoolsbuddy-link">
+                            <div class="platform-logo">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="50" cy="50" r="45" fill="#4a1d6f"/>
+                                    <text x="50" y="60" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="#f4c542" text-anchor="middle">SC</text>
+                                </svg>
+                            </div>
+                            <div class="platform-info">
+                                <span class="platform-name" data-i18n="platformSchoolsBuddy">校步迪</span>
+                                <span class="platform-name-en">SchoolsBuddy</span>
+                                <span class="platform-desc" data-i18n="platformSchoolsBuddyDesc">选课系统</span>
+                            </div>
+                        </a>
+                        <a href="wxwork://" class="platform-link wecom-link" onclick="window.location.href='wxwork://'; return false;">
+                            <div class="platform-logo wecom-logo">
+                                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <linearGradient id="wecomBg" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:1" />
+                                            <stop offset="100%" style="stop-color:#ff9a56;stop-opacity:1" />
+                                        </linearGradient>
+                                    </defs>
+                                    <!-- 背景 -->
+                                    <rect width="200" height="200" fill="url(#wecomBg)"/>
+                                    <!-- 白色文档框 -->
+                                    <rect x="50" y="50" width="100" height="100" rx="8" fill="white" stroke="#333" stroke-width="3"/>
+                                    <!-- 文档顶部红色条 -->
+                                    <rect x="60" y="60" width="80" height="15" fill="#ff3366"/>
+                                    <!-- 文档灰色线条 -->
+                                    <rect x="60" y="85" width="80" height="4" fill="#666"/>
+                                    <rect x="60" y="95" width="40" height="3" fill="#999"/>
+                                    <rect x="110" y="95" width="30" height="20" fill="#ccc"/>
+                                    <rect x="60" y="105" width="40" height="3" fill="#999"/>
+                                    <rect x="60" y="115" width="50" height="3" fill="#999"/>
+                                    <rect x="60" y="125" width="45" height="3" fill="#999"/>
+                                    <!-- 黄色铃铛 -->
+                                    <g transform="translate(100, 110)">
+                                        <!-- 铃铛主体 -->
+                                        <path d="M0,-15 Q-12,-15 -15,-5 L-15,5 Q-15,10 -10,12 L10,12 Q15,10 15,5 L15,-5 Q12,-15 0,-15 Z" fill="#ffd93d" stroke="#cc9900" stroke-width="1.5"/>
+                                        <!-- 铃铛顶部 -->
+                                        <circle cx="0" cy="-18" r="4" fill="#ffd93d" stroke="#cc9900" stroke-width="1.5"/>
+                                        <!-- 铃铛底部舌头 -->
+                                        <circle cx="0" cy="14" r="3" fill="#ff6b6b"/>
+                                        <!-- 高光 -->
+                                        <ellipse cx="-5" cy="-8" rx="4" ry="6" fill="white" opacity="0.4"/>
+                                    </g>
+                                    <!-- 红色通知圆点 -->
+                                    <circle cx="130" cy="70" r="10" fill="#ff3366"/>
+                                    <circle cx="130" cy="70" r="6" fill="white"/>
+                                </svg>
+                            </div>
+                            <div class="platform-info">
+                                <span class="platform-name" data-i18n="platformWeCom">企业微信</span>
+                                <span class="platform-name-en">WeCom</span>
+                                <span class="platform-desc" data-i18n="platformWeComDesc">通讯频道</span>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </section>
         </main>
@@ -161,6 +226,133 @@
 
     <script src="scripts/i18n.js?v=20260128"></script>
     <script src="scripts/main.js?v=20260128"></script>
+    
+    <!-- 中国结飘落特效脚本 -->
+    <script>
+        // 创建飘落的中国结
+        function createChineseKnot() {
+            const container = document.getElementById('chineseKnots');
+            if (!container) return;
+            
+            const knot = document.createElement('div');
+            knot.className = 'chinese-knot';
+            
+            // 随机位置
+            knot.style.left = Math.random() * 100 + '%';
+            
+            // 随机大小
+            const size = 20 + Math.random() * 20; // 20-40px
+            knot.style.width = size + 'px';
+            knot.style.height = size * 1.5 + 'px';
+            
+            // 随机动画时长
+            const duration = 8 + Math.random() * 8; // 8-16秒
+            knot.style.animationDuration = duration + 's';
+            
+            // 随机延迟
+            const delay = Math.random() * 5;
+            knot.style.animationDelay = delay + 's';
+            
+            // 随机旋转方向
+            const rotation = Math.random() > 0.5 ? 'rotateKnotRight' : 'rotateKnotLeft';
+            knot.style.animationName = 'fallDown, ' + rotation;
+            
+            // 中国结SVG - 传统盘长结样式
+            const timestamp = Date.now() + Math.random();
+            knot.innerHTML = `
+                <svg viewBox="0 0 100 180" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="knotGradient${timestamp}" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#c41e3a;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#dc2626;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#991b1b;stop-opacity:1" />
+                        </linearGradient>
+                        <filter id="knotShadow${timestamp}">
+                            <feDropShadow dx="0" dy="3" stdDeviation="3" flood-opacity="0.5"/>
+                        </filter>
+                    </defs>
+                    
+                    <!-- 上部挂绳和圆环 -->
+                    <line x1="50" y1="0" x2="50" y2="15" stroke="#c41e3a" stroke-width="3"/>
+                    <circle cx="50" cy="22" r="7" fill="none" stroke="url(#knotGradient${timestamp})" stroke-width="4"/>
+                    
+                    <!-- 盘长结主体 - 复杂编织图案 -->
+                    <g filter="url(#knotShadow${timestamp})">
+                        <!-- 中心菱形 -->
+                        <path d="M50,35 L70,55 L50,75 L30,55 Z" fill="url(#knotGradient${timestamp})" stroke="#7f1d1d" stroke-width="2"/>
+                        
+                        <!-- 左右如意云头 -->
+                        <path d="M30,55 Q20,55 15,50 Q10,45 15,40 Q20,35 30,35" fill="url(#knotGradient${timestamp})" stroke="#7f1d1d" stroke-width="2"/>
+                        <path d="M70,55 Q80,55 85,50 Q90,45 85,40 Q80,35 70,35" fill="url(#knotGradient${timestamp})" stroke="#7f1d1d" stroke-width="2"/>
+                        
+                        <!-- 上下如意云头 -->
+                        <path d="M50,35 Q50,25 45,20 Q40,15 35,20 Q30,25 35,30" fill="url(#knotGradient${timestamp})" stroke="#7f1d1d" stroke-width="2"/>
+                        <path d="M50,75 Q50,85 45,90 Q40,95 35,90 Q30,85 35,80" fill="url(#knotGradient${timestamp})" stroke="#7f1d1d" stroke-width="2"/>
+                        <path d="M50,35 Q50,25 55,20 Q60,15 65,20 Q70,25 65,30" fill="url(#knotGradient${timestamp})" stroke="#7f1d1d" stroke-width="2"/>
+                        <path d="M50,75 Q50,85 55,90 Q60,95 65,90 Q70,85 65,80" fill="url(#knotGradient${timestamp})" stroke="#7f1d1d" stroke-width="2"/>
+                        
+                        <!-- 编织纹理 - 菱形镂空 -->
+                        <path d="M50,45 L55,50 L50,55 L45,50 Z" fill="white" opacity="0.3"/>
+                        <path d="M50,55 L55,60 L50,65 L45,60 Z" fill="white" opacity="0.3"/>
+                        <path d="M40,50 L45,55 L40,60 L35,55 Z" fill="white" opacity="0.3"/>
+                        <path d="M60,50 L65,55 L60,60 L55,55 Z" fill="white" opacity="0.3"/>
+                        
+                        <!-- 中心圆形镂空 -->
+                        <circle cx="50" cy="55" r="8" fill="white" opacity="0.4"/>
+                        <circle cx="50" cy="55" r="5" fill="url(#knotGradient${timestamp})"/>
+                    </g>
+                    
+                    <!-- 下部连接绳 -->
+                    <line x1="50" y1="95" x2="50" y2="110" stroke="#c41e3a" stroke-width="3"/>
+                    
+                    <!-- 流苏 -->
+                    <g>
+                        <!-- 流苏顶部装饰结 -->
+                        <ellipse cx="50" cy="115" rx="8" ry="5" fill="url(#knotGradient${timestamp})"/>
+                        
+                        <!-- 流苏线条 -->
+                        <line x1="42" y1="120" x2="40" y2="165" stroke="#c41e3a" stroke-width="1.5" opacity="0.9"/>
+                        <line x1="44" y1="120" x2="43" y2="170" stroke="#c41e3a" stroke-width="1.5" opacity="0.9"/>
+                        <line x1="46" y1="120" x2="45" y2="168" stroke="#c41e3a" stroke-width="1.5" opacity="0.9"/>
+                        <line x1="48" y1="120" x2="48" y2="172" stroke="#c41e3a" stroke-width="1.5" opacity="0.9"/>
+                        <line x1="50" y1="120" x2="50" y2="175" stroke="#c41e3a" stroke-width="2" opacity="1"/>
+                        <line x1="52" y1="120" x2="52" y2="172" stroke="#c41e3a" stroke-width="1.5" opacity="0.9"/>
+                        <line x1="54" y1="120" x2="55" y2="168" stroke="#c41e3a" stroke-width="1.5" opacity="0.9"/>
+                        <line x1="56" y1="120" x2="57" y2="170" stroke="#c41e3a" stroke-width="1.5" opacity="0.9"/>
+                        <line x1="58" y1="120" x2="60" y2="165" stroke="#c41e3a" stroke-width="1.5" opacity="0.9"/>
+                    </g>
+                </svg>
+            `;
+            
+            container.appendChild(knot);
+            
+            // 动画结束后移除元素
+            setTimeout(() => {
+                knot.remove();
+            }, (duration + delay) * 1000);
+        }
+        
+        // 定期创建中国结
+        function startChineseKnotEffect() {
+            // 初始创建几个
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => createChineseKnot(), i * 1000);
+            }
+            
+            // 每3-6秒创建一个新的
+            setInterval(() => {
+                createChineseKnot();
+            }, 3000 + Math.random() * 3000);
+        }
+        
+        // 页面加载后启动特效
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', startChineseKnotEffect);
+        } else {
+            startChineseKnotEffect();
+        }
+    </script>
+    
     <script>
         // 语言选择检查
         (function() {
