@@ -112,7 +112,7 @@ const ELITE_PROGRAM_TRANSLATIONS = {
         'drums': '🥁 Drums',
         'vocal': '🎤 Vocal',
         'other-instrument': '🎼 Other Instruments',
-        'band': '🎸 Soul Free Band',
+        'band': '🎸 Free Soul Band',
         'debate': '🗣️ Chinese Debate Team',
         'english-foundation': '📖 English Foundation',
         'ielts-advanced': '📝 IELTS Advanced',

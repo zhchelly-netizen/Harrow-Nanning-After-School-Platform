@@ -39,7 +39,7 @@
 "downloadScheduleAndTodo": "下载课程表与待办 📸"
 "nextStepGuide": "下一步：生成报名指引 →"
 "loadingCourses": "加载课程中..." / "Loading courses..."
-"band": "无主乐队" / "Anarchist Band"
+"band": "无主乐队" / "Free Soul Band"
 "mathSupportTitle": "英文数学" / "English Mathematics"
 ```
 

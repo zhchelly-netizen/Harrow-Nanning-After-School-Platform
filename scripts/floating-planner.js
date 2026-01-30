@@ -20,21 +20,23 @@ class FloatingPlanner {
         this.element.className = 'floating-planner';
         this.element.innerHTML = `
             <div class="planner-header">
-                <div class="planner-title">
-                    <span class="icon">📋</span>
-                    <span data-i18n="floatingPlannerTitle">我的规划</span>
+                <div class="planner-header-top">
+                    <div class="planner-title">
+                        <span class="icon">📋</span>
+                        <span data-i18n="floatingPlannerTitle">我的规划</span>
+                    </div>
+                    <button class="minimize-btn" onclick="event.stopPropagation(); floatingPlanner.toggleMinimize();">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
                 </div>
-                <button class="minimize-btn" onclick="event.stopPropagation(); floatingPlanner.toggleMinimize();">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M19 9l-7 7-7-7"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="planner-custom-time-warning" style="display: none;">
-                <div class="warning-icon">⚠️</div>
-                <div class="warning-content">
-                    <div class="warning-title" data-i18n="customTimeWarningTitle">定制时间提醒</div>
-                    <div class="warning-text" data-i18n="customTimeWarningText">您已选择定制时间的课程。请注意，后续选择的内容可能会导致可定制的课程无法协调。定制课程（除1v1外）也需要多人协调，请在后续与负责老师协商具体时间安排。</div>
+                <div class="planner-custom-time-warning" style="display: none;">
+                    <div class="warning-icon">⚠️</div>
+                    <div class="warning-content">
+                        <div class="warning-title" data-i18n="customTimeWarningTitle">定制时间提醒</div>
+                        <div class="warning-text" data-i18n="customTimeWarningText">您已选择定制时间的课程。请注意，后续选择的内容可能会导致可定制的课程无法协调。定制课程（除1v1外）也需要多人协调，请在后续与负责老师协商具体时间安排。</div>
+                    </div>
                 </div>
             </div>
             <div class="planner-mini-summary">
@@ -103,7 +105,7 @@ class FloatingPlanner {
         window.addEventListener('resize', () => this.handleResize());
         this.handleResize();
         
-        // 初始化页面内边距
+        // 初始化页面内边距（警告是浮动的，不影响布局）
         this.adjustPagePadding(false);
     }
     
@@ -218,12 +220,8 @@ class FloatingPlanner {
             }
         }
         
-        // 重新调整页面内边距
-        const warningElement = this.element.querySelector('.planner-custom-time-warning');
-        if (warningElement) {
-            const hasWarning = warningElement.style.display !== 'none';
-            this.adjustPagePadding(hasWarning);
-        }
+        // 重新调整页面内边距（警告是浮动的，不影响布局）
+        this.adjustPagePadding(false);
     }
     
     updateProgress(currentStep, totalSteps = 5) {
@@ -420,6 +418,17 @@ class FloatingPlanner {
     updateMiniSummary() {
         const allDays = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
         
+        // 日期名称映射
+        const dayNameMap = {
+            'monday': i18n.currentLang === 'zh' ? '一' : 'MON',
+            'tuesday': i18n.currentLang === 'zh' ? '二' : 'TUE',
+            'wednesday': i18n.currentLang === 'zh' ? '三' : 'WED',
+            'thursday': i18n.currentLang === 'zh' ? '四' : 'THU',
+            'friday': i18n.currentLang === 'zh' ? '五' : 'FRI',
+            'saturday': i18n.currentLang === 'zh' ? '六' : 'SAT',
+            'sunday': i18n.currentLang === 'zh' ? '日' : 'SUN'
+        };
+        
         allDays.forEach(day => {
             const miniDay = this.element.querySelector(`.planner-mini-day[data-day="${day}"]`);
             if (!miniDay) return;
@@ -438,6 +447,12 @@ class FloatingPlanner {
             const hasConflict = this.checkDayConflict(dayShortMap[day]);
             
             const iconEl = miniDay.querySelector('.planner-mini-day-icon');
+            const nameEl = miniDay.querySelector('.planner-mini-day-name');
+            
+            // 更新日期名称
+            if (nameEl) {
+                nameEl.textContent = dayNameMap[day];
+            }
             
             // 重置类名
             miniDay.className = 'planner-mini-day';
@@ -640,10 +655,9 @@ class FloatingPlanner {
         
         if (hasCustomTime) {
             warningElement.style.display = 'flex';
-            this.adjustPagePadding(true);
+            // 不再需要调整页面内边距，因为警告是浮动的
         } else {
             warningElement.style.display = 'none';
-            this.adjustPagePadding(false);
         }
     }
     
@@ -651,26 +665,16 @@ class FloatingPlanner {
         const ccaContent = document.querySelector('.cca-content');
         if (!ccaContent) return;
         
-        // 根据屏幕尺寸和警告状态调整底部内边距
+        // 根据屏幕尺寸调整底部内边距（警告是浮动的，不影响布局）
         const isMobile = window.innerWidth <= 768;
         const isSmallScreen = window.innerWidth <= 480;
         
-        if (hasWarning) {
-            if (isSmallScreen) {
-                ccaContent.style.paddingBottom = '550px';
-            } else if (isMobile) {
-                ccaContent.style.paddingBottom = '600px';
-            } else {
-                ccaContent.style.paddingBottom = '650px';
-            }
+        if (isSmallScreen) {
+            ccaContent.style.paddingBottom = '400px';
+        } else if (isMobile) {
+            ccaContent.style.paddingBottom = '450px';
         } else {
-            if (isSmallScreen) {
-                ccaContent.style.paddingBottom = '400px';
-            } else if (isMobile) {
-                ccaContent.style.paddingBottom = '450px';
-            } else {
-                ccaContent.style.paddingBottom = '500px';
-            }
+            ccaContent.style.paddingBottom = '500px';
         }
     }
     

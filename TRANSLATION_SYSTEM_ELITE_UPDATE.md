@@ -28,7 +28,7 @@
 4. 🥁 架子鼓 - Drums
 5. 🎤 声乐 - Vocal
 6. 🎼 其他乐器 - Other Instruments
-7. 🎸 无主乐队 - Anarchist Band
+7. 🎸 无主乐队 - Free Soul Band
 
 ### 🎓 学术竞赛（1项）
 1. 🗣️ "以言论道"思辨社 - Chinese Debate Team

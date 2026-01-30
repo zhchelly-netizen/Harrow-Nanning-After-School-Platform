@@ -704,7 +704,7 @@ const translations = {
         "downloadScheduleAndTodo": "Download Schedule & To-Do 📸",
         "nextStepGuide": "Next: Generate Registration Guide →",
         "loadingCourses": "Loading courses...",
-        "band": "Anarchist Band",
+        "band": "Free Soul Band",
         "mathSupportTitle": "English Mathematics",
         "scholarshipPageTitle": "AISL Harrow Nanning Scholarships",
         "tabOverview": "Overview",
