@@ -91,6 +91,7 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: var(--spacing-xl) var(--spacing-md);
+    padding-bottom: 500px; /* 为浮动规划器预留空间 */
 }
 
 .step-section {
@@ -955,6 +956,8 @@
     gap: var(--spacing-md);
     justify-content: center;
     margin-top: var(--spacing-xl);
+    position: relative;
+    z-index: 1000;
 }
 
 /* 响应式 */
@@ -1000,6 +1003,7 @@
 @media (max-width: 768px) {
     .cca-content {
         padding: var(--spacing-lg) var(--spacing-sm);
+        padding-bottom: 450px; /* 移动端为浮动规划器预留空间 */
     }
     
     .progress-container {
@@ -1244,6 +1248,7 @@
 @media (max-width: 480px) {
     .cca-content {
         padding: var(--spacing-md) var(--spacing-xs);
+        padding-bottom: 400px; /* 小屏幕为浮动规划器预留空间 */
     }
     
     .progress-container {

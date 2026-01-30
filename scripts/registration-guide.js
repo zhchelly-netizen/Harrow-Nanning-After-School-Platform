@@ -400,15 +400,30 @@ function generateRegistrationSteps() {
 
 // 按钮操作函数
 function openSportsForm(url) {
-    window.open(url, '_blank');
+    navigateToExternal(url);
 }
 
 function openMusicForm(url) {
-    window.open(url, '_blank');
+    navigateToExternal(url);
 }
 
 function openSchoolsBuddy(url) {
-    window.open(url, '_blank');
+    navigateToExternal(url);
+}
+
+// 导航到外部链接（保存状态后跳转）
+function navigateToExternal(url) {
+    // 保存当前状态到 localStorage（从 cca-planning 页面带过来的状态）
+    const planningState = localStorage.getItem('ccaPlanningState');
+    if (planningState) {
+        console.log('保持规划状态，准备跳转到外部链接');
+    }
+    
+    // 设置标记，表示即将跳转到外部链接
+    localStorage.setItem('ccaNavigatingToExternal', 'true');
+    
+    // 跳转到外部链接
+    window.location.href = url;
 }
 
 function scrollToContact() {
@@ -426,4 +441,24 @@ function showTeacherContact(teacherName) {
 
 function showDebateContact() {
     alert(`请在企业微信上联系辩论队教练组：\n\n【中文教育组组长】\n欧老师 Kasey Ou\n\n【高年级教练】\n谭老师 Lily Tan\n\n【小学部教练】\n梁老师 Nicky Liang\n\n请根据您的年级联系对应的教练老师`);
+}
+
+// 返回到规划页面（保留状态）
+function goBackToPlanningPage() {
+    // 设置标记，表示这是从 registration-guide 返回，应该保留状态
+    localStorage.setItem('ccaNavigatingToExternal', 'true');
+    
+    // 跳转回规划页面
+    window.location.href = 'cca-planning.html';
+}
+
+// 完成规划（清除状态，返回首页）
+function completePlanning() {
+    // 清除所有规划相关的缓存
+    localStorage.removeItem('ccaPlanningState');
+    localStorage.removeItem('ccaPlanData');
+    localStorage.removeItem('ccaNavigatingToExternal');
+    
+    // 返回首页
+    window.location.href = 'index.html';
 }

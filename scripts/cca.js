@@ -39,7 +39,7 @@ const ELITE_SCHEDULES = {
     'ielts-advanced': { days: ['tue', 'thu'], time: '定制时间', blocksWeekdays: false },
     
     // 数学支持
-    'math-support': { days: ['thu'], time: '16:00-17:00', blocksWeekdays: true }
+    'math-support': { days: [], time: '16:00-18:00 & 18:00-20:00', blocksWeekdays: true }
 };
 
 // 监听语言切换事件
@@ -212,21 +212,35 @@ function nextStep(step) {
     
     // 更新步骤
     currentStep = step;
+    
+    // 保存状态到 localStorage
+    saveCurrentState();
+    
     updateStepDisplay();
     
     // 如果进入CCA选择步骤，加载课程
     if (step === 3) {
-        loadCCACourses();
+        console.log('进入步骤3 - 加载CCA课程');
+        setTimeout(() => {
+            loadCCACourses();
+        }, 100);
     }
     
     // 如果进入确认步骤，生成摘要
     if (step === 4) {
-        generateSummary();
+        console.log('进入步骤4 - 生成摘要');
+        setTimeout(() => {
+            generateSummary();
+            generateSchedulePreview();
+        }, 100);
     }
     
     // 如果进入报名指引步骤，生成报名指引预览
     if (step === 5) {
-        generateRegistrationGuidePreview();
+        console.log('进入步骤5 - 生成报名指引');
+        setTimeout(() => {
+            generateRegistrationGuidePreview();
+        }, 100);
     }
     
     // 滚动到顶部
@@ -234,25 +248,80 @@ function nextStep(step) {
 }
 
 function prevStep(step) {
+    // 如果从步骤2回退到步骤1，提示用户并清除缓存
+    if (currentStep === 2 && step === 1) {
+        const confirmReset = confirm(i18n.t('messages.confirmResetPlanning') || '返回第一步将清除所有已选择的内容，确定要继续吗？');
+        if (!confirmReset) {
+            return; // 用户取消，不执行回退
+        }
+        
+        // 清除所有缓存和数据
+        localStorage.removeItem('ccaPlanningState');
+        studentData = {};
+        selectedElitePrograms = [];
+        selectedCCAs = {};
+        console.log('已清除所有规划数据');
+    }
+    
     currentStep = step;
+    
+    // 保存状态到 localStorage
+    saveCurrentState();
+    
     updateStepDisplay();
+    
+    // 如果返回到步骤1，清空表单
+    if (step === 1) {
+        const gradeSelect = document.getElementById('student-grade');
+        if (gradeSelect) {
+            gradeSelect.value = '';
+        }
+    }
+    
+    // 如果返回到步骤2（精英项目），恢复精英项目选择
+    if (step === 2) {
+        console.log('返回步骤2 - 恢复精英项目选择');
+        setTimeout(() => {
+            selectedElitePrograms.forEach(program => {
+                const checkbox = document.querySelector(`input[value="${program.value}"]`);
+                if (checkbox) {
+                    checkbox.checked = true;
+                }
+            });
+        }, 100);
+    }
     
     // 如果返回到步骤3（CCA选择），重新加载课程以重新计算冲突
     if (step === 3) {
+        console.log('返回步骤3 - 重新加载CCA课程');
         // 保存步骤2的数据以确保精英项目是最新的
         saveStepData(2);
         // 重新加载CCA课程（会重新计算被占用的日期）
-        loadCCACourses();
+        setTimeout(() => {
+            loadCCACourses();
+        }, 100);
         // 更新浮动规划框
         if (typeof floatingPlanner !== 'undefined' && floatingPlanner) {
             floatingPlanner.updateElitePrograms(selectedElitePrograms);
         }
     }
     
+    // 如果返回到步骤4（确认），重新生成摘要
+    if (step === 4) {
+        console.log('返回步骤4 - 重新生成摘要');
+        console.log('返回步骤4前，selectedElitePrograms:', selectedElitePrograms);
+        setTimeout(() => {
+            generateSummary();
+            generateSchedulePreview();
+        }, 100);
+    }
+    
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function updateStepDisplay() {
+    console.log('updateStepDisplay 被调用，currentStep:', currentStep);
+    
     // 更新进度指示器
     document.querySelectorAll('.progress-step').forEach((step, index) => {
         const stepNumber = index + 1;
@@ -269,8 +338,10 @@ function updateStepDisplay() {
     
     // 更新内容区域
     document.querySelectorAll('.step-section').forEach((section, index) => {
-        if (index + 1 === currentStep) {
+        const stepNumber = index + 1;
+        if (stepNumber === currentStep) {
             section.classList.add('active');
+            console.log('激活步骤', stepNumber, '的内容区域');
         } else {
             section.classList.remove('active');
         }
@@ -358,6 +429,8 @@ function saveStepData(step) {
                 schedule: input.dataset.schedule
             });
         });
+        
+        console.log('saveStepData(2) 完成，selectedElitePrograms:', selectedElitePrograms);
     }
 }
 
@@ -485,9 +558,15 @@ function loadCCACourses() {
             `;
             
             slot.addEventListener('click', function() {
-                if (course.inviteOnly) {
+                // 检查是否已选中该课程（取消选择）
+                if (selectedCCAs[day] && selectedCCAs[day].id === course.id) {
+                    // 取消选择，不需要弹窗
+                    unselectCCA(day);
+                } else if (course.inviteOnly) {
+                    // 选择单招项目，显示邀请对话框
                     showInviteOnlyDialog(day, course);
                 } else {
+                    // 选择普通课程
                     selectCCA(day, course);
                 }
             });
@@ -598,6 +677,9 @@ function unselectCCA(day) {
     // 从数据中删除
     delete selectedCCAs[day];
     
+    // 保存状态到 sessionStorage
+    saveCurrentState();
+    
     // 更新浮动规划框
     if (typeof floatingPlanner !== 'undefined' && floatingPlanner) {
         floatingPlanner.updateCCASelection(day, null);
@@ -624,6 +706,9 @@ function confirmSelectCCA(day, course, conflictOverride = null) {
         ...course,
         conflictOverride: conflictOverride
     };
+    
+    // 保存状态到 sessionStorage
+    saveCurrentState();
     
     // 更新浮动规划框
     if (typeof floatingPlanner !== 'undefined' && floatingPlanner) {
@@ -1053,6 +1138,12 @@ function parseFee(feeString) {
         return parseInt(match[1].replace(/,/g, ''));
     }
     return 0;
+}
+
+// 清除保存的规划状态
+function clearPlanningState() {
+    localStorage.removeItem('ccaPlanningState');
+    console.log('规划状态已清除');
 }
 
 // 生成课程表图片
@@ -1644,8 +1735,143 @@ function getKnowledgeIcon(category) {
     return KNOWLEDGE_ICONS[category] || '📖';
 }
 
+// 保存当前状态到 localStorage（改用 localStorage 以支持跨域导航后返回）
+function saveCurrentState() {
+    const state = {
+        currentStep: currentStep,
+        studentData: studentData,
+        selectedElitePrograms: selectedElitePrograms,
+        selectedCCAs: selectedCCAs,
+        timestamp: Date.now()
+    };
+    localStorage.setItem('ccaPlanningState', JSON.stringify(state));
+    console.log('状态已保存到 localStorage，currentStep:', currentStep);
+}
+
+// 从 localStorage 恢复状态
+function restoreState() {
+    const savedState = localStorage.getItem('ccaPlanningState');
+    console.log('尝试恢复状态，savedState:', savedState);
+    
+    if (savedState) {
+        try {
+            const state = JSON.parse(savedState);
+            console.log('解析的状态:', state);
+            
+            // 检查状态是否在30分钟内
+            const timeDiff = Date.now() - state.timestamp;
+            console.log('时间差（毫秒）:', timeDiff, '是否有效:', timeDiff < 30 * 60 * 1000);
+            
+            if (timeDiff < 30 * 60 * 1000) {
+                currentStep = state.currentStep;
+                studentData = state.studentData;
+                selectedElitePrograms = state.selectedElitePrograms;
+                selectedCCAs = state.selectedCCAs;
+                
+                console.log('状态已恢复，currentStep:', currentStep);
+                
+                // 恢复UI状态
+                restoreUIState();
+                return true;
+            } else {
+                console.log('状态已过期，清除状态');
+                localStorage.removeItem('ccaPlanningState');
+            }
+        } catch (e) {
+            console.error('Failed to restore state:', e);
+        }
+    }
+    return false;
+}
+
+// 恢复UI状态
+function restoreUIState() {
+    console.log('恢复UI状态，currentStep:', currentStep);
+    console.log('selectedElitePrograms 数量:', selectedElitePrograms.length);
+    console.log('selectedElitePrograms 内容:', selectedElitePrograms);
+    
+    // 恢复年级选择
+    if (studentData.grade) {
+        const gradeSelect = document.getElementById('student-grade');
+        if (gradeSelect) {
+            gradeSelect.value = studentData.grade;
+            filterEliteProgramsByGrade(studentData.grade);
+        }
+    }
+    
+    // 恢复精英项目选择（需要延迟执行，确保DOM已加载）
+    setTimeout(() => {
+        console.log('恢复精英项目选择，数量:', selectedElitePrograms.length);
+        selectedElitePrograms.forEach(program => {
+            const checkbox = document.querySelector(`input[value="${program.value}"]`);
+            if (checkbox) {
+                checkbox.checked = true;
+                console.log('已恢复精英项目:', program.value);
+            } else {
+                console.warn('未找到精英项目checkbox:', program.value);
+            }
+        });
+        
+        // 更新浮动规划框
+        if (typeof floatingPlanner !== 'undefined' && floatingPlanner) {
+            floatingPlanner.updateElitePrograms(selectedElitePrograms);
+        }
+    }, 100);
+    
+    // 如果在步骤3，恢复CCA选择
+    if (currentStep === 3) {
+        console.log('恢复步骤3 - 加载CCA课程');
+        setTimeout(() => {
+            loadCCACourses();
+        }, 150);
+    }
+    
+    // 如果在步骤4，生成摘要
+    if (currentStep === 4) {
+        console.log('恢复步骤4 - 生成摘要');
+        setTimeout(() => {
+            generateSummary();
+            generateSchedulePreview();
+        }, 150);
+    }
+    
+    // 如果在步骤5，生成报名指引
+    if (currentStep === 5) {
+        console.log('恢复步骤5 - 生成报名指引');
+        setTimeout(() => {
+            console.log('生成报名指引前，selectedElitePrograms:', selectedElitePrograms);
+            generateRegistrationGuidePreview();
+        }, 150);
+    }
+}
+
 // 页面加载完成后初始化
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('页面加载，当前步骤:', currentStep);
+    
+    // 检查是否是从外部链接返回
+    const isReturningFromExternal = localStorage.getItem('ccaNavigatingToExternal') === 'true';
+    console.log('是否从外部链接返回:', isReturningFromExternal);
+    
+    // 尝试恢复状态
+    const stateRestored = restoreState();
+    
+    console.log('状态恢复结果:', stateRestored, '当前步骤:', currentStep);
+    
+    // 如果不是从外部链接返回，且恢复了状态，清除缓存重新开始
+    if (!isReturningFromExternal && stateRestored) {
+        console.log('检测到非外部链接返回，清除缓存重新开始');
+        localStorage.removeItem('ccaPlanningState');
+        currentStep = 1;
+        studentData = {};
+        selectedElitePrograms = [];
+        selectedCCAs = {};
+    }
+    
+    // 清除导航标记（在状态恢复和判断之后）
+    localStorage.removeItem('ccaNavigatingToExternal');
+    
+    // 无论是否恢复状态，都更新显示
     updateStepDisplay();
     
     // 初始化精英项目语言
@@ -1654,6 +1880,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // 同步浮动规划窗口的步骤进度
     if (typeof floatingPlanner !== 'undefined' && floatingPlanner) {
         floatingPlanner.updateProgress(currentStep);
+        if (studentData.grade) {
+            floatingPlanner.updateStudentInfo(studentData.grade);
+        }
+        if (selectedElitePrograms.length > 0) {
+            floatingPlanner.updateElitePrograms(selectedElitePrograms);
+        }
+        // 恢复CCA选择到浮动窗口
+        Object.keys(selectedCCAs).forEach(day => {
+            if (selectedCCAs[day]) {
+                floatingPlanner.updateCCASelection(day, selectedCCAs[day]);
+            }
+        });
     }
     
     // 监听年级选择变化
@@ -1667,6 +1905,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (typeof floatingPlanner !== 'undefined' && floatingPlanner) {
                     floatingPlanner.updateStudentInfo(grade);
                 }
+                // 保存状态到 sessionStorage
+                studentData.grade = grade;
+                saveCurrentState();
             }
         });
     }
@@ -1694,6 +1935,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 saveStepData(2);
                 floatingPlanner.updateElitePrograms(selectedElitePrograms);
             }
+            
+            // 保存状态到 sessionStorage
+            saveStepData(2);
+            saveCurrentState();
         });
     });
 });
@@ -1730,9 +1975,8 @@ function filterEliteProgramsByGrade(grade) {
         }
     });
     
-    // 更新浮动规划框
+    // 更新浮动规划框（不调用 saveStepData，因为这只是过滤显示，不应该修改数据）
     if (typeof floatingPlanner !== 'undefined' && floatingPlanner) {
-        saveStepData(2);
         floatingPlanner.updateElitePrograms(selectedElitePrograms);
     }
 }
@@ -2070,7 +2314,7 @@ function generateRegistrationGuidePreview() {
                         
                         <!-- 登录按钮部分 -->
                         <div style="padding: 1rem;">
-                            <button onclick="window.open('${step.buttonUrl}', '_blank')" 
+                            <button onclick="navigateToExternal('${step.buttonUrl}')" 
                                     style="width: 100%; padding: 1rem 1.5rem; background: linear-gradient(135deg, #152242 0%, #1e3158 100%); color: white; border: none; border-radius: 8px; font-size: 1.125rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(21, 34, 66, 0.3); display: flex; align-items: center; justify-content: center; gap: 0.5rem; position: relative;">
                                 <span style="position: relative; z-index: 2;">${i18n.t('messages.loginToSchoolsBuddy')}</span>
                                 <span style="font-size: 1.25rem; position: relative; z-index: 2;">→</span>
@@ -2082,7 +2326,7 @@ function generateRegistrationGuidePreview() {
         } else {
             // 其他步骤使用原来的布局
             const buttonHtml = step.buttonUrl 
-                ? `<button onclick="window.open('${step.buttonUrl}', '_blank')" style="width: 100%; padding: 0.875rem 1.5rem; background: linear-gradient(135deg, #152242 0%, #1e3158 100%); color: white; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(21, 34, 66, 0.3); position: relative;"><span style="position: relative; z-index: 2;">${step.buttonText}</span></button>`
+                ? `<button onclick="navigateToExternal('${step.buttonUrl}')" style="width: 100%; padding: 0.875rem 1.5rem; background: linear-gradient(135deg, #152242 0%, #1e3158 100%); color: white; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(21, 34, 66, 0.3); position: relative;"><span style="position: relative; z-index: 2;">${step.buttonText}</span></button>`
                 : `<button onclick="${step.buttonAction}()" style="width: 100%; padding: 0.875rem 1.5rem; background: linear-gradient(135deg, #6b7c93 0%, #7a8ba2 100%); color: white; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(107, 124, 147, 0.3); position: relative;"><span style="position: relative; z-index: 2;">${step.buttonText}</span></button>`;
             
             html += `
@@ -2106,6 +2350,18 @@ function generateRegistrationGuidePreview() {
     }
     
     container.innerHTML = html;
+}
+
+// 导航到外部链接（保存状态后跳转）
+function navigateToExternal(url) {
+    // 保存当前状态
+    saveCurrentState();
+    
+    // 设置标记，表示即将跳转到外部链接
+    localStorage.setItem('ccaNavigatingToExternal', 'true');
+    
+    // 跳转到外部链接
+    window.location.href = url;
 }
 
 // 辅助函数

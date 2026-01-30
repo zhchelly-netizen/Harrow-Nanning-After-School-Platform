@@ -73,7 +73,8 @@ const CCA_COURSES = {
         { id: 'wed-19', name: '自由搏击', nameEn: 'Boxing', teacher: '爱菲尚', grades: ['G6','G7','G8','G9','G10','G11','G12'], fee: '¥1,000', category: 'skill', emoji: '🥊' },
         { id: 'wed-20', name: '河马英语趣味挑战 (G1-2)', nameEn: 'Hippo English Challenge (G1-G2)', teacher: 'Lee Li', grades: ['G1','G2'], fee: '¥0', category: 'competition', emoji: '📖' },
         { id: 'wed-21', name: '河马英语趣味挑战 (G3-4)', nameEn: 'Hippo English Challenge (G3-G4)', teacher: 'Joanne Liang', grades: ['G3','G4'], fee: '¥0', category: 'competition', emoji: '📖' },
-        { id: 'wed-22', name: '美国科学测评', nameEn: 'National Science League', teacher: 'George Odero', grades: ['G7','G8','G9','G10','G11','G12'], fee: '¥0', category: 'competition', emoji: '🔬' }
+        { id: 'wed-22', name: '美国科学测评', nameEn: 'National Science League', teacher: 'George Odero', grades: ['G7','G8','G9','G10','G11','G12'], fee: '¥0', category: 'competition', emoji: '🔬' },
+        { id: 'wed-23', name: '萌爪之家流浪动物领养中心', nameEn: 'House of Paws Animal Adoption Centre', teacher: 'Lily Yang, Chloe Chen', grades: ['G2','G3','G4','G5','G6','G7','G8','G9','G10','G11','G12'], fee: '¥0', category: 'club', emoji: '🐾', inviteOnly: true }
     ],
 
     // 周四课程
@@ -94,8 +95,7 @@ const CCA_COURSES = {
         { id: 'thu-14', name: '中文数学支持 (G9)', nameEn: 'Chinese Maths Support', teacher: 'Neil Fan', grades: ['G9'], fee: '¥0', category: 'support', emoji: '🔢' },
         { id: 'thu-15', name: '中学部常春藤杯', nameEn: 'Ivy Cup (Upper)', teacher: 'Miranda, Sarah', grades: ['G6','G7','G8','G9','G10','G11','G12'], fee: '¥0', category: 'competition', emoji: '🏆' },
         { id: 'thu-16', name: '戏剧社', nameEn: 'Drama Club', teacher: 'Le Roux Germano', grades: ['G1','G2','G3','G4','G5','G6','G7','G8','G9','G10','G11','G12'], fee: '¥0', category: 'skill', emoji: '🎭' },
-        { id: 'thu-17', name: '学生会 (中学)', nameEn: 'Student Council (Secondary)', teacher: 'Brandon Cook', grades: ['G6','G7','G8','G9','G10','G11','G12'], fee: '¥0', category: 'club', emoji: '🎓', inviteOnly: true },
-        { id: 'thu-18', name: '爱丁堡公爵奖', nameEn: 'DoFE', teacher: 'S. Brad, Zanmarie Snyman', grades: ['G9','G10','G11','G12'], fee: '¥0', category: 'competition', emoji: '🎖️', inviteOnly: true }
+        { id: 'thu-17', name: '学生会 (中学)', nameEn: 'Student Council (Secondary)', teacher: 'Brandon Cook', grades: ['G6','G7','G8','G9','G10','G11','G12'], fee: '¥0', category: 'club', emoji: '🎓', inviteOnly: true }
     ],
 
     // 周五课程

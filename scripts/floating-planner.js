@@ -30,6 +30,13 @@ class FloatingPlanner {
                     </svg>
                 </button>
             </div>
+            <div class="planner-custom-time-warning" style="display: none;">
+                <div class="warning-icon">⚠️</div>
+                <div class="warning-content">
+                    <div class="warning-title" data-i18n="customTimeWarningTitle">定制时间提醒</div>
+                    <div class="warning-text" data-i18n="customTimeWarningText">您已选择定制时间的课程。请注意，后续选择的内容可能会导致可定制的课程无法协调。定制课程（除1v1外）也需要多人协调，请在后续与负责老师协商具体时间安排。</div>
+                </div>
+            </div>
             <div class="planner-mini-summary">
                 <div class="planner-mini-reminder">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -95,6 +102,9 @@ class FloatingPlanner {
         // 监听窗口大小变化
         window.addEventListener('resize', () => this.handleResize());
         this.handleResize();
+        
+        // 初始化页面内边距
+        this.adjustPagePadding(false);
     }
     
     bindFocusEvents() {
@@ -207,6 +217,13 @@ class FloatingPlanner {
                 this.setFocused(false);
             }
         }
+        
+        // 重新调整页面内边距
+        const warningElement = this.element.querySelector('.planner-custom-time-warning');
+        if (warningElement) {
+            const hasWarning = warningElement.style.display !== 'none';
+            this.adjustPagePadding(hasWarning);
+        }
     }
     
     updateProgress(currentStep, totalSteps = 5) {
@@ -258,6 +275,9 @@ class FloatingPlanner {
         if (oldList) {
             oldList.remove();
         }
+        
+        // 检查是否有定制时间的课程
+        this.checkAndShowCustomTimeWarning(programs);
         
         if (programs.length === 0) {
             // 不自动更新进度，由页面的 currentStep 控制
@@ -609,6 +629,51 @@ class FloatingPlanner {
         // 不自动更新进度，由页面的 currentStep 控制
     }
     
+    checkAndShowCustomTimeWarning(programs) {
+        const warningElement = this.element.querySelector('.planner-custom-time-warning');
+        if (!warningElement) return;
+        
+        // 检查是否有定制时间的课程
+        const hasCustomTime = programs.some(program => {
+            return program.schedule === 'custom' || program.schedule === '定制时间';
+        });
+        
+        if (hasCustomTime) {
+            warningElement.style.display = 'flex';
+            this.adjustPagePadding(true);
+        } else {
+            warningElement.style.display = 'none';
+            this.adjustPagePadding(false);
+        }
+    }
+    
+    adjustPagePadding(hasWarning) {
+        const ccaContent = document.querySelector('.cca-content');
+        if (!ccaContent) return;
+        
+        // 根据屏幕尺寸和警告状态调整底部内边距
+        const isMobile = window.innerWidth <= 768;
+        const isSmallScreen = window.innerWidth <= 480;
+        
+        if (hasWarning) {
+            if (isSmallScreen) {
+                ccaContent.style.paddingBottom = '550px';
+            } else if (isMobile) {
+                ccaContent.style.paddingBottom = '600px';
+            } else {
+                ccaContent.style.paddingBottom = '650px';
+            }
+        } else {
+            if (isSmallScreen) {
+                ccaContent.style.paddingBottom = '400px';
+            } else if (isMobile) {
+                ccaContent.style.paddingBottom = '450px';
+            } else {
+                ccaContent.style.paddingBottom = '500px';
+            }
+        }
+    }
+    
     show() {
         this.element.style.display = 'flex';
     }
@@ -628,6 +693,16 @@ class FloatingPlanner {
         const reminderSpan = this.element.querySelector('.planner-mini-reminder span[data-i18n]');
         if (reminderSpan) {
             reminderSpan.textContent = i18n.t('selectForEachDay');
+        }
+        
+        // 更新定制时间警告
+        const warningTitle = this.element.querySelector('.planner-custom-time-warning .warning-title');
+        if (warningTitle) {
+            warningTitle.textContent = i18n.t('customTimeWarningTitle');
+        }
+        const warningText = this.element.querySelector('.planner-custom-time-warning .warning-text');
+        if (warningText) {
+            warningText.textContent = i18n.t('customTimeWarningText');
         }
         
         // 更新空状态
