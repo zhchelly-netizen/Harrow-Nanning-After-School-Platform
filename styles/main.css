@@ -6,6 +6,58 @@
 /* 字体导入 - 使用Google Fonts替代本地字体 */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap');
 
+/* 移动端优化 - 平滑滚动和触摸优化 */
+html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+    /* 防止过度滚动导致页面弹跳 */
+    overscroll-behavior: none;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    touch-action: manipulation;
+    /* 防止过度滚动 */
+    overscroll-behavior-x: none;
+    position: relative;
+}
+
+/* 手势滑动视觉反馈 */
+@media (max-width: 768px) {
+    body {
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* 滑动返回指示器 */
+    body::before {
+        content: '←';
+        position: fixed;
+        left: -50px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        background: rgba(21, 34, 66, 0.9);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        opacity: 0;
+        transition: all 0.3s ease;
+        z-index: 9999;
+        pointer-events: none;
+    }
+    
+    body.swiping-back::before {
+        left: 20px;
+        opacity: 1;
+    }
+}
+
 @font-face {
     font-family: 'Bembo';
     src: url('../fonts/Bembo标准(BemboStd)_爱给网_aigei_com.otf') format('opentype');
@@ -98,8 +150,8 @@
     --spacing-sm: 1rem;
     --spacing-md: 1.5rem;
     --spacing-lg: 2rem;
-    --spacing-xl: 3rem;
-    --spacing-2xl: 4rem;
+    --spacing-xl: 2.5rem;
+    --spacing-2xl: 3rem;
     
     /* 圆角 */
     --radius-sm: 8px;
@@ -958,7 +1010,8 @@ html[lang="en"] .harrow-hat {
 }
 
 .platform-card h4 {
-    text-align: left;
+    text-align: center;
+    margin-bottom: var(--spacing-sm);
 }
 
 .platform-links {
@@ -1474,6 +1527,32 @@ html[lang="en"] .harrow-hat {
         font-size: 1.75rem;
     }
     
+    /* 平台卡片移动端优化 */
+    .platform-card {
+        padding: var(--spacing-md);
+    }
+    
+    .platform-links {
+        gap: var(--spacing-sm);
+    }
+    
+    .platform-link {
+        padding: var(--spacing-sm);
+    }
+    
+    .platform-logo {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .platform-info h5 {
+        font-size: 0.9rem;
+    }
+    
+    .platform-info p {
+        font-size: 0.75rem;
+    }
+    
     .main-content {
         padding: var(--spacing-xl) var(--spacing-md);
     }
@@ -1589,6 +1668,38 @@ html[lang="en"] .harrow-hat {
     
     .info-detail {
         font-size: 0.85rem;
+    }
+    
+    /* 平台卡片小屏优化 */
+    .platform-card {
+        padding: var(--spacing-sm);
+    }
+    
+    .platform-card h4 {
+        font-size: 0.75rem;
+        margin-bottom: var(--spacing-xs);
+    }
+    
+    .platform-links {
+        gap: var(--spacing-xs);
+        margin-top: var(--spacing-xs);
+    }
+    
+    .platform-link {
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+    
+    .platform-logo {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .platform-info h5 {
+        font-size: 0.85rem;
+    }
+    
+    .platform-info p {
+        font-size: 0.7rem;
     }
     
     .main-content {

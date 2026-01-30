@@ -508,14 +508,14 @@
         width: 100%;
         max-width: 100%;
         border-radius: 16px 16px 0 0;
-        max-height: 70vh;
+        max-height: 60vh;
         z-index: 999;
         transition: all 0.3s ease;
     }
     
     /* 展开状态 - 占据更多空间 */
     .floating-planner:not(.minimized) {
-        max-height: 70vh;
+        max-height: 60vh;
     }
     
     .floating-planner.minimized {
@@ -528,21 +528,52 @@
     .floating-planner.minimized .planner-header {
         height: auto;
         border-radius: 16px 16px 0 0;
-        padding: 0.75rem 1rem;
+        padding: 0.625rem 0.875rem;
     }
     
     .floating-planner.minimized .planner-title {
         display: flex;
+        font-size: 0.8rem;
+    }
+    
+    .planner-header {
+        padding: 0.75rem 1rem;
+    }
+    
+    .planner-title {
         font-size: 0.875rem;
     }
     
+    .planner-title .icon {
+        font-size: 1rem;
+    }
+    
+    .minimize-btn {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .minimize-btn svg {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .planner-content {
+        padding: 0.75rem;
+    }
+    
     .planner-mini-summary {
-        padding: 0.75rem 1rem 1rem;
+        padding: 0.625rem 0.875rem 0.875rem;
     }
     
     .planner-mini-reminder {
-        font-size: 0.7rem;
-        margin-bottom: 0.5rem;
+        font-size: 0.65rem;
+        margin-bottom: 0.375rem;
+    }
+    
+    .planner-mini-reminder svg {
+        width: 12px;
+        height: 12px;
     }
     
     .planner-mini-days {
@@ -550,31 +581,174 @@
         flex-wrap: nowrap;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
+        padding-bottom: 2px;
     }
     
     .planner-mini-day {
-        height: 36px;
-        min-width: 40px;
+        height: 32px;
+        min-width: 38px;
         flex-shrink: 0;
+        font-size: 0.65rem;
     }
     
     .planner-mini-day-name {
-        font-size: 0.7rem;
+        font-size: 0.65rem;
     }
     
     .planner-mini-day-icon {
-        font-size: 1rem;
+        font-size: 0.875rem;
+    }
+    
+    /* 进度条 */
+    .planner-progress {
+        margin-bottom: 0.75rem;
+        padding-bottom: 0.75rem;
+    }
+    
+    .progress-bar {
+        height: 6px;
+        margin-bottom: 0.375rem;
+    }
+    
+    .progress-text {
+        font-size: 0.7rem;
+    }
+    
+    /* 学生信息 */
+    .planner-student-info {
+        padding: 0.625rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .planner-student-info .info-label {
+        font-size: 0.7rem;
+        margin-bottom: 0.2rem;
+    }
+    
+    .planner-student-info .info-value {
+        font-size: 0.8rem;
+    }
+    
+    /* 周计划表 */
+    .planner-week-schedule {
+        margin-bottom: 0.75rem;
+    }
+    
+    .planner-section-title {
+        font-size: 0.8rem;
+        margin-bottom: 0.625rem;
+    }
+    
+    .planner-day-item {
+        padding: 0.625rem;
+        margin-bottom: 0.375rem;
+    }
+    
+    .planner-day-header {
+        margin-bottom: 0.375rem;
+    }
+    
+    .planner-day-name {
+        font-size: 0.8rem;
+    }
+    
+    .planner-day-status {
+        font-size: 0.7rem;
+        padding: 1px 6px;
+    }
+    
+    .planner-day-activities {
+        gap: 0.375rem;
+    }
+    
+    .planner-activity {
+        gap: 0.375rem;
+        font-size: 0.7rem;
+    }
+    
+    .planner-activity-icon {
+        font-size: 0.875rem;
+    }
+    
+    .planner-activity-name {
+        font-size: 0.7rem;
+    }
+    
+    .planner-activity-time {
+        font-size: 0.65rem;
+    }
+    
+    .planner-activity-type {
+        padding: 1px 4px;
+        font-size: 0.6rem;
+        margin-top: 1px;
+    }
+    
+    /* 精英项目列表 */
+    .planner-elite-list {
+        margin-bottom: 0.75rem;
+    }
+    
+    .planner-elite-item {
+        padding: 0.625rem;
+        margin-bottom: 0.375rem;
+        gap: 0.375rem;
+    }
+    
+    .planner-elite-icon {
+        font-size: 1.25rem;
+    }
+    
+    .planner-elite-name {
+        font-size: 0.8rem;
+    }
+    
+    .planner-elite-schedule {
+        font-size: 0.65rem;
+        margin-top: 1px;
+    }
+    
+    /* 统计信息 */
+    .planner-stats {
+        padding: 0.625rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .planner-stat-row {
+        margin-bottom: 0.375rem;
+    }
+    
+    .planner-stat-label {
+        font-size: 0.7rem;
+    }
+    
+    .planner-stat-value {
+        font-size: 0.8rem;
+    }
+    
+    /* 空状态 */
+    .planner-empty-state {
+        padding: 1.5rem 0.75rem;
+    }
+    
+    .planner-empty-state .icon {
+        font-size: 2.5rem;
+        margin-bottom: 0.375rem;
+    }
+    
+    .planner-empty-state p {
+        font-size: 0.8rem;
     }
     
     /* 移动端：当浮窗展开时，页面内容向上推 */
     body:has(.floating-planner:not(.minimized)) .cca-content {
-        padding-bottom: calc(70vh + 2rem);
+        padding-bottom: calc(60vh + 2rem);
         transition: padding-bottom 0.3s ease;
     }
     
     /* 移动端：最小化时恢复正常 */
     body:has(.floating-planner.minimized) .cca-content {
-        padding-bottom: 160px;
+        padding-bottom: 140px;
         transition: padding-bottom 0.3s ease;
     }
     
@@ -583,6 +757,232 @@
         margin-bottom: 0;
         position: relative;
         z-index: 1;
+    }
+}
+
+/* 小屏手机适配 */
+@media (max-width: 480px) {
+    .floating-planner {
+        max-height: 55vh;
+        border-radius: 12px 12px 0 0;
+    }
+    
+    .floating-planner:not(.minimized) {
+        max-height: 55vh;
+    }
+    
+    .floating-planner.minimized .planner-header {
+        padding: 0.5rem 0.75rem;
+        border-radius: 12px 12px 0 0;
+    }
+    
+    .floating-planner.minimized .planner-title {
+        font-size: 0.75rem;
+    }
+    
+    .planner-header {
+        padding: 0.625rem 0.875rem;
+        border-radius: 12px 12px 0 0;
+    }
+    
+    .planner-title {
+        font-size: 0.8rem;
+    }
+    
+    .planner-title .icon {
+        font-size: 0.875rem;
+    }
+    
+    .minimize-btn {
+        width: 22px;
+        height: 22px;
+    }
+    
+    .minimize-btn svg {
+        width: 12px;
+        height: 12px;
+    }
+    
+    .planner-content {
+        padding: 0.625rem;
+    }
+    
+    .planner-mini-summary {
+        padding: 0.5rem 0.75rem 0.75rem;
+    }
+    
+    .planner-mini-reminder {
+        font-size: 0.6rem;
+        margin-bottom: 0.3rem;
+    }
+    
+    .planner-mini-reminder svg {
+        width: 11px;
+        height: 11px;
+    }
+    
+    .planner-mini-days {
+        gap: 0.2rem;
+    }
+    
+    .planner-mini-day {
+        height: 28px;
+        min-width: 34px;
+        font-size: 0.6rem;
+        border-width: 1.5px;
+    }
+    
+    .planner-mini-day-name {
+        font-size: 0.6rem;
+    }
+    
+    .planner-mini-day-icon {
+        font-size: 0.8rem;
+    }
+    
+    .planner-progress {
+        margin-bottom: 0.625rem;
+        padding-bottom: 0.625rem;
+    }
+    
+    .progress-bar {
+        height: 5px;
+        margin-bottom: 0.3rem;
+    }
+    
+    .progress-text {
+        font-size: 0.65rem;
+    }
+    
+    .planner-student-info {
+        padding: 0.5rem;
+        margin-bottom: 0.625rem;
+    }
+    
+    .planner-student-info .info-label {
+        font-size: 0.65rem;
+        margin-bottom: 0.15rem;
+    }
+    
+    .planner-student-info .info-value {
+        font-size: 0.75rem;
+    }
+    
+    .planner-week-schedule {
+        margin-bottom: 0.625rem;
+    }
+    
+    .planner-section-title {
+        font-size: 0.75rem;
+        margin-bottom: 0.5rem;
+        gap: 0.375rem;
+    }
+    
+    .planner-day-item {
+        padding: 0.5rem;
+        margin-bottom: 0.3rem;
+        border-radius: 6px;
+    }
+    
+    .planner-day-header {
+        margin-bottom: 0.3rem;
+    }
+    
+    .planner-day-name {
+        font-size: 0.75rem;
+    }
+    
+    .planner-day-status {
+        font-size: 0.65rem;
+        padding: 1px 5px;
+    }
+    
+    .planner-day-activities {
+        gap: 0.3rem;
+    }
+    
+    .planner-activity {
+        gap: 0.3rem;
+        font-size: 0.65rem;
+    }
+    
+    .planner-activity-icon {
+        font-size: 0.8rem;
+    }
+    
+    .planner-activity-name {
+        font-size: 0.65rem;
+    }
+    
+    .planner-activity-time {
+        font-size: 0.6rem;
+    }
+    
+    .planner-activity-type {
+        padding: 1px 4px;
+        font-size: 0.55rem;
+    }
+    
+    .planner-elite-list {
+        margin-bottom: 0.625rem;
+    }
+    
+    .planner-elite-item {
+        padding: 0.5rem;
+        margin-bottom: 0.3rem;
+        gap: 0.3rem;
+        border-radius: 6px;
+    }
+    
+    .planner-elite-icon {
+        font-size: 1.125rem;
+    }
+    
+    .planner-elite-name {
+        font-size: 0.75rem;
+    }
+    
+    .planner-elite-schedule {
+        font-size: 0.6rem;
+    }
+    
+    .planner-stats {
+        padding: 0.5rem;
+        margin-bottom: 0.625rem;
+        border-radius: 6px;
+    }
+    
+    .planner-stat-row {
+        margin-bottom: 0.3rem;
+    }
+    
+    .planner-stat-label {
+        font-size: 0.65rem;
+    }
+    
+    .planner-stat-value {
+        font-size: 0.75rem;
+    }
+    
+    .planner-empty-state {
+        padding: 1.25rem 0.625rem;
+    }
+    
+    .planner-empty-state .icon {
+        font-size: 2rem;
+        margin-bottom: 0.3rem;
+    }
+    
+    .planner-empty-state p {
+        font-size: 0.75rem;
+    }
+    
+    body:has(.floating-planner:not(.minimized)) .cca-content {
+        padding-bottom: calc(55vh + 2rem);
+    }
+    
+    body:has(.floating-planner.minimized) .cca-content {
+        padding-bottom: 120px;
     }
 }
 
