@@ -54,18 +54,31 @@
 
 .floating-planner.minimized .planner-header {
     padding: 0.75rem 1rem;
-    justify-content: space-between;
-    align-items: center;
     height: auto;
     border-radius: 16px;
 }
 
-.floating-planner.minimized .planner-title {
-    display: flex;
-    font-size: 0.875rem;
+.floating-planner.minimized .planner-header-top {
+    justify-content: space-between;
 }
 
-.floating-planner.minimized .minimize-btn {
+.floating-planner.minimized .planner-title {
+    flex: 0 0 auto;
+}
+
+.floating-planner.minimized .planner-toggle-area {
+    flex: 0 0 auto;
+}
+
+.floating-planner.minimized .planner-title {
+    flex: 0 0 auto;
+}
+
+.floating-planner.minimized .planner-custom-time-warning {
+    display: none !important;
+}
+
+.floating-planner.minimized .minimize-btn svg {
     transform: rotate(180deg);
 }
 
@@ -168,6 +181,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.planner-toggle-area {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.planner-toggle-hint {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.8);
+    white-space: nowrap;
 }
 
 /* 定制时间警告 - 简洁文字样式 */
@@ -277,6 +302,9 @@
     align-items: center;
     justify-content: center;
     transition: all 0.2s ease;
+    flex-shrink: 0;
+    z-index: 10;
+    position: relative;
 }
 
 .minimize-btn:hover {
@@ -287,6 +315,7 @@
 .minimize-btn svg {
     width: 16px;
     height: 16px;
+    transition: transform 0.3s ease;
 }
 
 /* 内容区域 */
@@ -594,7 +623,7 @@
         right: 0;
         left: 0;
         top: auto;
-        bottom: 0;
+        bottom: 0 !important;
         width: 100vw;
         max-width: 100vw;
         border-radius: 16px 16px 0 0;
@@ -625,8 +654,16 @@
         padding: 0.625rem 0.875rem;
     }
     
+    .floating-planner.minimized .planner-header-top {
+        justify-content: space-between;
+    }
+    
+    .planner-toggle-hint {
+        font-size: 0.7rem;
+    }
+    
     .floating-planner.minimized .planner-title {
-        display: flex;
+        flex: 0 0 auto;
         font-size: 0.8rem;
     }
     
@@ -925,7 +962,12 @@
         border-radius: 12px 12px 0 0;
     }
     
+    .planner-toggle-hint {
+        font-size: 0.65rem;
+    }
+    
     .floating-planner.minimized .planner-title {
+        flex: 0 0 auto;
         font-size: 0.75rem;
     }
     

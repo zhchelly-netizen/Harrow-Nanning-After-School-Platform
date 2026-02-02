@@ -4,11 +4,37 @@
 
 /* 全局字体设置 */
 body {
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
+    font-family: 'Noto Sans SC', sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
+/* 英文版使用 Gotham 字体 */
+html[lang="en"] body,
+html[lang="en"] h1,
+html[lang="en"] h2,
+html[lang="en"] h3,
+html[lang="en"] h4,
+html[lang="en"] h5,
+html[lang="en"] h6,
+html[lang="en"] p,
+html[lang="en"] span,
+html[lang="en"] li,
+html[lang="en"] button,
+html[lang="en"] a,
+html[lang="en"] input,
+html[lang="en"] select,
+html[lang="en"] textarea {
+    font-family: 'Gotham', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+}
+
+/* 中文版使用思源字体 */
+html[lang="zh-CN"] body,
+html[lang="zh-CN"] h1,
+html[lang="zh-CN"] h2,
+html[lang="zh-CN"] h3,
+html[lang="zh-CN"] h4,
+html[lang="zh-CN"] h5,
+html[lang="zh-CN"] h6 {
+    font-family: 'Noto Sans SC', sans-serif;
 }
 
 /* 标签导航 */
@@ -34,7 +60,6 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--text-secondary);
     cursor: pointer;
     transition: all var(--transition-base);
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
 }
 
 .tab-button:hover {
@@ -69,7 +94,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .overview-hero h2 {
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
     font-size: 2.5rem;
     color: var(--primary-navy);
     margin-bottom: var(--spacing-md);
@@ -82,7 +106,6 @@ h1, h2, h3, h4, h5, h6 {
     max-width: 800px;
     margin: 0 auto;
     line-height: 1.8;
-    font-family: 'Noto Sans SC', sans-serif;
 }
 
 /* 奖学金类型卡片 */
@@ -236,7 +259,6 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 50px;
     font-size: 0.875rem;
     font-weight: 500;
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
 }
 
 /* 评价类别 - 紧凑方形卡片 */
@@ -245,7 +267,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .evaluation-categories h3 {
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
     font-size: 2rem;
     color: var(--primary-navy);
     text-align: center;
@@ -258,6 +279,8 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     gap: var(--spacing-md);
     flex-wrap: wrap;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .category-card-compact {
@@ -280,7 +303,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .category-card-compact h4 {
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
     font-size: 1.125rem;
     font-weight: 700;
     margin: 0;
@@ -288,19 +310,23 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .academic-cat {
-    --cat-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --cat-gradient: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
 }
 
 .sports-cat {
-    --cat-gradient: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+    --cat-gradient: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
 }
 
-.arts-cat {
-    --cat-gradient: linear-gradient(135deg, #fbbf24 0%, #84cc16 100%);
+.visual-arts-cat {
+    --cat-gradient: linear-gradient(135deg, #a855f7 0%, #c026d3 100%);
+}
+
+.performing-arts-cat {
+    --cat-gradient: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
 }
 
 .leadership-cat {
-    --cat-gradient: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
+    --cat-gradient: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
 }
 
 /* 规则页面 */
@@ -310,7 +336,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .rules-container h2 {
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
     font-size: 2.5rem;
     color: var(--primary-navy);
     text-align: center;
@@ -327,7 +352,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .rules-section h3 {
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
     font-size: 1.5rem;
     color: var(--primary-navy);
     margin-bottom: var(--spacing-md);
@@ -345,7 +369,6 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
     color: var(--text-primary);
     line-height: 1.7;
-    font-family: 'Noto Sans SC', sans-serif;
 }
 
 .rules-list li::before {
@@ -375,14 +398,12 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.125rem;
     color: var(--primary-navy);
     margin-bottom: var(--spacing-xs);
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
     font-weight: 700;
 }
 
 .mechanism-card p {
     color: var(--text-secondary);
     margin-bottom: var(--spacing-sm);
-    font-family: 'Noto Sans SC', sans-serif;
 }
 
 .mechanism-card ul {
@@ -395,7 +416,6 @@ h1, h2, h3, h4, h5, h6 {
     padding-left: var(--spacing-md);
     position: relative;
     font-size: 0.9rem;
-    font-family: 'Noto Sans SC', sans-serif;
 }
 
 .mechanism-card li::before {
@@ -415,7 +435,6 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--text-primary);
     margin-bottom: var(--spacing-lg);
     line-height: 1.7;
-    font-family: 'Noto Sans SC', sans-serif;
 }
 
 .warning-grid {
@@ -440,20 +459,18 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1rem;
     color: var(--error);
     margin-bottom: var(--spacing-xs);
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
     font-weight: 700;
 }
 
 .warning-card p {
     font-size: 0.875rem;
     color: var(--text-secondary);
-    font-family: 'Noto Sans SC', sans-serif;
 }
 
 /* 文档网格 */
 .documents-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: var(--spacing-md);
     margin-top: var(--spacing-md);
 }
@@ -483,19 +500,23 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .academic-doc {
-    --doc-color: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    --doc-color: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
 }
 
 .sports-doc {
-    --doc-color: linear-gradient(90deg, #f59e0b 0%, #fbbf24 100%);
+    --doc-color: linear-gradient(90deg, #f59e0b 0%, #d97706 100%);
 }
 
-.arts-doc {
-    --doc-color: linear-gradient(90deg, #ffeaa7 0%, #fdcb6e 100%);
+.visual-arts-doc {
+    --doc-color: linear-gradient(90deg, #a855f7 0%, #c026d3 100%);
+}
+
+.performing-arts-doc {
+    --doc-color: linear-gradient(90deg, #8b5cf6 0%, #7c3aed 100%);
 }
 
 .leadership-doc {
-    --doc-color: linear-gradient(90deg, #fd79a8 0%, #e84393 100%);
+    --doc-color: linear-gradient(90deg, #ec4899 0%, #db2777 100%);
 }
 
 .document-card:hover {
@@ -519,7 +540,6 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--primary-navy);
     margin-bottom: var(--spacing-xs);
     font-weight: 600;
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
 }
 
 .doc-arrow {
@@ -540,7 +560,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .application-container h2 {
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
     font-size: 2.5rem;
     color: var(--primary-navy);
     text-align: center;
@@ -571,7 +590,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .notice-header h3 {
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
     font-size: 1.75rem;
     color: #92400e;
     margin: 0;
@@ -616,14 +634,12 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--primary-navy);
     margin-bottom: var(--spacing-xs);
     font-weight: 600;
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
 }
 
 .notice-text p {
     color: var(--text-secondary);
     line-height: 1.7;
     margin: 0;
-    font-family: 'Noto Sans SC', sans-serif;
 }
 
 /* 申请流程 */
@@ -636,7 +652,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .application-process h3 {
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
     font-size: 2rem;
     color: var(--primary-navy);
     text-align: center;
@@ -680,14 +695,12 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--primary-navy);
     margin-bottom: var(--spacing-xs);
     font-weight: 600;
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
 }
 
 .step-content p {
     color: var(--text-secondary);
     line-height: 1.7;
     margin: 0;
-    font-family: 'Noto Sans SC', sans-serif;
 }
 
 .process-arrow {
@@ -728,7 +741,6 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.5rem;
     margin-bottom: var(--spacing-xs);
     color: white;
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
     font-weight: 700;
 }
 
@@ -736,7 +748,6 @@ h1, h2, h3, h4, h5, h6 {
     color: rgba(255, 255, 255, 0.9);
     line-height: 1.6;
     margin: 0;
-    font-family: 'Noto Sans SC', sans-serif;
 }
 
 .application-button {
@@ -755,7 +766,6 @@ h1, h2, h3, h4, h5, h6 {
     gap: var(--spacing-md);
     position: relative;
     overflow: hidden;
-    font-family: 'Gotham', 'Noto Sans SC', sans-serif;
 }
 
 .application-button::before {
@@ -800,7 +810,6 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.875rem;
     margin-top: var(--spacing-md);
     font-style: italic;
-    font-family: 'Noto Sans SC', sans-serif;
 }
 
 /* 奖学金类型卡片信息区域 */
@@ -826,22 +835,27 @@ h1, h2, h3, h4, h5, h6 {
 
 /* 类别标签颜色 */
 .category-tag.academic {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
     color: white;
 }
 
 .category-tag.sports {
-    background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
     color: white;
 }
 
-.category-tag.arts {
-    background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
-    color: #152242;
+.category-tag.visual-arts {
+    background: linear-gradient(135deg, #a855f7 0%, #c026d3 100%);
+    color: white;
+}
+
+.category-tag.performing-arts {
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    color: white;
 }
 
 .category-tag.leadership {
-    background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
+    background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
     color: white;
 }
 

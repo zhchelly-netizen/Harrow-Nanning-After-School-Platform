@@ -3,13 +3,336 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>管理后台 | 南宁哈罗礼德学校</title>
-    <script>
-        // 直接跳转到翻译管理系统
-        window.location.href = 'translation-system.html#admin';
-    </script>
+    <title>奖学金管理系统 - 后台管理</title>
+    <link rel="stylesheet" href="styles/main.css?v=20260131">
+    <link rel="stylesheet" href="styles/admin.css?v=20260131">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <p>正在跳转到管理后台...</p>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <img src="images/harrow-logo-small-white.png" alt="Harrow Logo" class="sidebar-logo">
+                <h2>奖学金管理</h2>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#timeline" class="nav-item active" data-section="timeline">
+                    <span class="nav-icon">📅</span>
+                    <span>时间节点管理</span>
+                </a>
+                <a href="#links" class="nav-item" data-section="links">
+                    <span class="nav-icon">🔗</span>
+                    <span>链接管理</span>
+                </a>
+                <a href="#announcements" class="nav-item" data-section="announcements">
+                    <span class="nav-icon">📢</span>
+                    <span>公示信息管理</span>
+                </a>
+                <a href="#settings" class="nav-item" data-section="settings">
+                    <span class="nav-icon">⚙️</span>
+                    <span>系统设置</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <button class="logout-btn" onclick="logout()">
+                    <span>🚪</span>
+                    <span>退出登录</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <header class="admin-header">
+                <h1 id="page-title">时间节点管理</h1>
+                <div class="header-actions">
+                    <button class="btn-secondary" onclick="previewChanges()">
+                        <span>👁️</span>
+                        <span>预览更改</span>
+                    </button>
+                    <button class="btn-primary" onclick="saveAllChanges()">
+                        <span>💾</span>
+                        <span>保存所有更改</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Timeline Section -->
+            <section class="admin-section active" id="timeline-section">
+                <div class="section-card">
+                    <div class="card-header">
+                        <h3>申请窗口时间设置</h3>
+                        <p class="card-description">设置奖学金申请的开始和结束时间</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>申请开始时间</label>
+                                <input type="datetime-local" id="application-start" class="form-control">
+                                <p class="form-hint">申请窗口开启的时间，倒计时将基于此时间</p>
+                            </div>
+                            <div class="form-group">
+                                <label>申请截止时间</label>
+                                <input type="datetime-local" id="application-end" class="form-control">
+                                <p class="form-hint">申请窗口关闭的时间，过期后将无法提交</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <div class="card-header">
+                        <h3>评审时间节点</h3>
+                        <p class="card-description">设置评审流程的各个时间节点</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="timeline-items" id="timeline-items">
+                            <!-- Timeline items will be dynamically added -->
+                        </div>
+                        <button class="btn-secondary" onclick="addTimelineItem()">
+                            <span>➕</span>
+                            <span>添加时间节点</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <div class="card-header">
+                        <h3>重要日期提醒</h3>
+                        <p class="card-description">设置需要在前端显示的重要日期</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>公示开始日期</label>
+                            <input type="date" id="announcement-date" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>结果通知日期</label>
+                            <input type="date" id="notification-date" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Links Section -->
+            <section class="admin-section" id="links-section">
+                <div class="section-card">
+                    <div class="card-header">
+                        <h3>评分模型文档链接</h3>
+                        <p class="card-description">管理各类别奖学金的评分模型文档链接</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="link-item">
+                            <div class="link-icon">📖</div>
+                            <div class="link-content">
+                                <label>学术奖学金计分模型</label>
+                                <input type="url" id="link-academic" class="form-control" placeholder="https://...">
+                            </div>
+                        </div>
+                        <div class="link-item">
+                            <div class="link-icon">⚽</div>
+                            <div class="link-content">
+                                <label>竞技体育奖学金计分模型</label>
+                                <input type="url" id="link-sports" class="form-control" placeholder="https://...">
+                            </div>
+                        </div>
+                        <div class="link-item">
+                            <div class="link-icon">🎨</div>
+                            <div class="link-content">
+                                <label>视觉艺术奖学金计分模型</label>
+                                <input type="url" id="link-visual-arts" class="form-control" placeholder="https://...">
+                            </div>
+                        </div>
+                        <div class="link-item">
+                            <div class="link-icon">🎭</div>
+                            <div class="link-content">
+                                <label>音表艺术奖学金计分模型</label>
+                                <input type="url" id="link-performing-arts" class="form-control" placeholder="https://...">
+                            </div>
+                        </div>
+                        <div class="link-item">
+                            <div class="link-icon">👥</div>
+                            <div class="link-content">
+                                <label>领导力奖学金计分模型</label>
+                                <input type="url" id="link-leadership" class="form-control" placeholder="https://...">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <div class="card-header">
+                        <h3>外部系统链接</h3>
+                        <p class="card-description">管理申请系统、数据库等外部链接</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>飞书多维表格链接</label>
+                            <input type="url" id="link-feishu" class="form-control" placeholder="https://...">
+                            <p class="form-hint">用于最终确认页面的表格链接</p>
+                        </div>
+                        <div class="form-group">
+                            <label>申请系统备用链接</label>
+                            <input type="url" id="link-backup" class="form-control" placeholder="https://...">
+                            <p class="form-hint">当主系统维护时使用的备用链接</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Announcements Section -->
+            <section class="admin-section" id="announcements-section">
+                <div class="section-card">
+                    <div class="card-header">
+                        <h3>重要通知管理</h3>
+                        <p class="card-description">管理显示在申请页面顶部的重要通知</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>通知标题（中文）</label>
+                            <input type="text" id="notice-title-zh" class="form-control" placeholder="重要提醒">
+                        </div>
+                        <div class="form-group">
+                            <label>通知标题（英文）</label>
+                            <input type="text" id="notice-title-en" class="form-control" placeholder="Important Notice">
+                        </div>
+                        <div class="form-group">
+                            <label>通知内容（中文）</label>
+                            <textarea id="notice-content-zh" class="form-control" rows="4" placeholder="输入通知内容..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>通知内容（英文）</label>
+                            <textarea id="notice-content-en" class="form-control" rows="4" placeholder="Enter notice content..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>通知类型</label>
+                            <select id="notice-type" class="form-control">
+                                <option value="info">信息</option>
+                                <option value="warning">警告</option>
+                                <option value="success">成功</option>
+                                <option value="error">错误</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="notice-enabled">
+                                <span>启用此通知</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <div class="card-header">
+                        <h3>获奖公示管理</h3>
+                        <p class="card-description">管理奖学金获奖名单的公示信息</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>公示年份</label>
+                            <input type="number" id="announcement-year" class="form-control" placeholder="2026">
+                        </div>
+                        <div class="form-group">
+                            <label>公示文档链接</label>
+                            <input type="url" id="announcement-link" class="form-control" placeholder="https://...">
+                        </div>
+                        <div class="form-group">
+                            <label>公示说明（中文）</label>
+                            <textarea id="announcement-desc-zh" class="form-control" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>公示说明（英文）</label>
+                            <textarea id="announcement-desc-en" class="form-control" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="announcement-enabled">
+                                <span>启用公示显示</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section class="admin-section" id="settings-section">
+                <div class="section-card">
+                    <div class="card-header">
+                        <h3>系统配置</h3>
+                        <p class="card-description">管理系统的基本配置和功能开关</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="system-enabled">
+                                <span>启用申请系统</span>
+                            </label>
+                            <p class="form-hint">关闭后，用户将无法访问申请页面</p>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="maintenance-mode">
+                                <span>维护模式</span>
+                            </label>
+                            <p class="form-hint">启用后，将显示维护页面</p>
+                        </div>
+                        <div class="form-group">
+                            <label>维护提示信息</label>
+                            <textarea id="maintenance-message" class="form-control" rows="3" placeholder="系统正在维护中，请稍后再试..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <div class="card-header">
+                        <h3>数据管理</h3>
+                        <p class="card-description">导出和备份系统数据</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="action-buttons">
+                            <button class="btn-secondary" onclick="exportConfig()">
+                                <span>📥</span>
+                                <span>导出配置</span>
+                            </button>
+                            <button class="btn-secondary" onclick="importConfig()">
+                                <span>📤</span>
+                                <span>导入配置</span>
+                            </button>
+                            <button class="btn-danger" onclick="resetConfig()">
+                                <span>🔄</span>
+                                <span>重置为默认</span>
+                            </button>
+                        </div>
+                        <input type="file" id="import-file" accept=".json" style="display: none;">
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <div class="card-header">
+                        <h3>更新日志</h3>
+                        <p class="card-description">最近的配置更改记录</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="changelog" id="changelog">
+                            <!-- Changelog items will be dynamically added -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Success Toast -->
+    <div class="toast" id="toast">
+        <span class="toast-icon">✓</span>
+        <span class="toast-message">保存成功</span>
+    </div>
+
+    <script src="scripts/admin.js?v=20260131"></script>
 </body>
 </html>

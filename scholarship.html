@@ -5,10 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>奖学金申请 | 南宁哈罗礼德学校</title>
     <link rel="stylesheet" href="styles/main.css?v=20260128">
-    <link rel="stylesheet" href="styles/scholarship.css?v=20260128">
+    <link rel="stylesheet" href="styles/scholarship.css?v=20260131a">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Gotham';
+            src: url('fonts/Gotham-Book.woff2') format('woff2'),
+                 url('fonts/Gotham-Book.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Gotham';
+            src: url('fonts/Gotham-Medium.woff2') format('woff2'),
+                 url('fonts/Gotham-Medium.woff') format('woff');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Gotham';
+            src: url('fonts/Gotham-Bold.woff2') format('woff2'),
+                 url('fonts/Gotham-Bold.woff') format('woff');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+    </style>
 </head>
 <body>
     <div class="app-container">
@@ -69,8 +95,9 @@
                         </div>
                         <div class="type-categories">
                             <span class="category-tag academic" data-i18n="academic">学术</span>
-                            <span class="category-tag sports" data-i18n="sports">体育</span>
-                            <span class="category-tag arts" data-i18n="arts">艺术</span>
+                            <span class="category-tag sports" data-i18n="sports">竞技体育</span>
+                            <span class="category-tag visual-arts" data-i18n="visualArts">视觉艺术</span>
+                            <span class="category-tag performing-arts" data-i18n="performingArts">音表艺术</span>
                             <span class="category-tag leadership" data-i18n="leadership">领导力</span>
                         </div>
                     </div>
@@ -137,10 +164,13 @@
                             <h4 data-i18n="academic">学术</h4>
                         </div>
                         <div class="category-card-compact sports-cat">
-                            <h4 data-i18n="sports">体育</h4>
+                            <h4 data-i18n="sports">竞技体育</h4>
                         </div>
-                        <div class="category-card-compact arts-cat">
-                            <h4 data-i18n="arts">艺术</h4>
+                        <div class="category-card-compact visual-arts-cat">
+                            <h4 data-i18n="visualArts">视觉艺术</h4>
+                        </div>
+                        <div class="category-card-compact performing-arts-cat">
+                            <h4 data-i18n="performingArts">音表艺术</h4>
                         </div>
                         <div class="category-card-compact leadership-cat">
                             <h4 data-i18n="leadership">领导力</h4>
@@ -218,23 +248,28 @@
                     <div class="rules-section">
                         <h3>📚 <span data-i18n="scoringModels">评分模型文档</span></h3>
                         <p data-i18n="viewScoringModels">点击查看各类别详细评分标准：</p>
-                        <div class="documents-grid">
-                            <a href="https://harrownanning-est.feishu.cn/wiki/LAAAwIUkKit4JQkz3rTc0kFqn0f" target="_blank" class="document-card academic-doc">
+                        <div class="documents-grid" id="documents-grid">
+                            <a href="https://harrownanning-est.feishu.cn/wiki/LAAAwIUkKit4JQkz3rTc0kFqn0f" target="_blank" class="document-card academic-doc" data-link="academic">
                                 <div class="doc-icon">📖</div>
                                 <h4 data-i18n="academicScoringModel">学术奖学金计分模型</h4>
                                 <div class="doc-arrow">→</div>
                             </a>
-                            <a href="https://harrownanning-est.feishu.cn/wiki/SbvWwJqJfiOUTFkLlhZcoTPln6g" target="_blank" class="document-card sports-doc">
+                            <a href="https://harrownanning-est.feishu.cn/wiki/SbvWwJqJfiOUTFkLlhZcoTPln6g" target="_blank" class="document-card sports-doc" data-link="sports">
                                 <div class="doc-icon">⚽</div>
                                 <h4 data-i18n="sportsScoringModel">竞技体育奖学金计分模型</h4>
                                 <div class="doc-arrow">→</div>
                             </a>
-                            <a href="https://harrownanning-est.feishu.cn/wiki/RdKmwGO2JiVLz0kCETzc9FbSnGd" target="_blank" class="document-card arts-doc">
+                            <a href="https://harrownanning-est.feishu.cn/wiki/B9g7wnny4ikJ97kge9xcHTJAnug" target="_blank" class="document-card visual-arts-doc" data-link="visualArts">
                                 <div class="doc-icon">🎨</div>
-                                <h4 data-i18n="artsScoringModel">艺术奖学金计分模型</h4>
+                                <h4 data-i18n="visualArtsScoringModel">视觉艺术奖学金计分模型</h4>
                                 <div class="doc-arrow">→</div>
                             </a>
-                            <a href="https://harrownanning-est.feishu.cn/wiki/AFcpwk5CXidPTQkSwVWcuYJxnmg" target="_blank" class="document-card leadership-doc">
+                            <a href="https://harrownanning-est.feishu.cn/wiki/RdKmwGO2JiVLz0kCETzc9FbSnGd" target="_blank" class="document-card performing-arts-doc" data-link="performingArts">
+                                <div class="doc-icon">🎭</div>
+                                <h4 data-i18n="performingArtsScoringModel">音表艺术奖学金计分模型</h4>
+                                <div class="doc-arrow">→</div>
+                            </a>
+                            <a href="https://harrownanning-est.feishu.cn/wiki/AFcpwk5CXidPTQkSwVWcuYJxnmg" target="_blank" class="document-card leadership-doc" data-link="leadership">
                                 <div class="doc-icon">👥</div>
                                 <h4 data-i18n="leadershipScoringModel">领导力奖学金计分模型</h4>
                                 <div class="doc-arrow">→</div>
@@ -356,7 +391,7 @@
                                 <p data-i18n="readyToApplyDesc">点击下方按钮进入奖学金申请系统，填写申请表并上传相关材料。</p>
                             </div>
                         </div>
-                        <button class="application-button" onclick="window.open('https://harrownanning-est.feishu.cn/share/base/dashboard/shrcn68xVtB1LQysGLxZKpW2xFd', '_blank')">
+                        <button class="application-button" onclick="window.location.href='scholarship-application.html'">
                             <span data-i18n="enterApplicationSystem">进入申请系统</span>
                             <span class="button-arrow">→</span>
                         </button>
@@ -367,9 +402,27 @@
         </main>
     </div>
 
-    <script src="scripts/i18n.js?v=20260128"></script>
+    <script src="scripts/i18n.js?v=20260131a"></script>
     <script src="scripts/main.js?v=20260128"></script>
     <script src="scripts/scholarship.js?v=20260128"></script>
+    <script>
+        // 应用后台配置到链接
+        (function() {
+            try {
+                const config = JSON.parse(localStorage.getItem('scholarship_config') || '{}');
+                if (config.links) {
+                    document.querySelectorAll('[data-link]').forEach(link => {
+                        const linkType = link.dataset.link;
+                        if (config.links[linkType]) {
+                            link.href = config.links[linkType];
+                        }
+                    });
+                }
+            } catch (error) {
+                console.error('Failed to apply config:', error);
+            }
+        })();
+    </script>
     <script>
         // 语言检查 - 如果没有选择语言，跳转到语言选择页面
         (function() {

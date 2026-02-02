@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>课后课程规划 | 南宁哈罗礼德学校</title>
     <link rel="stylesheet" href="styles/main.css?v=20260130">
-    <link rel="stylesheet" href="styles/cca.css?v=20260131k">
-    <link rel="stylesheet" href="styles/floating-planner.css?v=20260131o">
+    <link rel="stylesheet" href="styles/cca.css?v=20260202b">
+    <link rel="stylesheet" href="styles/floating-planner.css?v=20260202b">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
@@ -99,10 +99,10 @@
                         </div>
                         <div class="elite-options">
                             <label class="checkbox-card">
-                                <input type="checkbox" name="elite-sports" value="football-primary" data-schedule="tue,thu" data-grades="G1,G2,G3,G4,G5">
+                                <input type="checkbox" name="elite-sports" value="football-primary" data-schedule="mon,wed" data-grades="G1,G2,G3,G4,G5">
                                 <span class="checkbox-content">
                                     <strong>⚽ 足球（小学）</strong>
-                                    <small>周二、周四 16:00-17:00 | G1-G5</small>
+                                    <small>周一、周三 16:00-17:30 | G1-G5</small>
                                 </span>
                             </label>
                             <label class="checkbox-card">
@@ -113,31 +113,50 @@
                                 </span>
                             </label>
                             <label class="checkbox-card">
-                                <input type="checkbox" name="elite-sports" value="basketball-primary" data-schedule="wed, fri" data-grades="G1,G2,G3,G4,G5">
+                                <input type="checkbox" name="elite-sports" value="basketball-primary" data-schedule="tue,thu" data-grades="G1,G2,G3,G4,G5">
                                 <span class="checkbox-content">
                                     <strong>🏀 篮球（小学）</strong>
-                                    <small>周三、周五 16:00-17:30 | G1-G5</small>
+                                    <small>周二、周四 16:00-17:30 | G1-G5</small>
                                 </span>
                             </label>
                             <label class="checkbox-card">
-                                <input type="checkbox" name="elite-sports" value="basketball-secondary" data-schedule="tue,thu" data-grades="G6,G7,G8,G9,G10,G11,G12">
+                                <input type="checkbox" name="elite-sports" value="basketball-secondary" data-schedule="wed,fri" data-grades="G6,G7,G8,G9,G10,G11,G12">
                                 <span class="checkbox-content">
                                     <strong>🏀 篮球（中学）</strong>
-                                    <small>周二、周四 16:00-17:30 | G6+</small>
+                                    <small>周三、周五 16:00-17:30 | G6+</small>
                                 </span>
                             </label>
+                            <!-- 游泳一队 - 可展开选项 -->
+                            <div class="checkbox-card expandable-card" data-expandable="swimming-team">
+                                <div class="expandable-header" onclick="toggleSwimmingOptions(this)">
+                                    <span class="checkbox-content">
+                                        <strong data-i18n="swimmingTeamTitle">🏊 游泳一队</strong>
+                                        <small data-i18n="swimmingTeamSubtitle">请选择训练安排 | 全年级</small>
+                                    </span>
+                                    <span class="expand-icon">▼</span>
+                                </div>
+                                <div class="expandable-options" style="display: none;">
+                                    <label class="checkbox-card sub-option">
+                                        <input type="checkbox" name="elite-sports" value="swimming-team-schedule1" data-schedule="mon,wed,thu,sat,sun" data-grades="G1,G2,G3,G4,G5,G6,G7,G8,G9,G10,G11,G12" data-parent="swimming-team">
+                                        <span class="checkbox-content">
+                                            <strong data-i18n="swimmingSchedule1Title">📅 安排1</strong>
+                                            <small data-i18n="swimmingSchedule1Time">周一、周三、周四 + 周六日加练 | 16:00-18:00</small>
+                                        </span>
+                                    </label>
+                                    <label class="checkbox-card sub-option">
+                                        <input type="checkbox" name="elite-sports" value="swimming-team-schedule2" data-schedule="mon,wed,fri,sat,sun" data-grades="G1,G2,G3,G4,G5,G6,G7,G8,G9,G10,G11,G12" data-parent="swimming-team">
+                                        <span class="checkbox-content">
+                                            <strong data-i18n="swimmingSchedule2Title">📅 安排2</strong>
+                                            <small data-i18n="swimmingSchedule2Time">周一、周三、周五 + 周六日加练 | 16:00-18:00</small>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
                             <label class="checkbox-card">
-                                <input type="checkbox" name="elite-sports" value="swimming-team" data-schedule="mon,wed,thu,sat,sun" data-grades="G1,G2,G3,G4,G5,G6,G7,G8,G9,G10,G11,G12">
+                                <input type="checkbox" name="elite-sports" value="swimming-reserve" data-schedule="mon,fri" data-grades="G1,G2,G3,G4,G5,G6,G7,G8,G9,G10,G11,G12">
                                 <span class="checkbox-content">
-                                    <strong>🏊 游泳一队</strong>
-                                    <small>周一、周三、周四、周六、周日 16:00-18:00 | 全年级</small>
-                                </span>
-                            </label>
-                            <label class="checkbox-card">
-                                <input type="checkbox" name="elite-sports" value="swimming-reserve" data-schedule="mon,wed,sat,sun" data-grades="G1,G2,G3,G4,G5,G6,G7,G8,G9,G10,G11,G12">
-                                <span class="checkbox-content">
-                                    <strong>🏊 游泳预备队</strong>
-                                    <small>周一、周三、周六、周日 16:00-17:30 | 全年级</small>
+                                    <strong data-i18n="swimmingReserveTitle">🏊 游泳预备队</strong>
+                                    <small data-i18n="swimmingReserveTime">周一、周五 16:00-17:30 | 全年级</small>
                                 </span>    
                             </label>
                             <label class="checkbox-card">
@@ -261,10 +280,10 @@
                         </div>
                         <div class="elite-options">
                             <label class="checkbox-card">
-                                <input type="checkbox" name="academic" value="debate" data-schedule="wed" data-grades="G4,G5,G6,G7,G8,G9,G10,G11,G12">
+                                <input type="checkbox" name="academic" value="debate" data-schedule="tue" data-grades="G4,G5,G6,G7,G8,G9,G10,G11,G12">
                                 <span class="checkbox-content">
                                     <strong>🗣️ "以言论道"思辨社</strong>
-                                    <small>周三 16:00-17:00 | G4+ | 需选拔</small>
+                                    <small>周二 16:00-17:00 | G4+ | 需选拔</small>
                                 </span>
                             </label>
                         </div>
@@ -432,12 +451,66 @@
     <!-- Canvas for image generation -->
     <canvas id="schedule-canvas"></canvas>
 
-    <script src="scripts/i18n.js?v=20260131c"></script>
-    <script src="scripts/cca-data.js?v=20260131g"></script>
-    <script src="scripts/main.js?v=20260130h"></script>
-    <script src="scripts/floating-planner.js?v=20260131p"></script>
-    <script src="scripts/cca.js?v=20260131f"></script>
+    <script src="scripts/i18n.js?v=20260202b"></script>
+    <script src="scripts/cca-data.js?v=20260202b"></script>
+    <script src="scripts/main.js?v=20260202b"></script>
+    <script src="scripts/floating-planner.js?v=20260202b"></script>
+    <script src="scripts/cca.js?v=20260202b"></script>
     <script>
+        // 游泳队选项展开/收起
+        function toggleSwimmingOptions(header) {
+            const card = header.closest('.expandable-card');
+            const options = card.querySelector('.expandable-options');
+            const icon = card.querySelector('.expand-icon');
+            
+            if (options.style.display === 'none') {
+                options.style.display = 'block';
+                icon.textContent = '▲';
+                card.classList.add('expanded');
+            } else {
+                options.style.display = 'none';
+                icon.textContent = '▼';
+                card.classList.remove('expanded');
+            }
+        }
+        
+        // 监听游泳队选项的选择，确保三选一互斥（游泳一队安排1、安排2、游泳预备队）
+        document.addEventListener('DOMContentLoaded', function() {
+            const swimmingSchedule1 = document.querySelector('input[value="swimming-team-schedule1"]');
+            const swimmingSchedule2 = document.querySelector('input[value="swimming-team-schedule2"]');
+            const swimmingReserve = document.querySelector('input[value="swimming-reserve"]');
+            
+            // 创建游泳队选项数组
+            const swimmingOptions = [swimmingSchedule1, swimmingSchedule2, swimmingReserve].filter(Boolean);
+            
+            // 为每个游泳队选项添加互斥逻辑
+            swimmingOptions.forEach(option => {
+                if (option) {
+                    option.addEventListener('change', function() {
+                        if (this.checked) {
+                            // 取消其他所有游泳队选项
+                            swimmingOptions.forEach(otherOption => {
+                                if (otherOption !== this) {
+                                    otherOption.checked = false;
+                                }
+                            });
+                            
+                            // 立即更新数据和浮动规划器
+                            if (typeof saveStepData === 'function') {
+                                saveStepData(2);
+                            }
+                            if (typeof floatingPlanner !== 'undefined' && floatingPlanner) {
+                                floatingPlanner.updateElitePrograms(selectedElitePrograms);
+                            }
+                            if (typeof saveCurrentState === 'function') {
+                                saveCurrentState();
+                            }
+                        }
+                    });
+                }
+            });
+        });
+        
         // 语言检查 - 如果没有选择语言，跳转到语言选择页面
         (function() {
             const selectedLang = sessionStorage.getItem('selectedLanguage');

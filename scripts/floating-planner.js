@@ -18,6 +18,13 @@ class FloatingPlanner {
         // 创建浮动框元素
         this.element = document.createElement('div');
         this.element.className = 'floating-planner';
+        
+        // 移动端默认最小化
+        if (window.innerWidth <= 768) {
+            this.isMinimized = true;
+            this.element.classList.add('minimized');
+        }
+        
         this.element.innerHTML = `
             <div class="planner-header">
                 <div class="planner-header-top">
@@ -25,11 +32,14 @@ class FloatingPlanner {
                         <span class="icon">📋</span>
                         <span data-i18n="floatingPlannerTitle">我的规划</span>
                     </div>
-                    <button class="minimize-btn" onclick="event.stopPropagation(); floatingPlanner.toggleMinimize();">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M19 9l-7 7-7-7"/>
-                        </svg>
-                    </button>
+                    <div class="planner-toggle-area">
+                        <span class="planner-toggle-hint" data-i18n="clickToExpand">点击展开</span>
+                        <button class="minimize-btn" onclick="event.stopPropagation(); floatingPlanner.toggleMinimize();">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
                 <div class="planner-custom-time-warning" style="display: none;">
                     <div class="warning-icon">⚠️</div>
@@ -154,6 +164,11 @@ class FloatingPlanner {
         const header = this.element.querySelector('.planner-header');
         
         header.addEventListener('mousedown', (e) => {
+            // 如果点击的是按钮或按钮内的元素，不处理拖拽
+            if (e.target.closest('.minimize-btn')) {
+                return;
+            }
+            
             if (this.isMinimized) {
                 this.toggleMinimize();
                 return;
@@ -199,9 +214,32 @@ class FloatingPlanner {
         this.isMinimized = !this.isMinimized;
         this.element.classList.toggle('minimized', this.isMinimized);
         
+        // 更新提示文字
+        this.updateToggleHint();
+        
         // 桌面端：展开时自动聚焦
         if (!this.isMinimized && window.innerWidth > 768) {
             this.setFocused(true);
+        }
+        
+        // 移动端：确保收起时浮窗在底部
+        if (this.isMinimized && window.innerWidth <= 768) {
+            this.element.style.position = 'fixed';
+            this.element.style.bottom = '0';
+            this.element.style.top = 'auto';
+        }
+    }
+    
+    updateToggleHint() {
+        const hintElement = this.element.querySelector('.planner-toggle-hint');
+        if (!hintElement) return;
+        
+        if (this.isMinimized) {
+            hintElement.textContent = i18n.t('clickToExpand');
+            hintElement.dataset.i18n = 'clickToExpand';
+        } else {
+            hintElement.textContent = i18n.t('clickToCollapse');
+            hintElement.dataset.i18n = 'clickToCollapse';
         }
     }
     
@@ -211,6 +249,8 @@ class FloatingPlanner {
             this.element.style.left = '';
             this.element.style.top = '';
             this.element.style.right = '';
+            this.element.style.bottom = '0';
+            this.element.style.position = 'fixed';
             // 移动端移除焦点状态
             this.element.classList.remove('focused', 'unfocused');
         } else {
@@ -692,6 +732,9 @@ class FloatingPlanner {
         if (titleSpan) {
             titleSpan.textContent = i18n.t('floatingPlannerTitle');
         }
+        
+        // 更新提示文字
+        this.updateToggleHint();
         
         // 更新提醒文字
         const reminderSpan = this.element.querySelector('.planner-mini-reminder span[data-i18n]');

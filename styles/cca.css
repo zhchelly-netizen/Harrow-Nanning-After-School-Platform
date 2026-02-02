@@ -406,6 +406,82 @@
     overflow: hidden;
 }
 
+/* 可展开卡片样式 */
+.expandable-card {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    background: var(--bg-cream);
+    border: 2px solid #e5e5e5;
+    border-radius: 50px;
+    cursor: default;
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.expandable-card:hover {
+    background: #f5f0e8;
+    border-color: #A69867;
+    box-shadow: 0 4px 12px rgba(166, 152, 103, 0.2);
+}
+
+.expandable-card.expanded {
+    border-color: #152242;
+    box-shadow: 0 4px 16px rgba(21, 34, 66, 0.15);
+}
+
+.expandable-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-md) var(--spacing-xl);
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.expandable-header:hover {
+    background: rgba(166, 152, 103, 0.05);
+}
+
+.expand-icon {
+    font-size: 1.25rem;
+    color: #A69867;
+    transition: transform var(--transition-base);
+    flex-shrink: 0;
+    margin-left: var(--spacing-md);
+}
+
+.expandable-card.expanded .expand-icon {
+    transform: rotate(180deg);
+}
+
+.expandable-options {
+    display: none;
+    padding: 0 var(--spacing-md) var(--spacing-md) var(--spacing-md);
+    gap: var(--spacing-sm);
+    flex-direction: column;
+}
+
+.expandable-options[style*="display: block"] {
+    display: flex;
+}
+
+.sub-option {
+    margin-left: var(--spacing-lg);
+    background: white;
+    border: 2px solid #e5e5e5;
+}
+
+.sub-option:hover {
+    background: #fafafa;
+    border-color: #A69867;
+}
+
+.sub-option input[type="checkbox"]:checked ~ .checkbox-content::after {
+    background: linear-gradient(135deg, #7a9b8e 0%, #92b5a8 100%);
+}
+
 .schedule-notice::before,
 .selection-notice::before {
     content: '';

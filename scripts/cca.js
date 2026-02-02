@@ -10,12 +10,13 @@ let selectedCCAs = {};
 // 精英项目时间表配置
 const ELITE_SCHEDULES = {
     // 精英体育
-    'football-primary': { days: ['tue', 'thu'], time: '16:00-17:00', blocksWeekdays: true },
+    'football-primary': { days: ['mon', 'wed'], time: '16:00-17:30', blocksWeekdays: true },
     'football-secondary': { days: ['mon', 'tue', 'thu'], time: '16:00-18:00', blocksWeekdays: true },
-    'basketball-primary': { days: ['wed', 'fri'], time: '16:00-17:30', blocksWeekdays: true },
-    'basketball-secondary': { days: ['tue', 'thu'], time: '16:00-17:30', blocksWeekdays: true },
-    'swimming-team': { days: ['mon', 'wed', 'thu', 'sat', 'sun'], time: '16:00-18:00', blocksWeekdays: true },
-    'swimming-reserve': { days: ['mon', 'wed', 'sat', 'sun'], time: '16:00-17:30', blocksWeekdays: true },
+    'basketball-primary': { days: ['tue', 'thu'], time: '16:00-17:30', blocksWeekdays: true },
+    'basketball-secondary': { days: ['wed', 'fri'], time: '16:00-17:30', blocksWeekdays: true },
+    'swimming-team-schedule1': { days: ['mon', 'wed', 'thu', 'sat', 'sun'], time: '16:00-18:00', blocksWeekdays: true },
+    'swimming-team-schedule2': { days: ['mon', 'wed', 'fri', 'sat', 'sun'], time: '16:00-18:00', blocksWeekdays: true },
+    'swimming-reserve': { days: ['mon', 'fri'], time: '16:00-17:30', blocksWeekdays: true },
     'badminton': { days: ['tue', 'fri', 'sun'], time: '16:00-17:30', blocksWeekdays: true },
     'golf': { days: [], time: '定制时间', blocksWeekdays: false },
     'equestrian': { days: [], time: '定制时间', blocksWeekdays: false },
@@ -32,7 +33,7 @@ const ELITE_SCHEDULES = {
     'band': { days: ['mon'], time: '16:00-17:00', blocksWeekdays: true },
     
     // 学术竞赛
-    'debate': { days: ['wed'], time: '16:00-17:00', blocksWeekdays: true },
+    'debate': { days: ['tue'], time: '16:00-17:00', blocksWeekdays: true },
     
     // 宏博中心
     'english-foundation': { days: [], time: '定制时间', blocksWeekdays: false },
@@ -75,7 +76,8 @@ const ELITE_PROGRAM_TRANSLATIONS = {
         'football-secondary': '⚽ 足球（中学）',
         'basketball-primary': '🏀 篮球（小学）',
         'basketball-secondary': '🏀 篮球（中学）',
-        'swimming-team': '🏊 游泳一队',
+        'swimming-team-schedule1': '🏊 游泳一队（安排1）',
+        'swimming-team-schedule2': '🏊 游泳一队（安排2）',
         'swimming-reserve': '🏊 游泳预备队',
         'badminton': '🏸 羽毛球队',
         'golf': '⛳ 高尔夫',
@@ -99,7 +101,8 @@ const ELITE_PROGRAM_TRANSLATIONS = {
         'football-secondary': '⚽ Football (Secondary)',
         'basketball-primary': '🏀 Basketball (Primary)',
         'basketball-secondary': '🏀 Basketball (Secondary)',
-        'swimming-team': '🏊 Swimming Senior',
+        'swimming-team-schedule1': '🏊 Swimming Senior (Schedule 1)',
+        'swimming-team-schedule2': '🏊 Swimming Senior (Schedule 2)',
         'swimming-reserve': '🏊 Swimming Reserve',
         'badminton': '🏸 Badminton Team',
         'golf': '⛳ Golf',
