@@ -86,17 +86,63 @@
 
 ```
 harrow-portal/
-├── index.html                 # 主页
-├── cca-planning.html          # 课后课程规划
-├── scholarship.html           # 奖学金申请
-├── styles/
-│   ├── main.css              # 主样式表
-│   ├── cca.css               # CCA页面样式
-│   └── scholarship.css       # 奖学金页面样式
-└── scripts/
-    ├── main.js               # 通用功能
-    ├── cca.js                # CCA页面逻辑
-    └── scholarship.js        # 奖学金页面逻辑
+├── index.html                    # 主页
+├── cca-planning.html             # 课后课程规划
+├── scholarship.html              # 奖学金申请
+├── admin.html                    # 管理后台
+├── language-selection.html       # 语言选择
+├── registration-guide.html       # 报名指引
+├── translation-manager.html      # 翻译管理
+├── translation-system.html       # 翻译系统
+│
+├── styles/                       # 样式目录
+│   ├── main.css                 # 主样式表
+│   ├── cca.css                  # CCA页面样式
+│   ├── scholarship.css          # 奖学金页面样式
+│   ├── admin.css                # 管理后台样式
+│   ├── floating-planner.css     # 浮动规划器样式
+│   ├── registration-guide.css   # 报名指引样式
+│   └── fonts.css                # 字体样式
+│
+├── scripts/                      # 脚本目录
+│   ├── main.js                  # 通用功能
+│   ├── cca.js                   # CCA页面逻辑
+│   ├── cca-data.js              # CCA课程数据
+│   ├── scholarship.js           # 奖学金页面逻辑
+│   ├── admin.js                 # 管理后台逻辑
+│   ├── i18n.js                  # 国际化系统
+│   ├── floating-planner.js      # 浮动规划器
+│   ├── registration-guide.js    # 报名指引逻辑
+│   └── emoji-mapper.js          # Emoji映射
+│
+├── images/                       # 图片资源
+├── fonts/                        # 字体文件
+│
+├── docs/                         # 文档目录
+│   ├── guides/                  # 使用指南
+│   ├── changelog/               # 变更日志
+│   ├── fixes/                   # 修复记录
+│   ├── REFACTORING_GUIDE.md     # 重构指南
+│   └── README.md                # 文档索引
+│
+├── tests/                        # 测试目录
+│   ├── test-buttons.html        # 按钮测试
+│   ├── test-cca-data.html       # CCA数据测试
+│   ├── test-i18n.html           # 国际化测试
+│   ├── diagnostic.html          # 系统诊断
+│   └── README.md                # 测试说明
+│
+├── data/                         # 数据目录
+│   ├── *.xlsx                   # 课程数据源
+│   ├── generate_cca_data.py     # 数据生成工具
+│   └── README.md                # 数据说明
+│
+├── .gitignore                    # Git忽略规则
+├── .editorconfig                 # 编辑器配置
+├── .prettierrc                   # 代码格式化配置
+├── README.md                     # 项目说明
+├── CHANGELOG.md                  # 变更日志
+└── OPTIMIZATION_REPORT.md        # 优化报告
 ```
 
 ### 后续开发计划

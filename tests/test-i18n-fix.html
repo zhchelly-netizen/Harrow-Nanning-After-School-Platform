@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试 i18n 修复</title>
+    <link rel="stylesheet" href="styles/main.css?v=20260318">
+    <link rel="stylesheet" href="styles/scholarship.css?v=20260318">
+</head>
+<body style="padding: 2rem;">
+    <h1>i18n 翻译测试</h1>
+    
+    <div style="margin: 2rem 0; padding: 1rem; background: #f0f0f0; border-radius: 8px;">
+        <h2>测试说明：</h2>
+        <ol>
+            <li>打开浏览器控制台（F12）</li>
+            <li>查看控制台输出的调试信息</li>
+            <li>检查 sessionStorage 和 localStorage 的值</li>
+            <li>查看 i18n.currentLang 的值</li>
+        </ol>
+    </div>
+    
+    <div id="test-results" style="margin: 2rem 0; padding: 1rem; background: #fff; border: 1px solid #ddd; border-radius: 8px;">
+        <h3>测试结果：</h3>
+        <div id="debug-info"></div>
+    </div>
+    
+    <div class="core-values-section" style="margin-top: 2rem;">
+        <h3 data-i18n="coreValuesTitle">核心价值观 Core Values</h3>
+        <p class="values-intro" data-i18n="valuesIntro">奖学金获得者需展现出我们的核心价值观：</p>
+        
+        <div class="values-grid">
+            <div class="value-card courage">
+                <span class="value-icon">💪</span>
+                <h4 data-i18n="courage">勇气 Courage</h4>
+                <p data-i18n="courageDesc">敢于挑战、勇于尝试、展现雄心与毅力</p>
+            </div>
+            <div class="value-card honour">
+                <span class="value-icon">🎖️</span>
+                <h4 data-i18n="honour">荣誉 Honour</h4>
+                <p data-i18n="honourDesc">诚实正直、尊重他人、维护学校声誉</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="scripts/i18n.js?v=20260318"></script>
+    <script>
+        // 设置测试语言
+        sessionStorage.setItem('selectedLanguage', 'zh');
+        
+        // 显示调试信息
+        const debugDiv = document.getElementById('debug-info');
+        debugDiv.innerHTML = `
+            <p><strong>sessionStorage.selectedLanguage:</strong> ${sessionStorage.getItem('selectedLanguage')}</p>
+            <p><strong>localStorage.preferredLanguage:</strong> ${localStorage.getItem('preferredLanguage')}</p>
+            <p><strong>i18n.currentLang:</strong> ${typeof i18n !== 'undefined' ? i18n.currentLang : 'i18n not loaded'}</p>
+            <p><strong>i18n 已加载:</strong> ${typeof i18n !== 'undefined' ? '✅ 是' : '❌ 否'}</p>
+        `;
+        
+        // 手动更新页面语言
+        if (typeof i18n !== 'undefined') {
+            console.log('🔧 手动调用 updatePageLanguage()');
+            i18n.updatePageLanguage();
+            
+            // 500ms 后检查翻译结果
+            setTimeout(() => {
+                const coreValuesTitle = document.querySelector('[data-i18n="coreValuesTitle"]');
+                const courage = document.querySelector('[data-i18n="courage"]');
+                
+                debugDiv.innerHTML += `
+                    <hr style="margin: 1rem 0; border: none; border-top: 1px solid #ddd;">
+                    <p><strong>翻译后 coreValuesTitle:</strong> ${coreValuesTitle ? coreValuesTitle.textContent : 'N/A'}</p>
+                    <p><strong>翻译后 courage:</strong> ${courage ? courage.textContent : 'N/A'}</p>
+                    <p><strong>翻译状态:</strong> ${coreValuesTitle && coreValuesTitle.textContent !== 'coreValuesTitle' ? '✅ 成功' : '❌ 失败'}</p>
+                `;
+            }, 500);
+        }
+    </script>
+</body>
+</html>

@@ -1,7 +1,11 @@
 /* ===================================
    翻译管理后台样式
    Translation Admin Styles
+   Design System V2.0
    =================================== */
+
+/* 导入设计系统 */
+@import url('design-system.css');
 
 :root {
     --primary-color: #152242;

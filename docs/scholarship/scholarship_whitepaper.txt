@@ -1,0 +1,1689 @@
+PDF总页数: 46
+
+================================================================================
+
+第 1 页
+--------------------------------------------------------------------------------
+26/27 年度 AISL 哈罗南宁奖学金白皮书
+26/27 AISL Harrow Nanning Scholarship Whitepaper
+（V2627.0.1）
+南宁哈罗礼德学校·拓展部
+EnrichmentDepartment,HarrowLiDeSchoolNanning
+请在此处查阅电子版Pleasescantoviewtheelectronicversion
+
+
+第 2 页
+--------------------------------------------------------------------------------
+1
+总目录
+OverallTableofContents
+第一章 总则.............................................................................................................................................1
+Chapter1:GeneralProvisions...............................................................................................................1
+1.1奖学金项目概述ScholarshipProgrammeOverview........................................................................1
+1.2奖学金类型与评定标准ScholarshipTypesandCriteria..................................................................1
+1.3评价类别EvaluationCategories........................................................................................................2
+1.4申请先决条件PrerequisitesforApplication.....................................................................................3
+1.5统计与确认时间线DataCollectionandConfirmationTimeline.....................................................5
+1.6重要提示与规则ImportantNoticeandRules...................................................................................6
+第二章 领导力与服务奖学金计分模型................................................................................................8
+Chapter2:LeadershipScholarshipScoringModel............................................................................8
+2.1模型概述ModelOverview................................................................................................................8
+2.2职务与职责LeadershipRole.............................................................................................................8
+2.3项目投入度ProjectCommitment......................................................................................................9
+2.4项目影响力ProjectImpact..............................................................................................................10
+2.5汇报展示StudentShowcase............................................................................................................11
+2.6附加分BonusPoints.........................................................................................................................12
+2.7计分汇总表ScoringSummary.........................................................................................................13
+第三章 精英体育队伍设置与奖学金..................................................................................................14
+Chapter3:EliteSportsTeamSetupandScholarship......................................................................14
+第三章A 队伍体系建设PartA:TeamSystemConstruction.............................................................14
+3A.1校队体系概述EliteSportsTeamSystemOverview....................................................................14
+3A.2队员身份定义DefinitionofTeamMemberIdentity...................................................................14
+3A.3训练管理TrainingManagement...................................................................................................15
+
+
+第 3 页
+--------------------------------------------------------------------------------
+2
+3A.4考勤管理AttendanceManagement...............................................................................................16
+3A.5数据管理DataManagement.........................................................................................................16
+3A.6学术管理AcademicManagement.................................................................................................17
+第三章B 奖学金计分模型PartB:ScholarshipScoringModel.........................................................18
+3B.1计分模型概述ScoringModelOverview......................................................................................18
+3B.2参与分计算公式ParticipationScoreFormula..............................................................................18
+3B.3荣誉数量分计算公式HonorQuantityScoreFormula.................................................................19
+3B.4获奖等级分AwardLevelScore....................................................................................................19
+3B.5主观评价分SubjectiveEvaluationScore.....................................................................................21
+3B.6体育类奖学金申请资格SportsScholarshipEligibility...............................................................21
+第四章 学术奖学金计分模型..............................................................................................................22
+Chapter4:AcademicScholarshipScoringModel.............................................................................22
+4.1计分模型概述ScoringModelOverview.........................................................................................22
+4.2学术成绩分（60分）AcademicPerformanceScore(60points)..................................................22
+4.3学术竞赛数量分（5分）AcademicCompetitionQuantityScore(5points)...............................23
+4.4荣誉质量分（20分）HonorQualityScore(20points).................................................................24
+4.5考级结果分，夏/冬校分（15分）Examresultsscore,Summer/WinterSchoolscore(15points)26
+第五章 音乐表演艺术奖学金计分模型..............................................................................................28
+Chapter5:Music&PerformingArtsScholarshipScoringModel.................................................28
+5.1计分模型概述ScoringModelOverview.........................................................................................28
+5.2参与分（40分）ParticipationScore(40points)............................................................................28
+5.3荣誉数量分（15分）HonorQuantityScore(15points)...............................................................29
+5.4荣誉质量分（30分）HonorQualityScore(30points).................................................................30
+5.5主观评价分（15分）SubjectiveEvaluationScore(15points)....................................................35
+
+
+第 4 页
+--------------------------------------------------------------------------------
+3
+第六章 视觉艺术奖学金计分模型......................................................................................................35
+Chapter6:VisualArtsScholarshipScoringModel .....................................................................35
+6.1计分模型概述ScoringModelOverview.........................................................................................35
+6.2参与分（40分）ParticipationScore(40points)............................................................................35
+6.3荣誉数量与质量融合分（15分）HonorsQuan&QualScore(15points)...................................36
+6.4主观评价分（45分）SubjectiveEvaluationScore(45points).....................................................38
+附件.........................................................................................................................................................40
+Appendix................................................................................................................................................40
+附件1Appendix1..................................................................................................................................42
+附件2Appendix2关键时间表规划CriticalTimelineManagement..................................................42
+
+
+第 5 页
+--------------------------------------------------------------------------------
+1
+第一章 总则
+Chapter 1: General Provisions
+1.1 奖学金项目概述 Scholarship Programme Overview
+AISL哈罗南宁奖学金项目旨在表彰杰出表现，培育未来领袖。我们表彰那些在各领域展
+现出卓越才能，同时践行本校核心价值观的优秀学子。TheAISLHarrowNanning
+ScholarshipProgrammeaimstorecogniseoutstandingperformanceandcultivatefutureleaders.We
+honourthoseoutstandingstudentswhodemonstratedexceptionaltalentsinvariousfieldswhile
+upholdingtheschool'scorevalues.
+奖学金的评选基于一套全面的评估体系，各类别中表现最突出的学生将有机会获得奖学金
+。评选标准不仅涵盖学术表现和才艺技能，更重要的是，奖学金得主需展现出我们的核心价值
+观：勇气、荣誉、谦和及互助。 Thescholarshipselectionisbasedona comprehensiveevaluation
+system, and students who exceled in one or more categories will have the opportunity to receive the
+scholarship. The selection criteria not only cover academic performance and talents, but more
+importantly, scholarship recipients are required to demonstrate our core values: courage, honour,
+humility,andfellowship.
+核心价值观|CoreValues
+价值观
+含义（中文） 含义（English）
+CoreValue
+Daretochallenge,trynewthings,
+勇气 敢于挑战、勇于尝试、展现雄心
+demonstrateambitionand
+Courage 与毅力
+perseverance
+荣誉 诚实正直、尊重他人、维护学校 Integrity,respectforothers,
+Honour 声誉 upholdtheschool'sreputation
+Opentolearning,acknowledge
+谦和 虚心学习、认可他人贡献、保持
+others'contributions,remain
+Humility 谦逊
+modest
+互助 Teamwork,helpothers,grow
+团队协作、帮助他人、共同成长
+Fellowship together
+1.2 奖学金类型与评定标准 Scholarship Types and Criteria
+第1页共46页
+
+
+第 6 页
+--------------------------------------------------------------------------------
+2
+南宁哈罗礼德学校设立三类奖学金，以表彰在不同领域表现卓越的学生。各类奖学金的评
+定标准如下： Harrow LiDe School Nanning offers three categories of scholarships to recognize
+students who demonstrate excellence in different areas. The criteria for each scholarship category are
+asfollows:
+约翰·里昂奖学金（全额）|JohnLyonScholarship(FullFeeRemission)
+授予在三个或以上类别中取得卓越成就的学生。该奖学金以学费减免的形式发放，覆盖全
+额学费。 Awarded to students who have achieved outstanding results in three or more categories.
+Thisscholarshipisawardedintheformoffulltuitionfeeremission.
+校长奖学金（半额）|Head'sScholarship(HalfFeeRemission)
+授予在两个类别中表现突出的学生。该奖学金以学费减免的形式发放，覆盖半额学费。
+Awarded to students who have demonstrated outstanding performance in two categories. This
+scholarshipisawardedintheformofhalftuitionfeeremission.
+优才奖学金|TalentScholarship
+授予在某一类别中表现优异的学生。该奖学金以专项项目的形式向学生提供专业指导和个
+人发展资源。 Awarded to students who have demonstrated outstanding performance in a particular
+category. This scholarship is in the form of a special project to provide students with professional
+guidanceandpersonaldevelopmentresources.
+奖学金类型 覆盖范围 评定标准
+ScholarshipType Coverage Criteria
+约翰·里昂奖学金 全额学费减免 三个或以上类别卓越成就
+JohnLyonScholarship FullFeeRemission Outstandingin3+categories
+校长奖学金 半额学费减免 两个类别表现突出
+Head'sScholarship HalfFeeRemission Outstandingin2categories
+优才奖学金 专项培养资源包 单一类别表现优异
+TalentScholarship SpecialistResourceProgramme Outstandingin1category
+1.3 评价类别Evaluation Categories
+奖学金评价涵盖五大类别，学生可根据自身特长选择申请领域：Thescholarshipevaluation
+coversfivemajorcategories.Studentsmaychoosetheirapplicationareasbasedontheirstrengths:
+第2页共46页
+
+
+第 7 页
+--------------------------------------------------------------------------------
+3
+评价类别 说明 包含内容
+EvaluationCategory Description Content
+评估学生的领导能力、服务意识
+学生会、社团领导、社区服务、
+与社会责任感Assessing
+领导力与服务 公益项目等Studentunion,club
+Students'Leadership,Service
+Leadership&Service leaders,communityservice,and
+AwarenessandSocial
+publicwelfareprojects
+Responsibility
+评估学生在竞技体育领域的训练
+校队项目、体育竞赛、运动员注
+投入与竞赛成绩Assessing
+竞技体育 册等Schoolteamprograms,
+Students'TrainingInvestmentand
+CompetitiveSports sportscompetitions,athlete
+CompetitionPerformancein
+registration,etc.
+CompetitiveSports
+评估学生的学术成绩与学术竞赛 学科成绩、学术竞赛、考级认证
+学术 表现Assessingstudents'academic 等Academicperformance,
+Academic performanceandcompetition academiccompetitions,and
+achievements certificationexams
+音乐演出、戏剧表演、艺术竞赛
+评估学生在音乐、戏剧、舞蹈等
+、考级等Musicperformances,
+音乐与表演艺术 领域的艺术造诣Assessstudents'
+theatricalperformances,art
+Music&PerformingArts artisticaccomplishmentsinmusic,
+competitions,grading
+drama,dance,andotherfields.
+examinations,etc.
+评估学生在绘画、雕塑、设计等
+艺术作品、展览、竞赛获奖等
+视觉艺术 领域的创作能力Assessstudents'
+Artworks,exhibitions,andawards
+VisualArts creativeabilitiesinpainting,
+incompetitions
+sculpture,design,andotherfields.
+注意：每个评价类别均有独立的计分模型，详细评分规则请参阅相应章节。学生可同时申
+请多个类别的奖学金，各类别评分独立计算。Note:Eachevaluationcategoryhasitsownscoring
+model. Please refer to the corresponding chapters for detailed scoring rules. Students may apply for
+scholarshipsinmultiplecategoriessimultaneously,witheachcategoryscoredindependently.
+1.4 申请先决条件Prerequisites for Application
+申请奖学金的学生须满足以下基本条件： Students applying for scholarships must meet the
+followingbasicrequirements:
+1.4.1身份要求|IdentityRequirements
+注册要求：哈罗南宁2025-26学年就读，且2026-27学年在册学生。 Enrollment: Students
+enrolled in Harrow Nanning for the 2025-26 academic year and still on the rolls for the 2026-27
+academicyear.
+第3页共46页
+
+
+第 8 页
+--------------------------------------------------------------------------------
+4
+年级要求：约翰·里昂奖学金及校长奖学金仅授予 2026-2027学年六年级及以上学生。
+Grade Level: The John Lyon Scholarship and the Head's Scholarship are only awarded to students in
+the2026-27academicyearinG6andabove.
+1.4.2出勤要求|AttendanceRequirements
+总缺勤天数不得超过5天。总迟到次数不得超过5次。 The totalnumberof absences must
+notexceed5days.Thetotalnumberoflatearrivalsmustnotexceed5times.
+1.4.3学术成绩及纪律要求|AcademicPerformance&DisciplineRequirements
+参照学术奖学金的学术成绩计算方法《4.2 学术成绩分（60分） Academic Performance
+Score (60 points)》，平均成绩必须维持在 5 或以上且不能有单科 U 或低于 15%得分。In
+accordance with the academic performance calculation method for the Academic Scholarship 4.2
+Academic Performance Score (60 points), the average grade must be maintained at 5 or above, and
+withoutsinglesubjectatUorbelow15%scorepercentage.
+不能有面见总督学、中方校长的纪律问题，不能有学术不端、不能有违法行为。否则会触
+发现有奖学金得主的召回或申请人直接失去资格。Theremustbenodisciplinaryissuesinvolving
+face-to-face meetings with the Superintendent of Education or Chinese principals, no academic
+misconduct,andnoillegalactivities.Otherwise,itwouldtriggertheexistingscholarshiprevocationor
+disqualificationofanapplicant.
+1.4.4无冲突项目规定|NoConflictingFinancialAid/Reward
+若你在相应的申请学年是教师子女、或其它有学费减免优惠的学生（多子女家庭优惠除外
+），在已经免费享受学校教育教学资源的情况下，你将不再与其他学生参与奖学金的竞争，或
+只能获得额外增设的荣誉头衔。 If youare a child of a teacher or other student eligible for tuition
+fee reduction (excluding multi-child family discounts) during the corresponding application academic
+yearandhave alreadyenjoyed theschool'seducationalresourcesfor free, youwill nolonger compete
+withotherstudentsforscholarships.Oryoumayonlyreceiveadditionalhonourarytitles.
+若你在相应的申请学年已经获得了AISL哈罗奖学金，你将不再与其他学生参与奖学金的
+竞争，或只能获得额外增设的荣誉头衔。 If you have already received the AISL Harrow
+Scholarship in the corresponding application academic year, you will no longer compete with other
+studentsforscholarships.Oryoumayonlyreceiveadditionalhonourarytitles.
+东盟国际学者奖学金获得者将不再参与校长或约翰·里昂奖学金的竞争，但是仍可以获得
+优才奖学金或额外增设的荣誉头衔。 ASEAN Scholars doesn't qualify for the Head's and John
+LyonScholarshipbutwillbeeligibleforTalentScholarshipand/orhonourarytitles.
+第4页共46页
+
+
+第 9 页
+--------------------------------------------------------------------------------
+5
+条件类型 具体要求 适用范围
+RequirementType SpecificRequirements ApplicableScope
+身份要求 2025-26在读，2026-27在册 所有申请人
+Identity Consecutiveenrollment AllApplicants
+出勤要求 缺勤、迟到≤5次 所有申请人
+Attendance Abs/Late≤5 AllApplicants
+学术成绩 均分5或以上，单科不得有U 所有申请人
+Academic Avg5orabovewithoutU AllApplicants
+非教师子女/
+无冲突项目 非AISL奖学金获得者 全额/半额奖学金
+NoConflicts Full/HalfScholarship
+Notastaffchild/existingAISL
+levelaid
+1.5 统计与确认时间线Data Collection and Confirmation Timeline
+奖学金评审分为两个核心阶段：统计阶段与意愿确认阶段。统计是一个半主动的数据收集
+过程，由学校和家庭共同完成，窗口期覆盖全学年；意愿确认是一个申请家庭主动的确认过程
+，只有几个月。Thescholarshipreviewconsistsoftwocorestages:thedatacollectionstageandthe
+intention confirmation stage. Data collection is a semi-automatic process done collectively by the
+school and families, with a window period covering the entire academic year; intention confirmation
+isaproactiveconfirmationprocessdonebyeachapplicantfamily,onlylastingforafewmonths.
+统计窗口|DataCollectionWindow
+2025年6月23日至2026年6月28日June23,2025–June28,2026
+统计工作常年开放，周期界定标准为：从上学年授奖日（SpeechDay）当周周一起，至本
+学年授奖日周之前一周的周日止。 Data collection is an ongoing process based on the academic
+year cycle: from the Monday of the previous Speech Day week to the Sunday before the current
+awardingweek.
+意愿确认窗口|IntentionConfirmationWindow
+2026年1月1日至6月12日January1,2026–June12,2026
+第5页共46页
+
+
+第 10 页
+--------------------------------------------------------------------------------
+6
+意愿确认是一个相对独立于数据统计的过程，由且仅由家长完成，主要目的有三：明确竞
+争奖学金的意愿；整理、汇总、提交主观材料（如个人陈述、作品、训练视频、推荐信等）；
+补全遗漏的客观材料（如比赛、考级、运动员注册等）。Theintentionconfirmationisaprocess
+that is relatively independent of data collection, conducted exclusively by parents, with three main
+purposes: confirm intention to enter your child for scholarship review; organize, compile, and submit
+subjective materials (such as personal statements, portfolios, training videos, recommendation letters,
+etc.); complete the missing objective materials (e.g., competitions, graded exams, sportsman
+registration,etc.).
+奖学金评审是一个双向选择的过程。若你在系统里有比赛记录，但是没有完成申请确认
+，你的孩子并不会自动获得奖学金的资格。Thescholarshipreviewisamutualselection
+process.Ifyouhavecompetitionrecordsinthesystembuthavenotcompletedtheapplication
+confirmation,yourchildwillnotautomaticallyqualifyforanyscholarship.
+阶段 时间 操作 说明
+Stage Timeline Action Note
+学校与家庭共同完成
+统计窗口 数据收集
+2025.6.23-2026.6.28
+SchoolandParents
+DataCollection DataCollection
+collectdatatogether
+意愿确认 提交申请 家长主动完成确认
+2026.1.1-2026.6.12
+IntentionConfirmation SubmitConfirmation Parentsconfirm
+评审阶段 材料评审 评审委员会审核
+2026.6.15-2026.6.22
+ReviewPeriod Review PanelReview
+结果公布 2026.6.29 公布结果 通知获奖学生
+ResultAnnouncement （暂定Temp） Release NotificationSendOut
+说明：允许同时申请多个类别的奖学金。意愿完成确认后，你仍然可以增添数据。Note:
+Concurrentapplicationsformultiplecategoriesarepermitted.Youcanstilladddataafteryouconfirm
+yourintention.
+1.6 重要提示与规则Important Notice and Rules
+接受规则|AcceptanceofRules
+提交申请即表示您已完全理解并接受奖学金的规则和算法。 Submitting this application
+confirmsyourfullunderstandingandacceptanceofthescholarshiprulesandalgorithm.
+第6页共46页
+
+
+第 11 页
+--------------------------------------------------------------------------------
+7
+责任与截止|Responsibility&Deadline
+申请人和家庭对申请材料的完整性负全责。截止日期后仍未完成的材料将按现有内容评审
+， 恕 不 补 充 。 Applicants and families are solely responsible for application completeness.
+Incomplete submissions by the deadline will be assessed as-is with no supplementary materials
+permitted.
+最终解释权|FinalAuthority
+学校保留奖学金提名、规则、数据及结果的最终解释权。欢迎对平衡机制和鼓励范围提出
+建设性意见，反馈将作为下年度制度修订的重要参考。 Theschoolholdsfinalauthority overall
+scholarship matters. Feedback on the balancing mechanism and incentive scope is welcome and will
+informfuturerevisions.
+奖学金撤销条件（红线）|RevocationConditions(BottomLines)
+奖学金每年颁发一次。获奖者必须持续为学校做出积极贡献，若无法维持积极形象代表学
+校，学校保留撤销奖学金的最终解释权。触碰以下红线，奖学金将被直接撤销，不设缓冲地带
+：Thescholarshipisawardedonceayear.Thewinnermustcontinuouslymakepositivecontributions
+to the school. If an awardee cannot maintain his/her positive representation of the school, the school
+reservesthe finalrighttoterminatethescholarship.Touchingthefollowingbottomlineswillresultin
+adirectrevocationofthescholarshipwithoutanybufferarea:
+违规类型 具体说明 处理方式
+ViolationType Description Consequence
+总督学、中方校长处理的纪律问题
+纪律问题 直接撤销
+Disciplinaryissuesescalatedtothehead
+Discipline DirectRevocation
+orChineseprincipal
+同比20%以上的学术成绩降幅
+学术成绩下滑 直接撤销
+Ayear-on-yeardeclineofmorethan
+AcademicDecline DirectRevocation
+20%inacademicperformance
+在作业、考试中作弊或帮助他人作弊
+学术诚信 直接撤销
+Cheatingorassistingothersincheating
+AcademicIntegrity DirectRevocation
+onassignmentsorexams
+违反中华人民共和国法律、法规
+公民义务 直接撤销
+ViolationofLawsandRegulationsof
+CivicObligations DirectRevocation
+thePeople'sRepublicofChina
+第7页共46页
+
+
+第 12 页
+--------------------------------------------------------------------------------
+8
+第二章 领导力与服务奖学金计分模型
+Chapter 2: Leadership Scholarship Scoring Model
+2.1 模型概述 Model Overview
+领导力与服务奖学金旨在表彰在学校或社区项目中展现出卓越领导能力、服务意识和社会
+责任感的学生。本计分模型采用多维度评价体系，综合评估学生在领导职务、项目投入、社会
+影响力和汇报展示等方面的表现。 The Leadership and Service Scholarship aims to recognize
+studentswhodemonstrateoutstandingleadershipabilities,serviceawareness,andsocialresponsibility
+in school or community projects. This scoring model adopts a multi-dimensional evaluation system,
+comprehensively assessing students' performance in leadership positions, project commitment, social
+impact,andpresentation.
+总分100=职务与职责分20+项目投入度分30+项目影响力分20+汇报展示分30
+Totalscore100=LeadershipRole20+ProjectCommitment30+ProjectImpact20+StudentShowcase30
+说明：附加分部分不计入100分制总分内，作为额外加分项单独计算。 Note: The bonus
+pointssectionisnotincludedinthe100-pointtotalandiscalculatedseparatelyasadditionalpoints.
+2.2 职务与职责Leadership Role
+权重：20%
+Weight:20%
+评估学生在项目或组织中担任的职务及责任级别。若在多个组织中任职，请选择职级最高
+的一项。 Assesses the student's position and level of responsibility within a project or organization.
+Ifholdingrolesinmultipleorganizations,selecttheonewiththehighestrank.
+评分人|Assessor:指导老师Mentor
+所需材料|RequiredMaterials:指导老师评价表（由校办出具）MentorEvaluationFormtobe
+issuedbytheSchoolOffice
+第8页共46页
+
+
+第 13 页
+--------------------------------------------------------------------------------
+9
+可测量指标|MeasurableIndicators
+职务级别 说明 分数
+PositionLevel Description Score
+组织最高负责人，负责整体规划
+主席/创始人 与决策Thetopleaderofthe
+20
+President/Founder organization,responsibleforoverall
+planninganddecision-making
+协助主席工作，分管特定领域
+副主席/联合负责人
+AssisttheChairpersoninoverseeing 15
+VicePresident/Co-leader
+specificareas
+负责具体部门的运营与管理
+部门负责人/核心成员
+Responsiblefortheoperationand 10
+DepartmentHead/CoreMember
+managementofspecificdepartments
+参与项目活动，完成分配任务
+普通成员/参与者
+Participateinprojectactivitiesand 5
+GeneralMember/Participant
+completeassignedtasks
+2.3 项目投入度 Project Commitment
+权重：30%
+Weight:30%
+评估学生在项目中的投入度、出勤率、责任心与持续性。若参与多个项目，请选择投入度
+最高的一项。 Assesses the student's dedication, attendance, responsibility, and persistence in a
+project.Ifinvolvedinmultipleprojects,selecttheonewiththehighestlevelofcommitment.
+评分人|Assessor:指导老师Mentor
+所需材料|RequiredMaterials:指导老师评价表（由校办出具）MentorEvaluationFormtobe
+issuedbytheSchoolOffice
+可测量指标|MeasurableIndicators
+指标 标准 分数
+Indicator Standard Score
+参与度-出勤率 出勤率Attendance≥90% 10
+第9页共46页
+
+
+第 14 页
+--------------------------------------------------------------------------------
+10
+AttendanceRate
+出勤率Attendance80-89% 7
+出勤率Attendance <80% 5
+指标 标准 分数
+Indicator Standard Score
+任务执行 关键任务完成率KeyTask
+15
+TaskExecution Achieved≥90%
+关键任务完成率KeyTask
+12
+Achieved 70-89%
+关键任务完成率KeyTask
+8
+Achieved <70%
+指标 说明 分数
+Indicator Description Score
+主动性、责任感表现
+责任态度
+Demonstrationofinitiativeand 5
+AttitudeofResponsibility
+senseofresponsibility
+2.4项目影响力 ProjectImpact
+权重：20%
+Weight:20%
+评估项目的影响力与成果，包括受益范围、持续时间、项目成效与受众反馈。若参与多个
+项目，请选择影响力最大的一项。 Evaluates the project's influence and outcomes, including its
+scopeofbeneficiaries,duration,effectiveness,andaudiencefeedback.Ifinvolvedinmultipleprojects,
+selecttheonewiththegreatestimpact.
+评分人|Assessor:指导老师Mentor
+所需材料|RequiredMaterials:指导老师评价表（由校办出具）MentorEvaluationFormtobe
+issuedbytheSchoolOffice
+第10页共46页
+
+
+第 15 页
+--------------------------------------------------------------------------------
+11
+可测量指标|MeasurableIndicators（二选一/Chooseone）
+受益规模 说明 分数
+ScaleofBeneficiaries Description Score
+项目直接受益人数达到100人或以上
+≥100人 20
+Directbenefitmorethan100
+项目直接受益人数在50至99人之间
+50-99人 15
+Directbenefitbetween50-99
+项目直接受益人数在20至49人之间
+20-49人 10
+Directbenefitbetween20-49
+项目直接受益人数少于20人
+<20人 5
+Directbenefitbetweenlessthan20
+影响层级 说明 分数
+LevelofImpact Description Score
+校内外 项目影响力延伸至学校以外的社
+20
+Withinandoutsidetheschool 区Impactbeyondcampus
+校级 项目影响力覆盖全校范围
+15
+School-wide Campuswideimpact
+年级 项目影响力主要在年级范围内
+10
+Grade-level Gradewideimpact
+班级 项目影响力主要在班级范围内
+5
+Class-level Classwideimpact
+2.5 汇报展示Student Showcase
+权重：30%
+Weight:30%
+学生需准备PPT进行汇报，展示其领导力成果、问题解决能力、团队协作能力，以及反
+思 与 未 来 展 望 。 Students must prepare a PPT presentation to showcase their leadership
+achievements, problem-solving skills, teamwork abilities, as well as their reflections and future
+aspirations.
+第11页共46页
+
+
+第 16 页
+--------------------------------------------------------------------------------
+12
+评分人|Assessor:评审团（集团领导、校领导、学术及非学术老师）ThePanel(includinggroup
+leaders,schoolleaders,andbothacademicandnon-academicfacultymembers)
+所需材料|RequiredMaterials:汇报PPT及演讲（建议10分钟内）。可附上照片、项目文档、
+视频等辅助材料。PresentaPPTanddeliveraspeech(within10minutes).Youmayinclude
+supplementarymaterialssuchasphotos,projectdocuments,andvideos.
+可测量指标|MeasurableIndicators
+评估维度 说明 分数
+AssessmentDimension Description Score
+问题解决、团队协作能力
+核心能力展现
+Problemsolvingandteamwork 10
+CoreCompetencies
+ability
+反思与成长 自我认知、未来规划
+10
+ReflectionandGrowthMindset Selfawarenessandfutureplanning
+内容结构、表达技巧、视觉呈现
+综合展示力
+10
+Contentstructure,presentationskill
+OverallPresentationSkills
+andvisuals
+2.6 附加分 Bonus Points
+说明：此部分不计入100分制总分内。Note:Thesepointsarenotincludedinthe100-pointtotal.
+为鼓励学生参与多个组织的领导工作，设立多职务领导力附加分。同时在多个组织中担任
+职务的学生可获得额外加分。 To encourage students to take on leadership roles in multiple
+organizations, bonus points for multiple leadership roles are established. Students holding leadership
+positionsinmultipleorganizationsconcurrentlycanearnadditionalpoints.
+项目 条件 加分
+Item Condition Bonus
+多职务领导力 同时在2个组织中任职
++5
+MultipleLeadershipRoles Servein2orgs
+同时在3个组织中任职
++10
+Servein3orgs
+同时在4个及以上组织中任职 +15
+第12页共46页
+
+
+第 17 页
+--------------------------------------------------------------------------------
+13
+Servein4ormoreorgs
+2.7 计分汇总表 Scoring Summary
+领导力与服务奖学金各评分维度汇总如下： The scoring dimensions for the Leadership and
+ServiceScholarshiparesummarizedbelow:
+评分维度 权重 满分 评分人
+ScoringDimension Weight MaxScore Assessor
+职务与职责 指导老师
+20% 20
+LeadershipRole Mentor
+项目投入度 指导老师
+30% 30
+ProjectCommitment Mentor
+项目影响力 指导老师
+20% 20
+ProjectImpact Mentor
+汇报展示 评审团
+30% 30
+StudentShowcase ReviewPanel
+附加分（不计入总分）
+BonusPoints(not - 最高+15Max. -
+included)
+总分计算公式|TotalScoreCalculationFormula
+总分=职务与职责分+项目投入度分+项目影响力分+汇报展示分
+Totalscore=Positionandresponsibilitiesscore+Projectcommitmentscore+Project
+impactscore+Presentationscore
+附加分将在总分之外单独计算，用于在同等条件下区分候选人的综合领导力表现。Bonus
+points will be calculated separately from the total score and used to distinguish candidates'
+comprehensiveleadershipperformanceunderequalconditions.
+第13页共46页
+
+
+第 18 页
+--------------------------------------------------------------------------------
+14
+第三章 精英体育队伍设置与奖学金
+Chapter 3: Elite Sports Team Setup and Scholarship
+第三章 A 队伍体系建设 Part A: Team System Construction
+本学年的校队体系承袭2023-2024的基本架构，在此基础上作出和能力、年龄、规划以及
+对奖学金机会的追求挂钩的预备队/低年级队，以及一线队/高年级队的区别。ThecurrentElite
+Sports team system inherits the basic framework of 2023-2024, and on this basis, differentiates
+between reserve/primary school teams and first team/senior teams, which are linked to ability, age,
+planning,andthepursuitofscholarshipopportunities.
+3A.1 校队体系概述Elite Sports Team System Overview
+南宁哈罗礼德学校的精英体育校队体系采用双轨制架构，分为预备队（ReserveTeam）和
+一线队（FirstTeam）两个层级。这一体系设计充分考虑了学生的发展阶段、技术水平和未来
+规划，为不同层次的学生提供适合的培养路径。 The Elite Sports team system at Harrow LiDe
+School Nanning adopts a dual-track structure, divided into two levels: Reserve Team and First Team.
+This system design fully considers the developmental stage, technical level, and future planning of
+students,providingsuitabledevelopmentpathsforstudentsatdifferentlevels.
+维度 预备队 一线队
+Dimension ReserveTeam FirstTeam
+低年级/低水平 高年级/高水平
+年龄Age
+LowerGrade/Level Senior/Advanced
+零基础/基础较差 有基础/基础一般
+技术Technology
+Zero/poorfoundation Has/averagefoundation
+兴趣导向/寻找方向 明确竞技体育导向
+规划Planning
+InterestOrientation Clearsportsorientation
+无要求或不重要 希望申请优才奖学金
+奖学金Scholarship
+Norequirements HopesforTalentScholarship
+3A.2 队员身份定义Definition of Team Member Identity
+一线队队员FirstTeamMembers
+第14页共46页
+
+
+第 19 页
+--------------------------------------------------------------------------------
+15
+一线队是学校精英体育队伍的核心力量，队员需满足以下身份认定标准之一： The first
+team is the core force of the school's elite sports teams. Members must meet one of the following
+identityrecognitionstandards:
+•直接管理项目：选拔后进入一线队的队员。DirectlyManagedProjects:Playerswhoenterthe
+firstteamafterselection.
+•灵活管理项目：选拔后，经俱乐部/教练有效注册在训的队员。FlexiblyManagedProjects:
+Playerseffectivelyregisteredandintrainingbytheclub/coach.
+•训练时长门槛：满足每周训练6小时或以上门槛者，可承认为校队一线队员。Training
+DurationThreshold:Thosemeeting6+hoursperweekcanberecognizedasfirst-teammembers.
+•广泛代表权：证实有训练计划，且每学期至少一次更新参赛数据的队员。Rightto
+Represent:Sportsmenwithverifiedtrainingplanswhoupdatecompetitiondataatleastonceper
+semester.
+预备队队员ReserveTeamMembers
+预备队主要面向足球、篮球、羽毛球、游泳等4个直接管理项目的低龄段运动员培养。
+The reserve team primarily focuses on training young athletes in four directly managed sports:
+football,basketball,badminton,andswimming.
+预备队与低年级校队的区别：足球、篮球的小学部校队与预备队基本重合，但概念不同
+。预备队的主要职责是培养低龄段无基础的运动员，完全没有门槛；低年级校队有较低
+的门槛，选拔时会考察纪律、天赋等方面。Difference:Primaryschoolteamsforfootballand
+basketballlargelyoverlapwithreserveteams,butconceptsdiffer.Reserveteamstrainyoung
+athletesfromscratchwithnothreshold;juniorvarsityteamshavelowthresholdsandevaluate
+disciplineandtalentduringselection.
+3A.3 训练管理 Training Management
+一线队训练要求FirstTeamTrainingRequirements
+一线队队员需要满足每周至少6小时训练时长，集中管理项目中的球队需要按照训练安排
+完成2小时一次，每周3次或以上的训练课。 Firstteamplayersneed tomeet atrainingduration
+of at least 6 hours per week, and teams in the centralized management program need to complete
+trainingsessionsof2hourseach,3timesormoreperweek.
+预备队训练要求ReserveTeamTrainingRequirements
+预备队队员仅针对集中管理项目中的运动，需要按照训练安排完成1小时一次，每周2次
+的训练课。 Reserveteam membersneed to completetraining sessionsof 1houreach,twiceaweek,
+accordingtothetrainingschedule.
+第15页共46页
+
+
+第 20 页
+--------------------------------------------------------------------------------
+16
+3A.4 考勤管理 Attendance Management
+考勤规则AttendanceRules
+校队一线队的考勤从严管理，除了伤病、学术考试、预先安排的校内活动、竞赛等缘由提
+前请假外，其余一切因自己安排的事务除非有提前请假并且根据实际情况获得教练批准，无故
+直接缺勤的学员将会被拒绝请假并消课。 Attendance management for the first team is strict.
+Except for injuries, academic exams, pre-arranged school activities, competitions and other reasons
+for prior leave requests, students who are absent without permission will have their leave requests
+rejectedandtheirclassescancelled.
+预备队会在原则上执行一线队的管理制度，但会更灵活。Thereserveteamwillinprinciple
+followthemanagementsystemofthefirstteam,butwillbemoreflexible.
+事不过三原则：任何原因请假都适用事不过三原则。豁免范围外连续请假或缺勤第三次
+，无条件退队，缺勤课程扣费后剩余课程退费，2学期内禁止回归。Three-StrikeRule:
+Forthethirdconsecutiveleaveorabsenceoutsidetheexemptionscope,thememberwillbe
+unconditionallyremovedfromtheteam,remainingcoursesrefunded,andre-entryprohibitedwithin
+2semesters.
+另一校队 自主安排
+运动项目 伤病 学术考试 校内安排 直接缺勤
+Another Self-
+Sport Injury Academic School NoShow
+Team arranged
+足球
+✅ ✅ ✅ ✅ ❌ ❌
+Football
+篮球
+✅ ✅ ✅ ✅ ❌ ❌
+Basketball
+羽毛球
+✅ ✅ ✅ ✅ ❌ ❌
+Badminton
+游泳
+✅ ✅ ✅ ✅ ❌ ❌
+Swimming
+灵活管理项目：家长和俱乐部协商达成共识，学校不再统一管理灵活项目的规则。
+Flexible Managed Sports: Parents and clubs need to agree on attendance rules. The school will no
+longermanageFMSs.
+3A.5 数据管理 Data Management
+学校对于竞技体育主要管理两个方面的数据，以确定学员的代表权以及评奖资格：运动员
+注册和参赛数据管理。 The school mainly manages data in two aspects for competitive sports to
+第16页共46页
+
+
+第 21 页
+--------------------------------------------------------------------------------
+17
+determine the representation and award eligibility of students: Athlete Registration and Competition
+DataManagement.
+运动员注册AthleteRegistration
+在8支校队的选拔活动结束后，确认入队的队员将会被教练登记为运动员。本名单会根据
+后续的情况，每学期更新一次。广泛代表权学员可因有登记过荣誉而直接获得运动员身份。
+After the selection process for the 8 school teams concludes, confirmed team members will be
+registered as athletes by the coaches. This list will be updated once per semester. Students with
+extensiverepresentationrightsmaydirectlyobtainathletestatusduetoregisteredhonors.
+参赛数据管理DataManagement
+学校和家长需要共同管理学员的参赛数据，并保证尽量完整地记录每年所有的前八名参赛
+数据，家校共建的数据库将作为竞技体育奖学金唯一的竞赛结果参考。并受窗口开放时间的制
+约。学校不为家长忘记填报的数据负责。 The school andparents aresupposed to jointlymanage
+participants’ competition data, ensuring a full recognition of all top eight competition result. The
+database maintained by school and parents will serve as the sole reference for competitive sports
+scholarshipoutcomes,subjecttotheconstraintsofthedesignatedwindowperiod.Schoolsshallnotbe
+heldresponsibleforanydataomittedbyparentsduringsubmission.
+3A.6 学术管理 Academic Management
+校队队员需平衡训练与学业。一线队队员如因训练或比赛影响学术成绩，学校将提供必要
+的学术支持，但队员需主动寻求帮助并保持积极的学习态度。若学术成绩同比下降超过20%，
+将触发已有奖学金撤销或者因退队而失去资格的条件。 Team membersneed tobalancetraining
+and academics. If first team members' academic performance is affected by training or competitions,
+the school will provide necessary academic support, but members need to actively seek help and
+maintain a positive learning attitude. If academic performance declines by more than 20% year-on-
+year,theexistingscholarshiprevocationoradisqualificationconditionwillbetriggered.
+全年平均成绩必须维持在5或以上，低于5则剥夺代表权，取消精英运动员注册，不再能
+够参与奖学金竞争，但是可以保留训练，3或以下则需要直接离队。具体分值和比照查阅附件
+1。The annual average grade must be maintained at 5 or above. A grade below 5 will result in
+disqualificationfrom therighttorepresent andacancellationof Elite Sportsmanregistration,andloss
+of eligibility for scholarship competitions, although training may be retained. A score of 3 or below
+will require immediate team departure. Specific scores and corresponding criteria are detailed in
+Appendix1.
+第17页共46页
+
+
+第 22 页
+--------------------------------------------------------------------------------
+18
+第三章 B 奖学金计分模型 Part B: Scholarship Scoring Model
+3B.1 计分模型概述 Scoring Model Overview
+总分100=参与分40+荣誉数量分15+荣誉质量分30+主观评价分15Totalscore100=
+Participationscore40+Honourquantityscore15+Honourqualityscore30+Subjective
+evaluationscore15
+数据库的统计周期以学年为单位，从每年授奖日周开始，直至授奖日周结束。体育奖学金
+的评价结构涵盖参与投入与竞赛成果两个维度。 The statisticalcycle ofthe database isbasedon
+the academic year, starting from the week of the annual award day and ending on the week of the
+award day. The evaluation structure of the Sports Scholarship covers two dimensions: participation
+commitmentandcompetitionresults.
+3B.2 参与分计算公式Participation Score Formula
+体育类以参训身份判定，单次竞技体育或参赛不是判定条件，学生需要证明有在有效地参
+与体育训练即可获得分数。参与分需要学生有效参与所注册项目的训练并且更注重参与、坚持
+。 For sports, the determination is based on the identity of participating in training. A single
+competitive sport or participation in a competition is not a determining condition. Students only need
+toprovethattheyhaveeffectivelyparticipatedinsportstrainingtoobtainpoints.
+中途加入判定规则Mid-termJoiningRules
+•学校发布的项目：在招募截止后的第三周才选择加入的，视为中途加入。Schoolprojects:
+Joininginthe3rdweekafterrecruitmentdeadlineisconsideredmid-term.
+•非学校发布的项目：不进行参与分统计，直接按照荣誉数量分加倍计算。Non-school
+projects:Noparticipationscore;honorquantityscoredoubled.
+•中途加入计算：根据项目发布后的第几周（W,3<W≤10）参与，减去迟到系数W×k。Mid
+-termcalculation:DeductlatecoefficientW×kbasedonweekjoined.
+•春季学期新加入：迟到系数最小为3，每迟1周加1。Springsemesternewjoiners:Minimum
+coefficient3,plus1perdelayedweek.
+参与分计算公式ParticipationScoreFormulas
+C=40×xᵏ,(W<3)
+第18页共46页
+
+
+第 23 页
+--------------------------------------------------------------------------------
+19
+式中：C为参与分，基准为40；W为加入节点；x为出勤率；k为惩厉系数，设定为k=3。
+Where:Cisparticipationscore(baseline40);Wisjoiningnode;xisattendancerate;kispenalty
+coefficient(k=3).
+C=[40-k(W-2)]×xᵏ,(3<W≤10)
+计算示例：学生A秋季学期2周内完成报名，C=40×x³；学生B秋季学期第5周完成
+报名，C=[40-3×(5-2)]×x³=31×x³Example:StudentAjoinsinweek2,C=40×x³;Student
+Bjoinsinweek5,C=31×x³
+3B.3 荣誉数量分计算公式Honor Quantity Score Formula
+学校在管理的荣誉记录表上，按照学生申报登记的记录进行统计。如果被标记为“仅参赛”,
+对于竞技体育来说，将不会被计入数量统计。 The schoolconducts statisticsonthe honor record
+table based on records declared by students. If marked as "participation only", it will not be included
+inthequantityforcompetitivesports.
+排名
+第一 第二 第三 第四 第五 第六 第七 第八 十+
+Rankin
+1st 2nd 3rd 4th 5th 6th 7th 8th 10+
+g
+分数
+15 14.45 13.57 12.42 11.1 9.66 8.21 6.8 3.32
+Score
+f(n)=15.1×e−0.01256,(1≤n≤20)
+f(n)=0.1,(n>20)
+式中：n是奖牌榜的排名，-0.01256是排名与分数换算系数。Where:nisranking;-0.01256is
+conversioncoefficient.
+3B.4 获奖等级分 Award Level Score
+学生可以通过不同方法攒满30分，但仅通过已经持有的段位、考级最多只能获得15分。
+在学生所获得的所有被承认的奖牌、奖励、定级、考级结果中，依照荣誉的等级奖励学生。
+Studentscanaccumulate30pointsthroughdifferentmethods,butonlyupto15pointscanbeobtained
+through existing ranks and grade examinations. Among all recognized results, students are rewarded
+accordingtothelevelofhonors.
+第19页共46页
+
+
+第 24 页
+--------------------------------------------------------------------------------
+20
+竞赛结果基础分值表CompetitionResultsBaseScoreTable
+项目类型 赛果类型
+金牌 银牌 铜牌 第四名 友谊赛
+Project Result
+Gold Silver Bronze 4th Friendly
+Type Type
+个人项目 个人赛果
+1 0.9 0.8 0.7 0.2
+Personal Individual
+个人项目 团体赛果
+0.8 0.7 0.6 0.5 0.1
+Personal Team
+集体项目 集体赛果
+5 4.5 4 3.5 0.5
+Group Collective
+集体项目 个人赛果
+1 0.9 0.8 0.7 0.3
+Group Individual
+团队贡献分：集体项目的集体赛果中，队长或指导老师点名认证核心成员额外加0.2分。
+Team Contribution Score: Core members certified by team leader or instructor receive an additional
+0.2points.
+赛事级别加成表CompetitionLevelBonusTable
+赛事级别 仅参赛
+1 2 3 4 5 6～8
+CompetitionLevel Only
++0% +0% +0% +0% +0% +0% +0%
+校内/友谊赛School/Friendly
+国内校际 +10% +9% +8% +7% +6% +5% +0%
+DomesticIntra-School
+区级体教文 +20% +19% +18% +17% +16% +15% +10%
+DistrictLevel
+省内商业 +30% +29% +28% +27% +26% +25% +20%
+ProvincialCommercial
+省外商业 +40% +39% +38% +37% +36% +35% +30%
+OtherProvinces’Commercial
++50% +49% +48% +47% +46% +45% +40%
+国际校际InternationalIntra-school
++60% +59% +58% +57% +56% +55% +50%
+市级体教文MunicipalLevel
++70% +69% +68% +67% +66% +65% +60%
+省级体教文ProvincialLevel
++80% +79% +78% +77% +76% +75% +70%
+国家级NationalLevel
+第20页共46页
+
+
+第 25 页
+--------------------------------------------------------------------------------
+21
++90% +89% +88% +87% +86% +85% +80%
+世界级赛事World-class
++100% +99% +98% +97% +96% +95% +90%
+国家级NationalLevel
+一个赛果的最终分数计算为：奖牌分数 ×加成。 The finalscoreof aresultiscalculated as:
+medalscore×bonus.
+3B.5 主观评价分 Subjective Evaluation Score
+主观评价分满分为15分，学生需提交一段展示运动能力的视频。评委将寻找以下方面的
+证据： Thesubjectiveevaluationscorehasamaximumof15points.Studentsneedtosubmitavideo
+demonstratingathleticability.Judgeswilllookforevidenceinthefollowingareas:
+•技术技能TechnicalSkills：评分1-5分。Scored1-5.
+•控制与精确度ControlandPrecision：评分1-5分。Scored1-5.
+•战术理解TacticalUnderstanding：评分1-5分。Scored1-5.
+3B.6 体育类奖学金申请资格 Sports Scholarship Eligibility
+申请体育类奖学金的学生需满足以下基本条件： Students applying for sports scholarships
+mustmeetthefollowingbasicrequirements:
+•运动员注册SportsmanRegistration：需完成运动员身份注册，成为一线队队员或获得广泛
+代表权。MustcompleteEliteSportsmanregistration.
+•出勤要求Attendance：满足相应队伍的训练出勤标准。Mustmeettrainingattendance
+standards.
+•总则中的所有门槛Applythethresholdinthegeneralrules
+第21页共46页
+
+
+第 26 页
+--------------------------------------------------------------------------------
+22
+第四章 学术奖学金计分模型
+Chapter 4: Academic Scholarship Scoring Model
+4.1 计分模型概述 Scoring Model Overview
+总分100=学术分60+竞赛数量分5+竞赛质量分20+考级分15Totalscore100=
+Academicscore60+Competitionquantityscore5+Honourqualityscore20+LevelExamscore
+15
+数据库的统计周期以学年为单位，从每年授奖日周开始，直至授奖日周结束。学术奖学金
+的评价结构涵盖了学生日常学术表现与学术竞赛成果两个维度，全面评估学生的学术能力与潜
+力。Thereferenceperiodofthedatabaseisbasedontheacademicyear,startingfromtheweekofthe
+annual award day and ending on the week of the award day. The evaluation structure of academic
+scholarships covers two dimensions: students' daily academic performance and academic competition
+results.
+4.2 学术成绩分（60 分） Academic Performance Score (60 points)
+学术成绩分是学术奖学金计分模型中权重最高的组成部分，占总分的60%。该分数基于学
+生全学年的考试成绩进行计算，反映学生在各学科的学术表现。 The academic performance
+score is the highest-weighted component in the academic scholarship scoring model, accounting for
+60% of the total score. This score is calculated based on students' exam results throughout the
+academicyear.
+全年学术成绩权重分布AnnualAcademicPerformanceWeightDistribution
+全年考试分为四个考核节点，各节点权重如下： The academic year is divided into four
+assessmentnodes,withthefollowingweights:
+W_MS1=0.2|W_ES1=0.3|W_MS2=0.2|W_ES2=0.3
+式中：W_MS1为第一学期期中考试权重，W_ES1为第一学期期末考试权重，W_MS2为第二
+学期期中考试权重，W_ES2为第二学期期末考试权重。Where:W_MS1isSemester1Mid-term,
+W_ES1isSemester1Final,W_MS2isSemester2Mid-term,W_ES2isSemester2Final.
+第22页共46页
+
+
+第 27 页
+--------------------------------------------------------------------------------
+23
+单次考试成绩权重分布WeightDistributionofSingleExamScores
+每次考试的成绩由主科成绩和其他科目成绩组成，各年级的科目设置有所不同： Each
+examscoreconsistsofcoresubjectsandothersubjects,withsubjectsettingsvaryingbygradelevel:
+年级 主科（75%） 其余科目（25%）
+Grade CoreSubjects(75%) OtherSubjects(25%)
+语文、数学、英语、科学 音乐、艺术、体育、书法、计算机等
+G1-G5
+Chinese,Mathematics,English,Science Music,Art,PE,Calligraphy,Computer,etc.
+语文、数学、英语、科学 艺术、体育、DT、历史、道法等
+G6-G8
+Chinese,Mathematics,English,Science Art,PE,DT,History,Morality,etc.
+任意最佳5科
+G9-G10
+AnyBest5
+任意最佳3科
+G11
+AnyBest3
+所有的数据计算都按照成绩报告原始数据表中的 A_Score及/或 A_Grade来计算。 All
+calculations are carried out according to the A_Score and/or A_Grade in the original data table of the
+gradereport.
+4.3 学术竞赛数量分（5分） Academic Competition Quantity Score (5
+points)
+考察目标：考察学生在全校范围内竞赛的相对数量。考察维度：精力管理能力、参赛意
+愿、学术竞争力。Objective:Toexaminetherelativepositionofcompetitionparticipation.
+Dimensions:EnergyManagementAbility,WillingnesstoCompete,AcademicCompetitiveness.
+学术竞赛定义DefinitionofAcademicCompetitions
+学术竞赛定义为非竞技体育、非音乐与表演艺术、非视觉艺术三个板块的，和课程内容有
+直接关联性的竞赛。 Academic competitions are defined as competitions that fall into three
+categories: non-athletic sports, non-music and performing arts, and non-visual arts, and have a direct
+connectiontothecurriculum.
+第23页共46页
+
+
+第 28 页
+--------------------------------------------------------------------------------
+24
+分类判断示例：英语演讲比赛若组委会更多根据表演、流畅度、情绪决定名次，属于艺
+术类；若根据英语水平、演讲稿文采、语法词汇决定名次，属于学术类。Example:
+Englishspeechcompetition-ifrankingsarebasedonperformance/fluency/emotions,itbelongsto
+arts;ifbasedonEnglishproficiency/writing/grammar/vocabulary,itbelongstoacademics.
+参加学术竞赛且是有明确证书证明奖励等级/名次的竞赛结果，才可以被纳入统计。如果
+被标记为"仅参赛"而且是竞赛结果，不计分。 Only competition results from participating in
+academic competitions and achieving a result with clear ranking or level can be included in the
+statistics.Ifmarkedas"participatedonly",itwillnotbescored.
+排名与分数换算表Ranking-ScoreConversionTable
+排名
+第一 第二 第三 第四 第五 第六 第七 第八 十+
+Rankin
+1st 2nd 3rd 4th 5th 6th 7th 8th 10+
+g
+分数
+5 4.86 4.62 4.32 3.95 3.55 3.12 2.7 1.54
+Score
+学术竞赛数量分计算公式CompetitionQuantityScoreFormula
+f(n)= ×e−0.0 ,(1≤n≤20)
+09805
+5.04926
+f(n)=0.1,(n>20)
+式中：n是奖牌榜的排名，-0.009805是排名与分数换算系数。Where:nisranking;-0.009805is
+conversioncoefficient.
+4.4 荣誉质量分（20 分） Honor Quality Score (20 points)
+考察目标：考察学生在全校范围内所参加竞赛的相对含金量。考察维度：赛事影响力、
+参赛意愿、学术竞争力。Objective:Toexaminetherelativevalueofcompetitions.Dimensions:
+EventInfluence,WillingnesstoParticipate,AcademicCompetitiveness.
+学生可以通过不同方法攒满20分。在学生所获得的所有被承认的竞赛结果中，依照荣誉
+的等级，奖励学生所登记的总荣誉组成的含金量。 Students can accumulate 20 points through
+different ways. Among all the recognized competition results, students will be rewarded according to
+thelevelofhonors.
+竞赛结果基础分值表CompetitionResultsBaseScoreTable
+第24页共46页
+
+
+第 29 页
+--------------------------------------------------------------------------------
+25
+项目类型 赛果类型 银/二等 铜/三等
+金/一等 其余名次 仅参赛
+Project Result Silver/Seco Bronze/Thi
+Gold/First Other Only
+Type Type nd rd
+个人项目 个人赛果
+1 0.9 0.8 0.7 0.2
+Personal Individual
+个人项目 团体赛果
+0.8 0.7 0.6 0.5 0.1
+Personal Team
+集体项目 集体赛果
+3 2.5 2 1 0.5
+Group Collective
+集体项目 个人赛果
+1 0.9 0.8 0.7 0.3
+Group Individual
+赛事级别加成表CompetitionLevelBonusTable
+赛事级别
+金/一等 银/二等 铜/三等 其余名次 仅参赛
+Competition
+Gold Silver Bronze Other Only
+Level
+校级/普及
+★
+启蒙级School- 1x 1x 1x 1x 1x
+Level
+区域/入
+★★
+门国际级 2x 1.75x 1.5x 1.25x 1x
+Regional/Entry
+高水平
+★★★
+国际/全国级 4x 3.5x 3x 2.5x 2x
+High-Level
+顶级
+★★★★
+国际/国家选拔 12x 9x 7x 5x 3x
+级Top-Tier
+世
+★★★★★
+界级/顶级赛事 20x 18x 16x 12x 9x
+World-class
+一个赛果的最终分数计算为：奖牌分数 ×加成。 The finalscoreof aresultiscalculated as:
+medalscore×bonus.
+4.5 竞赛级别说明 Competition Level Description
+学术竞赛的含金量是一个动态共识，其定义更多地取决于参赛者水平，而非难度等固定指
+标。赛事的公信力并非一成不变：高水平的选手能成就一个小型比赛，而作弊等诚信问题也能
+第25页共46页
+
+
+第 30 页
+--------------------------------------------------------------------------------
+26
+让顶级赛事声誉受损。以下体系基于行业共识制定。 Theprestigeofanacademiccompetitionis
+a dynamic consensus, defined less by fixed metrics like difficulty and more by the quality of its
+participants. A competition's credibility is earned and can be lost. The following framework is based
+onindustryconsensus.
+基于下述标准，哈罗南宁对竞赛的含金量以及赋分拥有最终解释权。 Harrow Nanning
+reservesthefinalrightindefiningcompetitionvalueandscore.
+级别 特征 升学意义 典型赛事
+Level Features Significance TypicalCompetitions
+对顶尖大学申请影响有
+校级 校内竞赛、校际友谊赛 校内数学/科学比赛、
+★ 限，但对低龄段学生有
+School-Level ，重在兴趣启蒙 普及类竞赛
+价值
+面向洲际或全国，难度
+区域级 体现学科兴趣+竞赛准 AMC8、袋鼠数学、
+★★ 适中，获奖率较高（前
+Regional 备，适合G6-G9 BPhORound0
+20-35%）
+面向全球或全国大型比
+高水平 对TOP30-50名校有明 AMC12、EUCLID、
+★★★ 赛，获奖率中等偏低（
+High-Level 显加分 PhysicsBowl
+前10-25%）
+顶级 国际知名大赛全国赛， 对英美顶尖大学STEM/ AIME、BPhORound1
+★★★★
+Top-Tier 高中"天花板级"竞赛 经济专业强有力背书 、USABO
+全球最高水平高中生学
+世界级 全球顶尖大学高度认可 IMO、IPhO、IBO、
+★★★★★ 术竞赛，代表"金字塔
+World-class 的学术成就 USAMO
+尖"
+4.6 考级结果分，夏/冬校分（15 分） Exam results score,
+Summer/Winter School score (15 points)
+考级分用于评估学生在各类学术考级中取得的等级认证成绩。作为能力上的认证，考级结
+果需要作为辅助分数添加，只说明学生有能力参加相应水平的竞赛或付出过考级要求的训练时
+间。 The level exam score is used to evaluate students' grade certification achievements. As a
+certification of ability, level exam results are added as supplementary scores, indicating that students
+havetheabilitytoparticipateincompetitionsatthecorrespondinglevel.
+考级分类ClassificationofLevelExams
+•学术类考级：包括但不限于各类语言等级考试、学科能力测试等。Includinglanguage
+proficiencyexamsandsubjectabilitytests.
+第26页共46页
+
+
+第 31 页
+--------------------------------------------------------------------------------
+27
+•专业认证：由权威机构颁发的专业技能认证。Professionalskillcertificationsissuedby
+authoritativeorganizations.
+计算等级在等级系统中的比例，按照百分比直接给予15分封顶分数。有多个等级的，取
+报送的最高分。 Calculate the proportion of the grade level within the grading system, and directly
+assignascorecappedat15pointsbasedonthepercentage.Forcaseswithmultiplegradelevels,select
+thehighestreportedscore.
+夏/冬校|Summer/WinterSchool
+基础分值：每完成一期经学校认证的项目，可直接获得1～15分。BasicScore:Foreach
+completedschool-certifiedproject,1to15pointscanbedirectlyobtained.
+认证标准CertificationStandards:
+•学术导向AcademicOrientation:主题须与学术科目（如数学、科学、人文、语言、艺术等
+）相关。Thethememustberelatedtoacademicsubjects(suchasmathematics,science,
+humanities,languages,arts,etc.).
+•主办方资质OrganizerQualifications:应由知名大学、研究机构或公认的教育组织举办。
+Shouldbeofferedbywell-knownuniversities,researchinstitutions,orrecognizededucational
+organizations.
+•成果证明ProofofAchievements: 申请人需提供官方结业证书、成绩报告或项目导师评估
+信等有效证明。Applicantsarerequiredtoprovidevalidproofsuchasofficialcompletion
+certificates,gradereports,orevaluationlettersfromprojectsupervisors.
+•累计封顶Cumulativecap:夏校所得分数将与学术考级分数合并累计，总分不超过15分。
+Thescoresobtainedfromthesummerschoolwillbecombinedandaccumulatedwiththescores
+fromtheacademicleveltest,andthetotalscore willnotexceed15points.
+第27页共46页
+
+
+第 32 页
+--------------------------------------------------------------------------------
+28
+第五章 音乐表演艺术奖学金计分模型
+Chapter 5: Music & Performing Arts Scholarship Scoring
+Model
+5.1 计分模型概述 Scoring Model Overview
+总分100=参与分40+荣誉数量分15+荣誉质量分30+主观评价分15Totalscore100=
+Participation40+Honorquantity15+Honorquality30+Subjectiveevaluationscore15
+数据库的统计周期以学年为单位，从每年授奖日周开始，直至授奖日周结束。音乐表演艺
+术奖学金的评价结构涵盖参与投入、竞赛成果与艺术认证三个维度。Thereferenceperiodofthe
+database is based on the academic year, starting from the week of the Speech Day and ending on the
+week of the Speech Day. The evaluation structure of Music & Performing Arts Scholarship covers
+threedimensions:participationcommitment,competitionresults,andartisticcertification.
+5.2 参与分（40 分） Participation Score (40 points)
+艺术类以演出身份判定，单次演出或参赛不是判定条件，学生需要证明有在有效地参与艺
+术训练即可获得分数。参与分需要学生有效参与所注册项目的训练并且更注重参与、坚持。
+For the arts category, eligibility is determined by performance status; a single performance or
+competition is not the determining factor. Students only need to prove effective participation in art
+trainingtoearnpoints.
+身份判定示例：学生A在奖学金申请期间申报了钢琴比赛金奖记录，但之前没有注册、
+没有验证过训练时长，该记录不会被计入奖学金分数。学生B开学时报名参与哈罗音乐
+学院，努力保持高出勤，即使没有比赛记录也可获得参与分。Example:StudentAdeclared
+apianocompetitiongoldmedalrecordbuthadnotregisteredorverifiedtraininghoursbefore,so
+thisrecordwillnotbecounted.StudentBenrolledinHarrowSchoolofMusicandmaintainedhigh
+attendance,soevenwithoutcompetitionrecords,theycanearnparticipationpoints.
+中途加入判定规则Mid-termJoiningRules
+•学校发布的项目：如音乐学院、冬夏音乐会、音乐剧等，在招募截止后的第三周才选择加
+入的，视为中途加入。Schoolprojects:Joininginthe3rdweekafterdeadlineisconsideredmid-
+term.
+第28页共46页
+
+
+第 33 页
+--------------------------------------------------------------------------------
+29
+•非学校发布的项目：不进行参与分统计，直接按照荣誉数量分加倍计算（荣誉数量分×2）
+。Non-schoolprojects:Honorquantityscoredoubled.
+•中途加入计算：根据项目发布后的第几周（W,3<W≤10）参与，减去迟到系数W×k。如
+果W>10则不再计算为参与。Mid-termcalculation:DeductlatecoefficientW×kbasedonweek
+joined.
+•春季学期新加入：迟到系数最小为3，每迟1周加1。Springsemesternewjoiners:Minimum
+coefficient3,plus1perdelayedweek.
+参与分计算公式ParticipationScoreFormulas
+C=40×xᵏ,(W<3)
+式中：C为参与分，基准为40；W为加入节点；x为出勤率；k为惩厉系数，设定为k=3。
+Where:Cisparticipationscore(baseline40);Wisjoiningnode;xisattendancerate;kispenalty
+coefficient(k=3).
+C=[40-k(W-2)]×xᵏ,(3<W≤10)
+5.3 荣誉数量分（15 分） Honor Quantity Score (15 points)
+学校在管理的荣誉记录表上，按照学生申报登记的记录进行统计。参加竞赛且是前四名或
+同等级成绩的竞赛结果，才可以被纳入统计。如果获得"鼓励奖"、"参与奖"或同等类型安慰性
+质奖项，不计为有效荣誉。 The school conducts statistics on the honor record sheet based on
+records declared by students. Only competition results ranking top four or equivalent can be included
+instatistics.Awardsofencouragingorconsolingnaturearenotcountedasvalidhonors.
+排名
+第一 第二 第三 第四 第五 第六 第七 第八 十+
+Rankin
+1st 2nd 3rd 4th 5th 6th 7th 8th 10+
+g
+分数
+15 14.45 13.57 12.42 11.1 9.66 8.21 6.8 3.32
+Score
+f(n)=15.1×e−0.01256,(1≤n≤20)
+f(n)=0.1,(n>20)
+式中：n是奖牌榜的排名，-0.01256是排名与分数换算系数。Where:nisranking;-0.01256is
+conversioncoefficient.
+第29页共46页
+
+
+第 34 页
+--------------------------------------------------------------------------------
+30
+5.4 荣誉质量分（30 分） Honor Quality Score (30 points)
+学生可以通过不同方法攒满30分，但是仅通过已经持有的考级最多只能获得10分。在学
+生所获得的所有被承认的奖牌、奖励、定级、考级结果中，依照荣誉的等级奖励学生。
+Studentscanaccumulate30pointsthroughdifferentmethods,butonlyupto10pointscanbeobtained
+through existing grade examinations. Among all recognized results, students are rewarded according
+tothelevelofhonors.
+竞赛结果基础分值表CompetitionResultsBaseScoreTable
+项目类型 赛果类型
+金牌 银牌 铜牌 第四名 内部赛事
+Project Result
+Gold Silver Bronze 4th Internal
+Type Type
+个人项目 个人赛果
+1 0.9 0.8 0.7 0.2
+Personal Individual
+个人项目 团体赛果
+0.8 0.7 0.6 0.5 0.1
+Personal Team
+集体项目 集体赛果
+5 4.5 4 3.5 0.5
+Group Collective
+集体项目 个人赛果
+1 0.9 0.8 0.7 0.3
+Group Individual
+团队贡献分：集体项目的集体赛果中，队长或指导老师点名认证核心成员额外加0.2分。
+Team Contribution Score: Core members certified by team leader or instructor receive an additional
+0.2points.
+内部赛事说明：对于所有竞演的所有情况，如果符合校内（如超级课程日、院舍竞赛）
+、机构内的内训赛、比拼等情况，缺乏外部竞争的所有赛事，忽略名次，一律给予仅仅
+参赛分数，以资鼓励。Forallcompetitionslackingexternalcompetition,suchasin-school
+eventsandin-housetrainingcompetitions,therankingshallbeignoredandonlyparticipationscores
+awarded.
+赛事级别加成表CompetitionLevelBonusTable
+赛事级别
+金牌 银牌 铜牌 第四名 仅参赛
+Competition
+Gold Silver Bronze 4th Only
+Level
+一星级One
+★ x1 x1 x1 x1 x1
+-star
+第30页共46页
+
+
+第 35 页
+--------------------------------------------------------------------------------
+31
+二星级
+★★ x4 x3 x2 x1.5 x1.25
+Two-star
+三星级
+★★★ x6 x5 x4 x3 x2.5
+Three-star
+四星
+★★★★
+x8 x7 x6 x5 x4.5
+级Four-star
+五
+★★★★★
+x10 x9 x8 x7 x6.5
+星级Five-star
+由于艺术类竞演相对于体育竞技的等级评定缺乏客观的成绩证明，因此在艺术类奖学金评
+定的过程中我们将以比赛的星级划分积分权重，确保赛事权重明显大于名次权重，以激励学生
+挑战更高级别的赛事。 Since art competitions lack objective performance evidence compared to
+sports, we divide scoring weights based on star ratings to ensure competition weight is significantly
+greaterthanrankingweight,encouragingstudentstochallengehigher-levelcompetitions.
+赛事级别说明 Competition Level Description
+星级 级别说明 示例
+Star LevelDescription Examples
+小型比赛、市级比赛 XXX钢琴比赛南宁赛区
+一星级
+★
+Small-scale,municipal XXXPianoCompetitionNanning
+中型比赛、省级 XXX艺术比赛广西赛区
+二星级
+★★
+Medium,provincial XXXArtCompetitionGuangxi
+XXX歌唱比赛全国赛区
+大型比赛、国家级
+★★★ 三星级 XXXSingingCompetition
+Large,national
+National
+法国巴黎总决赛、东盟国际艺术
+国际型比赛 展演
+四星级
+★★★★
+International ParisFinals,ASEANArt
+Exhibition
+肖邦国际钢琴、阿道夫萨克斯国
+国际型专业比赛 际大赛
+五星级
+★★★★★
+Internationalprofessional ChopinInternationalPiano,Adolf
+Sax
+计算示例：学生A在一星级比赛中获得第一名，对应积分为：1×1.0=1；学生B在五星
+级比赛中获得第三名，对应积分为：0.8×8=6.4Example:StudentAwinsfirstinone-star
+competition,score=1×1.0=1;StudentBwinsthirdinfive-starcompetition,score=0.8×8=6.4
+第31页共46页
+
+
+第 36 页
+--------------------------------------------------------------------------------
+32
+商业赛事说明：对于明显具有商业性质的赛事，因其普遍存在评审资质不完整、评分细
+则不规范等问题，相关比赛成绩将被归入"内部赛事"范畴，仅给予鼓励参与的0.2分。
+同一赛事重复获奖按50%折减，同一赛事积分上限为10分。Commercialcompetitions
+withincompletejudgingqualificationsorunstandardizedcriteriawillbeclassifiedas"internal
+competitions"withonly0.2points.Repeatedawardsfromsameeventarereducedby50%,with
+maximum10pointsperevent.
+考级结果（10 分） Exam Results (10 points)
+作为哈罗南宁在读学生获得受到学校认可的体育、艺术考级（通过考试结果确定的等级认
+证）。考级作为能力上的认证，需要作为辅助分数添加，只说明学生有能力参加相应水平的竞
+赛或付出过考级要求的训练时间。 As a current student at Harrow Nanning, obtain school-
+recognized grade examinations. As a certification of ability, grade examinations are added as
+supplementaryscores.
+计算等级在等级系统中的比例，按照百分比直接给予10分封顶分数。有多个等级的，取
+报送的最高分。 Calculate the proportion of the grade level within the grading system, and directly
+assign a score capped at 10 points based on the percentage. For multiple grades, select the highest
+reportedscore.
+•高含金量：ABRSM、央音、上音、中音等权威机构所提供的考级服务视作高含金量。
+HighValue:ABRSM,CentralConservatory,ShanghaiConservatoryarehighlyvaluable.
+•低含金量：地方性高校、协会主办的一律为低含金量，以60%的封顶分值（6分）计算。
+LowValue:Localuniversities/associationscalculatedwith60%cap(6points).
+演出机会 Performance Opportunity
+作为哈罗南宁在读学生，注册代表单位为学校、个人而非外部机构，参与受到学校认可的
+非竞技、非定级、非考试的演出性质活动。Asacurrentstudent,participatinginnon-competitive,
+non-ranking,non-examinationperformanceactivitiesrecognizedbytheschool.
+演出类型 分值
+PerformanceType Score
+个人名义演出
+1.2
+IndividualPerformance
+集体名义演出
+0.8
+CollectivePerformance
+队长或核心成员额外加分
+0.2
+TeamLeader/CoreMemberBonus
+第32页共46页
+
+
+第 37 页
+--------------------------------------------------------------------------------
+33
+定向培养加分 Targeted Training Bonus
+为鼓励学生探索不同乐器、丰富艺术素养与演奏品类，学校将以定向培养加分的模式对参
+与合规艺术类赛事并取得相关成绩的乐器学习者给予专项加分。 To encourage students to
+explore different instruments and enrich artistic qualities, the school will give special bonus points to
+instrumentlearnerswhoparticipateincomplianceartcompetitions.
+•《哈罗南宁音乐学院定向培养计划》提及的所有乐器均享有4%～12%的基础鼓励。All
+instrumentsintheTargetedTrainingPlanreceive4%-12%boost.
+•定向培养奖励随该乐器参与人数增加而自动降低，单项最高不超过8人，最高总加成不超
+过12%。Rewardsdecreaseasparticipantsincrease,maximum8perinstrument,totalbonuscappedat
+12%.
+•定向培养加分不受入队时间影响，按照最后结算时的注册成员数量为准。Bonusnot
+affectedbyjoiningtime,basedonfinalregisteredmembercount.
+定向培养加分公式TargetedTrainingBonusFormula
+I=1+[(23−2p)/175]
+式中：I为小众鼓励加成Boost，p为参与人数participants。Where:Iisboost;pisnumberof
+participants.
+计算示例：当该乐器校内持有/报名人数为1人时，p=1→I=1+(23-2×1)/175=1.12（+1
+2%）；当人数为3人时，p=3→I≈1.097（+9.7%）；当人数为8人时，p=8→I≈1.063
+（+6.3%）Example:Whenparticipants=1,I=1.12(+12%);whenparticipants=3,I≈1.097(+9.7%);
+whenparticipants=8,I≈1.063(+6.3%)
+5.5主观评价分 （15 分）Subjective Evaluation Score (15 points)
+提交你的创意作品集。你需要展示你在所选领域（至少3个）的掌握程度，并提交至少3个重
+要的艺术作品或表演。Submityourcreativeportfolio.Youneedtodemonstrateyourproficiencyin
+atleastthreeselectedfieldsandsubmitatleastthreesignificantartworksorperformances.
+•视觉艺术VisualArts:需要清晰详细的作品文档。Requiresclearanddetailedwork
+documentation.
+•音乐与表演艺术MusicandPerformingArts:在录音中明确表达能力。Clearlydemonstrate
+capabilitiesinrecordings.
+•评委将考察以下方面Judgeswillassessthefollowingaspects:
+第33页共46页
+
+
+第 38 页
+--------------------------------------------------------------------------------
+34
+•艺术老师推荐信及投入度证明（1-5分）RecommendationLetterfromArtTeacherand
+EngagementCertificate(1-5points)
+•原创性（评分1-4）Originality(Scored1-4)
+•创意过程与个人发展（评分1-2）CreativeProcessandPersonalDevelopment(Score1-2)
+•技能熟练度（评分1-2）Skillproficiency(rating1-2)
+•高质量的展示（评分1-2）High-qualitypresentation(rating1-2)
+鼓励提供额外的支持材料，如排练录像或成长过程录像，以展示更完整的创意过程。
+Encouragestheprovisionofadditionalsupportingmaterials,suchasrehearsalvideos,or
+growthprocessvideos,toshowcaseamorecompletecreativeprocess.
+第34页共46页
+
+
+第 39 页
+--------------------------------------------------------------------------------
+35
+第六章 视觉艺术奖学金计分模型
+Chapter 6: Visual Arts Scholarship Scoring Model
+6.1 计分模型概述 Scoring Model Overview
+总分100=参与分40+荣誉数量与质量融合分15+主观评价分45Totalscore:100=
+Participationscore:40+HonorsQuan&QualScore:15+PerformanceAssessmentscore:45
+数据库的统计周期以学年为单位，从每年授奖日周开始，直至授奖日周结束。视觉艺术奖
+学金的评价结构与其他类别有所不同，更强调创作过程与主观评价的权重。 The reference
+period of the database is based on the academic year, starting from the week of the Speech Day and
+ending on the week of the Speech Day. The evaluation structure of Visual Arts Scholarship differs
+fromothercategories,placinggreateremphasisoncreativeprocessandsubjectiveevaluation.
+6.2 参与分（40 分） Participation Score (40 points)
+视觉艺术的各种媒介（绘画、雕塑、数字艺术等）均以"工作室时间"作为身份判定核心。
+单次获奖或灵感爆发不是判定条件，学生需要证明有在持续、有效地投入校内创作时间即可获
+得分数。 All media of visual art—such as painting, sculpture, digital art, and more—are judged
+primarilybasedon"studiotime"asthedefiningcriterion.Asingleawardoraburstofinspirationdoes
+not qualify as a determining factor; students must demonstrate consistent and effective dedication to
+on-campuscreativework.
+身份判定示例：无效记录——在奖学金申请期间申报了大量校外绘画比赛金奖，但在校
+内没有任何课后CCA艺术训练记录，也未曾和学校注册通报孩子是长期参与绘画训练
+的，此类记录视为"影子选手"，不具备参评资格。有效记录——开学时报名了校内艺术
+CCA（如多元艺术、墙绘、定格动画社等）或和学校进行了有效的长期专业训练注册，
+并保持高出勤率。IdentityExample:InvalidRecord—claimednumerousgoldawardsbutnoon-
+campusCCAarttrainingrecord;considered"shadowplayer"withouteligibility.ValidRecord—
+enrolledinon-campusartsCCAsandmaintainedhighattendance.
+计分方程与迟到逻辑ScoringLogic
+参与分奖励的是"在场"与"坚持"。工作室时间定义：学校发布的CCA课程、在美术课外用
+于完成个人项目的固定时段。 Participation rewards are based on "presence" and "persistence."
+第35页共46页
+
+
+第 40 页
+--------------------------------------------------------------------------------
+36
+Studio Time Definition: The fixed time slots designated by the school for CCA courses and used
+outsideofregularartclassestocompleteindividualprojects.
+•全程参与：在招募截止后（通常为学年初）即加入并保持出勤的，视为全程参与。Full
+Participation:Joinimmediatelyafterrecruitmentdeadlineandmaintainconsistentattendance.
+•中途加入：在项目发布后的第W周加入，将减去迟到系数W×k。W>10时不再计算为参
+与。MidwayParticipation:DeducttardinessfactorW×kbasedonweekjoined.NocreditifW>10.
+•春季学期加入：视为迟到，迟到系数最小为3，每迟1周加1。SpringSemesterJoiners:
+Minimumtardinessfactorof3,increasingby1perdelayedweek.
+参与分计算公式ParticipationScoreFormulas
+C=40×xᵏ,(W<3)
+式中：C为参与分，基准为40；x为工作室出勤率；k为惩厉系数，本学年设为3。Where:C
+isparticipationscore(baseline40);xisstudiotimeattendance;kispenaltycoefficient(k=3).
+C=[40-k(W-2)]×xᵏ,(3<W≤10)
+考勤豁免：统计排除因学校活动、医疗证明等合规缺席。AttendanceExemption:Excludes
+absencesdulyjustifiedbyschoolactivitiesormedicalcertificates.
+6.3 荣誉数量与质量融合分（15 分） Honors Quan&Qual Score (15
+points)
+美术类的奖项因为更多的时间投入在了创作过程而不是比赛过程中，因此荣誉的数量与质
+量之间的关系不再适用体育与表演艺术类的计算方式。质量分需要鼓励少参赛、勤创作、高含
+金量赛事。 Since art awards involve more time on creative process than competition, the quantity-
+quality relationship differs from sports and performing arts. Quality scores should encourage fewer
+competitionentries,frequentcreation,andhigh-valuecompetitions.
+因此，荣誉的数量和质量将会被一个积分方程加权算出。我们不限制学生提交其艺术成就
+，数量不设上限，但在计分逻辑上实行严格的边际递减。这意味着：第一张奖状极其值钱，但
+累计第 10张奖状的分值微乎其微。 Therefore, quantity and quality are weighted by one scoring
+equation.Nocaponsubmissions,butstrictdiminishingmarginalreturnsapply.Thefirstawardcarries
+immensevalue,butthe10thawardisvirtuallynegligible.
+统计范围与有效性SubmissionScopeandValidity
+•统计范围：包含竞赛获奖、受邀参展、作品被正式刊物收录。Includescompetitionawards,
+invitedexhibitions,andworkspublishedinofficialjournals.
+第36页共46页
+
+
+第 41 页
+--------------------------------------------------------------------------------
+37
+•竞赛需获得前四名（金银铜/一二三等奖）或同等评价。Competitionrequiresplacingintop
+fourorequivalentevaluation.
+•鼓励奖、参与奖不计入数量分（除非是高星级赛事的入围）。Encouragement/participation
+awardsnotcountedunlesshigh-starqualifyingrounds.
+•每次提交必须包含完整的电子版原作附件证明。Eachsubmissionmustincludecomplete
+electroniccopyoforiginalwork.
+累计分值表CumulativeScoreTable
+累计奖项数
+1 2 3 4 5 6 7 8 9 10 10+
+N
+该次奖分值
+3 2.4 1.92 1.54 1.23 0.98 0.79 0.63 0.5 0.4 0.32
+n
+累计分值
+3 5.4 7.32 8.86 10.08 11.07 11.85 12.48 12.99 13.39 13.71
+Cumulative
+f(N)=15×(1−0.8ᴺ)
+式中：N为个人累计的奖项数量，n为提交的有效奖项数量，w为含金量权重。15为理论最高
+分，0.8为衰减因子。Where:Niscumulativeawards;nisvalidsubmissioncount;wisdifficultyweight.
+15istheoreticalmaximum;0.8isdampingfactor.
+N=Σ(n×w)
+含金量权重表DifficultyWeightTable
+赛事级别 金奖 银奖 铜奖 第四名 参展
+Level Gold Silver Bronze 4th Exhibition
+⭐一星级 0.2 0.15 0.1 0.05 0.05
+⭐⭐二星级 0.4 0.3 0.2 0.1 0.1
+⭐⭐⭐三星级 0.6 0.5 0.4 0.3 0.2
+⭐⭐⭐⭐四星级 0.8 0.7 0.6 0.5 0.4
+⭐⭐⭐⭐⭐五星级 1 0.9 0.8 0.7 0.6
+赛事级别说明 Competition Level Description
+星级 级别说明 示例
+Star LevelDescription Examples
+第37页共46页
+
+
+第 42 页
+--------------------------------------------------------------------------------
+38
+校内艺术展、社区画展
+小型/校级/社区级
+⭐一星级
+Schoolartexhibition,community
+Small/School/Community
+show
+省级/市级正规展览 广西青少年艺术展
+⭐⭐ 二星级
+Provincial/CityLevel GuangxiYouthArtExhibition
+国家级/教育部白名单赛事 全国中小学艺术展演
+⭐⭐⭐ 三星级
+National/MOEWhitelist NationalStudentArtExhibition
+国际级通用赛事 英皇艺术类国际奖
+⭐⭐⭐⭐ 四星级
+InternationalGeneral RoyalAcademyArtsInternational
+美国学术艺术国家奖章、红点青
+顶尖国际级与行业级 少年奖
+⭐⭐⭐⭐⭐ 五星级
+Top-tierInternational ScholasticNationalMedal,Red
+DotJunior
+商业/非正规赛事处理：对于明显具有商业性质、评审不透明的比赛，一律归为"内部赛
+事/一星级"，无论名次如何，仅给予基础参展分。同一主办方重复获奖，第二张起分值
+减半(50%)，同一系列赛事上限10分。CommercialEvents:Classifiedas"Internal/One-star",
+onlybasicparticipationpointsregardlessofranking.Repeatedawardsfromsameorganizerreduced
+by50%,maximum10pointsperseries.
+考级与技能认证 Level Exam & Skill Certification
+作为辅助分数，证明具备相应的基础技法能力。考级可以重复使用，比如去年申报的美术
+类考级，今年依旧可以申报，因为能力是永远存在的，可以无限变现。但是美术类的考级分数
+非常低，性价比不高。Servesassupplementarypointstodemonstratefoundationaltechnicalskills.
+Grading certifications can be reused across application cycles, as skills are permanent. However, art
+gradingcertificationscarryverylowpointvalueandofferlimitedcost-effectiveness.
+含金量 计算方式 封顶分值
+Value Calculation Cap
+高含金量 1×四星参展分(0.4)×等级比例
+5
+HighValue 1×4-Star(0.4)×GradeRatio
+一般含金量 1×三星参展分(0.2)×等级比例
+3
+FairValue 1×3-Star(0.2)×GradeRatio
+6.4 主观评价分（45 分） Subjective Evaluation Score (45 points)
+提交要求SubmissionRequirements
+第38页共46页
+
+
+第 43 页
+--------------------------------------------------------------------------------
+39
+•作品集Portfolio：10页经过排版的个人作品集。需展示至少3个不同项目的发展过程（调
+研、草图、实验、成品）。10-pageportfoliowithatleast3projectsshowingdevelopmentprocess.
+•个人陈述PersonalStatement：英文字数500字左右，阐述创作理念与影响。Approximately
+500wordsinEnglish,articulatingartisticphilosophy.
+评分维度AssessmentCriteria
+评分维度 满分 评分标准
+AssessmentCriteria Max Standards
+Exemplary(12-16):展现令人惊讶的调研深度，从非传统起
+一、过程与思维演变 点发展独特视觉语言
+16
+Process&ThinkingEvolution Proficient(8-11):完整过程记录，逻辑通顺
+Emerging(0-7):只有成品缺乏过程，或过程后补
+Exemplary(10-12):全勤，积极维护工作室环境，提升创作
+二、工作室投入与师评
+氛围
+StudioCommitment&Teacher 12
+Proficient(6-9):按时完成任务，专注个人创作
+Evaluation
+Emerging(0-5):缺勤较多，对批评持防御态度
+Exemplary(7-9):超越年龄的控制力，成品完成度极高
+三、媒介技巧与控制力
+9 Proficient(4-6):技巧娴熟符合年级标准
+MediaTechnique&Control
+Emerging(0-3):技巧阻碍观念表达
+Exemplary(7-8):排版具有强烈个人风格，陈述动人
+四、策展与视觉陈列
+8 Proficient(4-6):排版整洁清晰，中规中矩
+Curation&VisualPresentation
+Emerging(0-3):排版混乱或信息缺失
+评分要点：过程与思维演变(16分)强调调研深度和迭代路径；工作室投入(12分)关注出
+勤和创作氛围；媒介技巧(9分)评估材料控制力；策展陈列(8分)检验作品集专业度。
+KeyPoints:ProcessEvolution(16pts)emphasizesresearchdepth;StudioCommitment(12pts)
+focusesonattendance;MediaTechnique(9pts)assessesmaterialcontrol;Curation(8pts)examines
+portfolioprofessionalism.
+第39页共46页
+
+
+第 44 页
+--------------------------------------------------------------------------------
+40
+附件
+Appendix
+附件 1 Appendix 1
+参考得分率
+新评
+旧评分
+分 描述
+Reference
+ScoreRate Old
+New Description
+Rating
+Scale
+%Ref
+90%+ 9
+A*
+89%-85% 8 A
+有奖学金资格EligibleforScholarship
+84%-77% 7
+哈罗南宁代表权RighttorepresentHNN
+76%-67% 6
+66%-56% 5 B
+C 剥夺代表权、无奖学金资格、留队学习或训练Disqualified
+55%-46% 4 forscholarship,revocationoftherighttorepresent,butcanstill
+train/learnwithus.
+45%-36% 3 D
+E
+35%-26% 2
+剥夺代表权、无奖学金资格、离队Disqualifiedfor
+F
+scholarship,revocationoftherighttorepresentandan
+25%-15% 1 immediatedepartureoftheparticulareliteprogramme.
+G
+14%-0% U U
+第40页共46页
+
+
+第 45 页
+--------------------------------------------------------------------------------
+41
+附件 2 Appendix 2
+26/27年度AISL哈罗南宁奖学金自我规划
+26/27AISLHarrowNanningScholarshipSelfPlanner
+申请资格自查EligibilityVerification
+请依据手册规则，确认学生当前是否符合以下基本申请前提：Pleaseverifyyourchild's
+currenteligibilityagainstthecriteriaprovided(pleaseticktheappropriateboxes):
+25/26及26/27在读，且并未享有其他减免政策Registeredasanenrolledstudentfor
+25/26and26/27,withnoothernon-scholarshipconflictingfinancialaid.
+2026/27学年G6及以上（仅限Lyon/Head奖学金申请者勾选）InG6oraboveforthe
+2026/27academicyear(requiredforLyon/HeadScholarshipapplicationsonly)
+本学年总缺勤不高于5天且总迟到不高于5次Totalabsences≤5daysandlatearrivals≤
+5timesduringthisacademicyear
+设定荣誉目标DefiningAspiration
+根据手册详述的分类培养机制，我们的申请目标是：Inaccordancewiththecategorised
+cultivationmechanism,ourtargetforthisapplicationis:
+拟申请奖学金类别ScholarshipCategory:
+约翰·里昂奖学金（全额）JohnLyonScholarship(FullFeeRemission)
+校长奖学金（半额）Head'sScholarship(HalfFeeRemission)
+优才奖学金（专项培养资源包）TalentScholarship(SpecialistResourceProgramme)
+拟提报领域（可多选）NominatedCategories(Multi-select):
+学术Academic| 竞技体育CompetitiveSports|
+视觉/音乐/表演艺术Arts| 领导力与服务Leadership&Service
+第41页共46页
+
+
+第 46 页
+--------------------------------------------------------------------------------
+42
+核心筹备笔记StrategicPreparationNotes
+请对照手册内的计分模型，分析当前的优势与差距：Reviewingthescoringmodelsprovided,
+pleaseanalysecurrentstrengthsandrequirements:
+学生目前已获得的里程碑式奖项/关键数据：Student'sexistingmilestoneachievements/key
+performancedata:
+______________________________________________________________________________
+______________________________________________________________________________
+在申请截止前（2026年6月）需重点补充的材料/资历：Gapstobefilledpriortothe
+applicationdeadline(e.g.specificcompetitions,portfolios):
+______________________________________________________________________________
+______________________________________________________________________________
+关键时间表规划 Critical Timeline Management
+申请并非自动触发。请家长根据以下节点主动规划操作： Pleasenote thatapplications are
+notautomatic.Parentsshouldplanforthefollowingproactivesteps:
+设置常规数据更新周期Timeofroutinedataupdates____________________________
+ 计划完成在线申请确认日期（窗口期：26年 1月至 6月）Planned date for confirming the
+onlineapplication(Window:Jan June2026):_____________________
+–
+申请最终截止日FinalApplicationDeadline:12June2026
+第42页共46页
+

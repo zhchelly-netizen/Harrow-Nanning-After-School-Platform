@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>验证页面</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-section { margin: 30px 0; padding: 20px; border: 2px solid #ddd; }
+        h2 { color: #666; }
+        
+        /* 核心价值观样式 */
+        .core-values-section {
+            margin: 2rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .core-values-section h3 {
+            font-size: 1.5rem;
+            color: #1e3a8a;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .value-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e2e8f0;
+        }
+        
+        .value-icon { font-size: 2.5rem; display: block; margin-bottom: 0.75rem; }
+        .value-card h4 { font-size: 1.1rem; color: #1e3a8a; margin: 0.5rem 0; }
+        .value-card p { font-size: 0.9rem; color: #6b7280; line-height: 1.5; }
+        
+        .courage { border-top: 4px solid #ef4444; }
+        .honour { border-top: 4px solid #f59e0b; }
+        .humility { border-top: 4px solid #10b981; }
+        .fellowship { border-top: 4px solid #3b82f6; }
+        
+        /* 评价类别样式 */
+        .categories-grid-compact {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .category-card-compact {
+            padding: 2rem 1.5rem;
+            border-radius: 16px;
+            color: white;
+            text-align: center;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .academic-cat { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .arts-cat { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        
+        .category-card-compact h4 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem; }
+        .category-desc { font-size: 0.85rem; color: rgba(255, 255, 255, 0.95); line-height: 1.6; }
+        
+        .arts-subcategories {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+            width: 100%;
+        }
+        
+        .subcategory-tag {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: white;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <h1>奖学金页面样式验证</h1>
+    
+    <div class="test-section">
+        <h2>1. 核心价值观模块</h2>
+        <div class="core-values-section">
+            <h3>核心价值观 Core Values</h3>
+            <p class="values-intro">奖学金获得者需展现出我们的核心价值观：</p>
+            <div class="values-grid">
+                <div class="value-card courage">
+                    <span class="value-icon">💪</span>
+                    <h4>勇气 Courage</h4>
+                    <p>敢于挑战、勇于尝试、展现雄心与毅力</p>
+                </div>
+                <div class="value-card honour">
+                    <span class="value-icon">🎖️</span>
+                    <h4>荣誉 Honour</h4>
+                    <p>诚实正直、尊重他人、维护学校声誉</p>
+                </div>
+                <div class="value-card humility">
+                    <span class="value-icon">🙏</span>
+                    <h4>谦和 Humility</h4>
+                    <p>虚心学习、认可他人贡献、保持谦逊</p>
+                </div>
+                <div class="value-card fellowship">
+                    <span class="value-icon">🤝</span>
+                    <h4>互助 Fellowship</h4>
+                    <p>团队协作、帮助他人、共同成长</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>2. 评价类别模块</h2>
+        <div class="categories-grid-compact">
+            <div class="category-card-compact academic-cat">
+                <h4>学术</h4>
+                <p class="category-desc">学科成绩、学术竞赛、考级认证等</p>
+            </div>
+            <div class="category-card-compact arts-cat">
+                <h4>艺术</h4>
+                <div class="arts-subcategories">
+                    <span class="subcategory-tag">音乐与表演艺术</span>
+                    <span class="subcategory-tag">视觉艺术</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>3. 时间线模块</h2>
+        <div class="timeline-cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+            <div style="background: white; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0;">
+                <div style="padding: 1.25rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+                    <h4 style="margin: 0 0 0.5rem 0;">统计窗口</h4>
+                    <div style="font-size: 0.9rem; opacity: 0.95;">2025.6.23 — 2026.6.28</div>
+                </div>
+                <div style="padding: 1.25rem;">
+                    <p style="color: #4a5568; margin: 0;">从上学年授奖日当周周一起</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <p style="margin-top: 30px; color: #666;">
+        <strong>如果以上样式显示正常</strong>，说明 CSS 是正确的。<br>
+        请访问 <a href="scholarship.html">scholarship.html</a> 查看完整页面。
+    </p>
+</body>
+</html>

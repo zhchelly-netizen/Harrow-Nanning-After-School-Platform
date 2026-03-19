@@ -1,6 +1,10 @@
 /* ===================================
    Registration Guide Styles
+   Design System V2.0
    =================================== */
+
+/* 导入设计系统 */
+@import url('design-system.css');
 
 .guide-content {
     max-width: 900px;

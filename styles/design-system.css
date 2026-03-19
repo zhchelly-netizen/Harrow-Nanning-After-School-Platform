@@ -1,0 +1,664 @@
+/* ===================================
+   南宁哈罗礼德学校设计系统
+   Design System V2.0
+   风格定位：英式学院风 × 现代渐变美学
+   =================================== */
+
+:root {
+    /* ===================================
+       品牌配色系统
+       =================================== */
+    
+    /* 主色调 */
+    --harrow-navy: #152242;
+    --harrow-navy-light: #1e3158;
+    --harrow-navy-dark: #0d1629;
+    
+    /* 品牌强调色 */
+    --harrow-gold: #A69867;
+    --harrow-gold-light: #c4b589;
+    --harrow-gold-dark: #8a7d52;
+    
+    /* 中性色 */
+    --white: #ffffff;
+    --warm-white: #f8f6f1;
+    --gray-50: #f8f9fa;
+    --gray-100: #f1f3f5;
+    --gray-200: #e9ecef;
+    --gray-300: #dee2e6;
+    --gray-400: #ced4da;
+    --gray-500: #adb5bd;
+    --gray-600: #6c757d;
+    --gray-700: #495057;
+    --gray-800: #343a40;
+    --gray-900: #212529;
+    
+    /* 文字色 */
+    --text-primary: #152242;
+    --text-secondary: #495057;
+    --text-muted: #6b7280;
+    --text-light: #8a8a8a;
+    --text-inverse: #ffffff;
+    
+    /* ===================================
+       荧光渐变组 (用于高亮强调)
+       =================================== */
+    
+    /* 学术 - 天蓝色 */
+    --gradient-academic: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    /* 体育 - 橙黄色 */
+    --gradient-sports: linear-gradient(135deg, #f6a120 0%, #fdc41f 100%);
+    /* 艺术(通用) - 蓝绿渐变 */
+    --gradient-arts: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    /* 音表艺术 - 紫色偏蓝 */
+    --gradient-music-performing: linear-gradient(135deg, #667eea 0%, #5b9bd5 100%);
+    /* 视觉艺术 - 紫色偏红 */
+    --gradient-visual-arts: linear-gradient(135deg, #9b59b6 0%, #e84393 100%);
+    /* 领导力 - 粉色 */
+    --gradient-leadership: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
+    --gradient-success: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    --gradient-urgent: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --gradient-gold: linear-gradient(135deg, #A69867 0%, #c4b589 100%);
+    --gradient-navy: linear-gradient(135deg, #152242 0%, #1e3158 100%);
+    
+    /* 卡片顶部渐变条 */
+    --card-bar-academic: linear-gradient(90deg, #4facfe, #00f2fe);
+    --card-bar-sports: linear-gradient(90deg, #f6a120, #fdc41f);
+    --card-bar-arts: linear-gradient(90deg, #4facfe, #00f2fe);
+    --card-bar-music-performing: linear-gradient(90deg, #667eea, #5b9bd5);
+    --card-bar-visual-arts: linear-gradient(90deg, #9b59b6, #e84393);
+    --card-bar-leadership: linear-gradient(90deg, #fd79a8, #e84393);
+    --card-bar-success: linear-gradient(90deg, #43e97b, #38f9d7);
+    --card-bar-gold: linear-gradient(90deg, #A69867, #c4b589);
+    
+    /* 功能色 */
+    --success: #10b981;
+    --warning: #f59e0b;
+    --error: #ef4444;
+    --info: #3b82f6;
+    
+    /* ===================================
+       圆角系统
+       =================================== */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    --radius-2xl: 24px;
+    --radius-pill: 50px;
+    
+    /* ===================================
+       阴影系统
+       =================================== */
+    --shadow-sm: 0 2px 4px rgba(21, 34, 66, 0.05);
+    --shadow-md: 0 4px 12px rgba(21, 34, 66, 0.08);
+    --shadow-lg: 0 8px 24px rgba(21, 34, 66, 0.12);
+    --shadow-xl: 0 12px 40px rgba(21, 34, 66, 0.16);
+    --shadow-gold: 0 4px 12px rgba(166, 152, 103, 0.3);
+    --shadow-academic: 0 4px 12px rgba(102, 126, 234, 0.3);
+    --shadow-sports: 0 4px 12px rgba(246, 161, 32, 0.3);
+    --shadow-arts: 0 4px 12px rgba(79, 172, 254, 0.3);
+    --shadow-leadership: 0 4px 12px rgba(253, 121, 168, 0.3);
+    
+    /* ===================================
+       过渡系统
+       =================================== */
+    --transition-fast: 0.15s ease;
+    --transition-base: 0.25s ease;
+    --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===================================
+   药丸按钮系统
+   =================================== */
+
+.ds-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 2rem;
+    border-radius: var(--radius-pill);
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    transition: all var(--transition-base);
+    text-decoration: none;
+}
+
+.ds-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.ds-btn-primary {
+    background: var(--gradient-gold);
+    color: var(--harrow-navy);
+    box-shadow: var(--shadow-gold);
+}
+
+.ds-btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(166, 152, 103, 0.4);
+}
+
+.ds-btn-primary:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.ds-btn-secondary {
+    background: transparent;
+    color: var(--harrow-navy);
+    border: 2px solid var(--harrow-navy);
+}
+
+.ds-btn-secondary:hover:not(:disabled) {
+    background: var(--harrow-navy);
+    color: var(--white);
+}
+
+.ds-btn-white {
+    background: var(--white);
+    color: var(--harrow-navy);
+    border: 2px solid var(--gray-200);
+}
+
+.ds-btn-white:hover:not(:disabled) {
+    background: var(--gray-50);
+    border-color: var(--harrow-gold);
+}
+
+.ds-btn-academic {
+    background: var(--gradient-academic);
+    color: var(--white);
+    box-shadow: var(--shadow-academic);
+}
+
+.ds-btn-academic:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+    filter: brightness(1.1);
+}
+
+.ds-btn-sports {
+    background: var(--gradient-sports);
+    color: var(--harrow-navy);
+    box-shadow: var(--shadow-sports);
+}
+
+.ds-btn-sports:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(246, 161, 32, 0.5);
+}
+
+.ds-btn-arts {
+    background: var(--gradient-arts);
+    color: var(--harrow-navy);
+    box-shadow: var(--shadow-arts);
+}
+
+.ds-btn-arts:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(79, 172, 254, 0.5);
+}
+
+.ds-btn-leadership {
+    background: var(--gradient-leadership);
+    color: var(--white);
+    box-shadow: var(--shadow-leadership);
+}
+
+.ds-btn-leadership:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(253, 121, 168, 0.5);
+}
+
+.ds-btn-success {
+    background: var(--gradient-success);
+    color: var(--harrow-navy);
+    box-shadow: 0 4px 12px rgba(67, 233, 123, 0.3);
+}
+
+.ds-btn-success:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(67, 233, 123, 0.5);
+}
+
+.ds-btn-lg {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+}
+
+.ds-btn-sm {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.875rem;
+}
+
+/* ===================================
+   渐变卡片系统
+   =================================== */
+
+.ds-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--gray-200);
+    transition: all var(--transition-slow);
+    position: relative;
+    overflow: hidden;
+}
+
+.ds-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-academic);
+}
+
+.ds-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.ds-card.academic::before {
+    background: var(--card-bar-academic);
+}
+
+.ds-card.sports::before {
+    background: var(--card-bar-sports);
+}
+
+.ds-card.arts::before {
+    background: var(--card-bar-arts);
+}
+
+.ds-card.leadership::before {
+    background: var(--card-bar-leadership);
+}
+
+.ds-card.success::before {
+    background: var(--card-bar-success);
+}
+
+.ds-card.gold::before {
+    background: var(--card-bar-gold);
+}
+
+.ds-card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--harrow-navy);
+    margin-bottom: 0.75rem;
+}
+
+.ds-card-text {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* ===================================
+   药丸标签/徽章系统
+   =================================== */
+
+.ds-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.375rem 0.875rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.8rem;
+    font-weight: 600;
+    gap: 0.375rem;
+}
+
+.ds-badge-academic {
+    background: var(--gradient-academic);
+    color: var(--white);
+}
+
+.ds-badge-sports {
+    background: var(--gradient-sports);
+    color: var(--harrow-navy);
+}
+
+.ds-badge-arts {
+    background: var(--gradient-arts);
+    color: var(--harrow-navy);
+}
+
+.ds-badge-leadership {
+    background: var(--gradient-leadership);
+    color: var(--white);
+}
+
+.ds-badge-success {
+    background: var(--gradient-success);
+    color: var(--harrow-navy);
+}
+
+.ds-badge-outline {
+    background: transparent;
+    border: 2px solid var(--harrow-navy);
+    color: var(--harrow-navy);
+}
+
+.ds-badge-outline-gold {
+    background: transparent;
+    border: 2px solid var(--harrow-gold);
+    color: var(--harrow-gold);
+}
+
+/* 状态指示器 */
+.ds-status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.ds-status-dot.active {
+    background: var(--success);
+    animation: ds-pulse 2s infinite;
+}
+
+.ds-status-dot.pending {
+    background: var(--warning);
+}
+
+.ds-status-dot.inactive {
+    background: var(--text-muted);
+}
+
+@keyframes ds-pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.1);
+    }
+}
+
+/* ===================================
+   表单元素系统
+   =================================== */
+
+.ds-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+    border: 2px solid var(--gray-200);
+    background: var(--white);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all var(--transition-base);
+}
+
+.ds-input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.ds-input::placeholder {
+    color: var(--text-muted);
+}
+
+.ds-input-pill {
+    border-radius: var(--radius-pill);
+}
+
+.ds-input-pill:focus {
+    border-color: var(--harrow-gold);
+}
+
+.ds-select {
+    width: 100%;
+    padding: 0.75rem 2.5rem 0.75rem 1rem;
+    border-radius: var(--radius-md);
+    border: 2px solid var(--gray-200);
+    background: var(--white);
+    font-size: 1rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23152242' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+}
+
+.ds-select:focus {
+    outline: none;
+    border-color: var(--harrow-gold);
+}
+
+.ds-textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+    border: 2px solid var(--gray-200);
+    background: var(--white);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all var(--transition-base);
+    resize: vertical;
+    min-height: 100px;
+}
+
+.ds-textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.ds-checkbox,
+.ds-radio {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.ds-checkbox input,
+.ds-radio input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--harrow-gold);
+    cursor: pointer;
+}
+
+/* ===================================
+   进度条系统
+   =================================== */
+
+.ds-progress {
+    height: 12px;
+    background: var(--gray-100);
+    border-radius: var(--radius-pill);
+    overflow: hidden;
+}
+
+.ds-progress-bar {
+    height: 100%;
+    border-radius: var(--radius-pill);
+    transition: width 0.5s ease;
+}
+
+.ds-progress-bar.academic {
+    background: var(--gradient-academic);
+}
+
+.ds-progress-bar.sports {
+    background: var(--gradient-sports);
+}
+
+.ds-progress-bar.arts {
+    background: var(--gradient-arts);
+}
+
+.ds-progress-bar.success {
+    background: var(--gradient-success);
+}
+
+.ds-progress-bar.gold {
+    background: var(--gradient-gold);
+}
+
+/* ===================================
+   加载动画
+   =================================== */
+
+.ds-spinner {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid var(--gray-200);
+    border-top-color: var(--harrow-gold);
+    animation: ds-spin 1s linear infinite;
+}
+
+@keyframes ds-spin {
+    to { transform: rotate(360deg); }
+}
+
+.ds-dots {
+    display: flex;
+    gap: 6px;
+}
+
+.ds-dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--harrow-gold);
+    animation: ds-bounce 1.4s infinite ease-in-out;
+}
+
+.ds-dots span:nth-child(1) { animation-delay: -0.32s; }
+.ds-dots span:nth-child(2) { animation-delay: -0.16s; }
+.ds-dots span:nth-child(3) { animation-delay: 0s; }
+
+@keyframes ds-bounce {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1); }
+}
+
+/* 骨架屏 */
+.ds-skeleton {
+    background: linear-gradient(90deg, var(--gray-100) 25%, var(--gray-200) 50%, var(--gray-100) 75%);
+    background-size: 200% 100%;
+    animation: ds-shimmer 1.5s infinite;
+    border-radius: var(--radius-sm);
+}
+
+@keyframes ds-shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* ===================================
+   提示框系统
+   =================================== */
+
+.ds-alert {
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.ds-alert-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+}
+
+.ds-alert-content {
+    flex: 1;
+}
+
+.ds-alert-title {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.ds-alert-message {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.ds-alert-success {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: #065f46;
+}
+
+.ds-alert-warning {
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    color: #92400e;
+}
+
+.ds-alert-error {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #991b1b;
+}
+
+.ds-alert-info {
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    color: #1e40af;
+}
+
+/* ===================================
+   工具类
+   =================================== */
+
+.ds-text-gradient {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.ds-text-gradient-academic {
+    background: var(--gradient-academic);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.ds-bg-gradient-navy {
+    background: var(--gradient-navy);
+}
+
+.ds-cursor-pointer {
+    cursor: pointer;
+}
+
+.ds-transition {
+    transition: all var(--transition-base);
+}
+
+.ds-hover-lift:hover {
+    transform: translateY(-4px);
+}
+
+.ds-hover-glow:hover {
+    box-shadow: var(--shadow-lg);
+}

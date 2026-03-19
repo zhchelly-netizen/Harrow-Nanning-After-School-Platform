@@ -1,7 +1,11 @@
 /* ===================================
    哈罗礼德学校课后平台 - 主样式表
    Harrow LiDe School Co-Curricular Portal
+   Design System V2.0 - 现代学院风 × 渐变美学
    =================================== */
+
+/* 导入设计系统 */
+@import url('design-system.css');
 
 /* 字体导入 - 使用Google Fonts替代本地字体 */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap');
@@ -408,19 +412,19 @@ html[lang="en"] .harrow-hat {
 
 .value-badge:nth-child(1) { 
     --delay: 0s;
-    --gradient: linear-gradient(135deg, #7a9b8e 0%, #92b5a8 50%, #aacfc2 100%);
+    --gradient: var(--gradient-academic);
 }
 .value-badge:nth-child(2) { 
     --delay: 0.1s;
-    --gradient: linear-gradient(135deg, #A69867 0%, #c4b589 50%, #e8d4a8 100%);
+    --gradient: var(--gradient-gold);
 }
 .value-badge:nth-child(3) { 
     --delay: 0.2s;
-    --gradient: linear-gradient(135deg, #6b7c93 0%, #8a9bb2 50%, #aabbd2 100%);
+    --gradient: var(--gradient-arts);
 }
 .value-badge:nth-child(4) { 
     --delay: 0.3s;
-    --gradient: linear-gradient(135deg, #c17767 0%, #d89787 50%, #f0b7a7 100%);
+    --gradient: var(--gradient-leadership);
 }
 
 .value-badge::before {
@@ -511,14 +515,14 @@ html[lang="en"] .harrow-hat {
 }
 
 .cca-card {
-    --card-color-1: var(--accent-sage);
-    --card-color-2: var(--accent-gold);
+    --card-color-1: #4facfe;
+    --card-color-2: #00f2fe;
     --card-delay: 0s;
 }
 
 .scholarship-card {
-    --card-color-1: var(--accent-terracotta);
-    --card-color-2: var(--accent-gold);
+    --card-color-1: #f6a120;
+    --card-color-2: #fdc41f;
     --card-delay: 0.1s;
 }
 
@@ -601,69 +605,60 @@ html[lang="en"] .harrow-hat {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* CCA 卡片标签 */
+/* CCA 卡片标签 - 使用荧光渐变 */
 .cca-card .feature-tag:nth-child(1) {
-    /* 精英体育 - 金色 */
-    background: linear-gradient(135deg, #d4a574 0%, #e8c49a 50%, #f5d8b8 100%);
-    color: #152242;
-    box-shadow: 0 2px 8px rgba(212, 165, 116, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    background: var(--gradient-sports);
+    color: var(--harrow-navy);
+    box-shadow: var(--shadow-sports);
 }
 
 .cca-card .feature-tag:nth-child(2) {
-    /* 音乐学院 - 蓝绿色 */
-    background: linear-gradient(135deg, #5a8b8e 0%, #7aabae 50%, #9acbce 100%);
-    color: white;
-    box-shadow: 0 2px 8px rgba(90, 139, 142, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    background: var(--gradient-arts);
+    color: var(--harrow-navy);
+    box-shadow: var(--shadow-arts);
 }
 
 .cca-card .feature-tag:nth-child(3) {
-    /* 学术竞赛 - 绿色 */
-    background: linear-gradient(135deg, #6a9b7a 0%, #8abb9a 50%, #aadbb8 100%);
-    color: white;
-    box-shadow: 0 2px 8px rgba(106, 155, 122, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    background: var(--gradient-academic);
+    color: var(--white);
+    box-shadow: var(--shadow-academic);
 }
 
 .cca-card .feature-tag:nth-child(4) {
-    /* CCA选课 - 紫色 */
-    background: linear-gradient(135deg, #8a7b9e 0%, #aa9bbe 50%, #cabbd8 100%);
-    color: white;
-    box-shadow: 0 2px 8px rgba(138, 123, 158, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    background: var(--gradient-leadership);
+    color: var(--white);
+    box-shadow: var(--shadow-leadership);
 }
 
 .cca-card .feature-tag:nth-child(5) {
-    /* 学生乐队 - 深红色 */
-    background: linear-gradient(135deg, #8b2635 0%, #ab3645 50%, #cb4655 100%);
-    color: white;
-    box-shadow: 0 2px 8px rgba(139, 38, 53, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    background: var(--gradient-urgent);
+    color: var(--white);
+    box-shadow: 0 2px 8px rgba(240, 147, 251, 0.3);
 }
 
 .cca-card .feature-tag:nth-child(6) {
-    /* 学术支持 - 海蓝色 */
-    background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 50%, #38bdf8 100%);
-    color: white;
-    box-shadow: 0 2px 8px rgba(2, 132, 199, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    background: var(--gradient-success);
+    color: var(--harrow-navy);
+    box-shadow: 0 2px 8px rgba(67, 233, 123, 0.3);
 }
 
-/* 奖学金卡片标签 */
+/* 奖学金卡片标签 - 使用荧光渐变 */
 .scholarship-card .feature-tag:nth-child(1) {
-    /* 约翰·里昂全奖 - 橙色 */
-    background: linear-gradient(135deg, #d97a3a 0%, #f99a5a 50%, #ffba7a 100%);
-    color: white;
-    box-shadow: 0 2px 8px rgba(217, 122, 58, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    background: var(--gradient-gold);
+    color: var(--harrow-navy);
+    box-shadow: var(--shadow-gold);
 }
 
 .scholarship-card .feature-tag:nth-child(2) {
-    /* 校长半额奖 - 红色 */
-    background: linear-gradient(135deg, #c17767 0%, #e19787 50%, #ffb7a7 100%);
-    color: white;
-    box-shadow: 0 2px 8px rgba(193, 119, 103, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    background: var(--gradient-leadership);
+    color: var(--white);
+    box-shadow: var(--shadow-leadership);
 }
 
 .scholarship-card .feature-tag:nth-child(3) {
-    /* 优才奖 - 黄色 */
-    background: linear-gradient(135deg, #d4b557 0%, #f4d577 50%, #fff597 100%);
-    color: #152242;
-    box-shadow: 0 2px 8px rgba(212, 181, 87, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    background: var(--gradient-success);
+    color: var(--harrow-navy);
+    box-shadow: 0 2px 8px rgba(67, 233, 123, 0.3);
 }
 
 .feature-tag::before {

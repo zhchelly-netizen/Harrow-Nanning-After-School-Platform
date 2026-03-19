@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试奖学金页面</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/scholarship.css">
+</head>
+<body>
+    <div style="padding: 2rem;">
+        <h1>测试页面</h1>
+        <p>如果能看到这个页面，说明 HTML 基本结构正常</p>
+        <p><strong>SessionStorage:</strong> <span id="session-test"></span></p>
+        <p><strong>i18n 状态:</strong> <span id="i18n-test"></span></p>
+        <a href="scholarship.html" style="display: inline-block; margin-top: 1rem; padding: 1rem 2rem; background: #667eea; color: white; text-decoration: none; border-radius: 8px;">访问正式奖学金页面</a>
+    </div>
+    
+    <script>
+        document.getElementById('session-test').textContent = sessionStorage.getItem('selectedLanguage') || '未设置';
+        document.getElementById('i18n-test').textContent = typeof i18n !== 'undefined' ? '已加载' : '未加载';
+        
+        // 自动设置语言
+        sessionStorage.setItem('selectedLanguage', 'zh');
+        console.log('✅ 已设置 selectedLanguage = zh');
+    </script>
+</body>
+</html>

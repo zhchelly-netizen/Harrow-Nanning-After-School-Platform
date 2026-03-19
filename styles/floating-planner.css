@@ -1,7 +1,11 @@
 /* ===================================
    浮动规划框样式
    Floating Planner Widget
+   Design System V2.0
    =================================== */
+
+/* 导入设计系统 */
+@import url('design-system.css');
 
 .floating-planner {
     position: fixed;

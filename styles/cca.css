@@ -1,6 +1,10 @@
 /* ===================================
    CCA 课程规划页面样式
+   Design System V2.0
    =================================== */
+
+/* 导入设计系统 */
+@import url('design-system.css');
 
 /* 进度指示器 */
 .progress-container {
@@ -234,30 +238,30 @@
 }
 
 .sports-icon {
-    background: linear-gradient(135deg, #A69867 0%, #c4b589 50%, #e8d4a8 100%);
-    color: #152242;
-    box-shadow: 0 4px 15px rgba(166, 152, 103, 0.4);
+    background: var(--gradient-sports);
+    color: var(--harrow-navy);
+    box-shadow: var(--shadow-sports);
     animation: iconGlow 2s ease-in-out infinite;
 }
 
 .music-icon {
-    background: linear-gradient(135deg, #7a9b8e 0%, #92b5a8 50%, #aacfc2 100%);
-    color: white;
-    box-shadow: 0 4px 15px rgba(122, 155, 142, 0.4);
+    background: var(--gradient-arts);
+    color: var(--harrow-navy);
+    box-shadow: var(--shadow-arts);
     animation: iconGlow 2s ease-in-out infinite 0.5s;
 }
 
 .academic-icon {
-    background: linear-gradient(135deg, #152242 0%, #1e3158 50%, #2a4070 100%);
-    color: white;
-    box-shadow: 0 4px 15px rgba(21, 34, 66, 0.4);
+    background: var(--gradient-academic);
+    color: var(--white);
+    box-shadow: var(--shadow-academic);
     animation: iconGlow 2s ease-in-out infinite 1s;
 }
 
 .support-icon {
-    background: linear-gradient(135deg, #d4a574 0%, #e8c49a 50%, #f5d8b8 100%);
-    color: #152242;
-    box-shadow: 0 4px 15px rgba(212, 165, 116, 0.4);
+    background: var(--gradient-success);
+    color: var(--harrow-navy);
+    box-shadow: 0 4px 15px rgba(67, 233, 123, 0.4);
     animation: iconGlow 2s ease-in-out infinite 1.5s;
 }
 

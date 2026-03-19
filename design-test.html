@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设计系统测试页 | 南宁哈罗礼德学校</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===================================
+           设计系统测试页样式
+           =================================== */
+        
+        :root {
+            /* 主色调 */
+            --harrow-navy: #152242;
+            --harrow-navy-light: #1e3158;
+            --harrow-navy-dark: #0d1629;
+            
+            /* 品牌强调色 */
+            --harrow-gold: #A69867;
+            --harrow-gold-light: #c4b589;
+            --white: #ffffff;
+            --warm-white: #f8f6f1;
+            
+            /* 荧光渐变组 */
+            --gradient-academic: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-sports: linear-gradient(135deg, #f6a120 0%, #fdc41f 100%);
+            --gradient-arts: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-leadership: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
+            --gradient-success: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --gradient-urgent: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-gold: linear-gradient(135deg, #A69867 0%, #c4b589 100%);
+            
+            /* 中性色 */
+            --gray-light: #f8f9fa;
+            --gray-medium: #e9ecef;
+            --text-gray: #495057;
+            --text-muted: #6b7280;
+            
+            /* 功能色 */
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --info: #3b82f6;
+            
+            /* 圆角 */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            --radius-pill: 50px;
+            
+            /* 阴影 */
+            --shadow-sm: 0 2px 4px rgba(21, 34, 66, 0.05);
+            --shadow-md: 0 4px 12px rgba(21, 34, 66, 0.08);
+            --shadow-lg: 0 8px 24px rgba(21, 34, 66, 0.12);
+            --shadow-xl: 0 12px 40px rgba(21, 34, 66, 0.16);
+            
+            /* 过渡 */
+            --transition-fast: 0.15s ease;
+            --transition-base: 0.25s ease;
+            --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--warm-white);
+            color: var(--harrow-navy);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        /* ===================================
+           渐变导航栏
+           =================================== */
+        .navbar {
+            background: linear-gradient(135deg, var(--harrow-navy) 0%, var(--harrow-navy-light) 50%, var(--harrow-navy) 100%);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(21, 34, 66, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: white;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+        
+        .navbar-brand svg {
+            width: 32px;
+            height: 32px;
+        }
+        
+        .navbar-nav {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-pill {
+            padding: 0.5rem 1.25rem;
+            border-radius: var(--radius-pill);
+            background: transparent;
+            border: 2px solid transparent;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            font-family: inherit;
+        }
+        
+        .nav-pill:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--harrow-gold);
+            transform: translateY(-2px);
+        }
+        
+        .nav-pill.active {
+            background: var(--gradient-gold);
+            color: var(--harrow-navy);
+            font-weight: 600;
+        }
+        
+        /* ===================================
+           页面内容容器
+           =================================== */
+        .page-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--harrow-navy);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid var(--harrow-gold);
+            display: inline-block;
+        }
+        
+        .section-description {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* ===================================
+           按钮系统
+           =================================== */
+        .button-showcase {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .btn {
+            padding: 0.75rem 2rem;
+            border-radius: var(--radius-pill);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            font-family: inherit;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        /* 主按钮 - 金色渐变 */
+        .btn-primary {
+            background: var(--gradient-gold);
+            color: var(--harrow-navy);
+            box-shadow: 0 4px 12px rgba(166, 152, 103, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(166, 152, 103, 0.4);
+        }
+        
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+        
+        /* 次级按钮 - 深蓝描边 */
+        .btn-secondary {
+            background: transparent;
+            color: var(--harrow-navy);
+            border: 2px solid var(--harrow-navy);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--harrow-navy);
+            color: white;
+        }
+        
+        /* 白色按钮 */
+        .btn-white {
+            background: white;
+            color: var(--harrow-navy);
+            border: 2px solid var(--gray-medium);
+        }
+        
+        .btn-white:hover {
+            background: var(--gray-light);
+            border-color: var(--harrow-gold);
+        }
+        
+        /* 荧光渐变按钮 */
+        .btn-gradient-academic {
+            background: var(--gradient-academic);
+            color: white;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-gradient-academic:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+            filter: brightness(1.1);
+        }
+        
+        .btn-gradient-sports {
+            background: var(--gradient-sports);
+            color: var(--harrow-navy);
+            box-shadow: 0 4px 12px rgba(246, 161, 32, 0.4);
+        }
+        
+        .btn-gradient-sports:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(246, 161, 32, 0.5);
+        }
+        
+        .btn-gradient-arts {
+            background: var(--gradient-arts);
+            color: var(--harrow-navy);
+            box-shadow: 0 4px 12px rgba(79, 172, 254, 0.4);
+        }
+        
+        .btn-gradient-arts:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(79, 172, 254, 0.5);
+        }
+        
+        .btn-gradient-leadership {
+            background: var(--gradient-leadership);
+            color: white;
+            box-shadow: 0 4px 12px rgba(253, 121, 168, 0.4);
+        }
+        
+        .btn-gradient-leadership:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(253, 121, 168, 0.5);
+        }
+        
+        .btn-gradient-success {
+            background: var(--gradient-success);
+            color: var(--harrow-navy);
+            box-shadow: 0 4px 12px rgba(67, 233, 123, 0.4);
+        }
+        
+        .btn-gradient-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(67, 233, 123, 0.5);
+        }
+        
+        /* 按钮尺寸 */
+        .btn-lg {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .btn-sm {
+            padding: 0.5rem 1.25rem;
+            font-size: 0.875rem;
+        }
+        
+        /* 禁用状态 */
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        
+        /* ===================================
+           卡片系统
+           =================================== */
+        .card-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gray-medium);
+            transition: all var(--transition-slow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-academic);
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .card.academic::before {
+            background: var(--gradient-academic);
+        }
+        
+        .card.sports::before {
+            background: var(--gradient-sports);
+        }
+        
+        .card.arts::before {
+            background: var(--gradient-arts);
+        }
+        
+        .card.leadership::before {
+            background: var(--gradient-leadership);
+        }
+        
+        .card.success::before {
+            background: var(--gradient-success);
+        }
+        
+        .card.urgent::before {
+            background: var(--gradient-urgent);
+        }
+        
+        .card-gold::before {
+            background: var(--gradient-gold);
+        }
+        
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--harrow-navy);
+            margin-bottom: 0.75rem;
+        }
+        
+        .card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* 交互卡片 */
+        .card-interactive {
+            cursor: pointer;
+        }
+        
+        .card-interactive:hover .card-arrow {
+            transform: translateX(4px);
+        }
+        
+        .card-arrow {
+            display: inline-block;
+            transition: transform var(--transition-base);
+        }
+        
+        /* ===================================
+           标签和徽章
+           =================================== */
+        .badge-showcase {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-items: center;
+        }
+        
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.375rem 0.875rem;
+            border-radius: var(--radius-pill);
+            font-size: 0.8rem;
+            font-weight: 600;
+            gap: 0.375rem;
+        }
+        
+        .badge-academic {
+            background: var(--gradient-academic);
+            color: white;
+        }
+        
+        .badge-sports {
+            background: var(--gradient-sports);
+            color: var(--harrow-navy);
+        }
+        
+        .badge-arts {
+            background: var(--gradient-arts);
+            color: var(--harrow-navy);
+        }
+        
+        .badge-leadership {
+            background: var(--gradient-leadership);
+            color: white;
+        }
+        
+        .badge-success {
+            background: var(--gradient-success);
+            color: var(--harrow-navy);
+        }
+        
+        .badge-outline {
+            background: transparent;
+            border: 2px solid var(--harrow-navy);
+            color: var(--harrow-navy);
+        }
+        
+        .badge-outline-gold {
+            background: transparent;
+            border: 2px solid var(--harrow-gold);
+            color: var(--harrow-gold);
+        }
+        
+        /* 状态徽章 */
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        
+        .status-dot.active {
+            background: var(--success);
+            animation: pulse 2s infinite;
+        }
+        
+        .status-dot.pending {
+            background: var(--warning);
+        }
+        
+        .status-dot.inactive {
+            background: var(--text-muted);
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.7;
+                transform: scale(1.1);
+            }
+        }
+        
+        /* ===================================
+           表单元素
+           =================================== */
+        .form-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .form-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--harrow-navy);
+        }
+        
+        .form-input {
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius-md);
+            border: 2px solid var(--gray-medium);
+            background: white;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all var(--transition-base);
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .form-input::placeholder {
+            color: var(--text-muted);
+        }
+        
+        /* 药丸输入框 */
+        .form-input-pill {
+            border-radius: var(--radius-pill);
+        }
+        
+        .form-input-pill:focus {
+            border-color: var(--harrow-gold);
+        }
+        
+        /* 选择器 */
+        .form-select {
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius-md);
+            border: 2px solid var(--gray-medium);
+            background: white;
+            font-size: 1rem;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23152242' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+        }
+        
+        .form-select:focus {
+            outline: none;
+            border-color: var(--harrow-gold);
+        }
+        
+        /* 复选框和单选 */
+        .form-checkbox-group,
+        .form-radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .form-checkbox,
+        .form-radio {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+        
+        .form-checkbox input,
+        .form-radio input {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--harrow-gold);
+            cursor: pointer;
+        }
+        
+        /* 文本域 */
+        .form-textarea {
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius-md);
+            border: 2px solid var(--gray-medium);
+            background: white;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all var(--transition-base);
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .form-textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        /* ===================================
+           色板展示
+           =================================== */
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+        
+        .color-swatch {
+            text-align: center;
+        }
+        
+        .color-box {
+            height: 80px;
+            border-radius: var(--radius-md);
+            margin-bottom: 0.5rem;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .color-box.light-text {
+            color: var(--harrow-navy);
+        }
+        
+        .color-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--harrow-navy);
+        }
+        
+        .color-hex {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-family: monospace;
+        }
+        
+        /* 渐变色板 */
+        .gradient-palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .gradient-swatch {
+            height: 100px;
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .gradient-swatch.dark-text {
+            color: var(--harrow-navy);
+            text-shadow: none;
+        }
+        
+        /* ===================================
+           加载动画
+           =================================== */
+        .loading-showcase {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 3px solid var(--gray-medium);
+            border-top-color: var(--harrow-gold);
+            animation: spin 1s linear infinite;
+        }
+        
+        .loading-spinner.gradient {
+            border-top-color: transparent;
+            background: conic-gradient(var(--harrow-gold) 0%, transparent 60%);
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .loading-dots {
+            display: flex;
+            gap: 6px;
+        }
+        
+        .loading-dots span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--harrow-gold);
+            animation: bounce 1.4s infinite ease-in-out;
+        }
+        
+        .loading-dots span:nth-child(1) { animation-delay: -0.32s; }
+        .loading-dots span:nth-child(2) { animation-delay: -0.16s; }
+        .loading-dots span:nth-child(3) { animation-delay: 0s; }
+        
+        @keyframes bounce {
+            0%, 80%, 100% {
+                transform: scale(0);
+            }
+            40% {
+                transform: scale(1);
+            }
+        }
+        
+        /* 骨架屏 */
+        .skeleton {
+            background: linear-gradient(90deg, var(--gray-light) 25%, var(--gray-medium) 50%, var(--gray-light) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: var(--radius-sm);
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        .skeleton-card {
+            padding: 1.5rem;
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .skeleton-title {
+            height: 24px;
+            width: 60%;
+            margin-bottom: 1rem;
+        }
+        
+        .skeleton-text {
+            height: 16px;
+            width: 100%;
+            margin-bottom: 0.5rem;
+        }
+        
+        .skeleton-text:last-child {
+            width: 80%;
+        }
+        
+        /* ===================================
+           提示框
+           =================================== */
+        .alert-showcase {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .alert {
+            padding: 1rem 1.25rem;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+        
+        .alert-icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+        
+        .alert-content {
+            flex: 1;
+        }
+        
+        .alert-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .alert-message {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .alert-success {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #065f46;
+        }
+        
+        .alert-warning {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            color: #92400e;
+        }
+        
+        .alert-error {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #991b1b;
+        }
+        
+        .alert-info {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: #1e40af;
+        }
+        
+        /* ===================================
+           时间线
+           =================================== */
+        .timeline-showcase {
+            max-width: 600px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gray-medium);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+        
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            left: -24px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--gradient-gold);
+            border: 3px solid white;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .timeline-marker.academic { background: var(--gradient-academic); }
+        .timeline-marker.sports { background: var(--gradient-sports); }
+        .timeline-marker.arts { background: var(--gradient-arts); }
+        .timeline-marker.success { background: var(--gradient-success); }
+        
+        .timeline-content {
+            background: white;
+            padding: 1rem 1.25rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-medium);
+        }
+        
+        .timeline-title {
+            font-weight: 600;
+            color: var(--harrow-navy);
+            margin-bottom: 0.25rem;
+        }
+        
+        .timeline-date {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-desc {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+        
+        /* ===================================
+           进度条
+           =================================== */
+        .progress-showcase {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .progress-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+        }
+        
+        .progress-bar {
+            height: 12px;
+            background: var(--gray-light);
+            border-radius: var(--radius-pill);
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            border-radius: var(--radius-pill);
+            transition: width 0.5s ease;
+        }
+        
+        .progress-fill.academic { background: var(--gradient-academic); }
+        .progress-fill.sports { background: var(--gradient-sports); }
+        .progress-fill.arts { background: var(--gradient-arts); }
+        .progress-fill.success { background: var(--gradient-success); }
+        .progress-fill.gold { background: var(--gradient-gold); }
+        
+        /* ===================================
+           响应式
+           =================================== */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            .navbar-nav {
+                justify-content: center;
+            }
+            
+            .page-container {
+                padding: 1rem;
+            }
+            
+            .card-showcase {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-showcase {
+                grid-template-columns: 1fr;
+            }
+            
+            .button-showcase {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .btn {
+                justify-content: center;
+            }
+        }
+        
+        /* ===================================
+           工具类
+           =================================== */
+        .mt-1 { margin-top: 0.5rem; }
+        .mt-2 { margin-top: 1rem; }
+        .mt-3 { margin-top: 1.5rem; }
+        .mt-4 { margin-top: 2rem; }
+        
+        .mb-1 { margin-bottom: 0.5rem; }
+        .mb-2 { margin-bottom: 1rem; }
+        .mb-3 { margin-bottom: 1.5rem; }
+        .mb-4 { margin-bottom: 2rem; }
+        
+        .text-center { text-align: center; }
+        .text-muted { color: var(--text-muted); }
+        
+        .flex { display: flex; }
+        .flex-wrap { flex-wrap: wrap; }
+        .items-center { align-items: center; }
+        .justify-between { justify-content: space-between; }
+        .gap-1 { gap: 0.5rem; }
+        .gap-2 { gap: 1rem; }
+        
+        /* 网格演示 */
+        .grid-demo {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+        
+        .grid-demo-item {
+            background: var(--gradient-academic);
+            color: white;
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .grid-demo {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* 分隔线 */
+        .divider {
+            height: 1px;
+            background: var(--gray-medium);
+            margin: 2rem 0;
+        }
+        
+        /* 鼠标指针 */
+        .cursor-pointer {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- 渐变导航栏 -->
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+            <span>设计系统测试</span>
+        </div>
+        <div class="navbar-nav">
+            <button class="nav-pill active" onclick="setActiveNav(this)">概览</button>
+            <button class="nav-pill" onclick="setActiveNav(this)">按钮</button>
+            <button class="nav-pill" onclick="setActiveNav(this)">卡片</button>
+            <button class="nav-pill" onclick="setActiveNav(this)">表单</button>
+            <button class="nav-pill" onclick="setActiveNav(this)">色板</button>
+        </div>
+    </nav>
+    
+    <div class="page-container">
+        <!-- 按钮系统 -->
+        <section class="section">
+            <h2 class="section-title">按钮系统</h2>
+            <p class="section-description">药丸式按钮设计，包含主按钮、次级按钮和荧光渐变按钮。</p>
+            
+            <div class="button-showcase mb-3">
+                <button class="btn btn-primary">主要按钮</button>
+                <button class="btn btn-secondary">次级按钮</button>
+                <button class="btn btn-white">白色按钮</button>
+                <button class="btn btn-primary" disabled>禁用状态</button>
+            </div>
+            
+            <h3 class="mt-3 mb-2" style="font-size: 1.1rem; color: var(--text-gray);">荧光渐变按钮</h3>
+            <div class="button-showcase">
+                <button class="btn btn-gradient-academic">学术紫</button>
+                <button class="btn btn-gradient-sports">活力橙</button>
+                <button class="btn btn-gradient-arts">艺术蓝</button>
+                <button class="btn btn-gradient-leadership">领导力粉</button>
+                <button class="btn btn-gradient-success">成功绿</button>
+            </div>
+            
+            <h3 class="mt-3 mb-2" style="font-size: 1.1rem; color: var(--text-gray);">按钮尺寸</h3>
+            <div class="button-showcase">
+                <button class="btn btn-primary btn-lg">大号按钮</button>
+                <button class="btn btn-primary">中号按钮</button>
+                <button class="btn btn-primary btn-sm">小号按钮</button>
+            </div>
+        </section>
+        
+        <div class="divider"></div>
+        
+        <!-- 卡片系统 -->
+        <section class="section">
+            <h2 class="section-title">卡片系统</h2>
+            <p class="section-description">圆角卡片设计，顶部渐变强调条区分不同类型。</p>
+            
+            <div class="card-showcase">
+                <div class="card academic">
+                    <h3>学术类卡片</h3>
+                    <p>用于展示学术相关内容，如课程信息、学术成就等。顶部紫色渐变条提供视觉分类。</p>
+                </div>
+                
+                <div class="card sports">
+                    <h3>体育类卡片</h3>
+                    <p>用于展示体育活动、比赛成绩等内容。橙色渐变条充满活力。</p>
+                </div>
+                
+                <div class="card arts">
+                    <h3>艺术类卡片</h3>
+                    <p>用于展示艺术课程、作品展示等。蓝色渐变条富有创意感。</p>
+                </div>
+                
+                <div class="card leadership">
+                    <h3>领导力卡片</h3>
+                    <p>用于展示领导力培养、学生干部等内容。粉色渐变条体现人文关怀。</p>
+                </div>
+                
+                <div class="card success card-interactive cursor-pointer" onclick="alert('卡片点击成功！')">
+                    <h3>交互卡片 <span class="card-arrow">→</span></h3>
+                    <p>可点击的交互卡片，悬停时箭头会移动。点击试试看！</p>
+                </div>
+                
+                <div class="card urgent">
+                    <h3>紧急/重要卡片</h3>
+                    <p>用于重要通知、紧急事项等需要特别关注的内容。</p>
+                </div>
+            </div>
+        </section>
+        
+        <div class="divider"></div>
+        
+        <!-- 标签和徽章 -->
+        <section class="section">
+            <h2 class="section-title">标签和徽章</h2>
+            <p class="section-description">药丸式标签设计，用于分类标记和状态显示。</p>
+            
+            <h3 class="mb-2" style="font-size: 1.1rem; color: var(--text-gray);">渐变标签</h3>
+            <div class="badge-showcase mb-3">
+                <span class="badge badge-academic">学术</span>
+                <span class="badge badge-sports">体育</span>
+                <span class="badge badge-arts">艺术</span>
+                <span class="badge badge-leadership">领导力</span>
+                <span class="badge badge-success">已完成</span>
+            </div>
+            
+            <h3 class="mb-2" style="font-size: 1.1rem; color: var(--text-gray);">轮廓标签</h3>
+            <div class="badge-showcase mb-3">
+                <span class="badge badge-outline">默认轮廓</span>
+                <span class="badge badge-outline-gold">金色轮廓</span>
+            </div>
+            
+            <h3 class="mb-2" style="font-size: 1.1rem; color: var(--text-gray);">状态指示器</h3>
+            <div class="badge-showcase">
+                <span class="badge badge-outline"><span class="status-dot active"></span> 在线</span>
+                <span class="badge badge-outline"><span class="status-dot pending"></span> 处理中</span>
+                <span class="badge badge-outline"><span class="status-dot inactive"></span> 离线</span>
+            </div>
+        </section>
+        
+        <div class="divider"></div>
+        
+        <!-- 表单元素 -->
+        <section class="section">
+            <h2 class="section-title">表单元素</h2>
+            <p class="section-description">圆角表单设计，包含输入框、选择器、复选框等。</p>
+            
+            <div class="form-showcase">
+                <div class="form-group">
+                    <label class="form-label">标准输入框</label>
+                    <input type="text" class="form-input" placeholder="请输入内容...">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">药丸输入框</label>
+                    <input type="text" class="form-input form-input-pill" placeholder="圆角药丸样式...">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">下拉选择器</label>
+                    <select class="form-select">
+                        <option value="">请选择...</option>
+                        <option value="1">选项一</option>
+                        <option value="2">选项二</option>
+                        <option value="3">选项三</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">复选框</label>
+                    <div class="form-checkbox-group">
+                        <label class="form-checkbox">
+                            <input type="checkbox" checked>
+                            <span>选项 A</span>
+                        </label>
+                        <label class="form-checkbox">
+                            <input type="checkbox">
+                            <span>选项 B</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">单选按钮</label>
+                    <div class="form-radio-group">
+                        <label class="form-radio">
+                            <input type="radio" name="radio-group" checked>
+                            <span>选项 A</span>
+                        </label>
+                        <label class="form-radio">
+                            <input type="radio" name="radio-group">
+                            <span>选项 B</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">文本域</label>
+                    <textarea class="form-textarea" placeholder="请输入详细内容..."></textarea>
+                </div>
+            </div>
+        </section>
+        
+        <div class="divider"></div>
+        
+        <!-- 色板展示 -->
+        <section class="section">
+            <h2 class="section-title">品牌配色</h2>
+            <p class="section-description">哈罗学校品牌色板，包含主色调和辅助色。</p>
+            
+            <h3 class="mb-2" style="font-size: 1.1rem; color: var(--text-gray);">主色调</h3>
+            <div class="color-palette mb-4">
+                <div class="color-swatch">
+                    <div class="color-box" style="background: #152242;">#152242</div>
+                    <div class="color-name">哈罗深蓝</div>
+                    <div class="color-hex">Primary Navy</div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-box" style="background: #1e3158;">#1e3158</div>
+                    <div class="color-name">深蓝渐变</div>
+                    <div class="color-hex">Navy Light</div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-box light-text" style="background: #A69867;">#A69867</div>
+                    <div class="color-name">哈罗金</div>
+                    <div class="color-hex">Harrow Gold</div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-box light-text" style="background: #c4b589;">#c4b589</div>
+                    <div class="color-name">浅金</div>
+                    <div class="color-hex">Gold Light</div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-box light-text" style="background: #ffffff; border: 1px solid #e9ecef;">#ffffff</div>
+                    <div class="color-name">纯白</div>
+                    <div class="color-hex">White</div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-box light-text" style="background: #f8f6f1;">#f8f6f1</div>
+                    <div class="color-name">暖白</div>
+                    <div class="color-hex">Warm White</div>
+                </div>
+            </div>
+            
+            <h3 class="mb-2" style="font-size: 1.1rem; color: var(--text-gray);">荧光渐变组</h3>
+            <div class="gradient-palette">
+                <div class="gradient-swatch" style="background: var(--gradient-academic);">学术紫</div>
+                <div class="gradient-swatch dark-text" style="background: var(--gradient-sports);">活力橙</div>
+                <div class="gradient-swatch dark-text" style="background: var(--gradient-arts);">艺术蓝</div>
+                <div class="gradient-swatch" style="background: var(--gradient-leadership);">领导力粉</div>
+                <div class="gradient-swatch dark-text" style="background: var(--gradient-success);">成功绿</div>
+                <div class="gradient-swatch" style="background: var(--gradient-urgent);">热情红</div>
+            </div>
+        </section>
+        
+        <div class="divider"></div>
+        
+        <!-- 加载动画 -->
+        <section class="section">
+            <h2 class="section-title">加载动画</h2>
+            <p class="section-description">页面加载和数据处理时的视觉反馈。</p>
+            
+            <div class="loading-showcase mb-4">
+                <div>
+                    <p class="mb-1 text-muted" style="font-size: 0.85rem;">旋转加载</p>
+                    <div class="loading-spinner"></div>
+                </div>
+                <div>
+                    <p class="mb-1 text-muted" style="font-size: 0.85rem;">渐变旋转</p>
+                    <div class="loading-spinner gradient"></div>
+                </div>
+                <div>
+                    <p class="mb-1 text-muted" style="font-size: 0.85rem;">弹跳点</p>
+                    <div class="loading-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="mb-2" style="font-size: 1.1rem; color: var(--text-gray);">骨架屏</h3>
+            <div class="skeleton-card" style="max-width: 400px;">
+                <div class="skeleton skeleton-title"></div>
+                <div class="skeleton skeleton-text"></div>
+                <div class="skeleton skeleton-text"></div>
+                <div class="skeleton skeleton-text"></div>
+            </div>
+        </section>
+        
+        <div class="divider"></div>
+        
+        <!-- 提示框 -->
+        <section class="section">
+            <h2 class="section-title">提示框</h2>
+            <p class="section-description">不同状态的提示信息展示。</p>
+            
+            <div class="alert-showcase">
+                <div class="alert alert-success">
+                    <div class="alert-icon">✓</div>
+                    <div class="alert-content">
+                        <div class="alert-title">操作成功</div>
+                        <div class="alert-message">您的申请已成功提交，我们将在3个工作日内处理。</div>
+                    </div>
+                </div>
+                
+                <div class="alert alert-warning">
+                    <div class="alert-icon">⚠</div>
+                    <div class="alert-content">
+                        <div class="alert-title">请注意</div>
+                        <div class="alert-message">申请截止日期为2026年3月31日，请尽快完成提交。</div>
+                    </div>
+                </div>
+                
+                <div class="alert alert-error">
+                    <div class="alert-icon">✕</div>
+                    <div class="alert-content">
+                        <div class="alert-title">操作失败</div>
+                        <div class="alert-message">网络连接异常，请检查网络后重试。</div>
+                    </div>
+                </div>
+                
+                <div class="alert alert-info">
+                    <div class="alert-icon">ℹ</div>
+                    <div class="alert-content">
+                        <div class="alert-title">温馨提示</div>
+                        <div class="alert-message">奖学金申请需要准备成绩单、推荐信等材料。</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="divider"></div>
+        
+        <!-- 时间线 -->
+        <section class="section">
+            <h2 class="section-title">时间线</h2>
+            <p class="section-description">流程步骤展示，适用于申请流程等场景。</p>
+            
+            <div class="timeline-showcase">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker academic"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">申请提交</div>
+                            <div class="timeline-date">2026年3月1日 - 3月31日</div>
+                            <div class="timeline-desc">在线填写申请表，上传相关证明材料。</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker sports"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">材料审核</div>
+                            <div class="timeline-date">2026年4月1日 - 4月15日</div>
+                            <div class="timeline-desc">学校审核委员会对申请材料进行初步审核。</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker arts"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">面试评估</div>
+                            <div class="timeline-date">2026年4月16日 - 4月30日</div>
+                            <div class="timeline-desc">通过初审的申请人将参加面试和综合评估。</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker success"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">结果公布</div>
+                            <div class="timeline-date">2026年5月15日</div>
+                            <div class="timeline-desc">公布奖学金评审结果，发送正式通知。</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="divider"></div>
+        
+        <!-- 进度条 -->
+        <section class="section">
+            <h2 class="section-title">进度条</h2>
+            <p class="section-description">任务完成度和数据可视化展示。</p>
+            
+            <div class="progress-showcase">
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>学术成绩</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill academic" style="width: 85%;"></div>
+                    </div>
+                </div>
+                
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>体育表现</span>
+                        <span>72%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill sports" style="width: 72%;"></div>
+                    </div>
+                </div>
+                
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>艺术素养</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill arts" style="width: 90%;"></div>
+                    </div>
+                </div>
+                
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>领导力培养</span>
+                        <span>60%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill success" style="width: 60%;"></div>
+                    </div>
+                </div>
+                
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>申请进度</span>
+                        <span>45%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill gold" style="width: 45%;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="divider"></div>
+        
+        <!-- 组合示例 -->
+        <section class="section">
+            <h2 class="section-title">组合示例</h2>
+            <p class="section-description">多个组件组合使用的实际场景展示。</p>
+            
+            <div class="card-showcase">
+                <div class="card academic card-interactive cursor-pointer" onclick="handleCardClick('academic')">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="badge badge-academic">学术</span>
+                        <span class="status-dot active"></span>
+                    </div>
+                    <h3>数学竞赛培训</h3>
+                    <p class="mb-2">针对AMC数学竞赛的专项培训课程，由资深教师授课。</p>
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="badge badge-outline btn-sm">周一 15:30</span>
+                        <span class="badge badge-outline btn-sm">G6-G9</span>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span>报名进度</span>
+                            <span>18/25</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill academic" style="width: 72%;"></div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-sm mt-2" onclick="event.stopPropagation(); alert('报名成功！')">立即报名</button>
+                </div>
+                
+                <div class="card sports card-interactive cursor-pointer" onclick="handleCardClick('sports')">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="badge badge-sports">体育</span>
+                        <span class="status-dot active"></span>
+                    </div>
+                    <h3>足球校队训练</h3>
+                    <p class="mb-2">专业足球训练，培养团队协作和竞技能力。</p>
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="badge badge-outline btn-sm">周三 16:00</span>
+                        <span class="badge badge-outline btn-sm">G3-G6</span>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span>报名进度</span>
+                            <span>22/30</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill sports" style="width: 73%;"></div>
+                        </div>
+                    </div>
+                    <button class="btn btn-gradient-sports btn-sm mt-2" onclick="event.stopPropagation(); alert('报名成功！')">立即报名</button>
+                </div>
+                
+                <div class="card arts card-interactive cursor-pointer" onclick="handleCardClick('arts')">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="badge badge-arts">艺术</span>
+                        <span class="status-dot pending"></span>
+                    </div>
+                    <h3>创意美术工作坊</h3>
+                    <p class="mb-2">探索多种艺术形式，激发创造力与想象力。</p>
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="badge badge-outline btn-sm">周五 15:00</span>
+                        <span class="badge badge-outline btn-sm">G1-G5</span>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span>报名进度</span>
+                            <span>15/20</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill arts" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                    <button class="btn btn-gradient-arts btn-sm mt-2" onclick="event.stopPropagation(); alert('报名成功！')">立即报名</button>
+                </div>
+            </div>
+        </section>
+        
+        <div class="divider"></div>
+        
+        <!-- 网格系统 -->
+        <section class="section">
+            <h2 class="section-title">网格系统</h2>
+            <p class="section-description">响应式网格布局演示。</p>
+            
+            <div class="grid-demo">
+                <div class="grid-demo-item">1</div>
+                <div class="grid-demo-item">2</div>
+                <div class="grid-demo-item">3</div>
+                <div class="grid-demo-item">4</div>
+            </div>
+        </section>
+        
+        <footer style="text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.9rem;">
+            <p>南宁哈罗礼德学校 · 设计系统测试页</p>
+            <p style="margin-top: 0.5rem;">Leadership for a Better World</p>
+        </footer>
+    </div>
+    
+    <script>
+        // 导航栏点击切换
+        function setActiveNav(element) {
+            document.querySelectorAll('.nav-pill').forEach(pill => {
+                pill.classList.remove('active');
+            });
+            element.classList.add('active');
+        }
+        
+        // 卡片点击处理
+        function handleCardClick(type) {
+            const messages = {
+                academic: '您点击了学术类课程卡片！',
+                sports: '您点击了体育类课程卡片！',
+                arts: '您点击了艺术类课程卡片！'
+            };
+            alert(messages[type] || '卡片点击！');
+        }
+        
+        // 进度条动画（页面加载时）
+        document.addEventListener('DOMContentLoaded', function() {
+            const progressFills = document.querySelectorAll('.progress-fill');
+            progressFills.forEach(fill => {
+                const width = fill.style.width;
+                fill.style.width = '0';
+                setTimeout(() => {
+                    fill.style.width = width;
+                }, 100);
+            });
+        });
+        
+        // 表单验证示例
+        document.querySelectorAll('.form-input, .form-textarea').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.classList.add('focused');
+            });
+            input.addEventListener('blur', function() {
+                this.parentElement.classList.remove('focused');
+            });
+        });
+        
+        // 控制台输出
+        console.log('%c南宁哈罗礼德学校设计系统', 'color: #152242; font-size: 20px; font-weight: bold;');
+        console.log('%c设计系统测试页加载完成', 'color: #A69867; font-size: 14px;');
+    </script>
+</body>
+</html>
