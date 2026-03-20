@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>奖学金申请通道 | 南宁哈罗礼德学校</title>
+    <link rel="stylesheet" href="styles/main.css?v=20260320">
+    <link rel="stylesheet" href="styles/scholarship-dashboard.css?v=20260320b">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <button class="language-toggle" id="language-toggle" onclick="toggleLanguage()">
+        <span class="flag-emoji">🇨🇳</span><span class="flag-separator">/</span><span class="flag-emoji">🇬🇧</span>
+    </button>
+    <div class="app-container">
+        <header class="sub-header">
+            <div class="sub-header-top">
+                <button class="back-button" onclick="window.location.href='scholarship.html'">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    <span data-i18n="back">返回</span>
+                </button>
+                <img src="images/harrow-logo-small-white.png" alt="Harrow Logo" class="sub-header-logo">
+            </div>
+            <h1 class="page-title" data-i18n="dashboardPageTitle">奖学金申请通道</h1>
+        </header>
+
+        <main class="dashboard-content">
+            <!-- Warning Notice Section -->
+            <section class="warning-section">
+                <div class="warning-card">
+                    <div class="warning-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                        </svg>
+                    </div>
+                    <div class="warning-content">
+                        <h3 data-i18n="warningTitle">重要提醒</h3>
+                        <p class="warning-intro" data-i18n="warningIntro">请确保您已完成所有相关类别的记录补全，并仔细核对信息无误后再进行意愿确认。如果您的孩子没有相应的板块数据用以申请半奖或以上的奖学金，错误的申请将导致您的孩子直接无缘奖学金。</p>
+                        
+                        <div class="warning-examples">
+                            <div class="example-card honour">
+                                <div class="example-badge">HONOUR</div>
+                                <div class="example-concept" data-i18n="honourConcept">真实 · 正直</div>
+                                <p data-i18n="honourExample">（6年级及以上）如果孩子确认申请了全奖项，但是数据库清晰完成后，只有两个类别的成绩有效，这会导致孩子直接落榜。低级别奖池将不再兼容，机会留给主动进入该级别奖池的学生。请对自己的野心和结果负责。</p>
+                            </div>
+                            <div class="example-card humility">
+                                <div class="example-badge">HUMILITY</div>
+                                <div class="example-concept" data-i18n="humilityConcept">鼓励谦和</div>
+                                <p data-i18n="humilityExample">如果孩子仅申请了优才，但是数据库里有更优秀的板块成绩，我们会保留孩子获得更高级别奖项的可能。</p>
+                            </div>
+                        </div>
+                        
+                        <p class="warning-footer" data-i18n="warningFooter">保守、真实、不要贪心，关注孩子的自身实际情况。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Countdown Section -->
+            <section class="countdown-section">
+                <div class="countdown-card">
+                    <div class="countdown-header">
+                        <div class="countdown-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </div>
+                        <h3 data-i18n="countdownTitle">意愿确认截止倒计时</h3>
+                    </div>
+                    <div class="countdown-timer">
+                        <div class="time-block">
+                            <span class="time-value" id="countdown-days">00</span>
+                            <span class="time-label" data-i18n="days">天</span>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-block">
+                            <span class="time-value" id="countdown-hours">00</span>
+                            <span class="time-label" data-i18n="hours">时</span>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-block">
+                            <span class="time-value" id="countdown-minutes">00</span>
+                            <span class="time-label" data-i18n="minutes">分</span>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-block">
+                            <span class="time-value" id="countdown-seconds">00</span>
+                            <span class="time-label" data-i18n="seconds">秒</span>
+                        </div>
+                    </div>
+                    <div class="countdown-deadline">
+                        <span data-i18n="deadlinePrefix">截止时间：</span>
+                        <span class="deadline-date" data-i18n="deadlineDate">2026年6月12日 17:00</span>
+                    </div>
+                    <div class="countdown-notice">
+                        <p data-i18n="countdownNotice">我们将在倒计时结束后，开启奖学金的评审工作，届时您将无法再确认意愿。我们将使用您的意愿、孩子的资格以及仍可能更新的数据，进行奖学金的审核发放。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Step 1: Record Completion Section -->
+            <section class="completion-section">
+                <div class="section-header">
+                    <div class="step-badge">Step 1</div>
+                    <h2 data-i18n="recordCompletionTitle">记录补全</h2>
+                </div>
+                <p class="section-desc" data-i18n="recordCompletionDesc">请根据您孩子实际参与的活动类别，补全相应记录。记录将用于奖学金评审。</p>
+                
+                <div class="completion-grid">
+                    <!-- Leadership Button -->
+                    <button class="completion-btn leadership" onclick="handleActionClick('leadership')">
+                        <div class="btn-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </div>
+                        <span class="btn-text" data-i18n="leadershipRecord">领导力记录补全</span>
+                        <div class="btn-shimmer"></div>
+                    </button>
+
+                    <!-- Arts Button with Sub-links -->
+                    <div class="completion-btn-wrapper arts-wrapper">
+                        <button class="completion-btn arts" onclick="toggleArtsSubmenu(this)">
+                            <div class="btn-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                    <path d="M2 17l10 5 10-5"/>
+                                    <path d="M2 12l10 5 10-5"/>
+                                </svg>
+                            </div>
+                            <span class="btn-text" data-i18n="artsRecord">艺术类记录补全</span>
+                            <div class="btn-shimmer"></div>
+                            <svg class="expand-indicator" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+                        <div class="arts-submenu">
+                            <button class="submenu-btn music-performing" onclick="handleActionClick('music-performing')">
+                                <div class="submenu-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M9 18V5l12-2v13"/>
+                                        <circle cx="6" cy="18" r="3"/>
+                                        <circle cx="18" cy="16" r="3"/>
+                                    </svg>
+                                </div>
+                                <span data-i18n="musicPerformingArts">音表艺术</span>
+                                <div class="btn-shimmer"></div>
+                            </button>
+                            <button class="submenu-btn visual-arts" onclick="handleActionClick('visual-arts')">
+                                <div class="submenu-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="13.5" cy="6.5" r="0.5" fill="currentColor"/>
+                                        <circle cx="17.5" cy="10.5" r="0.5" fill="currentColor"/>
+                                        <circle cx="8.5" cy="7.5" r="0.5" fill="currentColor"/>
+                                        <circle cx="6.5" cy="12.5" r="0.5" fill="currentColor"/>
+                                        <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.555C21.965 6.012 17.461 2 12 2z"/>
+                                    </svg>
+                                </div>
+                                <span data-i18n="visualArts">视觉艺术</span>
+                                <div class="btn-shimmer"></div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Sports Button -->
+                    <button class="completion-btn sports" onclick="handleActionClick('sports')">
+                        <div class="btn-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                                <path d="M2 12h20"/>
+                            </svg>
+                        </div>
+                        <span class="btn-text" data-i18n="sportsRecord">竞技体育记录补全</span>
+                        <div class="btn-shimmer"></div>
+                    </button>
+
+                    <!-- Academic Competition Button -->
+                    <button class="completion-btn academic" onclick="handleActionClick('academic')">
+                        <div class="btn-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                            </svg>
+                        </div>
+                        <span class="btn-text" data-i18n="academicRecord">学术竞赛记录补全</span>
+                        <div class="btn-shimmer"></div>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Step 2: Confirmation Section -->
+            <section class="confirmation-section">
+                <div class="section-header">
+                    <div class="step-badge">Step 2</div>
+                    <h2 data-i18n="confirmationTitle">意愿确认</h2>
+                </div>
+                <p class="section-desc" data-i18n="confirmationDesc">完成所有记录补全后，请确认您的奖学金申请意愿。确认后将无法修改。</p>
+                
+                <div class="confirmation-action">
+                    <button class="final-confirmation-btn" onclick="handleFinalConfirmation()">
+                        <div class="btn-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                        </div>
+                        <span class="btn-text" data-i18n="finalConfirmation">完成意愿确认</span>
+                        <div class="btn-shimmer"></div>
+                    </button>
+                </div>
+            </section>
+
+            <!-- White Paper Link Section -->
+            <section class="whitepaper-section">
+                <a href="#" class="whitepaper-link" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                    </svg>
+                    <span data-i18n="viewWhitepaper">查看奖学金白皮书详情</span>
+                    <svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                        <polyline points="15 3 21 3 21 9"/>
+                        <line x1="10" y1="14" x2="21" y2="3"/>
+                    </svg>
+                </a>
+            </section>
+        </main>
+
+        <footer class="dashboard-footer">
+            <p class="footer-motto" data-i18n="footerMotto">Educational Excellence for Life and Leadership</p>
+            <p class="footer-copyright">&copy; 2026 Harrow LiDe School Nanning. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="scripts/i18n.js"></script>
+    <script src="scripts/scholarship-dashboard.js"></script>
+</body>
+</html>

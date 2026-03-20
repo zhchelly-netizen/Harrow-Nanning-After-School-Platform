@@ -2,17 +2,18 @@
 // 奖学金页面 JavaScript
 // ===================================
 
-// 申请系统链接（根据语言不同）
+// 申请系统链接（跳转到仪表盘页面）
 const APPLICATION_LINKS = {
-    zh: 'https://harrownanning-est.feishu.cn/share/base/dashboard/shrcnndXTpfEnw4hcQguLrkZdsb',
-    en: 'https://harrownanning-est.feishu.cn/share/base/dashboard/shrcntBlmd5AFe4h4ZsPaoqLb6d'
+    zh: 'scholarship-dashboard.html',
+    en: 'scholarship-dashboard.html'
 };
 
 // 跳转到申请系统
 function navigateToApplication() {
     const currentLang = i18n ? i18n.getCurrentLanguage() : 'zh';
+    sessionStorage.setItem('selectedLanguage', currentLang);
     const url = APPLICATION_LINKS[currentLang] || APPLICATION_LINKS.zh;
-    window.open(url, '_blank');
+    window.location.href = url;
 }
 
 // 页面加载完成后初始化
