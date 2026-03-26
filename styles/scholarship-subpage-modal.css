@@ -210,19 +210,40 @@
     background: var(--white);
     border-radius: var(--radius-lg);
     border: 1px solid var(--gray-200);
-    overflow: hidden;
+    overflow: visible;
     box-shadow: var(--shadow-sm);
     animation: slideInUp 0.4s ease forwards;
     animation-delay: calc(var(--item-index, 0) * 0.1s);
     opacity: 0;
     transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
 }
 
-/* Expanded item fills available space */
+/* Expanded item floats to front and fills screen */
 .subpage-item.expanded {
-    flex: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10001;
+    background: var(--white);
+    border-radius: 0;
     display: flex;
     flex-direction: column;
+    animation: floatUp 0.3s ease forwards;
+}
+
+@keyframes floatUp {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 @keyframes slideInUp {
@@ -512,7 +533,36 @@
         gap: 0.75rem;
     }
     
-    .subpage-item-header {
+    /* Collapsed state - more compact on mobile */
+    .subpage-item.collapsed .subpage-item-header {
+        padding: 0.625rem 0.75rem;
+    }
+    
+    .subpage-item.collapsed .subpage-step-badge {
+        width: 22px;
+        height: 22px;
+        min-width: 22px;
+        font-size: 0.75rem;
+        margin-right: 0.625rem;
+    }
+    
+    .subpage-item.collapsed .subpage-item-title {
+        font-size: 0.85rem;
+    }
+    
+    .subpage-item.collapsed .expand-icon {
+        width: 20px;
+        height: 20px;
+        margin-left: 0.75rem;
+    }
+    
+    /* Ensure embedded content is visible in collapsed state */
+    .subpage-item.collapsed .feishu-form-card {
+        min-height: 120px;
+    }
+    
+    /* Expanded state - takes full space */
+    .subpage-item.expanded .subpage-item-header {
         padding: 0.75rem;
     }
     

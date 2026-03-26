@@ -392,13 +392,7 @@ class ScholarshipSubpageModal {
 container.appendChild(itemEl);
         });
         
-        setTimeout(() => {
-            const firstFormItem = container.querySelector('.subpage-item.form');
-            if (firstFormItem) {
-                const index = parseInt(firstFormItem.dataset.index);
-                this.toggleItem(index);
-            }
-        }, 200);
+        // No auto-expand - wait for user to click
     }
     
     toggleItem(index) {
