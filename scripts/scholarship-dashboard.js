@@ -11,7 +11,7 @@ const ACTION_LINKS = {
     'visual-arts': '#visual-arts',
     'sports': '#sports',
     'academic': '#academic',
-    'confirmation': '#confirmation'
+    'confirmation': 'https://harrownanning-est.feishu.cn/share/base/form/shrcnCuExEcfcXVsjgpsxiCgINf'
 };
 
 let countdownInterval = null;
@@ -79,12 +79,19 @@ function toggleArtsSubmenu(button) {
 }
 
 function handleActionClick(action) {
-    const url = ACTION_LINKS[action] || '#';
-
-    if (url !== '#') {
-        window.open(url, '_blank');
+    const validCategories = ['leadership', 'music-performing', 'visual-arts', 'sports', 'academic'];
+    
+    if (validCategories.includes(action)) {
+        if (scholarshipSubpageModal) {
+            scholarshipSubpageModal.open(action);
+        }
     } else {
-        showComingSoonNotice(action);
+        const url = ACTION_LINKS[action] || '#';
+        if (url !== '#') {
+            window.open(url, '_blank');
+        } else {
+            showComingSoonNotice(action);
+        }
     }
 }
 

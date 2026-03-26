@@ -502,7 +502,9 @@ const translations = {
         "confirmationDesc": "完成所有记录补全后，请确认您的奖学金申请意愿。确认后将无法修改。",
         "finalConfirmation": "完成意愿确认",
         "viewWhitepaper": "查看奖学金白皮书详情",
-        "footerMotto": "Educational Excellence for Life and Leadership"
+        "footerMotto": "Educational Excellence for Life and Leadership",
+        "backToDashboard": "返回仪表盘",
+        "loadingForm": "加载表单中..."
     },
     elitePrograms: {
         "sportsDesc": "填写精英体育报名表，等待体育部负责老师联系确认选拔时间",
@@ -1026,7 +1028,9 @@ const translations = {
         "confirmationDesc": "After completing all record entries, please confirm your scholarship application intention. Confirmation cannot be modified.",
         "finalConfirmation": "Confirm Your Intention",
         "viewWhitepaper": "View Scholarship Whitepaper",
-        "footerMotto": "Educational Excellence for Life and Leadership"
+        "footerMotto": "Educational Excellence for Life and Leadership",
+        "backToDashboard": "Back to Dashboard",
+        "loadingForm": "Loading form..."
     },
     elitePrograms: {
         "sportsDesc": "Fill out the elite sports registration form and wait for the PE department teacher to contact you to confirm the selection time",

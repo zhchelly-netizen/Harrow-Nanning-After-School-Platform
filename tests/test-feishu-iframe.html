@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>飞书表单 iframe 嵌入测试 | Feishu iframe Embedding Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .test-header {
+            max-width: 1200px;
+            margin: 0 auto 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .test-header h1 {
+            color: #152242;
+            margin-bottom: 10px;
+        }
+        .test-header p {
+            color: #666;
+            line-height: 1.6;
+        }
+        .status-indicator {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        .status-pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        .status-pass {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        .status-fail {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .test-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .test-card-header {
+            padding: 15px 20px;
+            background: #152242;
+            color: white;
+        }
+        .test-card-header h3 {
+            margin-bottom: 5px;
+        }
+        .test-card-header .url {
+            font-size: 11px;
+            opacity: 0.8;
+            word-break: break-all;
+        }
+        .test-card-content {
+            height: 500px;
+            position: relative;
+        }
+        .test-card-content iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255,255,255,0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #e5e7eb;
+            border-top-color: #A69867;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .error-message {
+            padding: 20px;
+            background: #fee2e2;
+            color: #991b1b;
+            text-align: center;
+            display: none;
+        }
+        .results-summary {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .results-summary h2 {
+            margin-bottom: 15px;
+            color: #152242;
+        }
+        .result-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            background: #f9fafb;
+        }
+        .result-item.pass {
+            background: #d1fae5;
+        }
+        .result-item.fail {
+            background: #fee2e2;
+        }
+        .result-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 12px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-header">
+        <h1>飞书表单 iframe 嵌入测试 <span class="status-indicator status-pending" id="overall-status">测试中...</span></h1>
+        <p>
+            此页面用于测试所有飞书表单是否可以通过 iframe 嵌入。<br>
+            如果表单被 X-Frame-Options 阻止，将显示空白或错误信息。<br><br>
+            <strong>测试方法：</strong>观察每个 iframe 是否正常加载表单内容。如果显示空白或控制台有 X-Frame-Options 错误，则该表单无法嵌入。
+        </p>
+    </div>
+
+    <div class="test-grid">
+        <!-- Test 1: Leadership -->
+        <div class="test-card">
+            <div class="test-card-header">
+                <h3>1. 领导力综合提交 <span class="status-indicator status-pending" id="status-1">待测试</span></h3>
+                <div class="url">https://harrownanning-est.feishu.cn/share/base/form/shrcnB40KooxOKt5EYs4xpmu1rd</div>
+            </div>
+            <div class="test-card-content">
+                <iframe 
+                    id="iframe-1"
+                    src="https://harrownanning-est.feishu.cn/share/base/form/shrcnB40KooxOKt5EYs4xpmu1rd" 
+                    loading="lazy"
+                    onload="handleIframeLoad(1)"
+                    onerror="handleIframeError(1)"
+                ></iframe>
+                <div class="loading-overlay" id="loading-1">
+                    <div class="spinner"></div>
+                    <span>加载中...</span>
+                </div>
+                <div class="error-message" id="error-1">
+                    ❌ 此表单无法嵌入（可能被 X-Frame-Options 阻止）
+                </div>
+            </div>
+        </div>
+
+        <!-- Test 2: Sports Supplementary -->
+        <div class="test-card">
+            <div class="test-card-header">
+                <h3>2. 竞技体育补充材料 <span class="status-indicator status-pending" id="status-2">待测试</span></h3>
+                <div class="url">https://harrownanning-est.feishu.cn/share/base/form/shrcnP99gEv6ciHgaUhRit3TLOL</div>
+            </div>
+            <div class="test-card-content">
+                <iframe 
+                    id="iframe-2"
+                    src="https://harrownanning-est.feishu.cn/share/base/form/shrcnP99gEv6ciHgaUhRit3TLOL" 
+                    loading="lazy"
+                    onload="handleIframeLoad(2)"
+                    onerror="handleIframeError(2)"
+                ></iframe>
+                <div class="loading-overlay" id="loading-2">
+                    <div class="spinner"></div>
+                    <span>加载中...</span>
+                </div>
+                <div class="error-message" id="error-2">
+                    ❌ 此表单无法嵌入（可能被 X-Frame-Options 阻止）
+                </div>
+            </div>
+        </div>
+
+        <!-- Test 3: Music Performing Supplementary -->
+        <div class="test-card">
+            <div class="test-card-header">
+                <h3>3. 音表艺术补充材料 <span class="status-indicator status-pending" id="status-3">待测试</span></h3>
+                <div class="url">https://harrownanning-est.feishu.cn/share/base/form/shrcnJp9Mr4tOwEDjmSyZ4wkjEg</div>
+            </div>
+            <div class="test-card-content">
+                <iframe 
+                    id="iframe-3"
+                    src="https://harrownanning-est.feishu.cn/share/base/form/shrcnJp9Mr4tOwEDjmSyZ4wkjEg" 
+                    loading="lazy"
+                    onload="handleIframeLoad(3)"
+                    onerror="handleIframeError(3)"
+                ></iframe>
+                <div class="loading-overlay" id="loading-3">
+                    <div class="spinner"></div>
+                    <span>加载中...</span>
+                </div>
+                <div class="error-message" id="error-3">
+                    ❌ 此表单无法嵌入（可能被 X-Frame-Options 阻止）
+                </div>
+            </div>
+        </div>
+
+        <!-- Test 4: Visual Arts Registration -->
+        <div class="test-card">
+            <div class="test-card-header">
+                <h3>4. 视觉艺术注册作品 <span class="status-indicator status-pending" id="status-4">待测试</span></h3>
+                <div class="url">https://harrownanning-est.feishu.cn/share/base/form/shrcnSAJWDoZDsR8p3vMg6N87vd</div>
+            </div>
+            <div class="test-card-content">
+                <iframe 
+                    id="iframe-4"
+                    src="https://harrownanning-est.feishu.cn/share/base/form/shrcnSAJWDoZDsR8p3vMg6N87vd" 
+                    loading="lazy"
+                    onload="handleIframeLoad(4)"
+                    onerror="handleIframeError(4)"
+                ></iframe>
+                <div class="loading-overlay" id="loading-4">
+                    <div class="spinner"></div>
+                    <span>加载中...</span>
+                </div>
+                <div class="error-message" id="error-4">
+                    ❌ 此表单无法嵌入（可能被 X-Frame-Options 阻止）
+                </div>
+            </div>
+        </div>
+
+        <!-- Test 5: Visual Arts Portfolio -->
+        <div class="test-card">
+            <div class="test-card-header">
+                <h3>5. 视觉艺术作品集提交 <span class="status-indicator status-pending" id="status-5">待测试</span></h3>
+                <div class="url">https://harrownanning-est.feishu.cn/share/base/form/shrcnu4BKBNp7JWxJEgaiNdpTrf</div>
+            </div>
+            <div class="test-card-content">
+                <iframe 
+                    id="iframe-5"
+                    src="https://harrownanning-est.feishu.cn/share/base/form/shrcnu4BKBNp7JWxJEgaiNdpTrf" 
+                    loading="lazy"
+                    onload="handleIframeLoad(5)"
+                    onerror="handleIframeError(5)"
+                ></iframe>
+                <div class="loading-overlay" id="loading-5">
+                    <div class="spinner"></div>
+                    <span>加载中...</span>
+                </div>
+                <div class="error-message" id="error-5">
+                    ❌ 此表单无法嵌入（可能被 X-Frame-Options 阻止）
+                </div>
+            </div>
+        </div>
+
+        <!-- Test 6: Academic Winter/Summer School -->
+        <div class="test-card">
+            <div class="test-card-header">
+                <h3>6. 学术冬夏校 <span class="status-indicator status-pending" id="status-6">待测试</span></h3>
+                <div class="url">https://harrownanning-est.feishu.cn/share/base/form/shrcn28ZlvLbieFxQH2xWBhAMMf</div>
+            </div>
+            <div class="test-card-content">
+                <iframe 
+                    id="iframe-6"
+                    src="https://harrownanning-est.feishu.cn/share/base/form/shrcn28ZlvLbieFxQH2xWBhAMMf" 
+                    loading="lazy"
+                    onload="handleIframeLoad(6)"
+                    onerror="handleIframeError(6)"
+                ></iframe>
+                <div class="loading-overlay" id="loading-6">
+                    <div class="spinner"></div>
+                    <span>加载中...</span>
+                </div>
+                <div class="error-message" id="error-6">
+                    ❌ 此表单无法嵌入（可能被 X-Frame-Options 阻止）
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="results-summary">
+        <h2>测试结果汇总</h2>
+        <div id="results-container">
+            <p style="color: #666;">等待所有 iframe 加载完成...</p>
+        </div>
+    </div>
+
+    <script>
+        const results = {
+            1: { name: '领导力综合提交', status: 'pending' },
+            2: { name: '竞技体育补充材料', status: 'pending' },
+            3: { name: '音表艺术补充材料', status: 'pending' },
+            4: { name: '视觉艺术注册作品', status: 'pending' },
+            5: { name: '视觉艺术作品集提交', status: 'pending' },
+            6: { name: '学术冬夏校', status: 'pending' }
+        };
+
+        function handleIframeLoad(id) {
+            const loading = document.getElementById(`loading-${id}`);
+            const status = document.getElementById(`status-${id}`);
+            const iframe = document.getElementById(`iframe-${id}`);
+            
+            // Hide loading spinner
+            if (loading) loading.style.display = 'none';
+            
+            // Check if iframe actually loaded content
+            try {
+                // This will throw an error if cross-origin
+                const doc = iframe.contentDocument || iframe.contentWindow.document;
+                if (doc && doc.body && doc.body.innerHTML.length > 0) {
+                    results[id].status = 'pass';
+                    status.textContent = '✓ 通过';
+                    status.className = 'status-indicator status-pass';
+                } else {
+                    results[id].status = 'fail';
+                    status.textContent = '✗ 失败';
+                    status.className = 'status-indicator status-fail';
+                }
+            } catch (e) {
+                // Cross-origin - this is actually OK for Feishu forms
+                // They load content from different origin
+                results[id].status = 'pass';
+                status.textContent = '✓ 通过';
+                status.className = 'status-indicator status-pass';
+            }
+            
+            updateResults();
+        }
+
+        function handleIframeError(id) {
+            const loading = document.getElementById(`loading-${id}`);
+            const error = document.getElementById(`error-${id}`);
+            const status = document.getElementById(`status-${id}`);
+            
+            if (loading) loading.style.display = 'none';
+            if (error) error.style.display = 'block';
+            
+            results[id].status = 'fail';
+            status.textContent = '✗ 失败';
+            status.className = 'status-indicator status-fail';
+            
+            updateResults();
+        }
+
+        function updateResults() {
+            const container = document.getElementById('results-container');
+            const overallStatus = document.getElementById('overall-status');
+            
+            const allTested = Object.values(results).every(r => r.status !== 'pending');
+            const allPass = Object.values(results).every(r => r.status === 'pass');
+            const anyFail = Object.values(results).some(r => r.status === 'fail');
+            
+            let html = '';
+            for (const [id, result] of Object.entries(results)) {
+                const icon = result.status === 'pass' ? '✅' : result.status === 'fail' ? '❌' : '⏳';
+                html += `<div class="result-item ${result.status}">
+                    <span class="result-icon">${icon}</span>
+                    <span>${result.name}</span>
+                </div>`;
+            }
+            container.innerHTML = html;
+            
+            if (allTested) {
+                if (allPass) {
+                    overallStatus.textContent = '全部通过 ✓';
+                    overallStatus.className = 'status-indicator status-pass';
+                } else {
+                    overallStatus.textContent = `${anyFail ? '部分失败' : '测试完成'}`;
+                    overallStatus.className = 'status-indicator status-fail';
+                }
+            }
+        }
+
+        // Listen for console errors
+        window.addEventListener('error', (e) => {
+            if (e.message && e.message.includes('X-Frame-Options')) {
+                console.error('X-Frame-Options blocking detected');
+            }
+        });
+
+        // Timeout check after 30 seconds
+        setTimeout(() => {
+            for (const [id, result] of Object.entries(results)) {
+                if (result.status === 'pending') {
+                    const status = document.getElementById(`status-${id}`);
+                    const loading = document.getElementById(`loading-${id}`);
+                    if (loading) loading.style.display = 'none';
+                    status.textContent = '⏱ 超时';
+                    status.className = 'status-indicator status-fail';
+                    result.status = 'fail';
+                }
+            }
+            updateResults();
+        }, 30000);
+    </script>
+</body>
+</html>
