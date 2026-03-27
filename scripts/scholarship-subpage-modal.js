@@ -22,8 +22,8 @@ class ScholarshipSubpageModal {
                         type: 'text',
                         title: { zh: '资格审查', en: 'Eligibility Check' },
                         content: { 
-                            zh: '所有符合条件的哈罗南宁学生都可以申请，并以提交为准', 
-                            en: 'All eligible Harrow Nanning students can apply, subject to submission' 
+                            zh: '📋 <b>基本门槛（所有板块通用）</b><br>✅ 2025-26在读，2026-27在册<br>✅ G1-G11（一年级至十一年级）<br>✅ 缺勤≤5天，迟到≤5次<br>✅ 平均成绩≥5，无单科U或低于15%<br>✅ 无纪律问题、无学术不端、无违法行为<br>❌ 教师子女/已享学费减免者不能参评<br>❌ 已获AISL哈罗奖学金不能参评<br><br>🎯 <b>本板块特定资格</b><br>适用于：学生会职务、社团负责人、班级班长、社区服务、公益项目负责人<br><br>⚠️ <b>重要提示</b>：仅担任成员而无具体职务贡献者不符合申请条件。需提供具体职务名称、服务时长、影响力证明。', 
+                            en: '📋 <b>Basic Requirements (All Categories)</b><br>✅ Enrolled in 2025-26, on roll for 2026-27<br>✅ G1-G11 (Grade 1-11)<br>✅ Absences≤5 days, Lates≤5 times<br>✅ Average grade ≥5, no U or below 15% in any subject<br>✅ No disciplinary issues, academic misconduct, or illegal acts<br>❌ Staff children/tuition reduction recipients not eligible<br>❌ AISL scholarship recipients not eligible<br><br>🎯 <b>Category-Specific</b><br>For: Student Union positions, Club leaders, Class monitors, Community service, Public welfare project leaders<br><br>⚠️ <b>Note</b>: Being a member without specific role contributions does not qualify.' 
                         }
                     },
                     {
@@ -42,8 +42,8 @@ class ScholarshipSubpageModal {
                         type: 'text',
                         title: { zh: '资格审查', en: 'Eligibility Check' },
                         content: { 
-                            zh: '音乐与表演艺术的身份需要预先注册，你可以登记你的专业项目，我们需要验证参与', 
-                            en: 'Music & Performing Arts identity requires pre-registration. You can register your professional project, and we need to verify participation' 
+                            zh: '📋 <b>基本门槛（所有板块通用）</b><br>✅ 2025-26在读，2026-27在册<br>✅ G1-G11（一年级至十一年级）<br>✅ 缺勤≤5天，迟到≤5次<br>✅ 平均成绩≥5，无单科U或低于15%<br>✅ 无纪律问题、无学术不端、无违法行为<br>❌ 教师子女/已享学费减免者不能参评<br>❌ 已获AISL哈罗奖学金不能参评<br><br>🎯 <b>本板块特定资格</b><br>需满足以下之一：<br>• 学期初已在哈罗音乐学院注册并保持高出勤<br>• 参与学校发布的音乐项目（冬夏音乐会、音乐剧等）<br>• 经俱乐部/教练有效注册并持续参与训练<br><br>⚠️ <b>无效记录</b>：单次演出或比赛获奖，但之前没有注册和验证训练时长<br>✅ <b>有效记录</b>：开学时报名参与，保持高出勤率', 
+                            en: '📋 <b>Basic Requirements (All Categories)</b><br>✅ Enrolled in 2025-26, on roll for 2026-27<br>✅ G1-G11 (Grade 1-11)<br>✅ Absences≤5 days, Lates≤5 times<br>✅ Average grade ≥5, no U or below 15% in any subject<br>✅ No disciplinary issues, academic misconduct, or illegal acts<br>❌ Staff children/tuition reduction recipients not eligible<br>❌ AISL scholarship recipients not eligible<br><br>🎯 <b>Category-Specific</b><br>Meet ONE of the following:<br>• Registered at Harrow School of Music at term start with high attendance<br>• Participated in school music projects (Winter/Summer Concert, Musical)<br>• Effectively registered with club/coach and continuously training<br><br>⚠️ <b>Invalid</b>: Single performance/competition award without prior registration<br>✅ <b>Valid</b>: Enrolled at term start with high attendance' 
                         }
                     },
                     {
@@ -77,8 +77,8 @@ class ScholarshipSubpageModal {
                         type: 'text',
                         title: { zh: '资格审查', en: 'Eligibility Check' },
                         content: { 
-                            zh: '视觉艺术的身份需要预先注册，你可以登记你的专业项目，我们需要验证参与', 
-                            en: 'Visual Arts identity requires pre-registration. You can register your professional project, and we need to verify participation' 
+                            zh: '📋 <b>基本门槛（所有板块通用）</b><br>✅ 2025-26在读，2026-27在册<br>✅ G1-G11（一年级至十一年级）<br>✅ 缺勤≤5天，迟到≤5次<br>✅ 平均成绩≥5，无单科U或低于15%<br>✅ 无纪律问题、无学术不端、无违法行为<br>❌ 教师子女/已享学费减免者不能参评<br>❌ 已获AISL哈罗奖学金不能参评<br><br>🎯 <b>本板块特定资格</b><br>以"工作室时间"为核心判定标准：<br>• 学期初报名参与校内艺术CCA（如多元艺术、墙绘、定格动画社等）<br>• 或与学校进行长期专业训练注册并保持高出勤<br><br>⚠️ <b>无效记录（影子选手）</b>：申报大量校外比赛金奖，但校内无任何CCA艺术训练记录<br>✅ <b>有效记录</b>：开学时报名校内艺术CCA并保持高出勤率', 
+                            en: '📋 <b>Basic Requirements (All Categories)</b><br>✅ Enrolled in 2025-26, on roll for 2026-27<br>✅ G1-G11 (Grade 1-11)<br>✅ Absences≤5 days, Lates≤5 times<br>✅ Average grade ≥5, no U or below 15% in any subject<br>✅ No disciplinary issues, academic misconduct, or illegal acts<br>❌ Staff children/tuition reduction recipients not eligible<br>❌ AISL scholarship recipients not eligible<br><br>🎯 <b>Category-Specific</b><br>Core criterion: "Studio Time"<br>• Enrolled in on-campus art CCA at term start (e.g., Multi-art, Mural, Stop-motion Club)<br>• Or registered for long-term professional training with school and maintained high attendance<br><br>⚠️ <b>Invalid (Shadow Player)</b>: Numerous off-campus awards but no on-campus CCA training<br>✅ <b>Valid</b>: Enrolled in on-campus art CCA with high attendance' 
                         }
                     },
                     {
@@ -117,8 +117,8 @@ class ScholarshipSubpageModal {
                         type: 'text',
                         title: { zh: '资格审查', en: 'Eligibility Check' },
                         content: { 
-                            zh: '仅有注册在精英体育项目并且符合要求（训练/180天赛果）的学生有资格竞争，精英运动员（Elite Sportsmen）名单实施集中管理', 
-                            en: 'Only students registered in Elite Sports programs and meeting requirements (training/180-day competition results) are eligible. Elite Sportsmen list is centrally managed' 
+                            zh: '📋 <b>基本门槛（所有板块通用）</b><br>✅ 2025-26在读，2026-27在册<br>✅ G1-G11（一年级至十一年级）<br>✅ 缺勤≤5天，迟到≤5次<br>✅ 平均成绩≥5，无单科U或低于15%<br>✅ 无纪律问题、无学术不端、无违法行为<br>❌ 教师子女/已享学费减免者不能参评<br>❌ 已获AISL哈罗奖学金不能参评<br><br>🎯 <b>本板块特定资格</b><br>需完成运动员身份注册，成为一线队队员：<br>• <b>一线队</b>：选拔后进入，或每周训练≥6小时，或每学期更新参赛数据<br>• <b>预备队</b>（足球/篮球/羽毛球/游泳）：低龄段运动员培养，无门槛<br><br>⚠️ <b>重要提示</b>：单次竞技体育或参赛不是判定条件，需证明有效参与训练', 
+                            en: '📋 <b>Basic Requirements (All Categories)</b><br>✅ Enrolled in 2025-26, on roll for 2026-27<br>✅ G1-G11 (Grade 1-11)<br>✅ Absences≤5 days, Lates≤5 times<br>✅ Average grade ≥5, no U or below 15% in any subject<br>✅ No disciplinary issues, academic misconduct, or illegal acts<br>❌ Staff children/tuition reduction recipients not eligible<br>❌ AISL scholarship recipients not eligible<br><br>🎯 <b>Category-Specific</b><br>Must complete Elite Sportsman registration as first-team member:<br>• <b>First Team</b>: Selected, or training ≥6 hrs/week, or updating competition data each semester<br>• <b>Reserve Team</b> (Football/Basketball/Badminton/Swimming): For young athletes, no threshold<br><br>⚠️ <b>Note</b>: Single competition participation is not sufficient; must prove effective training participation' 
                         }
                     },
                     {
@@ -147,8 +147,8 @@ class ScholarshipSubpageModal {
                         type: 'text',
                         title: { zh: '资格审查', en: 'Eligibility Check' },
                         content: { 
-                            zh: '所有符合条件的哈罗南宁学生都会自动获得学术类奖学金的资格，考试成绩占比60%', 
-                            en: 'All eligible Harrow Nanning students automatically qualify for academic scholarships. Exam results account for 60%' 
+                            zh: '📋 <b>基本门槛（所有板块通用）</b><br>✅ 2025-26在读，2026-27在册<br>✅ G1-G11（一年级至十一年级）<br>✅ 缺勤≤5天，迟到≤5次<br>✅ 平均成绩≥5，无单科U或低于15%<br>✅ 无纪律问题、无学术不端、无违法行为<br>❌ 教师子女/已享学费减免者不能参评<br>❌ 已获AISL哈罗奖学金不能参评<br><br>🎯 <b>本板块特定资格</b><br>所有符合条件的哈罗南宁学生<b>自动获得</b>学术类奖学金资格，无需额外申请。<br><br>📊 <b>计分权重</b><br>• 学术成绩（60分）：基于全年4个考试节点<br>• 竞赛数量（5分）<br>• 荣誉质量（20分）<br>• 考级/冬夏校（15分）', 
+                            en: '📋 <b>Basic Requirements (All Categories)</b><br>✅ Enrolled in 2025-26, on roll for 2026-27<br>✅ G1-G11 (Grade 1-11)<br>✅ Absences≤5 days, Lates≤5 times<br>✅ Average grade ≥5, no U or below 15% in any subject<br>✅ No disciplinary issues, academic misconduct, or illegal acts<br>❌ Staff children/tuition reduction recipients not eligible<br>❌ AISL scholarship recipients not eligible<br><br>🎯 <b>Category-Specific</b><br>All eligible Harrow Nanning students <b>automatically qualify</b> - no separate application needed.<br><br>📊 <b>Scoring Weight</b><br>• Academic Performance (60 pts): Based on 4 exam sessions<br>• Competition Quantity (5 pts)<br>• Honor Quality (20 pts)<br>• Grade Exams/Winter-Summer School (15 pts)' 
                         }
                     },
                     {

@@ -10,7 +10,13 @@ const APPLICATION_LINKS = {
 
 // 跳转到申请系统
 function navigateToApplication() {
-    const currentLang = i18n ? i18n.getCurrentLanguage() : 'zh';
+    let currentLang = 'zh';
+    if (typeof i18n !== 'undefined') {
+        currentLang = i18n.getCurrentLanguage();
+    } else {
+        // Fallback to sessionStorage
+        currentLang = sessionStorage.getItem('selectedLanguage') || 'zh';
+    }
     sessionStorage.setItem('selectedLanguage', currentLang);
     const url = APPLICATION_LINKS[currentLang] || APPLICATION_LINKS.zh;
     window.location.href = url;
