@@ -365,6 +365,21 @@
     overflow: visible;
 }
 
+/* Mobile: Text items can scroll when content exceeds viewport */
+@media (max-width: 768px) {
+    .subpage-item.text.expanded .subpage-item-content {
+        max-height: calc(100vh - 200px);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .subpage-item.text.expanded {
+        max-height: calc(100vh - 150px);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
 .subpage-item.text.expanded {
     position: relative !important;
     top: auto !important;
