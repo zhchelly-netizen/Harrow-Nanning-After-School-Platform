@@ -94,7 +94,7 @@ class ScholarshipSubpageModal {
                     {
                         type: 'form',
                         title: { zh: '视觉艺术奖项申报', en: 'Visual Arts Awards Application' },
-                        url: 'https://harrownanning-est.feishu.cn/share/base/form/shrcn5Nz9wPDKdN1ROqp8DM1ELf'
+                        url: 'https://harrownanning-est.feishu.cn/share/base/form/shrcnFz7IQX4io70p9tc4z1LtVb'
                     },
                     {
                         type: 'form',
