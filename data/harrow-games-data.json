@@ -388,7 +388,7 @@
         "type": "group",
         "group": "Girls-Single",
         "home_score": 4,
-        "away_score": null,
+        "away_score": 0,
         "venue": "Pitch/ Court 2"
       },
       {
@@ -411,8 +411,8 @@
         "gender": "Boys",
         "type": "semi_final",
         "group": "Boys-A",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 5,
+        "away_score": 1,
         "venue": "Pitch/ Court 1"
       },
       {
@@ -423,8 +423,8 @@
         "gender": "Boys",
         "type": "semi_final",
         "group": "Boys-B",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 1,
+        "away_score": 2,
         "venue": "Pitch/ Court 2"
       },
       {
@@ -486,6 +486,30 @@
         "home_score": null,
         "away_score": null,
         "venue": "Pitch/ Court 3"
+      },
+      {
+        "round": "FinalWinner SF1 v Winner SF2",
+        "ko": "14:30",
+        "home": "Beijing",
+        "away": "Bangkok",
+        "gender": "Boys",
+        "type": "final",
+        "group": "Boys-A",
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 1"
+      },
+      {
+        "round": "Third PlaceLoser SF1 v Loser SF2",
+        "ko": "14:30",
+        "home": "Shenzhen",
+        "away": "Haikou",
+        "gender": "Boys",
+        "type": "third_place",
+        "group": "Boys-A",
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 2"
       },
       {
         "round": "Girls Round 7",
@@ -906,8 +930,8 @@
         "gender": "Boys",
         "type": "quarter_final",
         "group": "Boys-B",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 18,
+        "away_score": 4,
         "venue": "Pitch/ Court 1"
       },
       {
@@ -918,8 +942,8 @@
         "gender": "Boys",
         "type": "quarter_final",
         "group": "Boys-B",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 2,
+        "away_score": 6,
         "venue": "Pitch/ Court 2"
       },
       {
@@ -930,8 +954,8 @@
         "gender": "Girls",
         "type": "quarter_final",
         "group": "Girls-B",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 22,
+        "away_score": 2,
         "venue": "Pitch/ Court 3"
       },
       {
@@ -942,8 +966,8 @@
         "gender": "Boys",
         "type": "quarter_final",
         "group": "Boys-A",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 14,
+        "away_score": 6,
         "venue": "Pitch/ Court 4"
       },
       {
@@ -990,6 +1014,54 @@
         "gender": "Boys",
         "type": "group",
         "group": "Boys-A",
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 4"
+      },
+      {
+        "round": "Semi Final 1  Winner QF1 v Winner QF4",
+        "ko": "14:20",
+        "home": "Bangkok",
+        "away": "Haikou",
+        "gender": "Boys",
+        "type": "semi_final",
+        "group": "Boys-A",
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 1"
+      },
+      {
+        "round": "Semi Final 2 Winner QF3 v Winner QF2",
+        "ko": "14:20",
+        "home": "Bangkok Lions",
+        "away": "Beijing",
+        "gender": "Girls",
+        "type": "semi_final",
+        "group": "Girls-B",
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 2"
+      },
+      {
+        "round": "Plate Semi Final Loser QF4 v Loser QF1",
+        "ko": "14:20",
+        "home": "Hong Kong",
+        "away": "Shanghai",
+        "gender": "Boys",
+        "type": "semi_final",
+        "group": "Boys-B",
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 3"
+      },
+      {
+        "round": "Plate Semi Final Loser QF2 v Loser QF3",
+        "ko": "14:20",
+        "home": "Shenzhen",
+        "away": "Appi",
+        "gender": "Boys",
+        "type": "semi_final",
+        "group": "Boys-B",
         "home_score": null,
         "away_score": null,
         "venue": "Pitch/ Court 4"
