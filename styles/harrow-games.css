@@ -1,0 +1,373 @@
+/* ===================================
+   Harrow Games 2025-26
+   Live Standings — Standalone Page Styles
+   Harrow After-School Platform Design System
+   =================================== */
+
+/* ---- Section Titles ---- */
+.section-title {
+    margin: 2rem 0 1rem;
+    color: var(--primary-navy);
+    font-family: var(--font-banner);
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+/* ---- Content Container ---- */
+.games-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem 2rem;
+}
+
+/* ---- Day Tabs ---- */
+.games-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1.5rem auto 1.5rem;
+    justify-content: center;
+    max-width: 1100px;
+    padding: 0 1.5rem;
+}
+
+.games-tab {
+    padding: 0.5rem 1.5rem;
+    border: 2px solid var(--primary-navy);
+    background: white;
+    color: var(--primary-navy);
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.games-tab:hover { background: rgba(21, 34, 66, 0.05); }
+.games-tab.active {
+    background: var(--primary-navy);
+    color: white;
+}
+
+/* ---- Gender / Age Tabs ---- */
+.gender-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    justify-content: center;
+}
+
+.gender-tab {
+    padding: 0.5rem 1.5rem;
+    border: 2px solid var(--secondary);
+    background: white;
+    color: var(--primary-navy);
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.gender-tab:hover { background: rgba(166, 152, 103, 0.08); }
+.gender-tab.active {
+    background: var(--primary-navy);
+    color: white;
+    border-color: var(--primary-navy);
+}
+
+/* ---- Group Stage Standings ---- */
+.groups-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 1.5rem;
+}
+
+.group-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border: 1px solid #e8ecf1;
+}
+
+.group-card-header {
+    padding: 0.75rem 1.25rem;
+    color: white;
+    font-family: var(--font-banner);
+    font-weight: 700;
+    font-size: 1rem;
+    text-align: center;
+    letter-spacing: 1px;
+}
+.group-card-header.group-a { background: linear-gradient(135deg, var(--primary-navy), #3b5998); }
+.group-card-header.group-b { background: linear-gradient(135deg, #c2410c, #f97316); }
+.group-card-header.group-girls { background: linear-gradient(135deg, #6b4c9a, #9b7ec4); }
+
+.group-card-body { padding: 0; }
+
+/* ---- Standings Table ---- */
+.standings-table { width: 100%; }
+
+.standings-header {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: #f4f6f9;
+    border-bottom: 2px solid #e0e0e0;
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.standings-row {
+    display: flex;
+    align-items: center;
+    padding: 0.55rem 1rem;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.15s;
+    font-family: var(--font-body);
+}
+.standings-row:last-child { border-bottom: none; }
+.standings-row:hover { background: #fafafa; }
+.standings-row.nanning-row { background: #fff8e1; }
+.standings-row.nanning-row:hover { background: #fff3c4; }
+
+.col-rank { width: 36px; text-align: center; }
+.col-team { flex: 1; font-weight: 600; font-size: 0.85rem; color: var(--ink); }
+.col-team.nanning { color: #c5292c; font-weight: 700; }
+.col-stat { width: 32px; text-align: center; font-size: 0.8rem; color: #555; }
+.col-stat.gd-col { font-weight: 600; }
+.col-pts { width: 40px; text-align: center; font-weight: 700; font-size: 0.95rem; color: var(--primary-navy); }
+.col-pts.nanning { color: #c5292c; }
+
+.rank-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 0.7rem;
+    font-family: var(--font-body);
+}
+.rank-badge.gold { background: linear-gradient(135deg, #ffd700, #ffec8b); color: #333; }
+.rank-badge.silver { background: linear-gradient(135deg, #c0c0c0, #e8e8e8); color: #333; }
+.rank-badge.bronze { background: linear-gradient(135deg, #cd7f32, #daa520); color: white; }
+.rank-badge.normal { background: #f0f0f0; color: #666; }
+
+/* ---- Knockout Bracket ---- */
+.bracket-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    justify-content: center;
+}
+
+.bracket-tab {
+    padding: 0.4rem 1.2rem;
+    border: 2px solid var(--secondary);
+    background: white;
+    color: var(--primary-navy);
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.bracket-tab:hover { background: rgba(166, 152, 103, 0.08); }
+.bracket-tab.active {
+    background: var(--primary-navy);
+    color: white;
+    border-color: var(--primary-navy);
+}
+
+.bracket-container {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.bracket-round {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.bracket-round-title {
+    font-family: var(--font-banner);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--primary-navy);
+    text-align: center;
+    margin-bottom: 0.25rem;
+    padding: 0.3rem 0;
+    border-bottom: 2px solid var(--secondary);
+}
+
+.bracket-match {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 0.5rem 0.8rem;
+    min-width: 170px;
+    transition: border-color 0.2s;
+}
+.bracket-match:hover { border-color: var(--secondary); }
+.bracket-match.final { border-color: var(--secondary); border-width: 2px; }
+.bracket-match.third { border-color: #cd7f32; border-width: 2px; }
+.bracket-match.plate { border-style: dashed; }
+
+.bracket-match-header {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--primary-navy);
+    margin-bottom: 0.35rem;
+    text-transform: uppercase;
+}
+
+.bracket-team-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.2rem 0;
+}
+
+.bracket-team-name {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--ink);
+}
+.bracket-team-name.nanning { color: #c5292c; font-weight: 700; }
+
+.bracket-score {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--primary-navy);
+}
+
+/* ---- Match Cards Grid ---- */
+.matches-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 0.8rem;
+}
+
+.match-card {
+    background: white;
+    border: 1px solid #e8ecf1;
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
+    transition: box-shadow 0.2s;
+    font-family: var(--font-body);
+}
+.match-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.match-card.final { border-left: 3px solid var(--secondary); }
+.match-card.knockout { border-left: 3px solid var(--primary-navy); }
+
+.match-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.match-round {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--primary-navy);
+    text-transform: uppercase;
+}
+
+.match-time {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #e65c00;
+    background: rgba(230, 92, 0, 0.08);
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.match-teams {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.35rem;
+}
+
+.team { flex: 1; }
+.team:last-child { text-align: right; }
+
+.team-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--ink);
+}
+.team-name.nanning { color: #c5292c; font-weight: 700; }
+
+.score {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary-navy);
+    min-width: 20px;
+    text-align: center;
+}
+
+.score-divider {
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+.match-venue {
+    font-size: 0.7rem;
+    color: #999;
+    text-align: center;
+}
+
+/* ---- Category Header ---- */
+.category-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2rem 0 0.5rem;
+    padding: 0.6rem 1.2rem;
+    background: linear-gradient(135deg, var(--primary-navy), #1a3a5c);
+    color: white;
+    border-radius: 8px;
+}
+.category-header h2 {
+    font-family: var(--font-banner);
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+.sport-icon { font-size: 1.4rem; }
+
+/* ---- Day Section Show/Hide ---- */
+.day-section { display: none; }
+.day-section.active { display: block; }
+
+/* ---- Loading & Error States ---- */
+.loading {
+    text-align: center;
+    padding: 3rem 1rem;
+    font-family: var(--font-body);
+    color: #888;
+    font-size: 0.95rem;
+}
+.loading.error { color: #c5292c; }
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+    .groups-grid { grid-template-columns: 1fr; }
+    .matches-grid { grid-template-columns: 1fr; }
+    .bracket-container { gap: 0.8rem; }
+    .bracket-match { min-width: 140px; }
+}

@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harrow Games 2025-26 | Harrow LiDe School Nanning</title>
+    <link rel="stylesheet" href="styles/main.css?v=20260319e">
+    <link rel="stylesheet" href="styles/harrow-games.css?v=20260605f">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <button class="language-toggle" id="language-toggle" onclick="window.location.href='language-selection.html'">
+        <span class="flag-emoji">&#x1F1E8;&#x1F1F3;</span><span class="flag-separator">/</span><span class="flag-emoji">&#x1F1EC;&#x1F1E7;</span>
+    </button>
+    <div class="app-container">
+        <header class="sub-header">
+            <div class="sub-header-top">
+                <button class="back-button" onclick="window.location.href='index.html'">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    <span>Back</span>
+                </button>
+                <img src="images/harrow-logo-small-white.png" alt="Harrow Logo" class="sub-header-logo">
+            </div>
+            <h1 class="page-title">Harrow Games 2025-26</h1>
+            <p class="page-subtitle">Live Standings &amp; Match Tracker</p>
+        </header>
+
+        <!-- Day Tabs -->
+        <div class="games-tabs">
+            <button class="games-tab active" data-day="day2">Day 2 &middot; June 5</button>
+            <button class="games-tab" data-day="day3">Day 3 &middot; June 6</button>
+        </div>
+
+        <main class="games-content">
+            <!-- DAY 2 -->
+            <div id="day2-section" class="day-section active">
+                <!-- U12 Football -->
+                <div class="category-header">
+                    <h2>U12 Football</h2>
+                    <span class="sport-icon">⚽</span>
+                </div>
+                <div class="gender-tabs" data-category="day2-u12">
+                    <button class="gender-tab active" data-gender="boys">Boys</button>
+                    <button class="gender-tab" data-gender="girls">Girls</button>
+                </div>
+                <div id="day2-u12-content"></div>
+
+                <!-- U14 Basketball -->
+                <div class="category-header">
+                    <h2>U14 Basketball</h2>
+                    <span class="sport-icon">🏀</span>
+                </div>
+                <div class="gender-tabs" data-category="day2-u14">
+                    <button class="gender-tab active" data-gender="boys">Boys</button>
+                    <button class="gender-tab" data-gender="girls">Girls</button>
+                </div>
+                <div id="day2-u14-content"></div>
+            </div>
+
+            <!-- DAY 3 -->
+            <div id="day3-section" class="day-section">
+                <!-- U12 Basketball -->
+                <div class="category-header">
+                    <h2>U12 Basketball</h2>
+                    <span class="sport-icon">🏀</span>
+                </div>
+                <div class="gender-tabs" data-category="day3-u12">
+                    <button class="gender-tab active" data-gender="boys">Boys</button>
+                    <button class="gender-tab" data-gender="girls">Girls</button>
+                </div>
+                <div id="day3-u12-content"></div>
+
+                <!-- U14 Football -->
+                <div class="category-header">
+                    <h2>U14 Football</h2>
+                    <span class="sport-icon">⚽</span>
+                </div>
+                <div class="gender-tabs" data-category="day3-u14">
+                    <button class="gender-tab active" data-gender="boys">Boys</button>
+                    <button class="gender-tab" data-gender="girls">Girls</button>
+                </div>
+                <div id="day3-u14-content"></div>
+            </div>
+
+            <div id="update-time" style="text-align:center; padding:1.5rem; color:#888; font-size:0.85rem;">Loading...</div>
+        </main>
+
+        <footer class="main-footer">
+            <p class="footer-motto">Educational Excellence for Life and Leadership</p>
+            <p class="footer-department">Enrichment Department</p>
+            <p class="footer-copyright">&copy; 2026 Harrow LiDe School Nanning</p>
+        </footer>
+    </div>
+
+    <script>
+    (function() {
+        const DATA_URL = 'data/harrow-games-data.json';
+        let allData = {};
+        let currentDay = 'day2';
+        let currentGender = {
+            'day2-u12': 'boys',
+            'day2-u14': 'boys',
+            'day3-u12': 'boys',
+            'day3-u14': 'boys'
+        };
+
+        // ---- Language ----
+        const lang = sessionStorage.getItem('selectedLanguage') || 'en';
+
+        const T = {
+            // Group stage
+            groupStage:        { en: 'Group Stage',          zh: '小组赛' },
+            roundRobin:        { en: 'Round Robin',           zh: '循环赛' },
+            group:             { en: 'GROUP',                 zh: '小组' },
+            team:              { en: 'Team',                  zh: '队伍' },
+            fullSchedule:      { en: 'Full Schedule',         zh: '完整赛程' },
+            knockoutStage:     { en: 'Knockout Stage',        zh: '淘汰赛' },
+            // Bracket tabs
+            cup:               { en: 'Cup',                   zh: '将杯' },
+            plate:             { en: 'Plate',                 zh: '奖盘' },
+            // Bracket rounds
+            quarterFinals:     { en: 'Quarter Finals',        zh: '四分之一决赛' },
+            QF1:               { en: 'QF1',                   zh: '四分之一决赛 1' },
+            QF2:               { en: 'QF2',                   zh: '四分之一决赛 2' },
+            QF3:               { en: 'QF3',                   zh: '四分之一决赛 3' },
+            QF4:               { en: 'QF4',                   zh: '四分之一决赛 4' },
+            semiFinals:        { en: 'Semi Finals',           zh: '半决赛' },
+            SF1:               { en: 'SF1',                   zh: '半决赛 1' },
+            SF2:               { en: 'SF2',                   zh: '半决赛 2' },
+            finals:            { en: 'Finals',                zh: '决赛' },
+            plateSemiFinals:   { en: 'Plate Semi Finals',     zh: '奖盘半决赛' },
+            plateFinals:       { en: 'Plate Finals',          zh: '奖盘决赛' },
+            // Round labels
+            boysRound:         { en: 'Boys Round',            zh: '男子第' },
+            girlsRound:        { en: 'Girls Round',           zh: '女子第' },
+            roundSuffix:       { en: '',                      zh: '轮' },
+            // Match labels
+            final:             { en: 'Final',                 zh: '决赛' },
+            thirdPlace:        { en: '3rd Place',             zh: '季军赛' },
+            plateFinal:        { en: 'Plate Final',           zh: '奖盘决赛' },
+            plateThird:        { en: 'Plate 3rd',             zh: '奖盘季军' },
+            // Placeholders
+            winner:            { en: 'Winner',                zh: '胜者' },
+            loser:             { en: 'Loser',                 zh: '负者' },
+            rank:              { en: 'Rank',                  zh: '排名' },
+            // Misc
+            noData:            { en: 'No data',               zh: '暂无数据' },
+            noMatchData:       { en: 'No match data available', zh: '暂无比赛数据' },
+            loading:           { en: 'Loading...',            zh: '加载中...' },
+            dataFailed:        { en: 'Data loading failed. Please refresh.', zh: '数据加载失败，请刷新。' },
+            updated:           { en: 'Updated',               zh: '更新时间' },
+            back:              { en: 'Back',                  zh: '返回' },
+            // Gender tabs
+            boys:              { en: 'Boys',                  zh: '男子' },
+            girls:             { en: 'Girls',                 zh: '女子' },
+            // Team names
+            teams: {
+                'Appi':           { en: 'Appi',                zh: '安比' },
+                'Bangkok':        { en: 'Bangkok',             zh: '曼谷' },
+                'Bangkok Lions':  { en: 'Bangkok Lions',       zh: '曼谷雄狮' },
+                'Beijing':        { en: 'Beijing',             zh: '北京' },
+                'Haikou':         { en: 'Haikou',              zh: '海口' },
+                'Hengqin':        { en: 'Hengqin',             zh: '横琴' },
+                'Hong Kong':      { en: 'Hong Kong',           zh: '香港' },
+                'London':         { en: 'London',              zh: '伦敦' },
+                'London B':       { en: 'London B',            zh: '伦敦B队' },
+                'Nanning':        { en: 'Nanning',             zh: '南宁' },
+                'Shanghai':       { en: 'Shanghai',            zh: '上海' },
+                'Shenzhen':       { en: 'Shenzhen',            zh: '深圳' },
+            },
+        };
+
+        function _(key) {
+            const entry = T[key];
+            if (!entry) return key;
+            return entry[lang] || entry['en'];
+        }
+
+        function tn(name) {
+            const entry = T.teams[name];
+            if (!entry) return name;
+            return entry[lang] || entry['en'];
+        }
+
+        // Translate round labels like "Boys Round 1", "Quarter Finals 1 (A1vB4)", etc.
+        function translateRound(round) {
+            if (!round) return '';
+            if (lang === 'zh') {
+                // Boys Round N -> 男子第N轮, Girls Round N -> 女子第N轮
+                round = round.replace(/^Boys Round (\d+)/, _('boysRound') + '$1' + _('roundSuffix'));
+                round = round.replace(/^Boys Round$/, _('boysRound') + '1' + _('roundSuffix'));
+                round = round.replace(/^Girls Round (\d+)/, _('girlsRound') + '$1' + _('roundSuffix'));
+                // Quarter Finals N (A1vB4) -> 四分之一决赛 N (A1vB4)
+                round = round.replace(/Quarter Finals (\d)/, _('quarterFinals') + ' $1');
+                // Semi Finals -> 半决赛
+                round = round.replace(/Semi Finals/, _('semiFinals'));
+                // Plate Semi Finals -> 奖盘半决赛
+                round = round.replace(/Plate Semi Finals/, _('plateSemiFinals'));
+                // Plate Finals -> 奖盘决赛
+                round = round.replace(/Plate Finals/, _('plateFinals'));
+                // Final(s) -> 决赛
+                round = round.replace(/Finals?/, _('finals'));
+                // 3rd Place -> 季军赛
+                round = round.replace(/3rd Place/, _('thirdPlace'));
+            }
+            return round;
+        }
+
+        // Convert Bangkok time (GMT+7) to Beijing time (GMT+8), +1 hour
+        function toBeijingTime(ko) {
+            if (!ko) return '';
+            const m = ko.match(/^(\d{2}):(\d{2})$/);
+            if (!m) return ko;
+            let h = parseInt(m[1], 10);
+            const min = m[2];
+            h = (h + 1) % 24;
+            const hh = String(h).padStart(2, '0');
+            return hh + ':' + min + ' ' + (lang === 'zh' ? '北京时间' : 'CST');
+        }
+
+        // ---- Init ----
+        document.addEventListener('DOMContentLoaded', () => {
+            applyLanguageToStatic();
+            loadData();
+            setupTabs();
+        });
+
+        function applyLanguageToStatic() {
+            // Header
+            const backBtn = document.querySelector('.back-button span');
+            if (backBtn) backBtn.textContent = _('back');
+
+            const subtitle = document.querySelector('.page-subtitle');
+            if (subtitle) subtitle.textContent = lang === 'zh' ? '实时积分 & 比赛追踪' : 'Live Standings & Match Tracker';
+
+            // Footer
+            const dept = document.querySelector('.footer-department');
+            if (dept) dept.textContent = lang === 'zh' ? '拓展课程部' : 'Enrichment Department';
+
+            // Gender tab buttons
+            document.querySelectorAll('.gender-tab').forEach(tab => {
+                const g = tab.dataset.gender;
+                if (g === 'boys') tab.textContent = _('boys');
+                if (g === 'girls') tab.textContent = _('girls');
+            });
+        }
+
+        // ---- Tabs ----
+        function setupTabs() {
+            // Day tabs
+            document.querySelectorAll('.games-tab').forEach(tab => {
+                tab.addEventListener('click', () => {
+                    document.querySelectorAll('.games-tab').forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    currentDay = tab.dataset.day;
+                    document.querySelectorAll('.day-section').forEach(s => s.classList.remove('active'));
+                    document.getElementById(currentDay + '-section').classList.add('active');
+                    renderAll();
+                });
+            });
+            // Gender tabs (per category)
+            document.querySelectorAll('.gender-tabs').forEach(container => {
+                container.querySelectorAll('.gender-tab').forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        container.querySelectorAll('.gender-tab').forEach(t => t.classList.remove('active'));
+                        tab.classList.add('active');
+                        const cat = container.dataset.category;
+                        currentGender[cat] = tab.dataset.gender;
+                        renderAll();
+                    });
+                });
+            });
+            // Bracket tabs (delegated)
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('bracket-tab')) {
+                    const parent = e.target.closest('.knockout-stage');
+                    if (!parent) return;
+                    parent.querySelectorAll('.bracket-tab').forEach(t => t.classList.remove('active'));
+                    e.target.classList.add('active');
+                    parent.querySelectorAll('.bracket-container').forEach(c => c.style.display = 'none');
+                    const target = parent.querySelector('.' + e.target.dataset.bracket + '-bracket');
+                    if (target) target.style.display = 'flex';
+                }
+            });
+        }
+
+        // ---- Data ----
+        async function loadData() {
+            try {
+                const resp = await fetch(DATA_URL + '?t=' + Date.now());
+                allData = await resp.json();
+                renderAll();
+                const timeStr = new Date().toLocaleString(lang === 'zh' ? 'zh-CN' : 'en-US', { timeZone: 'Asia/Shanghai' });
+                document.getElementById('update-time').textContent = _('updated') + ': ' + timeStr;
+            } catch (e) {
+                document.getElementById('update-time').textContent = _('dataFailed');
+                console.error('Failed to load data:', e);
+            }
+        }
+
+        // ---- Render ----
+        function renderAll() {
+            if (!allData || Object.keys(allData).length === 0) return;
+            if (currentDay === 'day2') {
+                renderCategory('day2-u12-content', 'day2_u12', currentGender['day2-u12']);
+                renderCategory('day2-u14-content', 'day2_u14', currentGender['day2-u14']);
+            } else {
+                renderCategory('day3-u12-content', 'day3_u12', currentGender['day3-u12']);
+                renderCategory('day3-u14-content', 'day3_u14', currentGender['day3-u14']);
+            }
+        }
+
+        function renderCategory(containerId, key, gender) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            const data = allData[key];
+            if (!data) {
+                container.innerHTML = '<div class="loading">' + _('noData') + '</div>';
+                return;
+            }
+
+            const matches = data.matches.filter(m => {
+                const mg = (m.gender || '').toLowerCase();
+                if (mg === gender.toLowerCase()) return true;
+                // QF/KO matches may have 'unknown' gender — include them for boys bracket
+                if ((m.type === 'quarter_final' || m.type === 'semi_final' || m.type === 'final') && gender === 'boys') return true;
+                return false;
+            });
+
+            if (matches.length === 0) {
+                container.innerHTML = '<div class="loading">' + _('noMatchData') + '</div>';
+                return;
+            }
+
+            const prefix = gender === 'boys' ? 'Boys-' : 'Girls-';
+            const groupKeys = Object.keys(data.groups || {}).filter(k => k.startsWith(prefix));
+            const isGirlsSingle = groupKeys.length === 1 && groupKeys[0].includes('Single');
+
+            let html = '';
+
+            if (gender === 'boys') {
+                html += renderGroupStage(matches, groupKeys, prefix);
+                html += renderKnockoutBracket(matches, groupKeys, prefix);
+            } else if (isGirlsSingle) {
+                html += renderSingleGroup(matches, groupKeys[0]);
+            } else {
+                html += renderGroupStage(matches, groupKeys, prefix);
+            }
+
+            html += '<h3 class="section-title">' + _('fullSchedule') + '</h3>';
+            html += renderMatches(matches);
+
+            container.innerHTML = html;
+        }
+
+        // ---- Group Stage ----
+        function renderGroupStage(matches, groupKeys, prefix) {
+            if (groupKeys.length === 0) return '';
+            let html = '<div class="group-stage">';
+            html += '<h3 class="section-title">' + _('groupStage') + '</h3>';
+            html += '<div class="groups-grid">';
+
+            groupKeys.forEach(gk => {
+                const label = gk.replace(prefix, '');
+                const groupMatches = matches.filter(m => m.group === gk);
+                const standings = calculateStandings(groupMatches);
+                const headerClass = gk.includes('Girls') ? 'group-girls' :
+                                    gk.includes('A') ? 'group-a' : 'group-b';
+                const title = gk.includes('Single') ? _('group') : _('group') + ' ' + label;
+                html += renderStandingsTable(title, headerClass, standings);
+            });
+
+            html += '</div></div>';
+            return html;
+        }
+
+        function renderSingleGroup(matches, groupKey) {
+            const standings = calculateStandings(matches);
+            let html = '<div class="group-stage">';
+            html += '<h3 class="section-title">' + _('roundRobin') + '</h3>';
+            html += '<div class="groups-grid">';
+            html += renderStandingsTable(_('group'), 'group-girls', standings);
+            html += '</div></div>';
+            return html;
+        }
+
+        function renderStandingsTable(title, headerClass, standings) {
+            let html = '<div class="group-card">';
+            html += '<div class="group-card-header ' + headerClass + '">' + title + '</div>';
+            html += '<div class="group-card-body"><div class="standings-table">';
+            html += '<div class="standings-header">';
+            html += '<span class="col-rank">#</span><span class="col-team">' + _('team') + '</span>';
+            html += '<span class="col-stat">' + (lang === 'zh' ? '场' : 'P') + '</span>';
+            html += '<span class="col-stat">' + (lang === 'zh' ? '胜' : 'W') + '</span>';
+            html += '<span class="col-stat">' + (lang === 'zh' ? '平' : 'D') + '</span>';
+            html += '<span class="col-stat">' + (lang === 'zh' ? '负' : 'L') + '</span>';
+            html += '<span class="col-stat">' + (lang === 'zh' ? '进' : 'GF') + '</span>';
+            html += '<span class="col-stat">' + (lang === 'zh' ? '失' : 'GA') + '</span>';
+            html += '<span class="col-stat">' + (lang === 'zh' ? '净' : 'GD') + '</span>';
+            html += '<span class="col-pts">' + (lang === 'zh' ? '分' : 'PTS') + '</span>';
+            html += '</div>';
+
+            standings.forEach((team, idx) => {
+                const rc = idx === 0 ? 'gold' : idx === 1 ? 'silver' : idx === 2 ? 'bronze' : 'normal';
+                const nn = team.team === 'Nanning';
+                const gdSign = team.gd > 0 ? '+' : '';
+                html += '<div class="standings-row' + (nn ? ' nanning-row' : '') + '">';
+                html += '<span class="col-rank"><span class="rank-badge ' + rc + '">' + (idx + 1) + '</span></span>';
+                html += '<span class="col-team' + (nn ? ' nanning' : '') + '">' + (nn ? '&#x1F525; ' : '') + tn(team.team) + '</span>';
+                html += '<span class="col-stat">' + team.p + '</span><span class="col-stat">' + team.w + '</span>';
+                html += '<span class="col-stat">' + team.d + '</span><span class="col-stat">' + team.l + '</span>';
+                html += '<span class="col-stat">' + team.gf + '</span><span class="col-stat">' + team.ga + '</span>';
+                html += '<span class="col-stat gd-col">' + gdSign + team.gd + '</span>';
+                html += '<span class="col-pts' + (nn ? ' nanning' : '') + '">' + team.pts + '</span>';
+                html += '</div>';
+            });
+
+            html += '</div></div></div>';
+            return html;
+        }
+
+        // ---- Standings Calc ----
+        function calculateStandings(matches) {
+            const s = {};
+            matches.forEach(m => {
+                if (!s[m.home]) s[m.home] = { team: m.home, p:0,w:0,d:0,l:0,gf:0,ga:0,pts:0 };
+                if (!s[m.away]) s[m.away] = { team: m.away, p:0,w:0,d:0,l:0,gf:0,ga:0,pts:0 };
+                if (m.home_score !== null && m.away_score !== null) {
+                    s[m.home].p++; s[m.away].p++;
+                    s[m.home].gf += m.home_score; s[m.home].ga += m.away_score;
+                    s[m.away].gf += m.away_score; s[m.away].ga += m.home_score;
+                    if (m.home_score > m.away_score) { s[m.home].w++; s[m.home].pts+=3; s[m.away].l++; }
+                    else if (m.home_score < m.away_score) { s[m.away].w++; s[m.away].pts+=3; s[m.home].l++; }
+                    else { s[m.home].d++; s[m.away].d++; s[m.home].pts+=1; s[m.away].pts+=1; }
+                }
+            });
+            return Object.values(s).sort((a,b) => {
+                if (b.pts !== a.pts) return b.pts - a.pts;
+                if (b.w !== a.w) return b.w - a.w;
+                const gdA = a.gf - a.ga, gdB = b.gf - b.ga;
+                if (gdB !== gdA) return gdB - gdA;
+                return b.gf - a.gf;
+            }).map(t => ({ ...t, gd: t.gf - t.ga }));
+        }
+
+        // ---- Knockout ----
+        function renderKnockoutBracket(matches, groupKeys, prefix) {
+            const groupAKey = groupKeys.find(k => k.includes('A'));
+            const groupBKey = groupKeys.find(k => k.includes('B'));
+            if (!groupAKey || !groupBKey) return '';
+
+            const mA = matches.filter(m => m.group === groupAKey);
+            const mB = matches.filter(m => m.group === groupBKey);
+            if (mA.length === 0 || mB.length === 0) return '';
+
+            const sA = calculateStandings(mA);
+            const sB = calculateStandings(mB);
+            if (sA.length === 0 || sB.length === 0) return '';
+
+            const ageKey = Object.keys(allData).find(k =>
+                allData[k].groups && Object.keys(allData[k].groups).includes(groupAKey)
+            );
+            const is14 = ageKey && ageKey.includes('u14');
+
+            let html = '<div class="knockout-stage">';
+            html += '<h3 class="section-title">' + _('knockoutStage') + '</h3>';
+
+            html += '<div class="bracket-tabs">';
+            html += '<button class="bracket-tab active" data-bracket="cup">' + _('cup') + '</button>';
+            html += '<button class="bracket-tab" data-bracket="plate">' + _('plate') + '</button>';
+            html += '</div>';
+
+            const bracketId = 'bracket-' + (ageKey || 'unknown');
+            html += '<div class="bracket-container cup-bracket" id="' + bracketId + '-cup">';
+            html += renderCupBracket(sA, sB, is14, mA, mB);
+            html += '</div>';
+            html += '<div class="bracket-container plate-bracket" id="' + bracketId + '-plate" style="display:none;">';
+            html += renderPlateBracket(sA, sB, is14, mA, mB);
+            html += '</div>';
+            html += '</div>';
+            return html;
+        }
+
+        function isGroupComplete(matches) {
+            return matches.length > 0 && matches.every(m => m.home_score !== null && m.away_score !== null);
+        }
+
+        function renderCupBracket(sA, sB, isU14, mA, mB) {
+            const done = isGroupComplete(mA) && isGroupComplete(mB);
+            let html = '<div class="bracket-round"><div class="bracket-round-title">' + _('quarterFinals') + '</div>';
+            // U12 and U14 both use: A1vB4, A2vB3, B1vA4, B2vA3
+            html += renderMatch(_('QF1'), done ? getTeam(sA,0) : 'A1', done ? getTeam(sB,3) : 'B4');
+            html += renderMatch(_('QF2'), done ? getTeam(sA,1) : 'A2', done ? getTeam(sB,2) : 'B3');
+            html += renderMatch(_('QF3'), done ? getTeam(sB,0) : 'B1', done ? getTeam(sA,3) : 'A4');
+            html += renderMatch(_('QF4'), done ? getTeam(sB,1) : 'B2', done ? getTeam(sA,2) : 'A3');
+            html += '</div>';
+            html += '<div class="bracket-round"><div class="bracket-round-title">' + _('semiFinals') + '</div>';
+            html += renderMatch(_('SF1'), _('winner') + ' QF1', _('winner') + ' QF4');
+            html += renderMatch(_('SF2'), _('winner') + ' QF3', _('winner') + ' QF2');
+            html += '</div>';
+            html += '<div class="bracket-round"><div class="bracket-round-title">' + _('finals') + '</div>';
+            html += renderMatch(_('final'), _('winner') + ' SF1', _('winner') + ' SF2', 'final');
+            html += renderMatch(_('thirdPlace'), _('loser') + ' SF1', _('loser') + ' SF2', 'third');
+            html += '</div>';
+            return html;
+        }
+
+        function renderPlateBracket(sA, sB, isU14, mA, mB) {
+            const done = isGroupComplete(mA) && isGroupComplete(mB);
+            let html = '<div class="bracket-round"><div class="bracket-round-title">' + _('plateSemiFinals') + '</div>';
+            if (isU14) {
+                html += renderMatch('Plate SF1', _('loser') + ' QF4', _('loser') + ' QF1', 'plate');
+                html += renderMatch('Plate SF2', _('loser') + ' QF3', _('loser') + ' QF2', 'plate');
+            } else {
+                html += renderMatch('Plate SF1', done ? getTeam(sA,2) : 'A3', done ? getTeam(sB,2) : 'B3', 'plate');
+                html += renderMatch('Plate SF2', done ? getTeam(sA,3) : 'A4', done ? getTeam(sB,3) : 'B4', 'plate');
+            }
+            html += '</div>';
+            html += '<div class="bracket-round"><div class="bracket-round-title">' + _('plateFinals') + '</div>';
+            html += renderMatch(_('plateFinal'), _('winner') + ' Plate SF1', _('winner') + ' Plate SF2', 'plate');
+            html += renderMatch(_('plateThird'), _('loser') + ' Plate SF1', _('loser') + ' Plate SF2', 'plate');
+            html += '</div>';
+            return html;
+        }
+
+        function renderMatch(round, home, away, type) {
+            type = type || 'cup';
+            const nnH = home === 'Nanning', nnA = away === 'Nanning';
+            return '<div class="bracket-match ' + type + '">' +
+                '<div class="bracket-match-header">' + round + '</div>' +
+                '<div class="bracket-team-row">' +
+                    '<span class="bracket-team-name' + (nnH ? ' nanning' : '') + '">' + (nnH ? '&#x1F525; ' : '') + tn(home) + '</span>' +
+                    '<span class="bracket-score">-</span>' +
+                '</div>' +
+                '<div class="bracket-team-row">' +
+                    '<span class="bracket-team-name' + (nnA ? ' nanning' : '') + '">' + (nnA ? '&#x1F525; ' : '') + tn(away) + '</span>' +
+                    '<span class="bracket-score">-</span>' +
+                '</div>' +
+            '</div>';
+        }
+
+        function getTeam(standings, idx) {
+            return idx < standings.length ? standings[idx].team : _('rank') + ' ' + (idx + 1);
+        }
+
+        // ---- Match Cards ----
+        function renderMatches(matches) {
+            if (matches.length === 0) return '<div class="loading">' + _('noMatchData') + '</div>';
+            let html = '<div class="matches-grid">';
+            matches.forEach(m => {
+                const nnH = m.home === 'Nanning', nnA = m.away === 'Nanning';
+                const hasScore = m.home_score !== null && m.away_score !== null;
+                const cardClass = m.type === 'group' ? '' : m.type === 'final' ? 'final' : 'knockout';
+                html += '<div class="match-card ' + cardClass + '">' +
+                    '<div class="match-header">' +
+                        '<span class="match-round">' + translateRound(m.round) + '</span>' +
+                        '<span class="match-time">' + toBeijingTime(m.ko) + '</span>' +
+                    '</div>' +
+                    '<div class="match-teams">' +
+                        '<div class="team"><div class="team-name' + (nnH ? ' nanning' : '') + '">' + (nnH ? '&#x1F525; ' : '') + tn(m.home) + '</div></div>' +
+                        '<div class="score">' + (hasScore ? m.home_score : '-') + '</div>' +
+                        '<div class="score-divider">:</div>' +
+                        '<div class="score">' + (hasScore ? m.away_score : '-') + '</div>' +
+                        '<div class="team"><div class="team-name' + (nnA ? ' nanning' : '') + '">' + (nnA ? '&#x1F525; ' : '') + tn(m.away) + '</div></div>' +
+                    '</div>' +
+                    '<div class="match-venue">' + (m.venue || '') + '</div>' +
+                '</div>';
+            });
+            html += '</div>';
+            return html;
+        }
+
+        // Auto-refresh every 30 minutes
+        setInterval(loadData, 30 * 60 * 1000);
+    })();
+    </script>
+</body>
+</html>

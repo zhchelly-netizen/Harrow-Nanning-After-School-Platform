@@ -526,6 +526,12 @@ html[lang="en"] .harrow-hat {
     --card-delay: 0.1s;
 }
 
+.games-card {
+    --card-color-1: #152242;
+    --card-color-2: #3b5998;
+    --card-delay: 0.2s;
+}
+
 .nav-card:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-xl);
@@ -656,6 +662,23 @@ html[lang="en"] .harrow-hat {
 }
 
 .scholarship-card .feature-tag:nth-child(3) {
+    background: var(--gradient-success);
+    color: var(--harrow-navy);
+    box-shadow: 0 2px 8px rgba(67, 233, 123, 0.3);
+}
+
+/* Harrow Games 卡片标签 */
+.games-card .feature-tag:nth-child(1) {
+    background: var(--gradient-gold);
+    color: var(--harrow-navy);
+    box-shadow: var(--shadow-gold);
+}
+.games-card .feature-tag:nth-child(2) {
+    background: var(--gradient-leadership);
+    color: var(--white);
+    box-shadow: var(--shadow-leadership);
+}
+.games-card .feature-tag:nth-child(3) {
     background: var(--gradient-success);
     color: var(--harrow-navy);
     box-shadow: 0 2px 8px rgba(67, 233, 123, 0.3);
