@@ -152,30 +152,28 @@ def parse_matches(csv_text, groups, meta):
                 elif "Girls" in round_name:
                     gender = "Girls"
 
-            # For knockout matches without gender in round name, use row parity
-            # Even rows = Boys, Odd rows = Girls (as per spreadsheet layout)
-            if gender == "unknown" and match_type != "group":
-                if row_num % 2 == 0:
+            # Determine gender: round_name > row parity > team lookup
+            if gender == "unknown":
+                # Row parity: even = Boys, odd = Girls (row_num is 1-indexed from row 7)
+                # In the CSV, rows alternate: Girls odd rows, Boys even rows
+                actual_row = ri  # 0-indexed from data start (row 6 in CSV = ri=0)
+                if actual_row % 2 == 1:  # ri=1,3,5... = odd CSV data rows = Boys
                     gender = "Boys"
-                else:
+                else:  # ri=0,2,4... = even CSV data rows = Girls
                     gender = "Girls"
 
-            # Determine group for this match using gender-specific lookup
-            # For matches with unknown gender (e.g. QF/SF), try both lookups
-            if gender == "unknown":
-                # Try to resolve gender by checking which lookup both teams belong to
+            # Verify with team lookup if possible (override parity only if both teams unambiguously belong to one gender)
+            if gender == "unknown" or True:  # Always verify
                 home_in_boys = home in team_to_group_boys
                 away_in_boys = away in team_to_group_boys
                 home_in_girls = home in team_to_group_girls
                 away_in_girls = away in team_to_group_girls
-                if home_in_boys and away_in_boys and not (home_in_girls and away_in_girls):
-                    gender = "Boys"
-                elif home_in_girls and away_in_girls and not (home_in_boys and away_in_boys):
+                # If both teams are ONLY in one gender's lookup, use that
+                if home_in_girls and away_in_girls and not (home_in_boys and away_in_boys):
                     gender = "Girls"
-                elif home_in_boys or away_in_boys:
+                elif home_in_boys and away_in_boys and not (home_in_girls and away_in_girls):
                     gender = "Boys"
-                elif home_in_girls or away_in_girls:
-                    gender = "Girls"
+                # If ambiguous, keep the parity-based result
             lookup = team_to_group_boys if gender == "Boys" else team_to_group_girls
             match_group = lookup.get(home) or lookup.get(away)
 

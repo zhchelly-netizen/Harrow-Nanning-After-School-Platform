@@ -480,9 +480,9 @@
         "ko": "14:00",
         "home": "Shenzhen",
         "away": "Haikou",
-        "gender": "Boys",
+        "gender": "Girls",
         "type": "group",
-        "group": "Boys-A",
+        "group": "Girls-Single",
         "home_score": 1,
         "away_score": 2,
         "venue": "Pitch/ Court 3"
@@ -564,9 +564,9 @@
         "ko": "15:00",
         "home": "Bangkok",
         "away": "Hong Kong",
-        "gender": "Boys",
+        "gender": "Girls",
         "type": "group",
-        "group": "Boys-B",
+        "group": "Girls-Single",
         "home_score": 5,
         "away_score": 0,
         "venue": "Pitch/ Court 3"
