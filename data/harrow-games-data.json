@@ -863,6 +863,42 @@
         "venue": "Pitch/ Court 1"
       },
       {
+        "round": "Quarter Finals 2 (A2vB3)",
+        "ko": "13:00",
+        "home": "Shenzhen",
+        "away": "Beijing",
+        "gender": "unknown",
+        "type": "quarter_final",
+        "group": "Girls-A",
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 2"
+      },
+      {
+        "round": "Quarter Finals 3 (B1vA4)",
+        "ko": "13:00",
+        "home": "Bangkok Lions",
+        "away": "Appi",
+        "gender": "unknown",
+        "type": "quarter_final",
+        "group": "Girls-B",
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 3"
+      },
+      {
+        "round": "Quarter Finals 1 (A1vB4)",
+        "ko": "13:00",
+        "home": "Bangkok",
+        "away": "Shanghai",
+        "gender": "unknown",
+        "type": "quarter_final",
+        "group": "Girls-A",
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 4"
+      },
+      {
         "round": "Boys Round 5",
         "ko": "13:40",
         "home": "Hong Kong",
