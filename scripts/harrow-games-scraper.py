@@ -101,7 +101,8 @@ def parse_matches(csv_text, groups, meta):
                 team_to_group_girls[team] = gname
 
     matches = []
-    for row in rows[6:]:
+    for ri, row in enumerate(rows[6:]):
+        row_num = ri + 7  # 1-indexed row number in original spreadsheet (data starts at row 7)
         for start in [0, 7, 14, 21, 28, 35]:
             if len(row) <= start + 6:
                 continue
@@ -123,26 +124,37 @@ def parse_matches(csv_text, groups, meta):
             if is_placeholder:
                 continue
 
-            # Determine gender from round name
-            gender = "unknown"
-            if round_name:
-                if "Boys" in round_name:
-                    gender = "Boys"
-                elif "Girls" in round_name:
-                    gender = "Girls"
-
-            # Determine match type
+            # Determine match type FIRST
             match_type = "group"
             if "Quarter" in round_name:
                 match_type = "quarter_final"
             elif "Semi" in round_name:
                 match_type = "semi_final"
+            elif "9th" in round_name:
+                match_type = "9th_place"
             elif "Final" in round_name and "Third" not in round_name and "Plate" not in round_name:
                 match_type = "final"
             elif "Third" in round_name:
                 match_type = "third_place"
             elif "Plate" in round_name:
                 match_type = "plate"
+
+            # Determine gender from round name first
+            gender = "unknown"
+
+            if round_name:
+                if "Boys" in round_name:
+                    gender = "Boys"
+                elif "Girls" in round_name:
+                    gender = "Girls"
+
+            # For knockout matches without gender in round name, use row parity
+            # Even rows = Boys, Odd rows = Girls (as per spreadsheet layout)
+            if gender == "unknown" and match_type != "group":
+                if row_num % 2 == 0:
+                    gender = "Boys"
+                else:
+                    gender = "Girls"
 
             # Determine group for this match using gender-specific lookup
             # For matches with unknown gender (e.g. QF/SF), try both lookups

@@ -515,36 +515,69 @@
                 return allMatches.find(m => m.round && m.round.includes(keyword));
             }
 
-            // U14 Girls: NO quarter-finals, straight to semis (A1vB2, B1vA2)
-            if (isU14 && isGirls) {
+            // Helper: find matches by type and gender (allMatches already filtered by gender in renderCategory)
+            function findMatchByRound(keyword) {
+                return allMatches.find(m => m.round && m.round.includes(keyword));
+            }
+            function findMatchByType(type) {
+                return allMatches.filter(m => m.type === type);
+            }
+
+            // U14 Boys: NO quarter-finals, straight to semis (A1vB2, B1vA2)
+            // U14 Girls: has QF, then SF (Winner QF1 vs Winner QF4, Winner QF3 vs Winner QF2)
+            // U12: has QF (A1vB4, A2vB3, B1vA4, B2vA3)
+            if (isU14 && !isGirls) {
+                // Boys: direct SF from match data
                 html += '<div class="bracket-round"><div class="bracket-round-title">' + _('semiFinals') + '</div>';
-                html += renderMatch(_('SF1'), tn(getTeam(sA,0)) + suffix, tn(getTeam(sB,1)) + suffix);
-                html += renderMatch(_('SF2'), tn(getTeam(sB,0)) + suffix, tn(getTeam(sA,1)) + suffix);
+                const boysSFs = findMatchByType('semi_final').filter(m => !m.round.includes('Plate'));
+                if (boysSFs.length >= 1) {
+                    html += renderMatch(_('SF1'), tn(boysSFs[0].home) + suffix, tn(boysSFs[0].away) + suffix, '', boysSFs[0]);
+                } else {
+                    html += renderMatch(_('SF1'), tn(getTeam(sA,0)) + suffix, tn(getTeam(sB,1)) + suffix);
+                }
+                if (boysSFs.length >= 2) {
+                    html += renderMatch(_('SF2'), tn(boysSFs[1].home) + suffix, tn(boysSFs[1].away) + suffix, '', boysSFs[1]);
+                } else {
+                    html += renderMatch(_('SF2'), tn(getTeam(sB,0)) + suffix, tn(getTeam(sA,1)) + suffix);
+                }
                 html += '</div>';
             } else {
                 // Quarter-finals: get teams directly from match data
                 html += '<div class="bracket-round"><div class="bracket-round-title">' + _('quarterFinals') + '</div>';
-                const qf1 = findMatch('Quarter Finals 1');
-                const qf2 = findMatch('Quarter Finals 2');
-                const qf3 = findMatch('Quarter Finals 3');
-                const qf4 = findMatch('Quarter Finals 4');
-                html += renderMatch(_('QF1'), tn(qf1 ? qf1.home : getTeam(sA,0)) + suffix, tn(qf1 ? qf1.away : getTeam(sB,3)) + suffix, '', qf1);
-                html += renderMatch(_('QF2'), tn(qf2 ? qf2.home : getTeam(sA,1)) + suffix, tn(qf2 ? qf2.away : getTeam(sB,2)) + suffix, '', qf2);
-                html += renderMatch(_('QF3'), tn(qf3 ? qf3.home : getTeam(sB,0)) + suffix, tn(qf3 ? qf3.away : getTeam(sA,3)) + suffix, '', qf3);
-                html += renderMatch(_('QF4'), tn(qf4 ? qf4.home : getTeam(sB,1)) + suffix, tn(qf4 ? qf4.away : getTeam(sA,2)) + suffix, '', qf4);
+                const qfs = findMatchByType('quarter_final');
+                // Sort QFs by number (QF1, QF2, QF3, QF4)
+                qfs.sort((a, b) => {
+                    const numA = parseInt(a.round.match(/(\d+)/)?.[1] || '0');
+                    const numB = parseInt(b.round.match(/(\d+)/)?.[1] || '0');
+                    return numA - numB;
+                });
+                // QF pairings based on bracket position
+                const qfSlots = [
+                    { fallback_h: () => getTeam(sA,0), fallback_a: () => getTeam(sB,3) },  // QF1: A1vB4
+                    { fallback_h: () => getTeam(sA,1), fallback_a: () => getTeam(sB,2) },  // QF2: A2vB3
+                    { fallback_h: () => getTeam(sB,0), fallback_a: () => getTeam(sA,3) },  // QF3: B1vA4
+                    { fallback_h: () => getTeam(sB,1), fallback_a: () => getTeam(sA,2) },  // QF4: B2vA3
+                ];
+                for (let i = 0; i < 4; i++) {
+                    const qf = qfs[i];
+                    if (qf && qf.home && qf.away) {
+                        html += renderMatch(_(isU14 ? 'QF' + (i+1) : 'QF' + (i+1)), tn(qf.home) + suffix, tn(qf.away) + suffix, '', qf);
+                    } else {
+                        html += renderMatch(_(isU14 ? 'QF' + (i+1) : 'QF' + (i+1)), tn(qfSlots[i].fallback_h()) + suffix, tn(qfSlots[i].fallback_a()) + suffix);
+                    }
+                }
                 html += '</div>';
 
                 // Semi-finals: get teams from match data
                 html += '<div class="bracket-round"><div class="bracket-round-title">' + _('semiFinals') + '</div>';
-                const sf1 = findMatch('Semi Final 1');
-                const sf2 = findMatch('Semi Final 2');
-                if (sf1 && sf1.home && sf1.away) {
-                    html += renderMatch(_('SF1'), tn(sf1.home) + suffix, tn(sf1.away) + suffix, '', sf1);
+                const sfs = findMatchByType('semi_final').filter(m => !m.round.includes('Plate'));
+                if (sfs.length >= 1 && sfs[0].home && sfs[0].away) {
+                    html += renderMatch(_('SF1'), tn(sfs[0].home) + suffix, tn(sfs[0].away) + suffix, '', sfs[0]);
                 } else {
                     html += renderMatch(_('SF1'), _('winner') + ' QF1', _('winner') + ' QF4');
                 }
-                if (sf2 && sf2.home && sf2.away) {
-                    html += renderMatch(_('SF2'), tn(sf2.home) + suffix, tn(sf2.away) + suffix, '', sf2);
+                if (sfs.length >= 2 && sfs[1].home && sfs[1].away) {
+                    html += renderMatch(_('SF2'), tn(sfs[1].home) + suffix, tn(sfs[1].away) + suffix, '', sfs[1]);
                 } else {
                     html += renderMatch(_('SF2'), _('winner') + ' QF3', _('winner') + ' QF2');
                 }
@@ -569,16 +602,15 @@
             }
 
             // Plate Semi-finals: get teams from match data
-            const plateSF1 = findMatch('Plate Semi Final');
-            const plateSFs = allMatches.filter(m => m.round && m.round.includes('Plate Semi Final'));
-            if (plateSFs.length >= 1) {
+            const plateSFs = allMatches.filter(m => m.type === 'semi_final' && m.round && m.round.includes('Plate'));
+            if (plateSFs.length >= 1 && plateSFs[0].home && plateSFs[0].away) {
                 html += renderMatch('Plate SF1', tn(plateSFs[0].home) + suffix, tn(plateSFs[0].away) + suffix, 'plate', plateSFs[0]);
             } else if (isU14) {
                 html += renderMatch('Plate SF1', tn(getTeam(sA,2)) + suffix, tn(getTeam(sB,3)) + suffix, 'plate');
             } else {
                 html += renderMatch('Plate SF1', tn(getTeam(sA,2)) + suffix, tn(getTeam(sB,2)) + suffix, 'plate');
             }
-            if (plateSFs.length >= 2) {
+            if (plateSFs.length >= 2 && plateSFs[1].home && plateSFs[1].away) {
                 html += renderMatch('Plate SF2', tn(plateSFs[1].home) + suffix, tn(plateSFs[1].away) + suffix, 'plate', plateSFs[1]);
             } else if (isU14) {
                 html += renderMatch('Plate SF2', tn(getTeam(sB,2)) + suffix, tn(getTeam(sA,3)) + suffix, 'plate');
