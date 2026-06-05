@@ -483,8 +483,8 @@
         "gender": "Boys",
         "type": "group",
         "group": "Boys-A",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 1,
+        "away_score": 2,
         "venue": "Pitch/ Court 3"
       },
       {
@@ -495,8 +495,8 @@
         "gender": "Boys",
         "type": "final",
         "group": "Boys-A",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 3,
+        "away_score": 0,
         "venue": "Pitch/ Court 1"
       },
       {
@@ -507,8 +507,8 @@
         "gender": "Boys",
         "type": "third_place",
         "group": "Boys-A",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 0,
+        "away_score": 1,
         "venue": "Pitch/ Court 2"
       },
       {
@@ -531,8 +531,8 @@
         "gender": "Boys",
         "type": "third_place",
         "group": "Boys-B",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 0,
+        "away_score": 3,
         "venue": "Pitch/ Court 4"
       },
       {
@@ -571,7 +571,21 @@
         "away_score": null,
         "venue": "Pitch/ Court 3"
       }
-    ]
+    ],
+    "official_ranking": {
+      "Boys-A": [
+        "Beijing",
+        "Shanghai",
+        "Shenzhen",
+        "Hong Kong"
+      ],
+      "Boys-B": [
+        "Haikou",
+        "Hengqin",
+        "Bangkok",
+        "Nanning"
+      ]
+    }
   },
   "day2_u14": {
     "meta": {
@@ -1050,8 +1064,8 @@
         "gender": "Girls",
         "type": "semi_final",
         "group": "Girls-A",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 18,
+        "away_score": 6,
         "venue": "Pitch/ Court 1"
       },
       {
@@ -1062,8 +1076,8 @@
         "gender": "Girls",
         "type": "semi_final",
         "group": "Girls-B",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 20,
+        "away_score": 0,
         "venue": "Pitch/ Court 2"
       },
       {
@@ -1074,8 +1088,8 @@
         "gender": "Girls",
         "type": "semi_final",
         "group": "Girls-A",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 8,
+        "away_score": 6,
         "venue": "Pitch/ Court 3"
       },
       {
@@ -1086,8 +1100,8 @@
         "gender": "Girls",
         "type": "semi_final",
         "group": "Girls-A",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 8,
+        "away_score": 26,
         "venue": "Pitch/ Court 4"
       },
       {
@@ -1139,6 +1153,42 @@
         "venue": "Pitch/ Court 4"
       },
       {
+        "round": "Third PlaceLoser SF1 v Loser SF2",
+        "ko": "15:40",
+        "home": "Beijing",
+        "away": "Haikou",
+        "gender": "Girls",
+        "type": "third_place",
+        "group": "Girls-B",
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 1"
+      },
+      {
+        "round": "Plate FinalWinner Plate SF1 v Winner Plate SF 2",
+        "ko": "15:40",
+        "home": "Hong Kong",
+        "away": "Appi",
+        "gender": "Girls",
+        "type": "plate",
+        "group": "Girls-A",
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 2"
+      },
+      {
+        "round": "Plate Third PlaceLoser Plate SF1 v Loser Plate SF 2",
+        "ko": "15:40",
+        "home": "Shanghai",
+        "away": "Shenzhen",
+        "gender": "Girls",
+        "type": "third_place",
+        "group": "Girls-B",
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 3"
+      },
+      {
         "round": "9th Place Play OffA5 v B5",
         "ko": "15:40",
         "home": "Appi",
@@ -1149,8 +1199,48 @@
         "home_score": null,
         "away_score": null,
         "venue": "Pitch/ Court 4"
+      },
+      {
+        "round": "FinalWinner SF1 v Winner SF2",
+        "ko": "17:00",
+        "home": "Bangkok",
+        "away": "Bangkok Lions",
+        "gender": "Girls",
+        "type": "final",
+        "group": "Girls-A",
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 1"
       }
-    ]
+    ],
+    "official_ranking": {
+      "Girls-B": [
+        "Bangkok Lions",
+        "Haikou",
+        "Beijing",
+        "Shanghai"
+      ],
+      "Girls-A": [
+        "Bangkok",
+        "Shenzhen",
+        "Hong Kong",
+        "Appi"
+      ],
+      "Boys-A": [
+        "Bangkok",
+        "Shanghai",
+        "London",
+        "Nanning",
+        "Appi"
+      ],
+      "Boys-B": [
+        "Hong Kong",
+        "Beijing",
+        "Shenzhen",
+        "Hengqin",
+        "Haikou"
+      ]
+    }
   },
   "day3_u12": {
     "meta": {
@@ -1580,7 +1670,8 @@
         "away_score": null,
         "venue": "Pitch/ Court 3"
       }
-    ]
+    ],
+    "official_ranking": {}
   },
   "day3_u14": {
     "meta": {
@@ -2075,6 +2166,7 @@
         "away_score": null,
         "venue": "Pitch/ Court 5"
       }
-    ]
+    ],
+    "official_ranking": {}
   }
 }
