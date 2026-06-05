@@ -143,6 +143,8 @@
             thirdPlace:        { en: '3rd Place',             zh: '季军赛' },
             plateFinal:        { en: 'Plate Final',           zh: '奖盘决赛' },
             plateThird:        { en: 'Plate 3rd',             zh: '奖盘季军' },
+            p9thPlayoff:       { en: '9th Place Play-off',    zh: '第9名排位赛' },
+            p9thPlace:         { en: '9th Place',             zh: '第9名' },
             // Placeholders
             winner:            { en: 'Winner',                zh: '胜者' },
             loser:             { en: 'Loser',                 zh: '负者' },
@@ -369,7 +371,7 @@
                 const groupMatches = matches.filter(m => m.group === gk);
                 const standings = calculateStandings(groupMatches);
                 const headerClass = gk.includes('Girls') ? 'group-girls' :
-                                    gk.includes('A') ? 'group-a' : 'group-b';
+                                    gk.includes('-A') ? 'group-a' : 'group-b';
                 const title = gk.includes('Single') ? _('group') : _('group') + ' ' + label;
                 html += renderStandingsTable(title, headerClass, standings);
             });
@@ -449,8 +451,8 @@
 
         // ---- Knockout ----
         function renderKnockoutBracket(matches, groupKeys, prefix) {
-            const groupAKey = groupKeys.find(k => k.includes('A'));
-            const groupBKey = groupKeys.find(k => k.includes('B'));
+            const groupAKey = groupKeys.find(k => k.includes('-A'));
+            const groupBKey = groupKeys.find(k => k.includes('-B'));
             if (!groupAKey || !groupBKey) return '';
 
             const mA = matches.filter(m => m.group === groupAKey);
@@ -465,6 +467,9 @@
                 allData[k].groups && Object.keys(allData[k].groups).includes(groupAKey)
             );
             const is14 = ageKey && ageKey.includes('u14');
+            const isGirls = prefix === 'Girls-';
+            const teamsPerGroup = sA.length; // 4 or 5 teams per group
+            const done = isGroupComplete(mA) && isGroupComplete(mB);
 
             let html = '<div class="knockout-stage">';
             html += '<h3 class="section-title">' + _('knockoutStage') + '</h3>';
@@ -476,11 +481,20 @@
 
             const bracketId = 'bracket-' + (ageKey || 'unknown');
             html += '<div class="bracket-container cup-bracket" id="' + bracketId + '-cup">';
-            html += renderCupBracket(sA, sB, is14, mA, mB);
+            html += renderCupBracket(sA, sB, is14, isGirls, teamsPerGroup, mA, mB);
             html += '</div>';
             html += '<div class="bracket-container plate-bracket" id="' + bracketId + '-plate" style="display:none;">';
-            html += renderPlateBracket(sA, sB, is14, mA, mB);
+            html += renderPlateBracket(sA, sB, is14, isGirls, teamsPerGroup, mA, mB);
             html += '</div>';
+
+            // 9th place play-off for 5-team groups (U14 only)
+            if (teamsPerGroup >= 5) {
+                html += '<div class="bracket-round" style="margin-top:20px;">';
+                html += '<div class="bracket-round-title">' + _('p9thPlayoff') + '</div>';
+                html += renderMatch(_('p9thPlace'), done ? getTeam(sA,4) : 'A5', done ? getTeam(sB,4) : 'B5', 'plate');
+                html += '</div>';
+            }
+
             html += '</div>';
             return html;
         }
@@ -489,19 +503,30 @@
             return matches.length > 0 && matches.every(m => m.home_score !== null && m.away_score !== null);
         }
 
-        function renderCupBracket(sA, sB, isU14, mA, mB) {
+        function renderCupBracket(sA, sB, isU14, isGirls, teamsPerGroup, mA, mB) {
             const done = isGroupComplete(mA) && isGroupComplete(mB);
-            let html = '<div class="bracket-round"><div class="bracket-round-title">' + _('quarterFinals') + '</div>';
-            // U12 and U14 both use: A1vB4, A2vB3, B1vA4, B2vA3
-            html += renderMatch(_('QF1'), done ? getTeam(sA,0) : 'A1', done ? getTeam(sB,3) : 'B4');
-            html += renderMatch(_('QF2'), done ? getTeam(sA,1) : 'A2', done ? getTeam(sB,2) : 'B3');
-            html += renderMatch(_('QF3'), done ? getTeam(sB,0) : 'B1', done ? getTeam(sA,3) : 'A4');
-            html += renderMatch(_('QF4'), done ? getTeam(sB,1) : 'B2', done ? getTeam(sA,2) : 'A3');
-            html += '</div>';
-            html += '<div class="bracket-round"><div class="bracket-round-title">' + _('semiFinals') + '</div>';
-            html += renderMatch(_('SF1'), _('winner') + ' QF1', _('winner') + ' QF4');
-            html += renderMatch(_('SF2'), _('winner') + ' QF3', _('winner') + ' QF2');
-            html += '</div>';
+            let html = '';
+
+            // U14 Girls: NO quarter-finals, straight to semis (A1vB2, B1vA2)
+            if (isU14 && isGirls) {
+                html += '<div class="bracket-round"><div class="bracket-round-title">' + _('semiFinals') + '</div>';
+                html += renderMatch(_('SF1'), done ? getTeam(sA,0) : 'A1', done ? getTeam(sB,1) : 'B2');
+                html += renderMatch(_('SF2'), done ? getTeam(sB,0) : 'B1', done ? getTeam(sA,1) : 'A2');
+                html += '</div>';
+            } else {
+                // Boys U12/U14 + Girls U12: Quarter-finals first
+                html += '<div class="bracket-round"><div class="bracket-round-title">' + _('quarterFinals') + '</div>';
+                html += renderMatch(_('QF1'), done ? getTeam(sA,0) : 'A1', done ? getTeam(sB,3) : 'B4');
+                html += renderMatch(_('QF2'), done ? getTeam(sA,1) : 'A2', done ? getTeam(sB,2) : 'B3');
+                html += renderMatch(_('QF3'), done ? getTeam(sB,0) : 'B1', done ? getTeam(sA,3) : 'A4');
+                html += renderMatch(_('QF4'), done ? getTeam(sB,1) : 'B2', done ? getTeam(sA,2) : 'A3');
+                html += '</div>';
+                html += '<div class="bracket-round"><div class="bracket-round-title">' + _('semiFinals') + '</div>';
+                html += renderMatch(_('SF1'), _('winner') + ' QF1', _('winner') + ' QF4');
+                html += renderMatch(_('SF2'), _('winner') + ' QF3', _('winner') + ' QF2');
+                html += '</div>';
+            }
+
             html += '<div class="bracket-round"><div class="bracket-round-title">' + _('finals') + '</div>';
             html += renderMatch(_('final'), _('winner') + ' SF1', _('winner') + ' SF2', 'final');
             html += renderMatch(_('thirdPlace'), _('loser') + ' SF1', _('loser') + ' SF2', 'third');
@@ -509,13 +534,15 @@
             return html;
         }
 
-        function renderPlateBracket(sA, sB, isU14, mA, mB) {
+        function renderPlateBracket(sA, sB, isU14, isGirls, teamsPerGroup, mA, mB) {
             const done = isGroupComplete(mA) && isGroupComplete(mB);
             let html = '<div class="bracket-round"><div class="bracket-round-title">' + _('plateSemiFinals') + '</div>';
+            // U14 Plate: A3vB4, B3vA4 (NOT QF losers — Girls has no QF, Boys Plate uses group positions)
             if (isU14) {
-                html += renderMatch('Plate SF1', _('loser') + ' QF4', _('loser') + ' QF1', 'plate');
-                html += renderMatch('Plate SF2', _('loser') + ' QF3', _('loser') + ' QF2', 'plate');
+                html += renderMatch('Plate SF1', done ? getTeam(sA,2) : 'A3', done ? getTeam(sB,3) : 'B4', 'plate');
+                html += renderMatch('Plate SF2', done ? getTeam(sB,2) : 'B3', done ? getTeam(sA,3) : 'A4', 'plate');
             } else {
+                // U12 Plate: A3vB3, A4vB4
                 html += renderMatch('Plate SF1', done ? getTeam(sA,2) : 'A3', done ? getTeam(sB,2) : 'B3', 'plate');
                 html += renderMatch('Plate SF2', done ? getTeam(sA,3) : 'A4', done ? getTeam(sB,3) : 'B4', 'plate');
             }
