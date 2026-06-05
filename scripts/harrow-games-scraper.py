@@ -114,30 +114,34 @@ def parse_matches(csv_text, groups, meta):
             away_score_str = block[5].strip() if len(block) > 5 else ""
             away = block[6].strip() if len(block) > 6 else ""
 
-            if not home or not away or home == "Home" or away == "Away":
-                continue
-
-            # Skip placeholder teams
-            placeholder_patterns = ['Winner', 'Runner-up', 'A1', 'A2', 'A3', 'A4',
-                                     'B1', 'B2', 'B3', 'B4', 'QF', 'SF', 'Final']
-            is_placeholder = any(p in home or p in away for p in placeholder_patterns)
-            if is_placeholder:
-                continue
-
-            # Determine match type FIRST
+            # Determine match type from round_name FIRST (needed before skip logic)
             match_type = "group"
-            if "Quarter" in round_name:
-                match_type = "quarter_final"
-            elif "Semi" in round_name:
-                match_type = "semi_final"
-            elif "9th" in round_name:
+            if "9th" in round_name.lower():
                 match_type = "9th_place"
-            elif "Final" in round_name and "Third" not in round_name and "Plate" not in round_name:
-                match_type = "final"
-            elif "Third" in round_name:
+            elif "Quarter" in round_name:
+                match_type = "quarter_final"
+            elif "Plate" in round_name and "Semi" in round_name:
+                match_type = "plate_semi_final"
+            elif "Plate" in round_name and "Third" in round_name:
+                match_type = "plate_third_place"
+            elif "Plate" in round_name and "Final" in round_name:
+                match_type = "plate_final"
+            elif "Semi" in round_name and "Plate" not in round_name:
+                match_type = "semi_final"
+            elif "Third" in round_name and "Plate" not in round_name:
                 match_type = "third_place"
-            elif "Plate" in round_name:
-                match_type = "plate"
+            elif "Final" in round_name and "Plate" not in round_name:
+                match_type = "final"
+
+            # Skip empty rows or header rows, but keep knockout matches even without team names
+            if not home or not away or home == "Home" or away == "Away":
+                if match_type == 'group':
+                    continue
+                # For knockout matches with empty teams, use TBD placeholder
+                if not home:
+                    home = "TBD"
+                if not away:
+                    away = "TBD"
 
             # Determine gender from round name first
             gender = "unknown"
@@ -191,6 +195,77 @@ def parse_matches(csv_text, groups, meta):
     return matches
 
 
+def extract_official_ranking(matches, groups):
+    """Extract official team rankings from SF/Plate match data.
+    CSV authors pre-fill SF/Plate matches with correct team names based on official ranking.
+    E.g. "Semi Final 1(A1 v B2)" with home=Bangkok, away=Beijing means A1=Bangkok.
+    """
+    ranking = {}  # e.g. {"Boys-A": ["Bangkok", "Shanghai", "London", "Nanning", "Appi"]}
+    
+    for gender in ["Boys", "Girls"]:
+        for group_letter in ["A", "B"]:
+            gk = f"{gender}-{group_letter}"
+            if gk not in groups:
+                continue
+            # Find SF matches that reveal A1-A5 or B1-B5
+            # For Boys (no QF): SF1(A1vB2), SF2(B1vA2), PlateSF1(A3vB4), PlateSF2(B3vA4), 9th(A5vB5)
+            # For Girls (has QF): QF1(A1vB4), QF2(A2vB3), QF3(B1vA4), QF4(B2vA3)
+            pass
+    
+    # Extract from SF/Plate matches
+    for m in matches:
+        if m['type'] not in ('semi_final', 'quarter_final', '9th_place'):
+            continue
+        rn = m.get('round', '')
+        home = m.get('home', '')
+        away = m.get('away', '')
+        gender = m.get('gender', '')
+        if not home or not away or not gender:
+            continue
+        
+        # Parse the bracket position from round name
+        # Boys SF: "Semi Final 1(A1 v B2)" -> A1=home, B2=away
+        # Boys SF: "Semi Final 2(B1 v A2)" -> B1=home, A2=away
+        # Boys Plate: "Plate Semi Final 1(A3 v B4)" -> A3=home, B4=away
+        # Boys Plate: "Plate Semi Final 2(B3 v A4)" -> B3=home, A4=away
+        # 9th: "9th Place Play OffA5 v B5" -> A5=home, B5=away
+        # Girls QF: "Quarter Finals 1 (A1vB4)" -> A1=home, B4=away
+        # Girls QF: "Quarter Finals 2 (A2vB3)" -> A2=home, B3=away
+        # Girls QF: "Quarter Finals 3 (B1vA4)" -> B1=home, A4=away
+        # Girls QF: "Quarter Finals 4 (B2vA3)" -> B2=home, A3=away
+        
+        import re
+        # Match patterns like "A1", "B2", "A3", etc.
+        positions = re.findall(r'([AB])(\d)', rn)
+        if len(positions) >= 2:
+            pos1, pos2 = positions[0], positions[1]
+            # pos1 corresponds to home team, pos2 to away team
+            group1 = f"{gender}-{pos1[0]}"
+            rank1 = int(pos1[1])
+            group2 = f"{gender}-{pos2[0]}"
+            rank2 = int(pos2[1])
+            
+            if group1 not in ranking:
+                ranking[group1] = {}
+            if group2 not in ranking:
+                ranking[group2] = {}
+            
+            ranking[group1][rank1] = home
+            ranking[group2][rank2] = away
+    
+    # Convert to ordered lists
+    result = {}
+    for gk, pos_map in ranking.items():
+        if gk not in groups:
+            continue
+        ordered = [pos_map.get(i, '') for i in range(1, max(pos_map.keys())+1)]
+        # Only use if we have all positions filled
+        if all(ordered):
+            result[gk] = ordered
+    
+    return result
+
+
 def main():
     all_data = {}
 
@@ -203,11 +278,13 @@ def main():
 
             groups = parse_groups(rows)
             matches = parse_matches(csv_text, groups, config)
+            official_ranking = extract_official_ranking(matches, groups)
 
             all_data[key] = {
                 "meta": config,
                 "groups": groups,
-                "matches": matches
+                "matches": matches,
+                "official_ranking": official_ranking
             }
             print(f"  -> {len(matches)} matches, groups: {list(groups.keys())}")
         except Exception as e:
