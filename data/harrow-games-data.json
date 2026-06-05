@@ -433,7 +433,7 @@
         "home": "Hengqin",
         "away": "Nanning",
         "gender": "Boys",
-        "type": "semi_final",
+        "type": "plate_semi_final",
         "group": "Boys-B",
         "home_score": 1,
         "away_score": 0,
@@ -445,7 +445,7 @@
         "home": "Hong Kong",
         "away": "Shanghai",
         "gender": "Boys",
-        "type": "semi_final",
+        "type": "plate_semi_final",
         "group": "Boys-A",
         "home_score": 2,
         "away_score": 3,
@@ -517,10 +517,10 @@
         "home": "Hengqin",
         "away": "Shanghai",
         "gender": "Boys",
-        "type": "plate",
+        "type": "plate_final",
         "group": "Boys-B",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 0,
+        "away_score": 2,
         "venue": "Pitch/ Court 3"
       },
       {
@@ -529,7 +529,7 @@
         "home": "Nanning",
         "away": "Hong Kong",
         "gender": "Boys",
-        "type": "third_place",
+        "type": "plate_third_place",
         "group": "Boys-B",
         "home_score": 0,
         "away_score": 3,
@@ -1086,7 +1086,7 @@
         "home": "Hong Kong",
         "away": "Shanghai",
         "gender": "Girls",
-        "type": "semi_final",
+        "type": "plate_semi_final",
         "group": "Girls-A",
         "home_score": 8,
         "away_score": 6,
@@ -1098,7 +1098,7 @@
         "home": "Shenzhen",
         "away": "Appi",
         "gender": "Girls",
-        "type": "semi_final",
+        "type": "plate_semi_final",
         "group": "Girls-A",
         "home_score": 8,
         "away_score": 26,
@@ -1134,7 +1134,7 @@
         "home": "London",
         "away": "Hengqin",
         "gender": "Boys",
-        "type": "semi_final",
+        "type": "plate_semi_final",
         "group": "Boys-A",
         "home_score": null,
         "away_score": null,
@@ -1146,7 +1146,7 @@
         "home": "Shenzhen",
         "away": "Nanning",
         "gender": "Boys",
-        "type": "semi_final",
+        "type": "plate_semi_final",
         "group": "Boys-B",
         "home_score": null,
         "away_score": null,
@@ -1170,7 +1170,7 @@
         "home": "Hong Kong",
         "away": "Appi",
         "gender": "Girls",
-        "type": "plate",
+        "type": "plate_final",
         "group": "Girls-A",
         "home_score": null,
         "away_score": null,
@@ -1182,8 +1182,44 @@
         "home": "Shanghai",
         "away": "Shenzhen",
         "gender": "Girls",
-        "type": "third_place",
+        "type": "plate_third_place",
         "group": "Girls-B",
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 3"
+      },
+      {
+        "round": "Third PlaceLoser SF1 v Loser SF2",
+        "ko": "16:20",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Boys",
+        "type": "third_place",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 1"
+      },
+      {
+        "round": "Plate FinalWinner Plate SF1 v Winner Plate SF2",
+        "ko": "16:20",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Boys",
+        "type": "plate_final",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 2"
+      },
+      {
+        "round": "Plate Third PlaceLoser Plate SF1 v Loser Plate SF 2\"",
+        "ko": "16:20",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Boys",
+        "type": "plate_third_place",
+        "group": null,
         "home_score": null,
         "away_score": null,
         "venue": "Pitch/ Court 3"
@@ -1211,6 +1247,18 @@
         "home_score": null,
         "away_score": null,
         "venue": "Pitch/ Court 1"
+      },
+      {
+        "round": "FinalWinner SF1 v Winner SF2",
+        "ko": "17:00",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Girls",
+        "type": "final",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 2"
       }
     ],
     "official_ranking": {
@@ -1225,20 +1273,6 @@
         "Shenzhen",
         "Hong Kong",
         "Appi"
-      ],
-      "Boys-A": [
-        "Bangkok",
-        "Shanghai",
-        "London",
-        "Nanning",
-        "Appi"
-      ],
-      "Boys-B": [
-        "Hong Kong",
-        "Beijing",
-        "Shenzhen",
-        "Hengqin",
-        "Haikou"
       ]
     }
   },
@@ -1563,6 +1597,54 @@
         "venue": "Pitch/ Court 3"
       },
       {
+        "round": "Quarter Finals 2 (A2vB3)",
+        "ko": "12:40",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Boys",
+        "type": "quarter_final",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 1"
+      },
+      {
+        "round": "Quarter Finals 4 (B2vA3)",
+        "ko": "13:00",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Boys",
+        "type": "quarter_final",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 2"
+      },
+      {
+        "round": "Quarter Finals 3 (B1vA4)",
+        "ko": "13:00",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Boys",
+        "type": "quarter_final",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 3"
+      },
+      {
+        "round": "Quarter Finals 1 (A1vB4)",
+        "ko": "13:00",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Boys",
+        "type": "quarter_final",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 4"
+      },
+      {
         "round": "Girls Round 5",
         "ko": "13:20",
         "home": "Haikou",
@@ -1597,6 +1679,54 @@
         "home_score": null,
         "away_score": null,
         "venue": "Pitch/ Court 3"
+      },
+      {
+        "round": "Semi Final 1  Winner QF1 v Winner QF4",
+        "ko": "14:00",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Boys",
+        "type": "semi_final",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 1"
+      },
+      {
+        "round": "Semi Final 2 Winner QF3 v Winner QF2",
+        "ko": "14:20",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Boys",
+        "type": "semi_final",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 2"
+      },
+      {
+        "round": "Plate Semi Final Loser QF4 v Loser QF1",
+        "ko": "14:20",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Boys",
+        "type": "plate_semi_final",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 3"
+      },
+      {
+        "round": "Plate Semi Final Loser QF4 v Loser QF1",
+        "ko": "14:20",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Boys",
+        "type": "plate_semi_final",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 4"
       },
       {
         "round": "Girls Round 6",
@@ -1635,6 +1765,54 @@
         "venue": "Pitch/ Court 3"
       },
       {
+        "round": "FinalWinner SF1 v Winner SF2",
+        "ko": "15:20",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Boys",
+        "type": "final",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 1"
+      },
+      {
+        "round": "Third PlaceLoser SF1 v Loser SF2",
+        "ko": "15:40",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Boys",
+        "type": "third_place",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 2"
+      },
+      {
+        "round": "Plate FinalWinner Plate SF1 v Winner Plate SF2",
+        "ko": "15:40",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Boys",
+        "type": "plate_final",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 3"
+      },
+      {
+        "round": "Plate Third PlaceLoser Plate SF1 v Loser Plate SF 2\"",
+        "ko": "15:40",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Boys",
+        "type": "plate_third_place",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 4"
+      },
+      {
         "round": "Girls Round 7",
         "ko": "16:00",
         "home": "Shenzhen",
@@ -1671,7 +1849,20 @@
         "venue": "Pitch/ Court 3"
       }
     ],
-    "official_ranking": {}
+    "official_ranking": {
+      "Boys-A": [
+        "TBD",
+        "TBD",
+        "TBD",
+        "TBD"
+      ],
+      "Boys-B": [
+        "TBD",
+        "TBD",
+        "TBD",
+        "TBD"
+      ]
+    }
   },
   "day3_u14": {
     "meta": {
@@ -2107,6 +2298,54 @@
         "venue": "Pitch/ Court 5"
       },
       {
+        "round": "Quarter Finals 4 (B2vA3)",
+        "ko": "13:00",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Boys",
+        "type": "quarter_final",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 1"
+      },
+      {
+        "round": "Quarter Finals 2 (A2vB3)",
+        "ko": "13:00",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Boys",
+        "type": "quarter_final",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 2"
+      },
+      {
+        "round": "Quarter Finals 3 (B1vA4)",
+        "ko": "13:00",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Boys",
+        "type": "quarter_final",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 3"
+      },
+      {
+        "round": "Quarter Finals 1 (A1vB4)",
+        "ko": "13:00",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Boys",
+        "type": "quarter_final",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 4"
+      },
+      {
         "round": "Boys Round 5",
         "ko": "13:30",
         "home": "Nanning",
@@ -2165,8 +2404,225 @@
         "home_score": null,
         "away_score": null,
         "venue": "Pitch/ Court 5"
+      },
+      {
+        "round": "Semi Final 1  Winner QF1 v Winner QF4",
+        "ko": "14:00",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Boys",
+        "type": "semi_final",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 1"
+      },
+      {
+        "round": "Semi Final 2 Winner QF3 v Winner QF2",
+        "ko": "14:00",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Boys",
+        "type": "semi_final",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 2"
+      },
+      {
+        "round": "Plate Semi Final Loser QF4 v Loser QF1",
+        "ko": "14:00",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Boys",
+        "type": "plate_semi_final",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 3"
+      },
+      {
+        "round": "Plate Semi Final Loser QF4 v Loser QF1",
+        "ko": "14:00",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Boys",
+        "type": "plate_semi_final",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 4"
+      },
+      {
+        "round": "Semi Final 1(A1 v B2)",
+        "ko": "14:30",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Girls",
+        "type": "semi_final",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 1"
+      },
+      {
+        "round": "Semi Final 2(B1 v A2)",
+        "ko": "14:30",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Girls",
+        "type": "semi_final",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 2"
+      },
+      {
+        "round": "Plate Semi Final 1(A3 v B4)",
+        "ko": "14:30",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Girls",
+        "type": "plate_semi_final",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 3"
+      },
+      {
+        "round": "Plate Semi Final 2(B3 v A4)",
+        "ko": "14:30",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Girls",
+        "type": "plate_semi_final",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 4"
+      },
+      {
+        "round": "FinalWinner SF1 v Winner SF2",
+        "ko": "15:00",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Boys",
+        "type": "final",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 1"
+      },
+      {
+        "round": "Plate FinalWinner Plate SF1 v Winner Plate SF 2",
+        "ko": "15:00",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Boys",
+        "type": "plate_final",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 2"
+      },
+      {
+        "round": "Third PlaceLoser SF1 v Loser SF2",
+        "ko": "15:00",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Boys",
+        "type": "third_place",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 3"
+      },
+      {
+        "round": "Plate Third PlaceLoser Plate SF1 v Loser Plate SF 2",
+        "ko": "15:00",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Boys",
+        "type": "plate_third_place",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 4"
+      },
+      {
+        "round": "FinalWinner SF1 v Winner SF2",
+        "ko": "15:30",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Girls",
+        "type": "final",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 1"
+      },
+      {
+        "round": "Third PlaceLoser SF1 v Loser SF2",
+        "ko": "15:30",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Girls",
+        "type": "third_place",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 2"
+      },
+      {
+        "round": "Plate FinalWinner Plate SF1 v Winner Plate SF2",
+        "ko": "15:30",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Girls",
+        "type": "plate_final",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 3"
+      },
+      {
+        "round": "Plate Third PlaceLoser Plate SF1 v Loser Plate SF 2\"",
+        "ko": "15:30",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Girls",
+        "type": "plate_third_place",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 4"
+      },
+      {
+        "round": "9th Place Play OffA5 v B5",
+        "ko": "15:30",
+        "home": "TBD",
+        "away": "TBD",
+        "gender": "Girls",
+        "type": "9th_place",
+        "group": null,
+        "home_score": null,
+        "away_score": null,
+        "venue": "Pitch/ Court 5"
       }
     ],
-    "official_ranking": {}
+    "official_ranking": {
+      "Boys-B": [
+        "TBD",
+        "TBD",
+        "TBD",
+        "TBD"
+      ],
+      "Boys-A": [
+        "TBD",
+        "TBD",
+        "TBD",
+        "TBD"
+      ]
+    }
   }
 }
