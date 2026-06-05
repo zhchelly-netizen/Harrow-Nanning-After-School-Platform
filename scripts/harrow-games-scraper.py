@@ -145,6 +145,21 @@ def parse_matches(csv_text, groups, meta):
                 match_type = "plate"
 
             # Determine group for this match using gender-specific lookup
+            # For matches with unknown gender (e.g. QF/SF), try both lookups
+            if gender == "unknown":
+                # Try to resolve gender by checking which lookup both teams belong to
+                home_in_boys = home in team_to_group_boys
+                away_in_boys = away in team_to_group_boys
+                home_in_girls = home in team_to_group_girls
+                away_in_girls = away in team_to_group_girls
+                if home_in_boys and away_in_boys and not (home_in_girls and away_in_girls):
+                    gender = "Boys"
+                elif home_in_girls and away_in_girls and not (home_in_boys and away_in_boys):
+                    gender = "Girls"
+                elif home_in_boys or away_in_boys:
+                    gender = "Boys"
+                elif home_in_girls or away_in_girls:
+                    gender = "Girls"
             lookup = team_to_group_boys if gender == "Boys" else team_to_group_girls
             match_group = lookup.get(home) or lookup.get(away)
 
