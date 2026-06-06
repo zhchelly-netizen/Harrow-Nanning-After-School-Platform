@@ -2245,8 +2245,8 @@
         "gender": "Girls",
         "type": "quarter_final",
         "group": "Girls-B",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 3,
+        "away_score": 1,
         "venue": "Pitch/ Court 1"
       },
       {
@@ -2257,8 +2257,8 @@
         "gender": "Girls",
         "type": "quarter_final",
         "group": "Girls-A",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 2,
+        "away_score": 1,
         "venue": "Pitch/ Court 2"
       },
       {
@@ -2269,8 +2269,8 @@
         "gender": "Girls",
         "type": "quarter_final",
         "group": "Girls-B",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 3,
+        "away_score": 1,
         "venue": "Pitch/ Court 3"
       },
       {
@@ -2281,8 +2281,8 @@
         "gender": "Girls",
         "type": "quarter_final",
         "group": "Girls-A",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 3,
+        "away_score": 0,
         "venue": "Pitch/ Court 4"
       },
       {
@@ -2336,11 +2336,11 @@
       {
         "round": "Semi Final 1  Winner QF1 v Winner QF4",
         "ko": "13:30",
-        "home": "TBD",
-        "away": "TBD",
+        "home": "Bangkok",
+        "away": "Beijing",
         "gender": "Girls",
         "type": "semi_final",
-        "group": null,
+        "group": "Girls-A",
         "home_score": null,
         "away_score": null,
         "venue": "Pitch/ Court 1"
@@ -2348,11 +2348,11 @@
       {
         "round": "Semi Final 2 Winner QF3 v Winner QF2",
         "ko": "13:30",
-        "home": "TBD",
-        "away": "TBD",
+        "home": "Bangkok Lions",
+        "away": "Hong Kong",
         "gender": "Girls",
         "type": "semi_final",
-        "group": null,
+        "group": "Girls-B",
         "home_score": null,
         "away_score": null,
         "venue": "Pitch/ Court 2"
@@ -2360,23 +2360,23 @@
       {
         "round": "Plate Semi Final Loser QF4 v Loser QF1",
         "ko": "13:30",
-        "home": "TBD",
-        "away": "TBD",
+        "home": "Shenzhen",
+        "away": "Haikou",
         "gender": "Girls",
         "type": "plate_semi_final",
-        "group": null,
+        "group": "Girls-A",
         "home_score": null,
         "away_score": null,
         "venue": "Pitch/ Court 3"
       },
       {
-        "round": "Plate Semi Final Loser QF4 v Loser QF1",
+        "round": "Plate Semi Final Loser QF3 v Loser QF2",
         "ko": "13:30",
-        "home": "TBD",
-        "away": "TBD",
+        "home": "Appi",
+        "away": "Shanghai",
         "gender": "Girls",
         "type": "plate_semi_final",
-        "group": null,
+        "group": "Girls-A",
         "home_score": null,
         "away_score": null,
         "venue": "Pitch/ Court 4"
