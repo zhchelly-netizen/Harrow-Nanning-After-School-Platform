@@ -114,6 +114,20 @@ def parse_matches(csv_text, groups, meta):
             away_score_str = block[5].strip() if len(block) > 5 else ""
             away = block[6].strip() if len(block) > 6 else ""
 
+            # Parse scores - handle "0win pens", "0-0win pens", etc.
+            def _parse_score(s):
+                s = s.strip()
+                if not s:
+                    return None, False
+                m = re.match(r'^(\d+)', s)
+                if m:
+                    return int(m.group(1)), ('pen' in s.lower() or 'win' in s.lower())
+                return None, False
+
+            home_score, home_pen = _parse_score(home_score_str)
+            away_score, away_pen = _parse_score(away_score_str)
+            is_penalty = home_pen or away_pen
+
             # Determine match type from round_name FIRST (needed before skip logic)
             match_type = "group"
             if "9th" in round_name.lower():
@@ -185,8 +199,9 @@ def parse_matches(csv_text, groups, meta):
                 "gender": gender,
                 "type": match_type,
                 "group": match_group,  # e.g. "Boys-A", "Girls-Single", etc.
-                "home_score": int(home_score_str) if home_score_str.isdigit() else None,
-                "away_score": int(away_score_str) if away_score_str.isdigit() else None,
+                "home_score": home_score,
+                "away_score": away_score,
+                "is_penalty": is_penalty,
                 "venue": f"Pitch/ Court {start//7 + 1}" if start < 35 else "TBD"
             })
 
