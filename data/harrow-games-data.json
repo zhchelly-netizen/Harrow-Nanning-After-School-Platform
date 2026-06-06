@@ -1340,8 +1340,8 @@
         "gender": "Girls",
         "type": "group",
         "group": "Girls-Single",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 4,
+        "away_score": 4,
         "venue": "Pitch/ Court 3"
       },
       {
