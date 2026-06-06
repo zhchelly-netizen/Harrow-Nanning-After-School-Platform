@@ -2449,8 +2449,8 @@
         "gender": "Girls",
         "type": "plate_final",
         "group": "Girls-B",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 0,
+        "away_score": 3,
         "venue": "Pitch/ Court 2"
       },
       {
@@ -2461,8 +2461,8 @@
         "gender": "Girls",
         "type": "third_place",
         "group": "Girls-B",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 1,
+        "away_score": 0,
         "venue": "Pitch/ Court 3"
       },
       {
@@ -2473,8 +2473,8 @@
         "gender": "Girls",
         "type": "plate_third_place",
         "group": "Girls-A",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 2,
+        "away_score": 1,
         "venue": "Pitch/ Court 4"
       },
       {
