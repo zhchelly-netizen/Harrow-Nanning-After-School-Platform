@@ -1604,8 +1604,8 @@
         "gender": "Boys",
         "type": "quarter_final",
         "group": "Boys-A",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 22,
+        "away_score": 16,
         "venue": "Pitch/ Court 1"
       },
       {
@@ -1616,8 +1616,8 @@
         "gender": "Boys",
         "type": "quarter_final",
         "group": "Boys-B",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 24,
+        "away_score": 12,
         "venue": "Pitch/ Court 2"
       },
       {
@@ -1628,8 +1628,8 @@
         "gender": "Boys",
         "type": "quarter_final",
         "group": "Boys-B",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 26,
+        "away_score": 10,
         "venue": "Pitch/ Court 3"
       },
       {
@@ -1640,8 +1640,8 @@
         "gender": "Boys",
         "type": "quarter_final",
         "group": "Boys-A",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 20,
+        "away_score": 8,
         "venue": "Pitch/ Court 4"
       },
       {
@@ -1683,11 +1683,11 @@
       {
         "round": "Semi Final 1  Winner QF1 v Winner QF4",
         "ko": "14:20",
-        "home": "TBD",
-        "away": "TBD",
+        "home": "Beijing",
+        "away": "Nanning",
         "gender": "Boys",
         "type": "semi_final",
-        "group": null,
+        "group": "Boys-A",
         "home_score": null,
         "away_score": null,
         "venue": "Pitch/ Court 1"
@@ -1695,11 +1695,11 @@
       {
         "round": "Semi Final 2 Winner QF3 v Winner QF2",
         "ko": "14:20",
-        "home": "TBD",
-        "away": "TBD",
+        "home": "Bangkok",
+        "away": "Shenzhen",
         "gender": "Boys",
         "type": "semi_final",
-        "group": null,
+        "group": "Boys-B",
         "home_score": null,
         "away_score": null,
         "venue": "Pitch/ Court 2"
@@ -1707,11 +1707,11 @@
       {
         "round": "Plate Semi Final Loser QF4 v Loser QF1",
         "ko": "14:20",
-        "home": "TBD",
-        "away": "TBD",
+        "home": "Hong Kong",
+        "away": "Hengqin",
         "gender": "Boys",
         "type": "plate_semi_final",
-        "group": null,
+        "group": "Boys-A",
         "home_score": null,
         "away_score": null,
         "venue": "Pitch/ Court 3"
@@ -1719,11 +1719,11 @@
       {
         "round": "Plate Semi Final Loser QF3 v Loser QF2",
         "ko": "14:20",
-        "home": "TBD",
-        "away": "TBD",
+        "home": "Shanghai",
+        "away": "Haikou",
         "gender": "Boys",
         "type": "plate_semi_final",
-        "group": null,
+        "group": "Boys-A",
         "home_score": null,
         "away_score": null,
         "venue": "Pitch/ Court 4"
@@ -2293,8 +2293,8 @@
         "gender": "Boys",
         "type": "group",
         "group": "Boys-B",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 3,
+        "away_score": 0,
         "venue": "Pitch/ Court 1"
       },
       {
@@ -2305,8 +2305,8 @@
         "gender": "Boys",
         "type": "group",
         "group": "Boys-A",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 0,
+        "away_score": 0,
         "venue": "Pitch/ Court 2"
       },
       {
@@ -2317,8 +2317,8 @@
         "gender": "Boys",
         "type": "group",
         "group": "Boys-B",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 0,
+        "away_score": 2,
         "venue": "Pitch/ Court 3"
       },
       {
@@ -2329,8 +2329,8 @@
         "gender": "Boys",
         "type": "group",
         "group": "Boys-A",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 2,
+        "away_score": 2,
         "venue": "Pitch/ Court 4"
       },
       {
@@ -2384,11 +2384,11 @@
       {
         "round": "Semi Final 1(A1 v B2)",
         "ko": "14:00",
-        "home": "TBD",
-        "away": "TBD",
+        "home": "London",
+        "away": "Hong Kong",
         "gender": "Boys",
         "type": "semi_final",
-        "group": null,
+        "group": "Boys-A",
         "home_score": null,
         "away_score": null,
         "venue": "Pitch/ Court 1"
@@ -2397,7 +2397,7 @@
         "round": "Semi Final 2(B1 v A2)",
         "ko": "14:00",
         "home": "Beijing",
-        "away": "TBD",
+        "away": "Bangkok",
         "gender": "Boys",
         "type": "semi_final",
         "group": "Boys-B",
@@ -2408,11 +2408,11 @@
       {
         "round": "Plate Semi Final 1(A3 v B4)",
         "ko": "14:00",
-        "home": "TBD",
-        "away": "TBD",
+        "home": "Nanning",
+        "away": "Shenzhen",
         "gender": "Boys",
         "type": "plate_semi_final",
-        "group": null,
+        "group": "Boys-A",
         "home_score": null,
         "away_score": null,
         "venue": "Pitch/ Court 3"
@@ -2420,11 +2420,11 @@
       {
         "round": "Plate Semi Final 2(B3 v A4)",
         "ko": "14:00",
-        "home": "TBD",
-        "away": "TBD",
+        "home": "Haikou",
+        "away": "Shanghai",
         "gender": "Boys",
         "type": "plate_semi_final",
-        "group": null,
+        "group": "Boys-B",
         "home_score": null,
         "away_score": null,
         "venue": "Pitch/ Court 4"
@@ -2432,11 +2432,11 @@
       {
         "round": "9th Place Play OffA5 v B5",
         "ko": "14:30",
-        "home": "TBD",
-        "away": "TBD",
-        "gender": "Girls",
+        "home": "Appi",
+        "away": "Hengqin",
+        "gender": "Boys",
         "type": "9th_place",
-        "group": null,
+        "group": "Boys-A",
         "home_score": null,
         "away_score": null,
         "venue": "Pitch/ Court 1"
@@ -2543,23 +2543,13 @@
         "Bangkok Lions",
         "Beijing",
         "Shanghai",
-        "Haikou",
-        "TBD"
+        "Haikou"
       ],
       "Girls-A": [
         "Bangkok",
         "Hong Kong",
         "Shenzhen",
-        "Appi",
-        "TBD"
-      ],
-      "Boys-A": [
-        "TBD",
-        "TBD"
-      ],
-      "Boys-B": [
-        "Beijing",
-        "TBD"
+        "Appi"
       ]
     }
   }
