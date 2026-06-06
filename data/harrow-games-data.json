@@ -1436,8 +1436,8 @@
         "gender": "Boys",
         "type": "group",
         "group": "Boys-B",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 18,
+        "away_score": 14,
         "venue": "Pitch/ Court 1"
       },
       {
@@ -1448,8 +1448,8 @@
         "gender": "Boys",
         "type": "group",
         "group": "Boys-B",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 18,
+        "away_score": 8,
         "venue": "Pitch/ Court 2"
       },
       {
@@ -1460,8 +1460,8 @@
         "gender": "Boys",
         "type": "group",
         "group": "Boys-A",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 6,
+        "away_score": 16,
         "venue": "Pitch/ Court 3"
       },
       {
@@ -1472,8 +1472,8 @@
         "gender": "Boys",
         "type": "group",
         "group": "Boys-A",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 20,
+        "away_score": 24,
         "venue": "Pitch/ Court 4"
       },
       {
@@ -2101,8 +2101,8 @@
         "gender": "Boys",
         "type": "group",
         "group": "Boys-B",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 5,
+        "away_score": 2,
         "venue": "Pitch/ Court 1"
       },
       {
@@ -2113,8 +2113,8 @@
         "gender": "Boys",
         "type": "group",
         "group": "Boys-B",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 1,
+        "away_score": 3,
         "venue": "Pitch/ Court 2"
       },
       {
@@ -2125,8 +2125,8 @@
         "gender": "Boys",
         "type": "group",
         "group": "Boys-A",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 6,
+        "away_score": 0,
         "venue": "Pitch/ Court 3"
       },
       {
@@ -2137,8 +2137,8 @@
         "gender": "Boys",
         "type": "group",
         "group": "Boys-A",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 1,
+        "away_score": 1,
         "venue": "Pitch/ Court 4"
       },
       {
