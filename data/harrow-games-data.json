@@ -1484,8 +1484,8 @@
         "gender": "Girls",
         "type": "group",
         "group": "Girls-Single",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 10,
+        "away_score": 8,
         "venue": "Pitch/ Court 1"
       },
       {
@@ -1496,8 +1496,8 @@
         "gender": "Girls",
         "type": "group",
         "group": "Girls-Single",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 2,
+        "away_score": 4,
         "venue": "Pitch/ Court 2"
       },
       {
@@ -1508,8 +1508,8 @@
         "gender": "Girls",
         "type": "group",
         "group": "Girls-Single",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 8,
+        "away_score": 4,
         "venue": "Pitch/ Court 3"
       },
       {
@@ -2149,8 +2149,8 @@
         "gender": "Girls",
         "type": "group",
         "group": "Girls-A",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 6,
+        "away_score": 0,
         "venue": "Pitch/ Court 1"
       },
       {
@@ -2161,8 +2161,8 @@
         "gender": "Girls",
         "type": "group",
         "group": "Girls-B",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 0,
+        "away_score": 1,
         "venue": "Pitch/ Court 2"
       },
       {
@@ -2173,8 +2173,8 @@
         "gender": "Girls",
         "type": "group",
         "group": "Girls-B",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 3,
+        "away_score": 0,
         "venue": "Pitch/ Court 3"
       },
       {
@@ -2185,8 +2185,8 @@
         "gender": "Girls",
         "type": "group",
         "group": "Girls-A",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 1,
+        "away_score": 1,
         "venue": "Pitch/ Court 4"
       },
       {
@@ -2240,11 +2240,11 @@
       {
         "round": "Quarter Finals 4 (B2vA3)",
         "ko": "12:30",
-        "home": "TBD",
-        "away": "TBD",
+        "home": "Beijing",
+        "away": "Shenzhen",
         "gender": "Girls",
         "type": "quarter_final",
-        "group": null,
+        "group": "Girls-B",
         "home_score": null,
         "away_score": null,
         "venue": "Pitch/ Court 1"
@@ -2252,11 +2252,11 @@
       {
         "round": "Quarter Finals 2 (A2vB3)",
         "ko": "12:30",
-        "home": "TBD",
-        "away": "TBD",
+        "home": "Hong Kong",
+        "away": "Shanghai",
         "gender": "Girls",
         "type": "quarter_final",
-        "group": null,
+        "group": "Girls-A",
         "home_score": null,
         "away_score": null,
         "venue": "Pitch/ Court 2"
@@ -2264,11 +2264,11 @@
       {
         "round": "Quarter Finals 3 (B1vA4)",
         "ko": "12:30",
-        "home": "TBD",
-        "away": "TBD",
+        "home": "Bangkok Lions",
+        "away": "Appi",
         "gender": "Girls",
         "type": "quarter_final",
-        "group": null,
+        "group": "Girls-B",
         "home_score": null,
         "away_score": null,
         "venue": "Pitch/ Court 3"
@@ -2276,11 +2276,11 @@
       {
         "round": "Quarter Finals 1 (A1vB4)",
         "ko": "12:30",
-        "home": "TBD",
-        "away": "TBD",
+        "home": "Bangkok",
+        "away": "Haikou",
         "gender": "Girls",
         "type": "quarter_final",
-        "group": null,
+        "group": "Girls-A",
         "home_score": null,
         "away_score": null,
         "venue": "Pitch/ Court 4"
@@ -2540,17 +2540,17 @@
     ],
     "official_ranking": {
       "Girls-B": [
-        "TBD",
-        "TBD",
-        "TBD",
-        "TBD",
+        "Bangkok Lions",
+        "Beijing",
+        "Shanghai",
+        "Haikou",
         "TBD"
       ],
       "Girls-A": [
-        "TBD",
-        "TBD",
-        "TBD",
-        "TBD",
+        "Bangkok",
+        "Hong Kong",
+        "Shenzhen",
+        "Appi",
         "TBD"
       ],
       "Boys-A": [
