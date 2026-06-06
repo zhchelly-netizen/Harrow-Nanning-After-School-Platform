@@ -1772,8 +1772,8 @@
         "gender": "Boys",
         "type": "final",
         "group": "Boys-B",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 22,
+        "away_score": 24,
         "venue": "Pitch/ Court 1"
       },
       {
@@ -1784,8 +1784,8 @@
         "gender": "Boys",
         "type": "third_place",
         "group": "Boys-A",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 30,
+        "away_score": 10,
         "venue": "Pitch/ Court 2"
       },
       {
@@ -1832,8 +1832,8 @@
         "gender": "Girls",
         "type": "group",
         "group": "Girls-Single",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 16,
+        "away_score": 0,
         "venue": "Pitch/ Court 2"
       },
       {
@@ -1844,8 +1844,8 @@
         "gender": "Girls",
         "type": "group",
         "group": "Girls-Single",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 6,
+        "away_score": 2,
         "venue": "Pitch/ Court 3"
       }
     ],
