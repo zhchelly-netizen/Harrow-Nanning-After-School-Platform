@@ -1676,8 +1676,8 @@
         "gender": "Girls",
         "type": "group",
         "group": "Girls-Single",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 4,
+        "away_score": 10,
         "venue": "Pitch/ Court 3"
       },
       {
@@ -1700,8 +1700,8 @@
         "gender": "Boys",
         "type": "semi_final",
         "group": "Boys-B",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 22,
+        "away_score": 2,
         "venue": "Pitch/ Court 2"
       },
       {
@@ -2389,8 +2389,8 @@
         "gender": "Boys",
         "type": "semi_final",
         "group": "Boys-A",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 3,
+        "away_score": 0,
         "venue": "Pitch/ Court 1"
       },
       {
@@ -2401,8 +2401,8 @@
         "gender": "Boys",
         "type": "semi_final",
         "group": "Boys-B",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 0,
+        "away_score": 1,
         "venue": "Pitch/ Court 2"
       },
       {
@@ -2413,8 +2413,8 @@
         "gender": "Boys",
         "type": "plate_semi_final",
         "group": "Boys-A",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 4,
+        "away_score": 1,
         "venue": "Pitch/ Court 3"
       },
       {
@@ -2425,8 +2425,8 @@
         "gender": "Boys",
         "type": "plate_semi_final",
         "group": "Boys-B",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 0,
+        "away_score": 2,
         "venue": "Pitch/ Court 4"
       },
       {
@@ -2480,11 +2480,11 @@
       {
         "round": "Third PlaceLoser SF1 v Loser SF2",
         "ko": "15:00",
-        "home": "TBD",
-        "away": "TBD",
+        "home": "Hong Kong",
+        "away": "Beijing",
         "gender": "Boys",
         "type": "third_place",
-        "group": null,
+        "group": "Boys-B",
         "home_score": null,
         "away_score": null,
         "venue": "Pitch/ Court 1"
@@ -2492,11 +2492,11 @@
       {
         "round": "Plate FinalWinner Plate SF1 v Winner Plate SF2",
         "ko": "15:00",
-        "home": "TBD",
-        "away": "TBD",
+        "home": "Nanning",
+        "away": "Shanghai",
         "gender": "Boys",
         "type": "plate_final",
-        "group": null,
+        "group": "Boys-A",
         "home_score": null,
         "away_score": null,
         "venue": "Pitch/ Court 2"
@@ -2504,11 +2504,11 @@
       {
         "round": "Plate Third PlaceLoser Plate SF1 v Loser Plate SF 2\"",
         "ko": "15:00",
-        "home": "TBD",
-        "away": "TBD",
+        "home": "Shenzhen",
+        "away": "Haikou",
         "gender": "Boys",
         "type": "plate_third_place",
-        "group": null,
+        "group": "Boys-B",
         "home_score": null,
         "away_score": null,
         "venue": "Pitch/ Court 3"
@@ -2528,11 +2528,11 @@
       {
         "round": "FinalWinner SF1 v Winner SF2",
         "ko": "15:30",
-        "home": "TBD",
-        "away": "TBD",
-        "gender": "Girls",
+        "home": "London",
+        "away": "Bangkok",
+        "gender": "Boys",
         "type": "final",
-        "group": null,
+        "group": "Boys-A",
         "home_score": null,
         "away_score": null,
         "venue": "Pitch/ Court 2"
