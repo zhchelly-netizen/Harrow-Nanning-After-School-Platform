@@ -1568,8 +1568,8 @@
         "gender": "Girls",
         "type": "group",
         "group": "Girls-Single",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 2,
+        "away_score": 8,
         "venue": "Pitch/ Court 1"
       },
       {
@@ -1580,8 +1580,8 @@
         "gender": "Girls",
         "type": "group",
         "group": "Girls-Single",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 0,
+        "away_score": 20,
         "venue": "Pitch/ Court 2"
       },
       {
@@ -1592,8 +1592,8 @@
         "gender": "Girls",
         "type": "group",
         "group": "Girls-Single",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 6,
+        "away_score": 9,
         "venue": "Pitch/ Court 3"
       },
       {
@@ -2197,8 +2197,8 @@
         "gender": "Boys",
         "type": "group",
         "group": "Boys-A",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 0,
+        "away_score": 4,
         "venue": "Pitch/ Court 1"
       },
       {
@@ -2209,8 +2209,8 @@
         "gender": "Boys",
         "type": "group",
         "group": "Boys-A",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 4,
+        "away_score": 1,
         "venue": "Pitch/ Court 2"
       },
       {
@@ -2221,8 +2221,8 @@
         "gender": "Boys",
         "type": "group",
         "group": "Boys-B",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 3,
+        "away_score": 0,
         "venue": "Pitch/ Court 3"
       },
       {
@@ -2233,8 +2233,8 @@
         "gender": "Boys",
         "type": "group",
         "group": "Boys-B",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 0,
+        "away_score": 0,
         "venue": "Pitch/ Court 4"
       },
       {
@@ -2396,11 +2396,11 @@
       {
         "round": "Semi Final 2(B1 v A2)",
         "ko": "14:00",
-        "home": "TBD",
+        "home": "Beijing",
         "away": "TBD",
         "gender": "Boys",
         "type": "semi_final",
-        "group": null,
+        "group": "Boys-B",
         "home_score": null,
         "away_score": null,
         "venue": "Pitch/ Court 2"
@@ -2558,7 +2558,7 @@
         "TBD"
       ],
       "Boys-B": [
-        "TBD",
+        "Beijing",
         "TBD"
       ]
     }
