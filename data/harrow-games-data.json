@@ -1520,8 +1520,8 @@
         "gender": "Boys",
         "type": "group",
         "group": "Boys-A",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 12,
+        "away_score": 18,
         "venue": "Pitch/ Court 1"
       },
       {
@@ -1532,8 +1532,8 @@
         "gender": "Boys",
         "type": "group",
         "group": "Boys-A",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 26,
+        "away_score": 6,
         "venue": "Pitch/ Court 2"
       },
       {
@@ -1544,8 +1544,8 @@
         "gender": "Boys",
         "type": "group",
         "group": "Boys-B",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 24,
+        "away_score": 16,
         "venue": "Pitch/ Court 3"
       },
       {
@@ -1556,8 +1556,8 @@
         "gender": "Boys",
         "type": "group",
         "group": "Boys-B",
-        "home_score": null,
-        "away_score": null,
+        "home_score": 21,
+        "away_score": 8,
         "venue": "Pitch/ Court 4"
       },
       {
@@ -1599,11 +1599,11 @@
       {
         "round": "Quarter Finals 2 (A2vB3)",
         "ko": "12:40",
-        "home": "TBD",
-        "away": "TBD",
+        "home": "Shenzhen",
+        "away": "Haikou",
         "gender": "Boys",
         "type": "quarter_final",
-        "group": null,
+        "group": "Boys-A",
         "home_score": null,
         "away_score": null,
         "venue": "Pitch/ Court 1"
@@ -1611,11 +1611,11 @@
       {
         "round": "Quarter Finals 4 (B2vA3)",
         "ko": "13:00",
-        "home": "TBD",
-        "away": "TBD",
+        "home": "Nanning",
+        "away": "Hong Kong",
         "gender": "Boys",
         "type": "quarter_final",
-        "group": null,
+        "group": "Boys-B",
         "home_score": null,
         "away_score": null,
         "venue": "Pitch/ Court 2"
@@ -1623,11 +1623,11 @@
       {
         "round": "Quarter Finals 3 (B1vA4)",
         "ko": "13:00",
-        "home": "TBD",
-        "away": "TBD",
+        "home": "Bangkok",
+        "away": "Shanghai",
         "gender": "Boys",
         "type": "quarter_final",
-        "group": null,
+        "group": "Boys-B",
         "home_score": null,
         "away_score": null,
         "venue": "Pitch/ Court 3"
@@ -1635,11 +1635,11 @@
       {
         "round": "Quarter Finals 1 (A1vB4)",
         "ko": "13:00",
-        "home": "TBD",
-        "away": "TBD",
+        "home": "Beijing",
+        "away": "Hengqin",
         "gender": "Boys",
         "type": "quarter_final",
-        "group": null,
+        "group": "Boys-A",
         "home_score": null,
         "away_score": null,
         "venue": "Pitch/ Court 4"
@@ -1717,7 +1717,7 @@
         "venue": "Pitch/ Court 3"
       },
       {
-        "round": "Plate Semi Final Loser QF4 v Loser QF1",
+        "round": "Plate Semi Final Loser QF3 v Loser QF2",
         "ko": "14:20",
         "home": "TBD",
         "away": "TBD",
@@ -1851,16 +1851,16 @@
     ],
     "official_ranking": {
       "Boys-A": [
-        "TBD",
-        "TBD",
-        "TBD",
-        "TBD"
+        "Beijing",
+        "Shenzhen",
+        "Hong Kong",
+        "Shanghai"
       ],
       "Boys-B": [
-        "TBD",
-        "TBD",
-        "TBD",
-        "TBD"
+        "Bangkok",
+        "Nanning",
+        "Haikou",
+        "Hengqin"
       ]
     }
   },
