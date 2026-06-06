@@ -34,7 +34,7 @@ SHEETS = {
         "date": "2025-06-06"
     },
     "day3_u14": {
-        "url": "https://docs.google.com/spreadsheets/d/1ecNyQBf6AlWq0MPiz5w1-67gRI0xoBHIApHIxXr99V4/export?format=csv&gid=1896389952",
+        "url": "https://docs.google.com/spreadsheets/d/1ecNyQBf6AlWq0MPiz5w1-67gRI0xoBHIApHIxXr99V4/export?format=csv&gid=1340168278",
         "sport": "football",
         "age": "U14",
         "day": "Day 3",
