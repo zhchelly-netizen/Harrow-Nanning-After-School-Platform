@@ -34,6 +34,11 @@ function updateCountdown() {
     if (diff <= 0) {
         clearInterval(countdownInterval);
         setCountdownValues(0, 0, 0, 0);
+        // Show closed state after deadline
+        const countdownCard = document.querySelector('.countdown-card');
+        if (countdownCard) {
+            countdownCard.classList.add('expired');
+        }
         return;
     }
 
@@ -96,13 +101,8 @@ function handleActionClick(action) {
 }
 
 function handleFinalConfirmation() {
-    const url = ACTION_LINKS['confirmation'];
-
-    if (url !== '#') {
-        window.open(url, '_blank');
-    } else {
-        showComingSoonNotice('confirmation');
-    }
+    // Intention confirmation period has closed - no action
+    return;
 }
 
 function showComingSoonNotice(action) {

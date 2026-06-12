@@ -148,6 +148,14 @@
     overflow: hidden;
 }
 
+.countdown-card.expired {
+    opacity: 0.6;
+}
+
+.countdown-card.expired .countdown-timer {
+    display: none;
+}
+
 .countdown-card::before {
     content: '';
     position: absolute;
@@ -621,6 +629,40 @@
 
 .final-confirmation-btn:hover .btn-shimmer {
     left: 100%;
+}
+
+/* Closed/disabled state for confirmation section */
+.confirmation-section.closed {
+    border-color: #ccc;
+    opacity: 0.7;
+}
+
+.confirmation-section.closed::before {
+    background: #ccc;
+}
+
+.final-confirmation-btn.disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    box-shadow: none;
+    pointer-events: none;
+}
+
+.final-confirmation-btn.disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.final-confirmation-btn.disabled .btn-icon {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.final-confirmation-btn.disabled .btn-icon svg {
+    color: #888;
+}
+
+.final-confirmation-btn.disabled .btn-text {
+    color: #888;
 }
 
 @keyframes pulse-glow {
